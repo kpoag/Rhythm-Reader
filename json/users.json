@@ -1,0 +1,42 @@
+[
+{       "Id": "c65ef3ab-a65d-4afc-9e51-76eeb1ed0bb2",
+        "firstName": "John",
+        "lastName": "Doe",
+        "username": "johndoe",
+        "email": "johndoe@example.com",
+        "points": "1000",
+        "type": "student",
+        "classroom": "Music Theory 101",
+        "assignedModules": ["Scales", "Chords", "Rhythm"],
+        "deadlines": {
+          "Scales": "2025-03-01",
+          "Chords": "2025-03-10",
+          "Rhythm": "2025-03-15"
+        },
+        "grades": {
+          "Scales": "A",
+          "Chords": "B+",
+          "Rhythm": "A-"
+        }
+
+},{
+    "Id": "08b83653-fe19-4dc8-b7e1-72b95bf91587",
+      "firstName": "Emma",
+      "lastName": "Smith",
+      "username": "emmasmith",
+      "email": "emmasmith@example.com",
+      "points": "2000",
+      "type": "teacher",
+      "teachingClasses": ["Music Theory 101", "Advanced Composition"]
+},{
+    "Id": "c371fa2f-00af-43e9-b1c6-9cd9659b092f",
+      "firstName": "David",
+      "lastName": "Brown",
+      "username": "davidbrown",
+      "email": "davidbrown@example.com",
+      "points": "500",
+      "type": "regular"
+}
+        
+] 
+
