@@ -1,0 +1,35 @@
+[
+    {
+        "songID":1,
+        "songTitle":"Twinkle Twinkle Little Star",
+        "artist":"Jane Taylor",
+        "genre":"contemporary",
+        "difficulty":1.0,
+        "instrument":"piano",
+        "rating":5.0
+    },{
+        "songID":2,
+        "songTitle":"Symphony No. 9",
+        "artist":"Ludwig van Beethoven",
+        "genre":"Classical",
+        "difficulty":5.0,
+        "instrument":"piano",
+        "rating":3.7
+    },{
+        "songID":3,
+        "songTitle":"I'm Yours",
+        "artist":"Jason Mraz",
+        "genre":"pop",
+        "difficulty":2.5,
+        "instrument":"guitar",
+        "rating":5.0
+    },{
+        "songID":4,
+        "songTitle":"Fly Me To The Moon",
+        "artist":"Bart Howard",
+        "genre":"jazz",
+        "difficulty":3.5,
+        "instrument":"trumpet",
+        "rating":4.9
+    }
+]
