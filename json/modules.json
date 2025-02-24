@@ -1,0 +1,166 @@
+{
+    "modules" : [
+        {
+            "moduleId": "module1",
+            "moduleTitle": "Introduction to Music Theory & Piano Basics" ,
+            "lessons": [
+                {
+                    "lessonId": "1.1",
+                    "lessonTitle": "Understanding Musical Notation",
+                    "learningObjectives" : [
+                        "Identify the features of the musical staff (lines & spaces).",
+                        "Learn the purpose of bass and treble clef",
+                        "Recognize basic musical symbols (notes, rests, and durations)."
+                    ],
+                    "content": [
+                        {
+                            "description": "Staff diagram displaying trble clef, bass clef, and note symbols",
+                            "media": [
+                                {
+                                    "type": "image",
+                                    "url": "http://example.com/staff-image.png"                                
+                                }
+                            ]
+                        },
+                        {
+                            "description": "Visual guide to note placement on the staff",
+                            "media": [
+                                {
+                                    "type": "image",
+                                    "url": "http://example.com/notes-image.png"                                
+                                },
+                                {
+                                    "type": "gif",
+                                    "url": "http://example.com/notes-placement-animation.gif"
+                                }
+                            ]
+
+                        },
+                        {
+                            "description": "Demonstration of note durations and rests",
+                            "media": [
+                                {
+                                    "type": "image",
+                                    "url": "http://example.com/notes-image.png"                                
+                                }
+                            ]
+                        }
+                    ],
+                    "explanations": [
+                        "Notes are placed on the musical staff where each of the five lines and four spaces represents a specific pitch. The exact pitch associated with each position depends on the clef being used. For example, the bottom line in the treble clef represents the note E. This precise placement allows musicians to accurately interpret and perform amazing literature.",
+                        "A clef assigns specific pitches to the lines and spaces of the staff. To memorize lines and spaces of treble and bass clef, we can use acronyms. To memorize treble cleff lines we can say Every Good Boy Does Fine and to remember the spaces between, we can remember FACE. To memorize bass clef lines we use the acronym Good Boys Do Fine Always. To memorize the spaces between, we can say All Cows Eat Grass.",
+                        "Musical symbols-including notes, rests, and accidentals act as the language of music, providing instructions on pitch, duration, and expression."
+
+                    ],
+                    "excercises": [
+                        {
+                            "description": "Label the notes on the staff diagram",
+                            "media" : [
+                                {
+                                    "type": "image",
+                                    "url": "http://example.com/staff-label.png"
+                                }
+                            ]
+                        },
+                        {
+                            "description": "Match musical symbols with their names",
+                            "media" : [
+                                {
+                                    "type": "animation",
+                                    "url": "http://example.com/symbol-matching.gif"
+                                }
+                            ]
+                        },
+                        {
+                            "description": "Identify the clefs used in both staff diagrams",
+                            "media" : [
+                                {
+                                    "type": "image",
+                                    "url": "http://example.com/identify-clef.png"
+                                }
+                            ]
+                        }
+                    ],
+                    "quizQuestions": [
+                        "What is the purpose of a clef?",
+                        "Name two types of rests and their durations.",
+                        "How does the location on the staff determine the pitch of a note?",
+                        "Why is the musical staff important?",
+                        "Which clef does this staff belong to?"
+
+                    ]
+                },
+                
+                {
+                    "lessonId": "1.2",
+                    "lessonTitle": "Exploring the Piano Keyboard",
+                    "learningObjectives": [
+                        "Understand the layout of the piano keyboard",
+                        "Differentiate between different keys and octaves",
+                        "Identify note names across keyboard"
+                    ],
+                    "content": [
+                        {
+                            "description": "Piano keyboard diagram with labeled notes.",
+                            "media": [
+                              {
+                                "type": "image",
+                                "url": "http://example.com/keyboard-diagram.png"
+                              }
+                            ]
+                        },
+                        {  "description": "Image highlighting black keys on piano",
+                            "media": [
+                              {
+                                "type": "image",
+                                "url": "http://example.com/keyboard-black-keys.png"
+                              },
+                              {
+                              "type": "animation",
+                              "url": "http://example.com/blackkeys-animation.gif"
+                              }
+
+                            ]
+                        },
+                        {
+                           "description": "Chart displaying note names and their position on piano",
+                            "media": [
+                              {
+                                "type": "image",
+                                "url": "http://example.com/note-names-chart.png"
+                              }
+                            ] 
+                        }
+                    ],
+                    "explanations":[
+                        "The piano keyboard is a linear pattern with repeating groups of white and black keys, which helps define octaves.",
+                        "The white keys represent natural notes, while black keys represents sharps and flats; the pattern of these keys is very important for understanding scales.",
+                        "Middle C is the musical note C that is near the middle of a piano. An octave is the space between two of the same musical notes, where one has twice the pitch of the other. "
+                    ],
+                    "excercises": [
+                        {
+                           "description": "Determine which picture is an octave and label the notes within." ,
+                            "media": [
+                              {
+                                "type": "image1",
+                                "url": "http://example.com/octave1-chart.png"
+                              },
+                              {
+                                "type": "image2",
+                                "url": "http://example.com/octave2-chart.png"
+                              }
+                            ] 
+                        }
+                    ],
+                    "quizQuestions": [
+                        "What note is to the right of Middle C?",
+                        "What pattern describes the arrangement of black keys?",
+                        "What is an octave?",
+                        "What note is this on the piano?"
+                    ]
+                }
+
+            ]
+        }
+    ]
+}
