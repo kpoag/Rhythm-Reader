@@ -1,0 +1,62 @@
+[
+    {
+        "cardID": "B1",
+        "frontText": "What does the treble clef indicate?",
+        "backText": "Treble clef indicates the position of the G note on the second line of the staff and is used for higher-pitched instruments. ",
+        "category": "Clefs",
+        "difficulty": "Beginner",
+        "picture": "treble_clef.png",
+        "assignedStudents": []
+
+    },
+    {
+        "cardID": "B2",
+        "frontText": "What are the names of the spaces in the treble clef (from bottom to top)?",
+        "backText": "F, A, C, E",
+        "category": "Clefs",
+        "difficulty": "Beginner",
+        "picture": "treble_space.png",
+        "assignedStudents": []
+
+    },
+    {
+        "cardID": "I1",
+        "frontText": "What does a key signature in a piece of music indicate?",
+        "backText": "It shows which notes are consistently played as sharps or flats throughout the music.",
+        "category": "Key Signatures",
+        "difficulty": "Intermediate",
+        "picture": "key_signature.png",
+        "assignedStudents": []
+
+    },
+    {
+        "cardID": "I2",
+        "frontText": "What is the C major scale and how many flats & sharps exist?",
+        "backText": "The C major scale is: C, D, E, F, G, A, B. There are zero sharps and flats",
+        "category": "Scales",
+        "difficulty": "Intermediate",
+        "picture": "scale_example.png",
+        "assignedStudents": []
+
+    },
+    {
+        "cardID": "A1",
+        "frontText": "What is the circle of fifths used for in music theory?",
+        "backText": "It helps show the relationships between the 12 tones, their key signatures, and associated major and minor keys.",
+        "category": "Music Theory",
+        "difficulty": "Advanced",
+        "picture": "circle_of_fifths.png",
+        "assignedStudents": []
+
+    },
+    {
+        "cardID": "A2",
+        "frontText": "What is the difference between natural minor and harmonic minor scales?",
+        "backText": "The harmonic minor scale is raises the seventh note of a natural minor scale, creating a leading tone.",
+        "category": "Scales",
+        "difficulty": "Advanced",
+        "picture": "minor_scales.png",
+        "assignedStudents": []
+    }
+]
+    
