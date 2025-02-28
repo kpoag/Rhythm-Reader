@@ -28,7 +28,7 @@
         "rating":5.0,
         "measures":"QUADRUPLE",
         "chord":"B MAJOR",
-        "sheetMusic":["E","E", "C", "C", "C", "D"]
+        "sheetMusic":["E", "E", "C", "C", "C", "D"]
     },{
         "songID":"97ef8080-08ce-4202-b4a0-44b5d6d8bf3b",
         "songTitle":"Fly Me To The Moon",
@@ -38,6 +38,6 @@
         "rating":4.9,
         "measures":"QUADRUPLE",
         "chord":"C MAJOR",
-        "sheetMusic":["C","D", "A", "C", "B", "G"]
+        "sheetMusic":["C", "D", "A", "C", "B", "G"]
     }
 ]
