@@ -5,9 +5,11 @@
         "username": "johndoe",
         "email": "johndoe@example.com",
         "points": "1000",
-        "type": "student",
         "classroom": "Music Theory 101",
         "assignedModules": ["Scales", "Chords", "Rhythm"],
+        "completedModules": ["Scales"],
+        "currentModule": "Chords",
+        "recommendedModules": ["Harmony", "Melody Writing"],
         "deadlines": {
           "Scales": "2025-03-01",
           "Chords": "2025-03-10",
@@ -17,7 +19,15 @@
           "Scales": "A",
           "Chords": "B+",
           "Rhythm": "A-"
-        }
+        },
+        "badges": ["Scale Master", "Rhythm Pro"],
+        "progress": {
+        "Scales": "100%",
+        "Chords": "50%",
+        "Rhythm": "20%"
+      },
+      "skillLevel": "Intermediate",
+      "friends": ["emmasmith", "alexjones"]  
 
 },{
     "Id": "08b83653-fe19-4dc8-b7e1-72b95bf91587",
@@ -26,16 +36,7 @@
       "username": "emmasmith",
       "email": "emmasmith@example.com",
       "points": "2000",
-      "type": "teacher",
       "teachingClasses": ["Music Theory 101", "Advanced Composition"]
-},{
-    "Id": "c371fa2f-00af-43e9-b1c6-9cd9659b092f",
-      "firstName": "David",
-      "lastName": "Brown",
-      "username": "davidbrown",
-      "email": "davidbrown@example.com",
-      "points": "500",
-      "type": "regular"
 }
         
 ] 
