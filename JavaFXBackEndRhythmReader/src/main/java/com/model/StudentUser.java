@@ -1,0 +1,44 @@
+package com.model;
+
+import java.util.List;
+
+public class StudentUser extends User {
+    private double progress;
+    private double grade;
+    private String classroomCode;
+    private String skillLevel;
+    private List<Flashcard> completedFlashcards;
+    private Flashcard currentFlashcard;
+
+    public StudentUser(String firstName, String lastName, String username, String email, String password,
+                     double grade, String classroomCode, String skillLevel, Flaschcard currentFlashcard) {
+        super(firstName, lastName, username, email, password);
+        //TODO Auto-generated constructor stub
+    }
+    public double getProgress(){
+        return progress;
+    }
+
+    public double getGrade() {
+        return grade;
+    }
+
+    public String getClassroomCode(){
+        return classroomCode;
+    }
+    public String getSkillLevel(){
+        return skillLevel;
+    }
+    public List<Flashcard> getCompletedFlashcards() {
+        return completedFlashcards;
+    }
+    public Flashcard getCurrenFlashcard(){
+        return currentFlashcard;
+    }
+    public boolean hasClassroomCode(String code) {
+        return true;
+    }
+    public void takePlacementTest(){
+
+    }
+}
