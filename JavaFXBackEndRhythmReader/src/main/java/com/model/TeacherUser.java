@@ -5,11 +5,11 @@ import java.util.List;
 
 public class TeacherUser extends User {
 
-    private List<StudentUser> assignedClass;
-    private List<Double> gradebook;
+    private ArrayList<StudentUser> assignedClass;
+    private ArrayList<Double> gradebook;
 
     public TeacherUser(String firstName, String lastName, String username, String email, String password,
-                        List<StudentUser> assignedClass, List<Double> gradebook) {
+    ArrayList<StudentUser> assignedClass, ArrayList<Double> gradebook) {
         super(firstName, lastName, username, email, password);
         this.assignedClass = new ArrayList<>();
         this.gradebook = new ArrayList<>();
@@ -35,7 +35,7 @@ public class TeacherUser extends User {
         return false;
     }
 
-    public List<StudentUser> getAssignedClass(){
+    public ArrayList<StudentUser> getAssignedClass(){
         return assignedClass;
     }
 

@@ -11,7 +11,7 @@ public class Flashcard {
     private String category;
     private String difficulty;
 
-    private List<StudentUser> assignedStudents;
+    private ArrayList<StudentUser> assignedStudents;
 
     Flashcard(String cardID, String frontText, String backText, String category, String difficulty) {
         this.cardID = cardID;
@@ -33,7 +33,7 @@ public class Flashcard {
     public String toString() {
         return "Flashcrd " + cardID;
     }
-    public List<StudentUser> getAssignedStudents(){
+    public ArrayList<StudentUser> getAssignedStudents(){
         return assignedStudents;
     }
 

@@ -1,5 +1,6 @@
 package com.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StudentUser extends User {
@@ -7,7 +8,7 @@ public class StudentUser extends User {
     private double grade;
     private String classroomCode;
     private String skillLevel;
-    private List<Flashcard> completedFlashcards;
+    private ArrayList<Flashcard> completedFlashcards;
     private Flashcard currentFlashcard;
 
     public StudentUser(String firstName, String lastName, String username, String email, String password,
@@ -29,7 +30,7 @@ public class StudentUser extends User {
     public String getSkillLevel(){
         return skillLevel;
     }
-    public List<Flashcard> getCompletedFlashcards() {
+    public ArrayList<Flashcard> getCompletedFlashcards() {
         return completedFlashcards;
     }
     public Flashcard getCurrenFlashcard(){
