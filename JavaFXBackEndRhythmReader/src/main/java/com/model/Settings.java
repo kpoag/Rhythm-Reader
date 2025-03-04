@@ -1,6 +1,5 @@
 package com.model;
 
-public class Chords {
-    
+public class Settings {
     
 }
