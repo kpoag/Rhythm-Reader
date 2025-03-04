@@ -10,7 +10,7 @@ public class Song {
     private DifficultyLevel difficulty;
     private Instrument instrument;
     private double rating;
-    private List<Measure> measures;
+    private ArrayList<Measure> measures;
 
     public Song(String songTitle, String artist, Genre genre, DifficultyLevel difficulty, Instrument instrument) {
         this.songTitle = songTitle;
@@ -24,20 +24,22 @@ public class Song {
     public boolean addMeasure(Measure measure) {
         return true;
     }
+    /* 
     public boolean addNoteToMeasure(int measureIndex, Note note) {
         return true;
     }
     
     public boolean removeNoteFromMeasire(int measureIndex, Note note) {
         return true;
-    }
+    } */
 
     public double getRating() {
         return rating;
     }
+    /* 
     public List<Song> filterMusic() {
-        
-    }
+        return SongList;
+    } */
     public boolean playWithMetronome(){
         return true;
     }

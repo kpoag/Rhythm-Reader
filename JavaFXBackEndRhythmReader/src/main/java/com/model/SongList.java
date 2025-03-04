@@ -24,26 +24,26 @@ public class SongList {
         return songs.add(song);
     }
 
-    public List<Song> filterByGenre(String genre) {
+    public ArrayList<Song> filterByGenre(String genre) {
         return songs;
 
     }
 
-    public List<Song> filterByArtist(String artist) {
+    public ArrayList<Song> filterByArtist(String artist) {
         return songs;
 
     }
 
-    public List<Song> sortAlphabetically() {
+    public ArrayList<Song> sortAlphabetically() {
         return songs;
 
     }
 
-    public List<Song> sortByInstrument() {
+    public ArrayList<Song> sortByInstrument() {
         return songs;
 
     }
-    public List<Song> sortByPopularity() {
+    public ArrayList<Song> sortByPopularity() {
         return songs;
 
     }
