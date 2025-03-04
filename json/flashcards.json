@@ -50,7 +50,7 @@
 
     },
     {
-        "cardID": "A2",
+        "cardID": "A2", // redo
         "frontText": "What is the difference between natural minor and harmonic minor scales?",
         "backText": "The harmonic minor scale is raises the seventh note of a natural minor scale, creating a leading tone.",
         "category": "Scales",

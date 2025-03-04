@@ -10,7 +10,7 @@ public class UserList {
     private UUID userID;
 
     private UserList() {
-        userList = Database.getAllUsers();
+        userList = Database.getUsers();
     }
     public static UserList getInstance() {
         if (users == null) {

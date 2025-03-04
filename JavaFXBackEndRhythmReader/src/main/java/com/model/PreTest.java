@@ -2,13 +2,13 @@ package com.model;
 
 import java.util.List;
 
-public class Pretest {
+public class PreTest {
     private List<String> questions;
     private List<String> answers;
     private String level;
     private int score;
 
-    public Pretest(List<String> questions, List<String> answers, String level, int score) {
+    public PreTest(List<String> questions, List<String> answers, String level, int score) {
         this.questions = questions;
         this.answers = answers;
         this.level = level;

@@ -11,7 +11,7 @@ public class StudentUser extends User {
     private Flashcard currentFlashcard;
 
     public StudentUser(String firstName, String lastName, String username, String email, String password,
-                     double grade, String classroomCode, String skillLevel, Flaschcard currentFlashcard) {
+                     double grade, String classroomCode, String skillLevel, Flashcard currentFlashcard) {
         super(firstName, lastName, username, email, password);
         //TODO Auto-generated constructor stub
     }
