@@ -18,40 +18,32 @@ public class UserList {
 		return users;
 	}
 
-    /**
-     * took some stuff out this method just so it could compile. code in Portias code
-     * @param userName
-     * @return
-     */
+    
 	public boolean haveUser(String userName) {
-		
+		for(User user : userList) {
+			if(user.getUserName().equals(userName)) {
+				return true;
+			}
+		}	
 		return false;
 	}
-	/**
-     * took some stuff out this method just so it could compile. code in Portias code
-     * @param userName
-     * @return
-     */
+	
 	public User getUser(String userName) {
-		
+		for(User user : userList) {
+			if(user.getUserName().equals(userName)) {
+				return user;
+			}
+		}
 		return null;
 	}
 	
 	public ArrayList<User> getUsers() {
 		return userList;
 	}
-	/**
-     * took some stuff out this method just so it could compile. code in Portias code
-     * @param userName
-     * @param firstName
-     * @param lastName
-     * @param age
-     * @param phoneNumber
-     * @return
-     */
+	
 	public boolean addUser(String userName, String firstName, String lastName, int age, String phoneNumber) {
 		if(haveUser(userName))return false;
-
+		userList.add(new User(userName, firstName, lastName, age, phoneNumber));
 		return true;
 	}
 	
