@@ -1,15 +1,60 @@
 package com.model;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 
-public class DataWriter {
-    public void doStuff() {
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
-    }
+public class DataWriter extends DataConstants {
 
     public static boolean saveUsers() {
-        return true;
+        // Users users = UserList.getInstance();
+        // ArrayList<User> userList = users.getUsers();
+        ArrayList<User> userList = new ArrayList<>();
+        userList.add(new User("janedoe101","Jane","Doe", 15, "102-683-2093"));
+        
+        JSONArray jsonUsers = new JSONArray();
+
+        for (int i = 0; i < userList.size(); i++) {
+            jsonUsers.add(getUserJSON(userList.get(i)));
+        }
+
+        try (FileWriter file = new FileWriter(USER_TEMP_FILE_NAME)) {
+            file.write(jsonUsers.toJSONString());
+            file.flush();
+            return true;
+        }
+        catch(IOException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
+    public static JSONObject getUserJSON(User user) {
+        JSONObject userDetails = new JSONObject();
+        userDetails.put(USER_ID, user.getId().toString());
+        userDetails.put(USER_USER_NAME, user.getUserName().toString());
+        userDetails.put(USER_FIRST_NAME, user.getFirstName().toString());
+        userDetails.put(USER_LAST_NAME, user.getLastName().toString());
+        userDetails.put(USER_AGE, user.getAge());
+        userDetails.put(USER_PHONE_NUMBER, user.getPhoneNumber().toString());
+        
+        return userDetails;
+    }
+
+    /* 
     public static boolean saveSongs() {
         return false;
+    }
+    
+
+    public static boolean saveFlashcards() {
+        return true;
+    }
+    */
+
+    public static void main(String[] args) {
+        DataWriter.saveUsers();
     }
 }
