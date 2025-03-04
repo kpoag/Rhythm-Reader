@@ -8,11 +8,10 @@ public class TeacherUser extends User {
     private ArrayList<StudentUser> assignedClass;
     private ArrayList<Double> gradebook;
 
-    public TeacherUser(String firstName, String lastName, String username, String email, String password,
-    ArrayList<StudentUser> assignedClass, ArrayList<Double> gradebook) {
-        super(firstName, lastName, username, email, password);
-        this.assignedClass = new ArrayList<>();
-        this.gradebook = new ArrayList<>();
+    public TeacherUser(String userName, String firstName, String lastName, int age, String phoneNumber) {
+       super(userName, firstName, lastName, age, phoneNumber);
+       this.assignedClass = new ArrayList<>();
+       this.gradebook = new ArrayList<>();
     }
 
     public boolean addStudent(StudentUser student) {

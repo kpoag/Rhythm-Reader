@@ -27,8 +27,6 @@ public class User {
 		this.age = age;
 		this.phoneNumber = phoneNumber;
 	}
-    
-	
 	public User(UUID id, String userName, String firstName, String lastName, int age, String phoneNumber) {
 		this.id = id;
 		this.userName = userName;

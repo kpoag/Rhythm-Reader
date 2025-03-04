@@ -1,4 +1,4 @@
-model com.rhythmreader {
+module com.rhythmreader {
     requires javafx.controls;
     requires javafx.fxml;
     requires json.simple;
