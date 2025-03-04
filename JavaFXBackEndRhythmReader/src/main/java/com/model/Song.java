@@ -1,6 +1,5 @@
 package com.model;
 
-<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,8 +50,4 @@ public class Song {
     public boolean play(){
         return true;
     }
-=======
-public class Song {
-    
->>>>>>> origin/Jaylen-Branch
 }

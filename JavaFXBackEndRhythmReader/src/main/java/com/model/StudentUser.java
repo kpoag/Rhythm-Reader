@@ -11,9 +11,7 @@ public class StudentUser extends User {
     private ArrayList<Flashcard> completedFlashcards;
     private Flashcard currentFlashcard;
 
-    public StudentUser(String firstName, String lastName, String username, String email, String password,
-                     double grade, String classroomCode, String skillLevel, Flashcard currentFlashcard) {
-        super(firstName, lastName, username, email, password);
+    public StudentUser() {
         //TODO Auto-generated constructor stub
     }
     public double getProgress(){
