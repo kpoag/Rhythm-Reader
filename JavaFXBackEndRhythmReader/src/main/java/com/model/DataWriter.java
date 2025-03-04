@@ -1,4 +1,4 @@
-package com.rhythmreader;
+package com.model;
 
 public class DataWriter {
     public void doStuff() {

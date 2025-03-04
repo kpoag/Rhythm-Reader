@@ -1,79 +1,81 @@
 package com.model;
 
-import java.util.ArrayList;
+import java.util.UUID;
 
 public class User {
-    private String firstName;
-    private String lastName;
-    private String username;
-    private String email;
-    private String password;
+	private UUID id;
+	private String userName;
+	private String firstName;
+	private String lastName;
+	private int age;
+	private String phoneNumber;
+	
+    /**
+     * 
+     * @param userName
+     * @param firstName
+     * @param lastName
+     * @param age
+     * @param phoneNumber
+    */
 
-    int points;
-    ArrayList<User> friends;
-
-
-    public User(String firstName, String lastName, String username, String email, String password){
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.points = 0;
-        this.friends = new ArrayList<>();
-
-    }
-
-    public boolean logout() {
-        return false;
-    }
-    public boolean resetPassword(String oldPassword, String newPassword) {
-        return true;
-    }
-    public boolean addReview(String songName) {
-        return true;
-    }
-    public ArrayList<User> displayLeaderboard(){
-        return friends;
-    }
-
-    public boolean saveUser() {
-        return true;
-    }
-    public boolean collectPoints() {
-        return true;
-    }
-    public boolean isMatch(String username, String password) {
-        return true;
-    }
-
-    public String getUsername() {
-        return username;
-
-    }
-    public String getFirstname() {
-        return firstName;
-        
-    }
-    public String getLastname() {
-        return lastName;
-        
-    }
-    public String getPassword() {
-        return password;
-        
-    }
-    public String getEmail() {
-        return email;
-        
-    }
-    public int getPoints() {
-        return points;
-
-    }
-    public ArrayList<User> getFriends() {
-        return friends;
-
-    }
+	public User(String userName, String firstName, String lastName, int age, String phoneNumber) {
+		this.id = UUID.randomUUID();
+		this.userName = userName;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.age = age;
+		this.phoneNumber = phoneNumber;
+	}
     
+	
+	public User(UUID id, String userName, String firstName, String lastName, int age, String phoneNumber) {
+		this.id = id;
+		this.userName = userName;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.age = age;
+		this.phoneNumber = phoneNumber;
+	}
+	
+	public UUID getId() {
+		return id;
+	}
+	
+	public String getUserName() {
+		return userName;
+	}
+	
+	public String getFirstName() {
+		return firstName;
+	}
+	
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	
+	public String getLastName() {
+		return lastName;
+	}
+	
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	
+	public int getAge() {
+		return age;
+	}
+	
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+	
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public String toString() {
+		return userName;
+	}
+	
 }
