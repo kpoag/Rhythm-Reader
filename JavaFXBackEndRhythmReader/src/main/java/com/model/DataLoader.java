@@ -44,7 +44,7 @@ public class DataLoader extends DataConstants{
 				
 				users.add(new User(id, userName, firstName, lastName, email, password, points,
 				classroom, assignedModules, completedModules, currentModule, recommendedModules, deadlines,
-				grades, badges, progress, skillLevel, friends));
+				grades, badges, progress, skillLevel, friends, teachingClasses));
 			}
 			
 			return users;
