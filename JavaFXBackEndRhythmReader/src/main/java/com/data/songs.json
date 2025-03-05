@@ -1,0 +1,43 @@
+[
+    {
+        "songID":"a4cce3c4-d518-4ddb-9aa2-53ff0f211d9a",
+        "songTitle":"Twinkle Twinkle Little Star",
+        "artist":"Jane Taylor",
+        "genre":"TRADITIONAL",
+        "difficulty":"VERY EASY",
+        "rating":5.0,
+        "measures":"QUADRUPLE",
+        "chord":"G MAJOR",
+        "sheetMusic":["C", "F", "C", "F", "C", "G", "C"]
+    },{
+        "songID":"d10369cc-14ec-46e1-9415-002bd86ed332",
+        "songTitle":"Symphony No. 9",
+        "artist":"Ludwig van Beethoven",
+        "genre":"CLASSICAL",
+        "difficulty":"DIFFICULT",
+        "rating":3.7,
+        "measures":["DUPLE","TRIPLE","QUADRUPLE"],
+        "chord":"D MINOR",
+        "sheetMusic":["B", "A", "A", "G", "G", "F"]
+    },{
+        "songID":"783a4b77-0fd6-4d8b-af69-0e5a81aaafa7",
+        "songTitle":"I'm Yours",
+        "artist":"Jason Mraz",
+        "genre":"POP",
+        "difficulty":"EASY",
+        "rating":5.0,
+        "measures":"QUADRUPLE",
+        "chord":"B MAJOR",
+        "sheetMusic":["E", "E", "C", "C", "C", "D"]
+    },{
+        "songID":"97ef8080-08ce-4202-b4a0-44b5d6d8bf3b",
+        "songTitle":"Fly Me To The Moon",
+        "artist":"Bart Howard",
+        "genre":"JAZZ",
+        "difficulty":"MODERATE",
+        "rating":4.9,
+        "measures":"QUADRUPLE",
+        "chord":"C MAJOR",
+        "sheetMusic":["C", "D", "A", "C", "B", "G"]
+    }
+]

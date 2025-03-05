@@ -12,7 +12,7 @@ public class DataWriter extends DataConstants {
         // Users users = UserList.getInstance();
         // ArrayList<User> userList = users.getUsers();
         ArrayList<User> userList = new ArrayList<>();
-        userList.add(new User("janedoe101","Jane","Doe", 15, "102-683-2093"));
+        userList.add(new User("johndoe","John","Doe", 15, "102-683-2093"));
         
         JSONArray jsonUsers = new JSONArray();
 
@@ -43,12 +43,21 @@ public class DataWriter extends DataConstants {
         return userDetails;
     }
 
-    /* 
+    
     public static boolean saveSongs() {
         return false;
     }
     
+    /* 
+    public static JSONObject getSongJSON(Song song) {
+        JSONObject songDetails = new JSONObject();
+        songDetails.put(SONG_, songDetails)
 
+        return songDetails;
+    }
+    */
+
+    /*
     public static boolean saveFlashcards() {
         return true;
     }
