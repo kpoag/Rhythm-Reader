@@ -11,8 +11,13 @@ public class StudentUser extends User {
     private ArrayList<Flashcard> completedFlashcards;
     private Flashcard currentFlashcard;
 
-    public StudentUser() {
-        //TODO Auto-generated constructor stub
+    public StudentUser(String userName, String firstName, String lastName, int age, String phoneNumber) {
+        super(userName, firstName, lastName, age, phoneNumber);
+        this.progress = progress;
+        this.grade = grade;
+        this.classroomCode = classroomCode;
+        this.skillLevel = skillLevel;
+        this.completedFlashcards = new ArrayList<>();        
     }
     public double getProgress(){
         return progress;
