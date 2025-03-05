@@ -23,10 +23,28 @@ public class DataLoader extends DataConstants{
 				String userName = (String)personJSON.get(USER_USER_NAME);
 				String firstName = (String)personJSON.get(USER_FIRST_NAME);
 				String lastName = (String)personJSON.get(USER_LAST_NAME);
-				int age = ((Long)personJSON.get(USER_AGE)).intValue();
-				String phoneNumber = (String)personJSON.get(USER_PHONE_NUMBER);
+				String email = (String)personJSON.get(USER_EMAIL);
+				String password = (String)personJSON.get(USER_PASSWORD);
+				int points= ((Long)personJSON.get(USER_POINTS)).intValue();
+				String classroom = (String)personJSON.get(USER_CLASSROOM);
+				Module assignedModules = (Module)personJSON.get(USER_ASSIGNED_MODULES);
+				Module completedModules = (Module)personJSON.get(USER_COMPLETED_MODULES);
+				Module currentModule = (Module)personJSON.get(USER_CURRENT_MODULE);
+				Module recommendedModules = (Module)personJSON.get(USER_RECOMMENDED_MODULES);
+				String deadlines = (String)personJSON.get(USER_DEADLINES);
+				String grades = (String)personJSON.get(USER_GRADES);
+				String badges = (String)personJSON.get(USER_BADGES);
+				String progress = (String)personJSON.get(USER_PROGRESS);
+				DifficultyLevel skillLevel = (DifficultyLevel)personJSON.get(USER_SKILL_LEVEL);
+				String teachingClasses = (String)personJSON.get(USER_TEACHING_CLASSES);
+				UserList friends = (UserList)personJSON.get(USER_FRIENDS);
+
+
 				
-				users.add(new User(id, userName, firstName, lastName, age, phoneNumber));
+				
+				users.add(new User(id, userName, firstName, lastName, email, password, points,
+				classroom, assignedModules, completedModules, currentModule, recommendedModules, deadlines,
+				grades, badges, progress, skillLevel, friends));
 			}
 			
 			return users;

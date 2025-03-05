@@ -41,9 +41,14 @@ public class UserList {
 		return userList;
 	}
 	
-	public boolean addUser(String userName, String firstName, String lastName, int age, String phoneNumber) {
+	public boolean addUser(String userName, String firstName, String lastName, String email,
+    String password, int points, String classroom, Module assignedModules, Module completedModules,
+    Module currentModule, Module recommendedModules, String deadlines, String grades, String badges,
+    String progress, DifficultyLevel skillLevel, UserList friends, String teachingClasses) {
 		if(haveUser(userName))return false;
-		userList.add(new User(userName, firstName, lastName, age, phoneNumber));
+		userList.add(new User(userName, firstName, lastName, email, password, points, 
+		classroom, assignedModules, completedModules, currentModule, recommendedModules, deadlines,
+		grades, badges, progress, skillLevel, friends, teachingClasses));
 		return true;
 	}
 	
