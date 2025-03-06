@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class User {
-	private UUID id;
-	private String userName;
-	private String firstName;
-	private String lastName;
-	private String email;
-	private String password;
-    private int points;
-    private String badges;
+	protected UUID id;
+	protected String userName;
+	protected String firstName;
+	protected String lastName;
+	protected String email;
+	protected String password;
+    public int points;
+    public String badges;
     private ArrayList<User> friends;
     
 
