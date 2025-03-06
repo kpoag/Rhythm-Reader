@@ -56,13 +56,37 @@ public class DataLoader extends DataConstants{
 		return users;
 	}
 
-	public static void main(String[] args){
+	public static void main(String[] args) {
 		ArrayList<User> users = DataLoader.getUsers();
-
-		for(User user : users){
+	
+		// Basic check to see if users are loaded
+		if (users == null || users.isEmpty()) {
+			System.out.println("No users loaded. Check the JSON file or parsing logic.");
+			return;
+		}
+	
+		// Iterate through the list of users and print their details
+		for (User user : users) {
 			System.out.println(user);
 		}
+	
+		// Additional checks for specific fields
+		User testUser = users.get(0); // Assuming at least one user is present
+		System.out.println("\nTesting first user:");
+		System.out.println("Username: " + testUser.getUserName());
+		System.out.println("First Name: " + testUser.getFirstName());
+		System.out.println("Last Name: " + testUser.getLastName());
+		System.out.println("Points: " + testUser.getPoints());
+		
+		// Check for null or unexpected values
+		if (testUser.getUserName() == null) {
+			System.out.println("Error: Username is null.");
+		}
+		if (testUser.getPoints() < 0) {
+			System.out.println("Error: Points cannot be negative.");
+		}
 	}
+
 }
 
 
