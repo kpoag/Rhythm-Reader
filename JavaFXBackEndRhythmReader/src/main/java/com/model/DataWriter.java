@@ -57,19 +57,26 @@ public class DataWriter extends DataConstants {
         userDetails.put(USER_SKILL_LEVEL, user.getskillLevel());
         userDetails.put(USER_FRIENDS, user.getFriends());
         */
-        if (userDetails instanceof StudentUser) {
-
+        
+        /* if (userDetails instanceof StudentUser) {
+            userDetails.putAll(getStudentJSON((StudentUser)userDetails));
         }
-
+        */ 
         return userDetails;
     }
-
-    private static JSONObject getStudentJSON(StudentUser student) {
+    
+    /*
+    private static JSONObject getStudentJSON(User student) {
         JSONObject studentDetails = new JSONObject();
         studentDetails.put(USER_POINTS, student.getPoints());
+        studentDetails.put(USER_PROGRESS, student.getProgress());
+        studentDetails.put(USER_GRADES, student.getGrades());
+        studentDetails.put(USER_SKILL_LEVEL, student.getskillLevel());
+        studentDetails.put(USER_, student)
 
         return studentDetails;
     }
+    */
 
     /*
     public static boolean saveSongs() {
