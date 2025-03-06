@@ -9,10 +9,10 @@ import org.json.simple.JSONObject;
 public class DataWriter extends DataConstants {
 
     public static boolean saveUsers() {
-        // Users users = UserList.getInstance();
-        // ArrayList<User> userList = users.getUsers();
-        ArrayList<User> userList = new ArrayList<>();
-        userList.add(new User("janedoe101","Jane","Doe", 15, "102-683-2093"));
+         UserList users = UserList.getInstance();
+         ArrayList<User> userList = users.getUsers();
+        // ArrayList<User> userList = new ArrayList<>();
+        // userList.add(new User(""));
         
         JSONArray jsonUsers = new JSONArray();
 
@@ -33,22 +33,43 @@ public class DataWriter extends DataConstants {
 
     public static JSONObject getUserJSON(User user) {
         JSONObject userDetails = new JSONObject();
-        userDetails.put(USER_ID, user.getId().toString());
-        userDetails.put(USER_USER_NAME, user.getUserName().toString());
-        userDetails.put(USER_FIRST_NAME, user.getFirstName().toString());
-        userDetails.put(USER_LAST_NAME, user.getLastName().toString());
-        userDetails.put(USER_AGE, user.getAge());
-        userDetails.put(USER_PHONE_NUMBER, user.getPhoneNumber().toString());
+        userDetails.put(USER_ID, user.getId());
+        userDetails.put(USER_USER_NAME, user.getUserName());
+        userDetails.put(USER_FIRST_NAME, user.getFirstName());
+        userDetails.put(USER_LAST_NAME, user.getLastName());
+        userDetails.put(USER_EMAIL, user.getEmail());
+        userDetails.put(USER_PASSWORD, user.getPassword());
+        userDetails.put(USER_POINTS, user.getPoints());
+        userDetails.put(USER_CLASSROOM, user.getClassroom());
+        userDetails.put(USER_ASSIGNED_MODULES, user.getAssignedModules());
+        userDetails.put(USER_COMPLETED_MODULES, user.getCompleteddModules());
+        userDetails.put(USER_CURRENT_MODULE, user.getCurrentModule());
+        userDetails.put(USER_RECOMMENDED_MODULES, user.getRecommendedModules());
+        userDetails.put(USER_DEADLINES, user.getDeadlines());
+        userDetails.put(USER_GRADES, user.getGrades());
+        userDetails.put(USER_BADGES, user.getBadges());
+        userDetails.put(USER_PROGRESS, user.getProgress());
+        userDetails.put(USER_SKILL_LEVEL, user.getskillLevel());
+        userDetails.put(USER_FRIENDS, user.getFriends());
         
         return userDetails;
     }
 
-    /* 
+    
     public static boolean saveSongs() {
         return false;
     }
     
+    /* 
+    public static JSONObject getSongJSON(Song song) {
+        JSONObject songDetails = new JSONObject();
+        songDetails.put(SONG_, songDetails)
 
+        return songDetails;
+    }
+    */
+
+    /*
     public static boolean saveFlashcards() {
         return true;
     }
