@@ -1,22 +1,23 @@
 package com.model;
 
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.UUID;
 
 public class User {
-	protected UUID id;
+	private UUID id;
 	protected String userName;
 	protected String firstName;
 	protected String lastName;
 	protected String email;
 	protected String password;
     public int points;
-    public String badges;
-    private ArrayList<User> friends;
+    public ArrayList<String> badges;
+    public ArrayList<String> friends;
     
 
 	public User(String userName, String firstName, String lastName, String email,
-    String password, int points, String badges, ArrayList<User> friends) {
+    String password, int points, ArrayList<String> badges, ArrayList<String> friends) {
 		this.id = UUID.randomUUID();
 		this.userName = userName;
 		this.firstName = firstName;
@@ -28,8 +29,8 @@ public class User {
         this.friends= friends;
 	}
 	public User(UUID id, String userName, String firstName, String lastName, String email,
-    String password, int points, String badges, ArrayList<User> friends) {
-		this.id = UUID.randomUUID();
+    String password, int points, ArrayList<String> badges, ArrayList<String> friends) {
+		this.id = id;
 		this.userName = userName;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -90,18 +91,27 @@ public class User {
 		this.points = points;
 	}
     
-    public String getBadges() {
+    public ArrayList<String> getBadges() {
 		return badges;
 	}
 	
-	public void setBadges(String badges) {
+	public void setBadges(ArrayList<String> badges) {
 		this.badges = badges;
 	}
-    public ArrayList<User> getFriends() {
-		return friends;
+    public ArrayList<String> getFriendNames(Map<String, User> userMap) {
+		ArrayList<String> friendNames = new ArrayList<>();
+		for (String friendId : friends) {
+			User friend = userMap.get(friendId);
+		if (friend != null) {
+            friendNames.add(friend.getUserName()); 
+        } else {
+            friendNames.add("Unknown (" + friendId + ")");
+        }
+    }
+    return friendNames;
 	}
 	
-	public void setFriends(ArrayList<User> friends) {
+	public void setFriends(ArrayList<String> friends) {
 		this.friends = friends;
 	}
 
