@@ -38,6 +38,10 @@ public class TeacherUser extends User {
         return assignedClass;
     }
 
+    public ArrayList<Double> getGradebook() {
+        return gradebook;
+    }
+
     public boolean assignFlashcard(Flashcard deck, String assignedClass) {
         return true;
     }

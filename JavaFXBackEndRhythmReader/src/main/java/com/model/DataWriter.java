@@ -12,8 +12,6 @@ public class DataWriter extends DataConstants {
     public static boolean saveUsers() {
         UserList users = UserList.getInstance();
         ArrayList<User> userList = users.getUsers();
-        // ArrayList<User> userList = new ArrayList<>();
-        // userList.add(new User(""));
 
         JSONArray jsonUsers = new JSONArray();
 
@@ -47,51 +45,33 @@ public class DataWriter extends DataConstants {
         userDetails.put(USER_BADGES, user.getBadges());
         userDetails.put(USER_FRIENDS, user.getFriendNames(userDetails));
         
-        if (userDetails.containsKey(USER_GRADES)) {
-            userDetails.putAll(getStudentJSON(userDetails));
+        if (userDetails.containsKey(USER_PROGRESS)) {
+            userDetails.putAll(getStudentJSON((StudentUser) user));
         }
         else {
-            userDetails.putAll(getTeacherJSON(userDetails));
+            userDetails.putAll(getTeacherJSON((TeacherUser) user));
         }
-        /*userDetails.put(USER_POINTS, user.getPoints());
-        userDetails.put(USER_CLASSROOM, user.getClassroom());
-        userDetails.put(USER_ASSIGNED_MODULES, user.getAssignedModules());
-        userDetails.put(USER_COMPLETED_MODULES, user.getCompleteddModules());
-        userDetails.put(USER_CURRENT_MODULE, user.getCurrentModule());
-        userDetails.put(USER_RECOMMENDED_MODULES, user.getRecommendedModules());
-        userDetails.put(USER_DEADLINES, user.getDeadlines());
-        userDetails.put(USER_GRADES, user.getGrades());
-        userDetails.put(USER_BADGES, user.getBadges());
-        userDetails.put(USER_PROGRESS, user.getProgress());
-        userDetails.put(USER_SKILL_LEVEL, user.getskillLevel());
-        userDetails.put(USER_FRIENDS, user.getFriends());
-        */
         
-        /* if (userDetails instanceof StudentUser) {
-            userDetails.putAll(getStudentJSON((StudentUser)userDetails));
-        }
-        */ 
         return userDetails;
     }
     
     
-    private static JSONObject getStudentJSON(JSONObject userDetails) {
-        JSONObject studentDetails = new JSONObject();
-        studentDetails.put(USER_PROGRESS, userDetails.getProgress());
-        studentDetails.put(USER_POINTS, userDetails.getPoints());
-        /*
-        studentDetails.put(USER_PROGRESS, student.getProgress());
-        studentDetails.put(USER_GRADES, student.getGrades());
-        studentDetails.put(USER_SKILL_LEVEL, student.getskillLevel());
-        */
+    private static JSONObject getStudentJSON(StudentUser student) {
+            JSONObject studentDetails = new JSONObject();
+            studentDetails.put(USER_PROGRESS, student.getProgress());
+            studentDetails.put(USER_CLASSROOM, student.getClassroomCode());
+            studentDetails.put(USER_GRADES, student.getGrade());
         return studentDetails;
     }
 
-    /*
-    private static JSONObject getTeacherJSON(JSONObject userDetails) {
-        JSONObject 
+    
+    private static JSONObject getTeacherJSON(TeacherUser teacher) {
+        JSONObject teacherDetails = new JSONObject();
+        teacherDetails.put(USER_TEACHING_CLASSES, teacher.getAssignedClass());
+        teacherDetails.put(USER_GRADES, teacher.getGradebook());
+        return teacherDetails;
     }
-    */
+    
     
 
     /*
