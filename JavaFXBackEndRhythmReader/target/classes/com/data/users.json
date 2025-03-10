@@ -6,7 +6,7 @@
       "username": "johndoe",
       "email": "johndoe@example.com",
       "password": "securepassword123",
-      "points": "1000",
+      "points": 1000,
       "classroom": "Music Theory 101",
       "assignedModules": [
         "a1b2c3d4-5678-90ab-cdef-1234567890ab",
@@ -38,16 +38,16 @@
         "c3d4e5f6-7890-12ab-cdef-3456789012cd": "20%"
       },
       "skillLevel": "Intermediate",
-      "friends": ["emmasmith", "alexjones", "michaelbrown", "saralee"]
+      "friends": ["08b83653-fe19-4dc8-b7e1-72b95bf91587"]
     },{
       
-        "Id": "08b83653-fe19-4dc8-b7e1-72b95bf91587",
+        "id": "08b83653-fe19-4dc8-b7e1-72b95bf91587",
         "firstName": "Emma",
         "lastName": "Smith",
         "username": "emmasmith",
         "email": "emmasmith@example.com",
         "password": "securepassword123",
-        "points": "2000",
+        "points": 2000,
         "teachingClasses": ["Music Theory 101", "Advanced Composition"],
         "gradebook": {
           "Music Theory 101": [
@@ -59,7 +59,7 @@
             {"student": "Sarah Lee", "grade": "B"}
           ]
         },
-        "friends": ["john_doe", "alice_johnson", "michael_brown"],
+        "friends": ["c65ef3ab-a65d-4afc-9e51-76eeb1ed0bb2"],
         "badges": ["Top Instructor", "Music Maestro", "5-Year Service"]
       }
     

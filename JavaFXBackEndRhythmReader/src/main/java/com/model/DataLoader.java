@@ -2,6 +2,8 @@ package com.model;
 
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import org.json.simple.JSONArray;
@@ -16,6 +18,7 @@ public class DataLoader extends DataConstants{
 		try {
 			FileReader reader = new FileReader(USER_FILE_NAME);
 			JSONArray peopleJSON = (JSONArray)new JSONParser().parse(reader);
+
 			
 			for(int i=0; i < peopleJSON.size(); i++) {
 				JSONObject personJSON = (JSONObject)peopleJSON.get(i);
@@ -26,6 +29,7 @@ public class DataLoader extends DataConstants{
 				String email = (String)personJSON.get(USER_EMAIL);
 				String password = (String)personJSON.get(USER_PASSWORD);
 				int points= ((Long)personJSON.get(USER_POINTS)).intValue();
+				/* 
 				String classroom = (String)personJSON.get(USER_CLASSROOM);
 				Module assignedModules = (Module)personJSON.get(USER_ASSIGNED_MODULES);
 				Module completedModules = (Module)personJSON.get(USER_COMPLETED_MODULES);
@@ -33,18 +37,29 @@ public class DataLoader extends DataConstants{
 				Module recommendedModules = (Module)personJSON.get(USER_RECOMMENDED_MODULES);
 				String deadlines = (String)personJSON.get(USER_DEADLINES);
 				String grades = (String)personJSON.get(USER_GRADES);
-				String badges = (String)personJSON.get(USER_BADGES);
 				String progress = (String)personJSON.get(USER_PROGRESS);
 				DifficultyLevel skillLevel = (DifficultyLevel)personJSON.get(USER_SKILL_LEVEL);
-				String teachingClasses = (String)personJSON.get(USER_TEACHING_CLASSES);
-				UserList friends = (UserList)personJSON.get(USER_FRIENDS);
+				String teachingClasses = (String)personJSON.get(USER_TEACHING_CLASSES); */
+				JSONArray badgesJSON = (JSONArray)personJSON.get(USER_BADGES);
+				ArrayList<String> badges = new ArrayList<>();
+
+				for(int j=0; j < badgesJSON.size(); j++) {
+					badges.add((String)badgesJSON.get(j));
+				}
+
+				JSONArray friendsJSON = (JSONArray)personJSON.get(USER_FRIENDS);
+				ArrayList<String> friendIds = new ArrayList<>();
+				if (friendsJSON != null) {
+					for(int p=0; p < friendsJSON.size(); p++) {
+						friendIds.add((String)friendsJSON.get(p));
+					}
+				}
+				
 
 
 				
 				
-				users.add(new User(id, userName, firstName, lastName, email, password, points,
-				classroom, assignedModules, completedModules, currentModule, recommendedModules, deadlines,
-				grades, badges, progress, skillLevel, friends, teachingClasses));
+				users.add(new User(id, userName, firstName, lastName, email, password, points, badges, friendIds));
 			}
 			
 			return users;
@@ -64,10 +79,10 @@ public class DataLoader extends DataConstants{
 			System.out.println("No users loaded. Check the JSON file or parsing logic.");
 			return;
 		}
-	
-		// Iterate through the list of users and print their details
+		// Used to display username of a User's friend
+		Map<String, User> userMap = new HashMap<>();
 		for (User user : users) {
-			System.out.println(user);
+			userMap.put(user.getId().toString(), user);
 		}
 	
 		// Additional checks for specific fields
@@ -76,7 +91,12 @@ public class DataLoader extends DataConstants{
 		System.out.println("Username: " + testUser.getUserName());
 		System.out.println("First Name: " + testUser.getFirstName());
 		System.out.println("Last Name: " + testUser.getLastName());
+		System.out.println("Email: " + testUser.getEmail());
+		System.out.println("Password: " + testUser.getPassword());
+		System.out.println("Badges: " + testUser.getBadges());
 		System.out.println("Points: " + testUser.getPoints());
+		System.out.println("Friends: " + testUser.getFriendNames(userMap));
+
 		
 		// Check for null or unexpected values
 		if (testUser.getUserName() == null) {

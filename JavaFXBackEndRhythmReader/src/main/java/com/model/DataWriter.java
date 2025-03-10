@@ -43,7 +43,16 @@ public class DataWriter extends DataConstants {
         userDetails.put(USER_LAST_NAME, user.getLastName());
         userDetails.put(USER_EMAIL, user.getEmail());
         userDetails.put(USER_PASSWORD, user.getPassword());
+        userDetails.put(USER_POINTS, user.getPoints());
+        userDetails.put(USER_BADGES, user.getBadges());
+        userDetails.put(USER_FRIENDS, user.getFriendNames(userDetails));
         
+        if (userDetails.containsKey(USER_GRADES)) {
+            userDetails.putAll(getStudentJSON(userDetails));
+        }
+        else {
+            userDetails.putAll(getTeacherJSON(userDetails));
+        }
         /*userDetails.put(USER_POINTS, user.getPoints());
         userDetails.put(USER_CLASSROOM, user.getClassroom());
         userDetails.put(USER_ASSIGNED_MODULES, user.getAssignedModules());
@@ -65,18 +74,25 @@ public class DataWriter extends DataConstants {
         return userDetails;
     }
     
-    /*
-    private static JSONObject getStudentJSON(User student) {
+    
+    private static JSONObject getStudentJSON(JSONObject userDetails) {
         JSONObject studentDetails = new JSONObject();
-        studentDetails.put(USER_POINTS, student.getPoints());
+        studentDetails.put(USER_PROGRESS, userDetails.getProgress());
+        studentDetails.put(USER_POINTS, userDetails.getPoints());
+        /*
         studentDetails.put(USER_PROGRESS, student.getProgress());
         studentDetails.put(USER_GRADES, student.getGrades());
         studentDetails.put(USER_SKILL_LEVEL, student.getskillLevel());
-        studentDetails.put(USER_, student)
-
+        */
         return studentDetails;
     }
+
+    /*
+    private static JSONObject getTeacherJSON(JSONObject userDetails) {
+        JSONObject 
+    }
     */
+    
 
     /*
     public static boolean saveSongs() {
