@@ -21,13 +21,13 @@ public class SongLoader extends SongConstants{
 				JSONObject personJSON = (JSONObject)peopleJSON.get(i);
 				String  songTitle =((String)personJSON.get(SONG_SONGTITLE));
 				String artist = (String)personJSON.get(SONG_ARTIST);
-				Genre genre = (Genre)personJSON.get(SONG_GENRE);
-				DifficultyLevel difficulty = (DifficultyLevel)personJSON.get(SONG_DIFFICULTY);
-				Instrument instrument = (Instrument)personJSON.get(SONG_INSTRUMENT);
+				Genre genre = Genre.valueOf((String)personJSON.get(SONG_GENRE));
+				DifficultyLevel difficulty = DifficultyLevel.valueOf((String)personJSON.get(SONG_DIFFICULTY));
+				String instrument = (String)personJSON.get(SONG_INSTRUMENT);
 				double rating = (double)personJSON.get(SONG_RATING);
-				ArrayList<Measure> measures= (ArrayList)personJSON.get(SONG_MEASURES);
+				//ArrayList<Measure> measures= (ArrayList)personJSON.get(SONG_MEASURES);
 				
-				songs.add(new Song(songTitle, artist, genre, difficulty, instrument));
+				songs.add(new Song(songTitle, artist, genre, difficulty, instrument, rating));
 			}
 			
 			return songs;

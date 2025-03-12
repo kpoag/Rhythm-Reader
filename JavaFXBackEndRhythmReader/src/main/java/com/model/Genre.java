@@ -5,6 +5,7 @@ public enum Genre {
     JAZZ,
     BLUES,
     POP,
+    TRADITIONAL,
     CONTEMPORARY,
     COUNTRY,
     HIP_HOP;

@@ -1,5 +1,6 @@
 package com.model;
 
+import java.lang.reflect.GenericSignatureFormatError;
 import java.util.ArrayList;
 
 /**
@@ -11,16 +12,17 @@ public class Song {
     private String artist;
     private Genre genre;
     private DifficultyLevel difficulty;
-    private Instrument instrument;
+    private String instrument;
     private double rating;
     private ArrayList<Measure> measures;
 
-    public Song(String songTitle, String artist, Genre genre, DifficultyLevel difficulty, Instrument instrument) {
+    public Song(String songTitle, String artist, Genre genre, DifficultyLevel difficulty, String instrument, double rating) {
         this.songTitle = songTitle;
         this.artist = artist;
         this.genre = genre;
         this.difficulty = difficulty;
         this.instrument = instrument;
+        this.rating = rating;
         this.measures = new ArrayList<>();
     }
 
@@ -46,6 +48,26 @@ public class Song {
     public boolean playWithMetronome(){
         return true;
     }
+    public String getsongTitle() {
+        return songTitle;
+    }
+    public String getArtist() {
+        return artist;
+    }
+    public DifficultyLevel getDifficulty() {
+        return difficulty;
+    }
+    public String getInstrument() {
+        return instrument;
+    }
+    public ArrayList<Measure> getMeasures() {
+        return measures;
+    }
+
+    public Genre getGenre() {
+        return genre;
+    }
+
 
     public void createSheetMusic() {
         

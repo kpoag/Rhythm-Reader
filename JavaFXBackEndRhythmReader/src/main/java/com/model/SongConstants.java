@@ -2,7 +2,7 @@ package com.model;
 
 
 public abstract class SongConstants {
-	protected static final String SONG_FILE_NAME = "src/main/java/com/data/songs.json";
+	protected static final String SONG_FILE_NAME = "JavaFXBackEndRhythmReader/src/main/java/com/data/songs.json";
 	//protected static final String SONG_TEMP_FILE_NAME = "src/main/java/com/data/users_temp.json";
 	protected static final String SONG_SONGTITLE = "songTitle";
 	protected static final String SONG_ARTIST = "artist";
