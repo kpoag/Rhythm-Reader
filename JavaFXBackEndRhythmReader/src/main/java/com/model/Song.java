@@ -1,8 +1,11 @@
 package com.model;
 
 import java.util.ArrayList;
-import java.util.List;
 
+/**
+ * needs to finish song class
+ * @author Jaylen 
+ */
 public class Song {
     private String songTitle;
     private String artist;

@@ -12,7 +12,7 @@ import org.json.simple.parser.JSONParser;;
 
 public class DataLoader extends DataConstants{
 	
-	public static ArrayList<User> getUsers() {
+	public static ArrayList<User> loadUsers() {
 		ArrayList<User> users = new ArrayList<User>();
 		
 		try {
@@ -29,7 +29,10 @@ public class DataLoader extends DataConstants{
 				String email = (String)personJSON.get(USER_EMAIL);
 				String password = (String)personJSON.get(USER_PASSWORD);
 				int points= ((Long)personJSON.get(USER_POINTS)).intValue();
-				/* 
+				ArrayList<String> friends = (ArrayList)personJSON.get(USER_FRIENDS);
+				ArrayList<String> badges= (ArrayList)personJSON.get(USER_BADGES);
+
+				/*
 				String classroom = (String)personJSON.get(USER_CLASSROOM);
 				Module assignedModules = (Module)personJSON.get(USER_ASSIGNED_MODULES);
 				Module completedModules = (Module)personJSON.get(USER_COMPLETED_MODULES);
@@ -39,36 +42,13 @@ public class DataLoader extends DataConstants{
 				String grades = (String)personJSON.get(USER_GRADES);
 				String progress = (String)personJSON.get(USER_PROGRESS);
 				DifficultyLevel skillLevel = (DifficultyLevel)personJSON.get(USER_SKILL_LEVEL);
-<<<<<<< HEAD
-				String teachingClasses = (String)personJSON.get(USER_TEACHING_CLASSES); */
-				JSONArray badgesJSON = (JSONArray)personJSON.get(USER_BADGES);
-				ArrayList<String> badges = new ArrayList<>();
-
-				for(int j=0; j < badgesJSON.size(); j++) {
-					badges.add((String)badgesJSON.get(j));
-				}
-
-				JSONArray friendsJSON = (JSONArray)personJSON.get(USER_FRIENDS);
-				ArrayList<String> friendIds = new ArrayList<>();
-				if (friendsJSON != null) {
-					for(int p=0; p < friendsJSON.size(); p++) {
-						friendIds.add((String)friendsJSON.get(p));
-					}
-				}
-				
-=======
 				String teachingClasses = (String)personJSON.get(USER_TEACHING_CLASSES);
 				ArrayList<User> friends = (ArrayList)personJSON.get(USER_FRIENDS);
->>>>>>> 2943abf (committing so I can pull)
-
+				*/
 
 				
 				
-<<<<<<< HEAD
-				users.add(new User(id, userName, firstName, lastName, email, password, points, badges, friendIds));
-=======
 				users.add(new User(id, userName, firstName, lastName, email, password, points, badges, friends));
->>>>>>> 2943abf (committing so I can pull)
 			}
 			
 			return users;
@@ -81,7 +61,7 @@ public class DataLoader extends DataConstants{
 	}
 
 	public static void main(String[] args) {
-		ArrayList<User> users = DataLoader.getUsers();
+		ArrayList<User> users = DataLoader.loadUsers();
 	
 		// Basic check to see if users are loaded
 		if (users == null || users.isEmpty()) {
