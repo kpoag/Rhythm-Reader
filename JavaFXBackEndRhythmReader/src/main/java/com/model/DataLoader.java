@@ -39,6 +39,7 @@ public class DataLoader extends DataConstants{
 				String grades = (String)personJSON.get(USER_GRADES);
 				String progress = (String)personJSON.get(USER_PROGRESS);
 				DifficultyLevel skillLevel = (DifficultyLevel)personJSON.get(USER_SKILL_LEVEL);
+<<<<<<< HEAD
 				String teachingClasses = (String)personJSON.get(USER_TEACHING_CLASSES); */
 				JSONArray badgesJSON = (JSONArray)personJSON.get(USER_BADGES);
 				ArrayList<String> badges = new ArrayList<>();
@@ -55,11 +56,19 @@ public class DataLoader extends DataConstants{
 					}
 				}
 				
+=======
+				String teachingClasses = (String)personJSON.get(USER_TEACHING_CLASSES);
+				ArrayList<User> friends = (ArrayList)personJSON.get(USER_FRIENDS);
+>>>>>>> 2943abf (committing so I can pull)
 
 
 				
 				
+<<<<<<< HEAD
 				users.add(new User(id, userName, firstName, lastName, email, password, points, badges, friendIds));
+=======
+				users.add(new User(id, userName, firstName, lastName, email, password, points, badges, friends));
+>>>>>>> 2943abf (committing so I can pull)
 			}
 			
 			return users;
