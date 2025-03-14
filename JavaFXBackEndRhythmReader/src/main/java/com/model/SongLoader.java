@@ -2,7 +2,6 @@ package com.model;
 
 import java.io.FileReader;
 import java.util.ArrayList;
-//import java.util.UUID;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -15,19 +14,31 @@ public class SongLoader extends SongConstants{
 		
 		try {
 			FileReader reader = new FileReader(SONG_FILE_NAME);
-			JSONArray peopleJSON = (JSONArray)new JSONParser().parse(reader);
-			
-			for(int i=0; i < peopleJSON.size(); i++) {
-				JSONObject personJSON = (JSONObject)peopleJSON.get(i);
-				String  songTitle =((String)personJSON.get(SONG_SONGTITLE));
-				String artist = (String)personJSON.get(SONG_ARTIST);
-				Genre genre = Genre.valueOf((String)personJSON.get(SONG_GENRE));
-				DifficultyLevel difficulty = DifficultyLevel.valueOf((String)personJSON.get(SONG_DIFFICULTY));
-				String instrument = (String)personJSON.get(SONG_INSTRUMENT);
-				double rating = (double)personJSON.get(SONG_RATING);
-				//ArrayList<Measure> measures= (ArrayList)personJSON.get(SONG_MEASURES);
+			JSONArray songsJSON = (JSONArray)new JSONParser().parse(reader);
+			System.out.println("Number of songs in JSON: " + songsJSON.size());
+
+			for(int i=0; i < songsJSON.size(); i++) {
+				System.out.println("inside at index: "+ i);
+				JSONObject songJSON = (JSONObject)songsJSON.get(i);
+				String songID= ((String)songJSON.get(SONG_SONG_ID));
+				String songTitle =((String)songJSON.get(SONG_SONGTITLE));
+				String artist = (String)songJSON.get(SONG_ARTIST);
+				Genre genre = Genre.valueOf((String)songJSON.get(SONG_GENRE));
+				DifficultyLevel difficulty = DifficultyLevel.valueOf((String)songJSON.get(SONG_DIFFICULTY));
+				String instrument = (String)songJSON.get(SONG_INSTRUMENT);
+				double rating = (double)songJSON.get(SONG_RATING);
+				//ArrayList<Measure> measures= (ArrayList)songJSON.get(SONG_MEASURES);
+
+				System.out.println("Song " + i + " -> id: " + songID + ", title: " + songTitle 
+                       + ", artist: " + artist + ", genre: " + genre + ", difficulty: " + difficulty);
+    
+    			// Check if any field is null or unexpected
+    			if ( songID == null || songTitle == null || artist == null || genre == null) {
+        			System.out.println("Warning: One or more fields are null for song index " + i);
+    			}
+    
 				
-				songs.add(new Song(songTitle, artist, genre, difficulty, instrument, rating));
+				songs.add(new Song(songID, songTitle, artist, genre, difficulty, instrument, rating));
 			}
 			
 			return songs;
@@ -51,13 +62,13 @@ public class SongLoader extends SongConstants{
         // Test by displaying details of the first song.
         Song testSong = songs.get(0);
         System.out.println("\nTesting first song:");
-        //System.out.println("ID: " + testSong.getId());
+        System.out.println("ID: " + testSong.getSongID());
         System.out.println("Title: " + testSong.getsongTitle());
         System.out.println("Artist: " + testSong.getArtist());
         System.out.println("Genre: " + testSong.getGenre());
         System.out.println("Difficulty: " + testSong.getDifficulty());
 		System.out.println("Instument: " + testSong.getInstrument()); 
 		System.out.println("Rating: " + testSong.getRating());
-		System.out.println("Measures: " + testSong.getMeasures());
+		//System.out.println("Measures: " + testSong.getMeasures());
     }
 }
