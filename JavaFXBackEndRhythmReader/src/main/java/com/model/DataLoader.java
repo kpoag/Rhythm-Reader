@@ -32,22 +32,6 @@ public class DataLoader extends DataConstants{
 				ArrayList<String> friends = (ArrayList)personJSON.get(USER_FRIENDS);
 				ArrayList<String> badges= (ArrayList)personJSON.get(USER_BADGES);
 
-				/*
-				String classroom = (String)personJSON.get(USER_CLASSROOM);
-				Module assignedModules = (Module)personJSON.get(USER_ASSIGNED_MODULES);
-				Module completedModules = (Module)personJSON.get(USER_COMPLETED_MODULES);
-				Module currentModule = (Module)personJSON.get(USER_CURRENT_MODULE);
-				Module recommendedModules = (Module)personJSON.get(USER_RECOMMENDED_MODULES);
-				String deadlines = (String)personJSON.get(USER_DEADLINES);
-				String grades = (String)personJSON.get(USER_GRADES);
-				String progress = (String)personJSON.get(USER_PROGRESS);
-				DifficultyLevel skillLevel = (DifficultyLevel)personJSON.get(USER_SKILL_LEVEL);
-				String teachingClasses = (String)personJSON.get(USER_TEACHING_CLASSES);
-				ArrayList<User> friends = (ArrayList)personJSON.get(USER_FRIENDS);
-				*/
-
-				
-				
 				users.add(new User(id, userName, firstName, lastName, email, password, points, badges, friends));
 			}
 			
@@ -59,41 +43,54 @@ public class DataLoader extends DataConstants{
 		
 		return users;
 	}
+	public static ArrayList<Song> loadSongs() {
+		ArrayList<Song> songs = new ArrayList<Song>();
+		
+		try {
+			FileReader reader = new FileReader(SONG_FILE_NAME);
+			JSONArray songsJSON = (JSONArray)new JSONParser().parse(reader);
+
+			for(int i=0; i < songsJSON.size(); i++) {
+				JSONObject songJSON = (JSONObject)songsJSON.get(i);
+				String songID= ((String)songJSON.get(SONG_SONG_ID));
+				String songTitle =((String)songJSON.get(SONG_SONGTITLE));
+				String artist = (String)songJSON.get(SONG_ARTIST);
+				Genre genre = Genre.valueOf((String)songJSON.get(SONG_GENRE));
+				DifficultyLevel difficulty = DifficultyLevel.valueOf((String)songJSON.get(SONG_DIFFICULTY));
+				String instrument = (String)songJSON.get(SONG_INSTRUMENT);
+				double rating = (double)songJSON.get(SONG_RATING);
+				//ArrayList<Measure> measures= (ArrayList)songJSON.get(SONG_MEASURES);
+
+				songs.add(new Song(songID, songTitle, artist, genre, difficulty, instrument, rating));
+			}
+			
+			return songs;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return songs;
+	}
 
 	public static void main(String[] args) {
-		ArrayList<User> users = DataLoader.loadUsers();
-	
-		// Basic check to see if users are loaded
-		if (users == null || users.isEmpty()) {
-			System.out.println("No users loaded. Check the JSON file or parsing logic.");
-			return;
-		}
-		// Used to display username of a User's friend
-		Map<String, User> userMap = new HashMap<>();
-		for (User user : users) {
-			userMap.put(user.getId().toString(), user);
-		}
-	
-		// Additional checks for specific fields
-		User testUser = users.get(0); // Assuming at least one user is present
-		System.out.println("\nTesting first user:");
-		System.out.println("Username: " + testUser.getUserName());
-		System.out.println("First Name: " + testUser.getFirstName());
-		System.out.println("Last Name: " + testUser.getLastName());
-		System.out.println("Email: " + testUser.getEmail());
-		System.out.println("Password: " + testUser.getPassword());
-		System.out.println("Badges: " + testUser.getBadges());
-		System.out.println("Points: " + testUser.getPoints());
-		System.out.println("Friends: " + testUser.getFriendNames(userMap));
 
-		
-		// Check for null or unexpected values
-		if (testUser.getUserName() == null) {
-			System.out.println("Error: Username is null.");
-		}
-		if (testUser.getPoints() < 0) {
-			System.out.println("Error: Points cannot be negative.");
-		}
+		// Test Users
+		ArrayList<User> users = loadUsers();
+        if (users == null || users.isEmpty()) {
+            System.out.println("No users loaded. Check the JSON file or parsing logic.");
+        } else {
+            System.out.println("Loaded " + users.size() + " users.");
+        }
+        
+        // Test songs
+        ArrayList<Song> songs = loadSongs();
+        if (songs == null || songs.isEmpty()) {
+            System.out.println("No songs loaded. Check the JSON file or parsing logic.");
+        } else {
+            System.out.println("Loaded " + songs.size() + " songs.");
+        }
+	
 	}
 
 }
