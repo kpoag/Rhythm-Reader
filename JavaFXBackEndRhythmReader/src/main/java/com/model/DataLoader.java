@@ -73,6 +73,11 @@ public class DataLoader extends DataConstants{
 		return songs;
 	}
 
+	public static ArrayList<Flashcard> loadFlashcards()
+	{
+		
+	}
+
 	public static void main(String[] args) {
 
 		// Test Users
