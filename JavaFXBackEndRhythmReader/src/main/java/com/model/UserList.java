@@ -44,7 +44,7 @@ public class UserList {
 	public boolean addUser(String userName, String firstName, String lastName, String email,
     String password, int points, ArrayList<String> badges, ArrayList<String> friends) {
 		if(haveUser(userName))return false;
-		userList.add(new User(userName, firstName, lastName, email, password, points, badges, friends));
+		userList.add(new User(userName, firstName, lastName, email, password, points, badges, friends, password));
 		return true;
 	}
 	

@@ -1,3 +1,6 @@
+ /*
+    TO DO: finish setters/getters, reevaluate required vs. wanted requirements
+     */ 
 package com.model;
 
 import java.util.ArrayList;
@@ -11,13 +14,15 @@ public class StudentUser extends User {
     private ArrayList<Flashcard> completedFlashcards;
     private Flashcard currentFlashcard;
 
-    public StudentUser(String userName, String firstName, String lastName, int age, String phoneNumber) {
-        super(userName, firstName, lastName, age, phoneNumber);
+    public StudentUser(String userName, String firstName, String lastName, String email,
+    String password, int points, ArrayList<String> badges, ArrayList<String> friends) {
+        super(userName, firstName, lastName, email, password, points, badges, friends);
         this.progress = progress;
         this.grade = grade;
         this.classroomCode = classroomCode;
         this.skillLevel = skillLevel;
-        this.completedFlashcards = new ArrayList<>();        
+        this.completedFlashcards = new ArrayList<>();    
+        this.currentFlashcard = null;    
     }
     public double getProgress(){
         return progress;
@@ -45,4 +50,5 @@ public class StudentUser extends User {
     public void takePlacementTest(){
 
     }
+
 }
