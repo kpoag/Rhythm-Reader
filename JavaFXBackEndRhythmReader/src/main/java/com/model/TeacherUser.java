@@ -21,11 +21,19 @@ public class TeacherUser extends User {
         // Finish method
         return true;
     }
+
     public ArrayList<String> getTeachingClasses() {
         return teachingClasses;
     }
+    public void setTeachingClasses(ArrayList<String> teachingClass) {
+        this.teachingClasses = teachingClass;
+    }
+
     public Map<String, ArrayList<Map<String, String>>> getGradebook() {
         return gradebook;
+    }
+    public void setGradebook(Map<String, ArrayList<Map<String, String>>> gradebook){
+        this.gradebook = gradebook;
     }
 
     public double viewStudentsProgress(){

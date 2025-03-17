@@ -16,11 +16,12 @@ public abstract class DataConstants {
 	protected static final String USER_ASSIGNED_FLASHCARDS= "assignedFlashcards";
 	protected static final String USER_CURRENT_FLASHCARD= "currentFlashcard";
 	protected static final String USER_DEADLINES= "deadlines";
-	protected static final String USER_GRADES= "grades";
+	protected static final String USER_GRADES= "grade";
 	protected static final String USER_BADGES= "badges";
 	protected static final String USER_PROGRESS= "progress";
 	protected static final String USER_SKILL_LEVEL= "skillLevel";
 	protected static final String USER_TEACHING_CLASSES= "teachingClasses";
+	protected static final String USER_GRADEBOOK= "gradebook";
 	protected static final String USER_FRIENDS= "friends";
 
 	protected static final String SONG_FILE_NAME = "JavaFXBackEndRhythmReader/src/main/java/com/data/songs.json";

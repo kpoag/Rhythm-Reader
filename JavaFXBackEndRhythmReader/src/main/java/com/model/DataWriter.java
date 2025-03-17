@@ -71,7 +71,7 @@ public class DataWriter extends DataConstants {
     private static JSONObject getTeacherJSON(TeacherUser teacher) {
         JSONObject teacherDetails = new JSONObject();
         teacherDetails.put(USER_TEACHING_CLASSES, teacher.getTeachingClasses());
-        teacherDetails.put(USER_GRADES, teacher.getGradebook());
+        teacherDetails.put(USER_GRADEBOOK, teacher.getGradebook());
         return teacherDetails;
     }
     
