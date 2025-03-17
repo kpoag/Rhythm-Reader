@@ -11,13 +11,14 @@ public class User {
 	protected String lastName;
 	protected String email;
 	protected String password;
-    public int points;
-    public ArrayList<String> badges;
-    public ArrayList<String> friends;
+    protected int points;
+    protected ArrayList<String> badges;
+    protected ArrayList<String> friends;
+	protected String role;
     
 
 	public User(String userName, String firstName, String lastName, String email,
-    String password, int points, ArrayList<String> badges, ArrayList<String> friends) {
+    String password, int points, ArrayList<String> badges, ArrayList<String> friends, String role) {
 		this.id = UUID.randomUUID();
 		this.userName = userName;
 		this.firstName = firstName;
@@ -27,9 +28,10 @@ public class User {
         this.points= points;
         this.badges= badges;
         this.friends= friends;
+		this.role = role;
 	}
 	public User(UUID id, String userName, String firstName, String lastName, String email,
-    String password, int points, ArrayList<String> badges, ArrayList<String> friends) {
+    String password, int points, ArrayList<String> badges, ArrayList<String> friends, String role) {
 		this.id = id;
 		this.userName = userName;
 		this.firstName = firstName;
@@ -39,6 +41,7 @@ public class User {
         this.points= points;
         this.badges= badges;
         this.friends= friends;
+		this.role = role;
 	}
 	
 	public UUID getId() {
@@ -113,6 +116,9 @@ public class User {
 	
 	public void setFriends(ArrayList<String> friends) {
 		this.friends = friends;
+	}
+	public String getRole() {
+		return role;
 	}
 
 	public String toString() {
