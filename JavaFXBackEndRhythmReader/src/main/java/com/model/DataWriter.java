@@ -59,15 +59,18 @@ public class DataWriter extends DataConstants {
     private static JSONObject getStudentJSON(StudentUser student) {
             JSONObject studentDetails = new JSONObject();
             studentDetails.put(USER_PROGRESS, student.getProgress());
-            studentDetails.put(USER_CLASSROOM, student.getClassroomCode());
+            studentDetails.put(USER_CLASSROOM, student.getClasses());
             studentDetails.put(USER_GRADES, student.getGrade());
+            studentDetails.put(USER_ASSIGNED_FLASHCARDS, student.getAssignedFlashcards());
+            studentDetails.put(USER_COMPLETED_FLASHCARDS, student.getCompletedFlashcards());
+            studentDetails.put(USER_DEADLINES, student.getDeadlines());
         return studentDetails;
     }
 
     
     private static JSONObject getTeacherJSON(TeacherUser teacher) {
         JSONObject teacherDetails = new JSONObject();
-        teacherDetails.put(USER_TEACHING_CLASSES, teacher.getAssignedClass());
+        teacherDetails.put(USER_TEACHING_CLASSES, teacher.getTeachingClasses());
         teacherDetails.put(USER_GRADES, teacher.getGradebook());
         return teacherDetails;
     }

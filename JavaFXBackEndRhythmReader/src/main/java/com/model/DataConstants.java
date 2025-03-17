@@ -11,12 +11,10 @@ public abstract class DataConstants {
 	protected static final String USER_EMAIL= "email";
 	protected static final String USER_PASSWORD= "password";
 	protected static final String USER_POINTS= "points";
-	protected static final String USER_CLASSROOM= "classroom";
+	protected static final String USER_CLASSROOM= "classes";
 	protected static final String USER_COMPLETED_FLASHCARDS= "completedFlashcards";
-	protected static final String USER_ASSIGNED_MODULES= "assignedModules";
-	protected static final String USER_COMPLETED_MODULES= "completedModules";
-	protected static final String USER_CURRENT_MODULE= "currentModule";
-	protected static final String USER_RECOMMENDED_MODULES= "recommendedModules";
+	protected static final String USER_ASSIGNED_FLASHCARDS= "assignedFlashcards";
+	protected static final String USER_CURRENT_FLASHCARD= "currentFlashcard";
 	protected static final String USER_DEADLINES= "deadlines";
 	protected static final String USER_GRADES= "grades";
 	protected static final String USER_BADGES= "badges";
