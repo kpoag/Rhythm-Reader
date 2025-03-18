@@ -75,7 +75,30 @@ public class DataLoader extends DataConstants{
 
 	public static ArrayList<Flashcard> loadFlashcards()
 	{
+		ArrayList<Flashcard> flashcards= new ArrayList<Flashcard>();
 		
+		try {
+			FileReader reader = new FileReader(FLASHCARD_FILE_NAME);
+			JSONArray flashcardJSON = (JSONArray)new JSONParser().parse(reader);
+
+			for(int i=0; i < flashcardJSON.size(); i++) {
+				JSONObject flashcardsJSON = (JSONObject)flashcardJSON.get(i);
+				String cardID= ((String)flashcardsJSON.get(FLASHCARD_CARD_ID));
+				String frontText= ((String)flashcardsJSON.get(FLASHCARD_FRONT_TEXT));
+				String backText= ((String)flashcardsJSON.get(FLASHCARD_BACK_TEXT));
+				
+				
+
+				flashcards.add(new Flashcard(cardID, frontText, backText, picture, category, difficulty));
+			}
+			
+			return flashcards;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return flashcards;
 	}
 
 	public static void main(String[] args) {
