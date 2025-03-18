@@ -12,7 +12,10 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;;
 
 public class DataLoader extends DataConstants{
-	
+	/**
+	 * loadUsers method
+	 * @authors Jaylen and Kennedy
+	 */
 	public static ArrayList<User> loadUsers() {
 		ArrayList<User> users = new ArrayList<User>();
 		
@@ -105,7 +108,10 @@ public class DataLoader extends DataConstants{
 	}
 
 
-
+	/**
+	 * loadSongs method
+	 * @authors Jaylen
+	 */
 
 
 	public static ArrayList<Song> loadSongs() {
@@ -138,6 +144,10 @@ public class DataLoader extends DataConstants{
 		return songs;
 	}
 
+	/**
+	 * loadFlashcards method
+	 * @authors Jaylen
+	 */
 	public static ArrayList<Flashcard> loadFlashcards()
 	{
 		ArrayList<Flashcard> flashcards= new ArrayList<Flashcard>();
@@ -151,7 +161,10 @@ public class DataLoader extends DataConstants{
 				String cardID= ((String)flashcardsJSON.get(FLASHCARD_CARD_ID));
 				String frontText= ((String)flashcardsJSON.get(FLASHCARD_FRONT_TEXT));
 				String backText= ((String)flashcardsJSON.get(FLASHCARD_BACK_TEXT));
-				
+				String picture= ((String)flashcardsJSON.get(FLASHCARD_PICTURE));
+				String category= ((String)flashcardsJSON.get(FLASHCARD_CATEGORY));
+				String difficulty= ((String)flashcardsJSON.get(FLASHCARD_DIFFICULTY));
+				ArrayList<StudentUser> assignedStudents = (ArrayList)flashcardsJSON.get(FLASHCARD_ASSIGNED_STUDENTS);
 				
 
 				flashcards.add(new Flashcard(cardID, frontText, backText, picture, category, difficulty));
@@ -183,6 +196,14 @@ public class DataLoader extends DataConstants{
             System.out.println("No songs loaded. Check the JSON file or parsing logic.");
         } else {
             System.out.println("Loaded " + songs.size() + " songs.");
+        }
+
+		//Test flashcards
+		ArrayList<Flashcard> flashcard= loadFlashcards();
+		if (flashcard == null || flashcard.isEmpty()) {
+            System.out.println("No flashcards loaded. Check the JSON file or parsing logic.");
+        } else {
+            System.out.println("Loaded " + flashcard.size() + " flashcards.");
         }
 	
 	}
