@@ -19,7 +19,9 @@ public class StudentUser extends User {
     private ArrayList<String> assignedFlashcards;
 
     public StudentUser(String userName, String firstName, String lastName, String email,
-    String password, int points, ArrayList<String> badges, ArrayList<String> friends) {
+    String password, int points, ArrayList<String> badges, ArrayList<String> friends,
+    double progress, double grade, ArrayList<String> classes, String skillLevel, ArrayList<String> completedFlashcards,
+    Flashcard currentFlashcard, Map<String, String> deadlines, ArrayList<String> assignedFlashcards) {
         super(userName, firstName, lastName, email, password, points, badges, friends);
         this.progress = progress;
         this.grade = grade;

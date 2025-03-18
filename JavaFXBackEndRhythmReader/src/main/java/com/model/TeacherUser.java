@@ -2,7 +2,6 @@ package com.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class TeacherUser extends User {
@@ -11,7 +10,8 @@ public class TeacherUser extends User {
     private Map<String, ArrayList<Map<String, String>>> gradebook;
 
     public TeacherUser(String userName, String firstName, String lastName, String email,
-    String password, int points, ArrayList<String> badges, ArrayList<String> friends) {
+    String password, int points, ArrayList<String> badges, ArrayList<String> friends, 
+    ArrayList<String> teachingClasses, Map<String, ArrayList<Map<String, String>>> gradebook ) {
        super(userName, firstName, lastName, email, password, points, badges, friends);
        this.teachingClasses = new ArrayList<>();
        this.gradebook = new HashMap<>();

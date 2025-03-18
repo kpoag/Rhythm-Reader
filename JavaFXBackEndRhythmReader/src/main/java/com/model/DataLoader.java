@@ -50,26 +50,20 @@ public class DataLoader extends DataConstants{
 						}
 					}
 
-					StudentUser student = new StudentUser(userName, firstName, lastName, email, password, points, badges, friends);
-					student.setProgress(progress);
-					student.setGrade(grade);
-					student.setSkilllevel(skillLevel);
-					student.setClasses(classes);
-					student.setAssignedFlashcards(assignedFlashcards);
-					student.setCompletedFlashcards(completedFlashcards);
-					student.setDeadlines(deadlines);
+					StudentUser student = new StudentUser(userName, firstName, lastName, email, password, 
+					points, badges, friends, grade, grade, completedFlashcards, skillLevel, completedFlashcards, 
+					null, deadlines, completedFlashcards);
 
 					users.add(student);
 				} else {
-					TeacherUser teacher = new TeacherUser(userName, firstName, lastName, email, password, points, badges, friends);
 
 					ArrayList<String> teachingClasses = (ArrayList<String>) personJSON.get(USER_TEACHING_CLASSES);
 					
 					JSONObject gradebookJSON = (JSONObject) personJSON.get(USER_GRADEBOOK);
 					Map<String, ArrayList<Map<String, String>>> gradebook = parseGradebook(gradebookJSON);
 
-					teacher.setTeachingClasses(teachingClasses);
-					teacher.setGradebook(gradebook);
+					TeacherUser teacher = new TeacherUser(userName, firstName, lastName, email, password, points, 
+					friends, badges, teachingClasses, gradebook);
 
 					users.add(teacher);
 				}
