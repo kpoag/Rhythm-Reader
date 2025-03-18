@@ -1,24 +1,74 @@
 package com.model;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TeacherUser extends User {
 
-    private ArrayList<StudentUser> assignedClass;
-    private ArrayList<Double> gradebook;
+    private ArrayList<String> teachingClasses;
+    private Map<String, ArrayList<Map<String, String>>> gradebook;
 
-    public TeacherUser(String userName, String firstName, String lastName, int age, String phoneNumber) {
-       super(userName, firstName, lastName, age, phoneNumber);
-       this.assignedClass = new ArrayList<>();
-       this.gradebook = new ArrayList<>();
+    public TeacherUser(String userName, String firstName, String lastName, String email,
+    String password, int points, ArrayList<String> badges, ArrayList<String> friends, 
+    ArrayList<String> teachingClasses, Map<String, ArrayList<Map<String, String>>> gradebook ) {
+       super(userName, firstName, lastName, email, password, points, badges, friends);
+       this.teachingClasses = teachingClasses;
+       this.gradebook = gradebook;
     }
 
     public boolean addStudent(StudentUser student) {
-        return true;
+        if (teachingClasses == null || teachingClasses.isEmpty()) {
+            System.out.println("Teacher has no classes assigned.");
+            return false;
+        }
+        boolean studentAdded = false;
+
+        for (String classCode: teachingClasses) {
+            if (!student.getClasses().contains(classCode)) {
+                student.getClasses().add(classCode);
+
+
+                Map<String, String> studentRecord = new HashMap<>();
+                studentRecord.put("First Name", student.getFirstName());
+                studentRecord.put("Last Name", student.getLastName());
+                studentRecord.put("Grade", String.valueOf(student.getGrade()));
+                studentRecord.put("Progress", String.valueOf(student.getProgress()));
+
+                ArrayList<Map<String, String>> records = gradebook.get(classCode);
+                if (records == null) {
+                    records = new ArrayList<>();
+                }
+                records.add(studentRecord);
+                gradebook.put(classCode, records);
+
+                studentAdded = true;
+            }
+        }
+        if (!studentAdded) {
+            System.out.println("Student " + student.getLastName() +" " + student.getLastName() + 
+            " is already enrolled in class.");
+            return false;
+        }
+         return true;
+    }
+
+    public ArrayList<String> getTeachingClasses() {
+        return teachingClasses;
+    }
+    public void setTeachingClasses(ArrayList<String> teachingClass) {
+        this.teachingClasses = teachingClass;
+    }
+
+    public Map<String, ArrayList<Map<String, String>>> getGradebook() {
+        return gradebook;
+    }
+    public void setGradebook(Map<String, ArrayList<Map<String, String>>> gradebook){
+        this.gradebook = gradebook;
     }
 
     public double viewStudentsProgress(){
+        // finish method
         return 0.0;
     }
 
@@ -34,15 +84,10 @@ public class TeacherUser extends User {
         return false;
     }
 
-    public ArrayList<StudentUser> getAssignedClass(){
-        return assignedClass;
-    }
 
-    public ArrayList<Double> getGradebook() {
-        return gradebook;
-    }
+    public boolean assignFlashcard(Flashcard flashcard, String assignedClass) {
+        // Finish method
 
-    public boolean assignFlashcard(Flashcard deck, String assignedClass) {
         return true;
     }
     

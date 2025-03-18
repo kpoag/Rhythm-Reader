@@ -1,6 +1,7 @@
 package com.model;
 
 import java.io.FileReader;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -32,8 +33,42 @@ public class DataLoader extends DataConstants{
 				ArrayList<String> friends = (ArrayList)personJSON.get(USER_FRIENDS);
 				ArrayList<String> badges= (ArrayList)personJSON.get(USER_BADGES);
 
-				users.add(new User(id, userName, firstName, lastName, email, password, points, badges, friends));
-			}
+				if (personJSON.containsKey(USER_PROGRESS)) {
+					double progress = ((Number) personJSON.get(USER_PROGRESS)).doubleValue();
+					double grade = ((Number) personJSON.get(USER_GRADES)).doubleValue();
+					String skillLevel = (String) personJSON.get(USER_SKILL_LEVEL);
+					
+					ArrayList<String> classes = (ArrayList)personJSON.get(USER_CLASSROOM);
+					ArrayList<String> assignedFlashcards = (ArrayList)personJSON.get(USER_ASSIGNED_FLASHCARDS);
+					ArrayList<String> completedFlashcards = (ArrayList)personJSON.get(USER_COMPLETED_FLASHCARDS);
+
+					JSONObject deadlinesJSON = (JSONObject) personJSON.get(USER_DEADLINES);
+					Map<String, String> deadlines = new HashMap();
+					if (deadlinesJSON != null) {
+						for (Object key : deadlinesJSON.keySet()) {
+							deadlines.put(key.toString(), deadlinesJSON.get(key).toString());
+						}
+					}
+
+					StudentUser student = new StudentUser(userName, firstName, lastName, email, password, 
+					points, badges, friends, grade, grade, completedFlashcards, skillLevel, completedFlashcards, 
+					null, deadlines, completedFlashcards);
+
+					users.add(student);
+				} else {
+
+					ArrayList<String> teachingClasses = (ArrayList<String>) personJSON.get(USER_TEACHING_CLASSES);
+					
+					JSONObject gradebookJSON = (JSONObject) personJSON.get(USER_GRADEBOOK);
+					Map<String, ArrayList<Map<String, String>>> gradebook = parseGradebook(gradebookJSON);
+
+					TeacherUser teacher = new TeacherUser(userName, firstName, lastName, email, password, points, 
+					friends, badges, teachingClasses, gradebook);
+
+					users.add(teacher);
+				}
+
+				}
 			
 			return users;
 			
@@ -43,6 +78,36 @@ public class DataLoader extends DataConstants{
 		
 		return users;
 	}
+
+	private static Map<String, ArrayList<Map<String, String>>> parseGradebook(JSONObject gradebookJSON) {
+		Map<String, ArrayList<Map<String, String>>> gradebook = new HashMap<>();
+
+		if (gradebookJSON != null) {
+			for (Object classKey : gradebookJSON.keySet()) {
+				JSONArray gradesArray = (JSONArray) gradebookJSON.get(classKey);
+				ArrayList<Map<String, String>> gradeList = new ArrayList<>();
+				for (Object gradeObj : gradesArray) {
+					JSONObject gradeEntry = (JSONObject) gradeObj;
+					Map<String, String> entry = new HashMap<>();
+					for (Object key : gradeEntry.keySet()) {
+						entry.put(key.toString(), gradeEntry.get(key).toString());
+					}
+				gradeList.add(entry);
+			}
+			gradebook.put(classKey.toString(), gradeList);
+
+			}
+			
+		}
+		return gradebook;
+
+
+	}
+
+
+
+
+
 	public static ArrayList<Song> loadSongs() {
 		ArrayList<Song> songs = new ArrayList<Song>();
 		
@@ -110,6 +175,7 @@ public class DataLoader extends DataConstants{
         } else {
             System.out.println("Loaded " + users.size() + " users.");
         }
+
         
         // Test songs
         ArrayList<Song> songs = loadSongs();

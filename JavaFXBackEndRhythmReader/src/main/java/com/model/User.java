@@ -11,9 +11,9 @@ public class User {
 	protected String lastName;
 	protected String email;
 	protected String password;
-    public int points;
-    public ArrayList<String> badges;
-    public ArrayList<String> friends;
+    protected int points;
+    protected ArrayList<String> badges;
+    protected ArrayList<String> friends;
     
 
 	public User(String userName, String firstName, String lastName, String email,
