@@ -13,13 +13,44 @@ public class TeacherUser extends User {
     String password, int points, ArrayList<String> badges, ArrayList<String> friends, 
     ArrayList<String> teachingClasses, Map<String, ArrayList<Map<String, String>>> gradebook ) {
        super(userName, firstName, lastName, email, password, points, badges, friends);
-       this.teachingClasses = new ArrayList<>();
-       this.gradebook = new HashMap<>();
+       this.teachingClasses = teachingClasses;
+       this.gradebook = gradebook;
     }
 
     public boolean addStudent(StudentUser student) {
-        // Finish method
-        return true;
+        if (teachingClasses == null || teachingClasses.isEmpty()) {
+            System.out.println("Teacher has no classes assigned.");
+            return false;
+        }
+        boolean studentAdded = false;
+
+        for (String classCode: teachingClasses) {
+            if (!student.getClasses().contains(classCode)) {
+                student.getClasses().add(classCode);
+
+
+                Map<String, String> studentRecord = new HashMap<>();
+                studentRecord.put("First Name", student.getFirstName());
+                studentRecord.put("Last Name", student.getLastName());
+                studentRecord.put("Grade", String.valueOf(student.getGrade()));
+                studentRecord.put("Progress", String.valueOf(student.getProgress()));
+
+                ArrayList<Map<String, String>> records = gradebook.get(classCode);
+                if (records == null) {
+                    records = new ArrayList<>();
+                }
+                records.add(studentRecord);
+                gradebook.put(classCode, records);
+
+                studentAdded = true;
+            }
+        }
+        if (!studentAdded) {
+            System.out.println("Student " + student.getLastName() +" " + student.getLastName() + 
+            " is already enrolled in class.");
+            return false;
+        }
+         return true;
     }
 
     public ArrayList<String> getTeachingClasses() {
@@ -54,8 +85,9 @@ public class TeacherUser extends User {
     }
 
 
-    public boolean assignFlashcard(Flashcard deck, String assignedClass) {
-        // finish method
+    public boolean assignFlashcard(Flashcard flashcard, String assignedClass) {
+        // Finish method
+
         return true;
     }
     

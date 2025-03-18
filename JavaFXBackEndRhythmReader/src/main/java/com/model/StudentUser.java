@@ -46,6 +46,7 @@ public class StudentUser extends User {
         this.grade = grade;
     }
 
+
     public ArrayList<String> getClasses() {
         return classes;
     }
@@ -96,5 +97,6 @@ public class StudentUser extends User {
         //finish method
 
     }
+    
 
 }

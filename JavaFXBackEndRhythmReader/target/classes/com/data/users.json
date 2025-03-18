@@ -29,7 +29,7 @@
         "teachingClasses": ["MTH101"],
         "gradebook": {
           "MTH101": [
-            {"student": "John Doe", "grade": "B"}
+            {"student": "John Doe", "grade": "88.0"}
           ],
           "Advanced Composition": [
             {}

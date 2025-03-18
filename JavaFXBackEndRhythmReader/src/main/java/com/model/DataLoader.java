@@ -152,6 +152,7 @@ public class DataLoader extends DataConstants{
         } else {
             System.out.println("Loaded " + users.size() + " users.");
         }
+
         
         // Test songs
         ArrayList<Song> songs = loadSongs();

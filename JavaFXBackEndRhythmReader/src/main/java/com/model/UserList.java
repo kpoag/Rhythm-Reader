@@ -28,9 +28,9 @@ public class UserList {
 		return false;
 	}
 	
-	public User getUser(String userName) {
+	public User getUser(String email, String password) {
 		for(User user : userList) {
-			if(user.getUserName().equals(userName)) {
+			if(user.getEmail().equals(email) && user.getPassword().equals(password)) {
 				return user;
 			}
 		}
@@ -41,6 +41,7 @@ public class UserList {
 		return userList;
 	}
 	
+	// Reevaluate method (will this be used to add a friend?)
 	public boolean addUser(String userName, String firstName, String lastName, String email,
     String password, int points, ArrayList<String> badges, ArrayList<String> friends) {
 		if(haveUser(userName))return false;
