@@ -12,7 +12,10 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;;
 
 public class DataLoader extends DataConstants{
-	
+	/**
+	 * loadUsers method
+	 * @authors Jaylen and Kennedy
+	 */
 	public static ArrayList<User> loadUsers() {
 		ArrayList<User> users = new ArrayList<User>();
 		
@@ -105,7 +108,10 @@ public class DataLoader extends DataConstants{
 	}
 
 
-
+	/**
+	 * loadSongs method
+	 * @authors Jaylen
+	 */
 
 
 	public static ArrayList<Song> loadSongs() {
@@ -138,6 +144,10 @@ public class DataLoader extends DataConstants{
 		return songs;
 	}
 
+	/**
+	 * loadFlashcards method
+	 * @authors Jaylen
+	 */
 	public static ArrayList<Flashcard> loadFlashcards()
 	{
 		ArrayList<Flashcard> flashcards= new ArrayList<Flashcard>();
