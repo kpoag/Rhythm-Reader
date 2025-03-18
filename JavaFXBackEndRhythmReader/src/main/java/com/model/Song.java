@@ -62,7 +62,7 @@ public class Song {
     public boolean playWithMetronome(){
         return true;
     }
-    public String getsongTitle() {
+    public String getSongTitle() {
         return songTitle;
     }
     public void setSongTitle(String songTitle)

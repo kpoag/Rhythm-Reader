@@ -19,7 +19,7 @@ public class DataWriter extends DataConstants {
             jsonUsers.add(getUserJSON(userList.get(i)));
         }
 
-        try (FileWriter file = new FileWriter(USER_TEMP_FILE_NAME)) {
+        try (FileWriter file = new FileWriter(USER_FILE_NAME)) {
             file.write(jsonUsers.toJSONString());
             file.flush();
             return true;
@@ -53,8 +53,7 @@ public class DataWriter extends DataConstants {
         }
         
         return userDetails;
-    }
-    
+    }   
     
     private static JSONObject getStudentJSON(StudentUser student) {
             JSONObject studentDetails = new JSONObject();
@@ -62,27 +61,23 @@ public class DataWriter extends DataConstants {
             studentDetails.put(USER_CLASSROOM, student.getClasses());
             studentDetails.put(USER_GRADES, student.getGrade());
             studentDetails.put(USER_ASSIGNED_FLASHCARDS, student.getAssignedFlashcards());
+            studentDetails.put(USER_CURRENT_FLASHCARD, student.getCurrentFlashcard());
             studentDetails.put(USER_COMPLETED_FLASHCARDS, student.getCompletedFlashcards());
             studentDetails.put(USER_DEADLINES, student.getDeadlines());
         return studentDetails;
     }
-
     
     private static JSONObject getTeacherJSON(TeacherUser teacher) {
         JSONObject teacherDetails = new JSONObject();
         teacherDetails.put(USER_TEACHING_CLASSES, teacher.getTeachingClasses());
         teacherDetails.put(USER_GRADEBOOK, teacher.getGradebook());
         return teacherDetails;
-    }
-    
-    
+    }   
 
-    /*
+    
     public static boolean saveSongs() {
         SongList songs = SongList.getInstance();
-        ArrayList<Song> songList = songs.g();
-       // ArrayList<Song> songList = new ArrayList<>();
-       // songList.add(new User(""));
+        ArrayList<Song> songList = songs.getSongs();
        
        JSONArray jsonSongs = new JSONArray();
 
@@ -90,7 +85,7 @@ public class DataWriter extends DataConstants {
            jsonSongs.add(getSongJSON(songList.get(i)));
        }
 
-       try (FileWriter file = new FileWriter(SONG_TEMP_FILE_NAME)) {
+       try (FileWriter file = new FileWriter(SONG_FILE_NAME)) {
            file.write(jsonSongs.toJSONString());
            file.flush();
            return true;
@@ -100,15 +95,21 @@ public class DataWriter extends DataConstants {
            return false;
        }
     }
-     */
- /* 
+  
     public static JSONObject getSongJSON(Song song) {
         JSONObject songDetails = new JSONObject();
-        songDetails.put(SONG_, songDetails)
-
+        songDetails.put(SONG_SONG_ID, song.getSongID());
+        songDetails.put(SONG_SONGTITLE, song.getSongTitle());
+        songDetails.put(SONG_ARTIST, song.getArtist());
+        songDetails.put(SONG_GENRE, song.getGenre());
+        songDetails.put(SONG_DIFFICULTY, song.getDifficulty());
+        songDetails.put(SONG_INSTRUMENT, song.getInstrument());
+        songDetails.put(SONG_RATING, song.getRating());
+        songDetails.put(SONG_MEASURES, song.getMeasures());
         return songDetails;
     }
-     */
+
+     
 
  /*
     public static boolean saveFlashcards() {
