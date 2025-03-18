@@ -1,7 +1,6 @@
 package com.model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class SongList {
 
@@ -47,6 +46,11 @@ public class SongList {
         return songs;
 
     }
+
+    public ArrayList<Song> getSongs() {
+        return songs;
+    }
+
     public boolean save() {
         return true;
     }
