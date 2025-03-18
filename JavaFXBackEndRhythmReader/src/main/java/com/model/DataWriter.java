@@ -9,6 +9,7 @@ import org.json.simple.JSONObject;
 
 public class DataWriter extends DataConstants {
 
+
     public static boolean saveUsers() {
         UserList users = UserList.getInstance();
         ArrayList<User> userList = users.getUsers();
@@ -19,7 +20,7 @@ public class DataWriter extends DataConstants {
             jsonUsers.add(getUserJSON(userList.get(i)));
         }
 
-        try (FileWriter file = new FileWriter(USER_FILE_NAME)) {
+        try (FileWriter file = new FileWriter(USER_TEMP_FILE_NAME)) {
             file.write(jsonUsers.toJSONString());
             file.flush();
             return true;
@@ -29,9 +30,8 @@ public class DataWriter extends DataConstants {
         }
     }
 
-
     /*
-     * separate into two private methods - getStudentJSON and getTeacherJSON and keep getUserJSON
+     * Creates User JSON amd separates into two private methods - getStudentJSON and getTeacherJSON
      */
     public static JSONObject getUserJSON(User user) {
         JSONObject userDetails = new JSONObject();
@@ -85,7 +85,7 @@ public class DataWriter extends DataConstants {
            jsonSongs.add(getSongJSON(songList.get(i)));
        }
 
-       try (FileWriter file = new FileWriter(SONG_FILE_NAME)) {
+       try (FileWriter file = new FileWriter(SONG_TEMP_FILE_NAME)) {
            file.write(jsonSongs.toJSONString());
            file.flush();
            return true;
@@ -109,14 +109,43 @@ public class DataWriter extends DataConstants {
         return songDetails;
     }
 
-     
-
- /*
+    
     public static boolean saveFlashcards() {
-        return true;
+        FlashcardList flashcards = FlashcardList.getInstance();
+        ArrayList<Flashcard> flashcardList = flashcards.getFlashcards();
+
+        JSONArray jsonFlashcards = new JSONArray();
+
+        for (int i = 0; i < flashcardList.size(); i++) {
+            jsonFlashcards.add(getFlashcardJSON(flashcardList.get(i)));
+        }
+
+        try (FileWriter file = new FileWriter(FLASHCARD_TEMP_FILE_NAME)) {
+            file.write(jsonFlashcards.toJSONString());
+            file.flush();
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
-     */
+
+    public static JSONObject getFlashcardJSON(Flashcard flashcard) {
+        JSONObject flashcardDetails = new JSONObject();
+        flashcardDetails.put(FLASHCARD_CARD_ID, flashcard.getCardID());
+        flashcardDetails.put(FLASHCARD_FRONT_TEXT, flashcard.getFrontText());
+        flashcardDetails.put(FLASHCARD_BACK_TEXT, flashcard.getBackText());
+        flashcardDetails.put(FLASHCARD_CATEGORY, flashcard.getCategory());
+        flashcardDetails.put(FLASHCARD_DIFFICULTY, flashcard.getDifficulty());
+        flashcardDetails.put(FLASHCARD_PICTURE, flashcard.getPicture());
+        flashcardDetails.put(FLASHCARD_ASSIGNED_STUDENTS, flashcard.getAssignedStudents());
+        return flashcardDetails;
+    }
+
+
     public static void main(String[] args) {
         DataWriter.saveUsers();
+        DataWriter.saveSongs();
+        DataWriter.saveFlashcards();
     }
 }
