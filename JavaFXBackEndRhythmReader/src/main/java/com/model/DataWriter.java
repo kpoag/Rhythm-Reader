@@ -7,9 +7,16 @@ import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+/**
+ * DataWriter for Rhythm Reader Application
+ * @author Kristen Mack
+ */
 public class DataWriter extends DataConstants {
 
-
+    /**
+     * saveUsers method for DataWriter
+     * @return Boolean of whether Users are saved in program correctly
+     */
     public static boolean saveUsers() {
         UserList users = UserList.getInstance();
         ArrayList<User> userList = users.getUsers();
@@ -30,8 +37,9 @@ public class DataWriter extends DataConstants {
         }
     }
 
-    /*
-     * Creates User JSON amd separates into two private methods - getStudentJSON and getTeacherJSON
+    /**
+     * Acesses User JSON and separates into two private methods - getStudentJSON and getTeacherJSON
+     * @return JSONObject of new UserJSON
      */
     public static JSONObject getUserJSON(User user) {
         JSONObject userDetails = new JSONObject();
@@ -55,6 +63,11 @@ public class DataWriter extends DataConstants {
         return userDetails;
     }   
     
+    /**
+     * getStudentJSON method for getUserJSON - establishes Student
+     * @param student new StudentUser
+     * @return JSONObject of new Student
+     */
     private static JSONObject getStudentJSON(StudentUser student) {
             JSONObject studentDetails = new JSONObject();
             studentDetails.put(USER_PROGRESS, student.getProgress());
@@ -67,6 +80,12 @@ public class DataWriter extends DataConstants {
         return studentDetails;
     }
     
+    /**
+     * getTeacherJSON method for getUserJSON - establishes Teacher
+     * @param teacher new TeacherUser
+     * @return JSONObject of new Teacher
+     */
+
     private static JSONObject getTeacherJSON(TeacherUser teacher) {
         JSONObject teacherDetails = new JSONObject();
         teacherDetails.put(USER_TEACHING_CLASSES, teacher.getTeachingClasses());
@@ -74,7 +93,10 @@ public class DataWriter extends DataConstants {
         return teacherDetails;
     }   
 
-    
+    /**
+     * saveSongs method for DataWriter
+     * @return Boolean of whether Songs are saved in program correctly
+     */
     public static boolean saveSongs() {
         SongList songs = SongList.getInstance();
         ArrayList<Song> songList = songs.getSongs();
@@ -96,6 +118,10 @@ public class DataWriter extends DataConstants {
        }
     }
   
+    /**
+     * Accesses Song JSON
+     * @return JSONObject of new SongJSON
+     */
     public static JSONObject getSongJSON(Song song) {
         JSONObject songDetails = new JSONObject();
         songDetails.put(SONG_SONG_ID, song.getSongID());
@@ -109,7 +135,10 @@ public class DataWriter extends DataConstants {
         return songDetails;
     }
 
-    
+    /**
+     * saveFlashcards method for DataWriter
+     * @return Boolean of whether Flashcards are saved in program correctly
+     */
     public static boolean saveFlashcards() {
         FlashcardList flashcards = FlashcardList.getInstance();
         ArrayList<Flashcard> flashcardList = flashcards.getFlashcards();
@@ -130,6 +159,10 @@ public class DataWriter extends DataConstants {
         }
     }
 
+    /**
+     * Accesses Flashcard JSON
+     * @return JSONObject of new FlashcardJSON
+     */
     public static JSONObject getFlashcardJSON(Flashcard flashcard) {
         JSONObject flashcardDetails = new JSONObject();
         flashcardDetails.put(FLASHCARD_CARD_ID, flashcard.getCardID());
