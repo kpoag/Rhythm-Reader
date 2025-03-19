@@ -43,17 +43,21 @@ public class Song {
     {
         return songID;
     }
-    public void setSongID(String songID)
-    {
-        this.songID= songID;
+    public boolean setSongID(String songID){
+        if (songID == null ) return false;
+        this.songID = songID ;
+        return true;   
     }
     public double getRating() {
         return rating;
     }
 
-    public void setRating(double rating)
-    {
-        this.rating= rating;
+    public boolean setRating(double rating) {
+        if (rating < 0.0 || rating > 10.0) {
+            return false;
+        }
+        this.rating = rating;
+        return true;
     }
     /* 
     public List<Song> filterMusic() {
@@ -65,49 +69,55 @@ public class Song {
     public String getSongTitle() {
         return songTitle;
     }
-    public void setSongTitle(String songTitle)
-    {
-        this.songTitle= songTitle;
+    public boolean setSongTitle(String songTitle){
+        if (songTitle == null) return false;
+        this.songTitle = songTitle ;
+        return true;    
     }
     public String getArtist() {
         return artist;
     }
-    public void setArtist(String artist)
-    {
-        this.artist= artist;
+    public boolean setArtist(String artist){
+        if (artist == null) return false;
+        this.artist = artist ;
+        return true;
     }
     public DifficultyLevel getDifficulty() {
         return difficulty;
     }
-    public void setDifficulty(DifficultyLevel difficulty)
-    {
-        this.difficulty= difficulty;
+    public boolean setDifficulty(DifficultyLevel difficulty){
+        if (difficulty == null) return false;
+        this.difficulty = difficulty ;
+        return true;
     }
     public String getInstrument() {
         return instrument;
     }
-    public void setInstrument(String instrument)
-    {
-        this.instrument= instrument;
+    public boolean setInstrument(String instrument){
+        if (instrument == null) return false;
+        this.instrument = instrument ;
+        return true;
     }
     public ArrayList<Measure> getMeasures() {
         return measures;
     }
-    public void setMeasures(ArrayList<Measure> measures)
-    {
+    public boolean setMeasures(ArrayList<Measure> measures){
+        if (measures == null) return false;
         this.measures= measures ;
+        return true;
     }
 
     public Genre getGenre() {
         return genre;
     }
-    public void setGenre(Genre genre)
-    {
+    public boolean setGenre(Genre genre){
+        if (genre == null) return false;
         this.genre= genre;
+        return true;
     }
 
 
-    public void createSheetMusic() {
+    public boolean createSheetMusic() {
         
     }
     public boolean play(){

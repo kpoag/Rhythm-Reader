@@ -49,54 +49,68 @@ public class User {
 		return userName;
 	}
 
-    public void setUserName(String userName)
+    public boolean setUserName(String userName)
     {
-        this.userName= userName;
+        if (userName == null ) return false;
+        this.userName = userName;
+        return true; 
     }
 	
 	public String getFirstName() {
 		return firstName;
 	}
 	
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public boolean setFirstName(String firstName) {
+		if (firstName == null ) return false;
+        this.firstName = firstName;
+        return true; 
 	}
 	
 	public String getLastName() {
 		return lastName;
 	}
 	
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public boolean setLastName(String lastName) {
+		if (lastName == null ) return false;
+        this.lastName = lastName;
+        return true; 
 	}
     public String getEmail() {
 		return email;
 	}
 	
-	public void setEmail(String email) {
-		this.email = email;
+	public boolean setEmail(String email) {
+		if (email == null ) return false;
+        this.email = email;
+        return true;  
 	}
     public String getPassword() {
 		return password;
 	}
 	
-	public void setPassword(String password) {
-		this.password = password;
+	public boolean setPassword(String password) {
+		if (password == null ) return false;
+        this.password = password;
+        return true;  
 	}
     public int getPoints() {
 		return points;
 	}
 	
-	public void setPoints(int points) {
-		this.points = points;
+	public boolean setPoints(int points) {
+		if (points < 0 ) return false;
+        this.points = points;
+        return true;  
 	}
     
     public ArrayList<String> getBadges() {
 		return badges;
 	}
 	
-	public void setBadges(ArrayList<String> badges) {
-		this.badges = badges;
+	public boolean setBadges(ArrayList<String> badges) {
+		if (badges == null ) return false;
+        this.badges = badges;
+        return true;  
 	}
     public ArrayList<String> getFriendNames(Map<String, User> userMap) {
 		ArrayList<String> friendNames = new ArrayList<>();
@@ -111,12 +125,15 @@ public class User {
     return friendNames;
 	}
 	
-	public void setFriends(ArrayList<String> friends) {
-		this.friends = friends;
+	public boolean setFriends(ArrayList<String> friends) {
+		if (friends == null ) return false;
+        this.friends = friends;
+        return true;  
 	}
 
 	public String toString() {
 		return userName;
 	}
+
 	
 }

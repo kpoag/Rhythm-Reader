@@ -26,8 +26,8 @@ public class Notes {
         return noteName.equals("rest");
     }
 
-    public void addChords(Chords chord) {
-        notes.add(chord);
+    public boolean addChords(Chords chord) {
+        return notes.add(chord);
     }
 
     public List<Chords> getNotes() {

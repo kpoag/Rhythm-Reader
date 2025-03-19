@@ -40,8 +40,8 @@ public class UserList {
 	public ArrayList<User> getUsers() {
 		return userList;
 	}
+
 	
-	// Reevaluate method (will this be used to add a friend?)
 	public boolean addUser(String userName, String firstName, String lastName, String email,
     String password, int points, ArrayList<String> badges, ArrayList<String> friends) {
 		if(haveUser(userName))return false;
@@ -49,7 +49,7 @@ public class UserList {
 		return true;
 	}
 	
-	public void saveUsers() {
-		DataWriter.saveUsers();
+	public boolean saveUsers() {
+		return DataWriter.saveUsers();
 	}
 }

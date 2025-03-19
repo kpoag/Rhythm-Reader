@@ -19,40 +19,48 @@ public class PreTest {
         return questions;
     }
 
-    public void setQuestions(List<String> questions) {
-        this.questions = questions;
+    public boolean setQuestions(List<String> questions) {
+        if (questions == null ) return false;
+        this.questions = questions ;
+        return true;   
     }
 
     public List<String> getAnswers() {
         return answers;
     }
 
-    public void setAnswers(List<String> answers) {
-        this.answers = answers;
+    public boolean setAnswers(List<String> answers) {
+        if (answers == null ) return false;
+        this.answers = answers ;
+        return true;   
     }
 
     public String getLevel() {
         return level;
     }
 
-    public void setLevel(String level) {
-        this.level = level;
+    public boolean setLevel(String level) {
+        if (level == null ) return false;
+        this.level = level ;
+        return true;   
     }
 
     public int getScore() {
         return score;
     }
 
-    public void setScore(int score) {
-        this.score = score;
+    public boolean setScore(int score) {
+        if (score < 0 ) return false;
+        this.score = score ;
+        return true;   
     }
 
-    public void takeQuiz() {
-        System.out.println("Taking quiz at " + level + " level.");
+    public String pretesttoString() {
+        return"Taking quiz at " + level + " level.";
     }
 
-    public void evaluateScore(int newScore) {
+    public String evaluateScore(int newScore) {
         this.score = newScore;
-        System.out.println("Quiz evaluated. New score: " + score);
+       return "Quiz evaluated. New score: " + score;
     }
 }

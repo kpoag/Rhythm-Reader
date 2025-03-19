@@ -1,23 +1,14 @@
-/*
-    TO DO: 
-    *create needed getters for methods below as well*
-    create add, remove, friends Method
-    play, create, edit sheet music methods
-    search for songs method
-    join/leave class method?
-     */ 
+
 
 package com.model;
 
 public class RRFacade {
+    private static RRFacade facade;
     private User currUser;
     private Song currSong;
 
     public User login(String email, String password) {
-        User user = UserList.getInstance().getUser(email, password);
-        this.currUser = user;
-        return user;
-        
+         return UserList.getInstance().getUser(email, password);
     }
 
     public boolean logout() {

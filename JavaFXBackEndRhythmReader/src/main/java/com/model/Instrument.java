@@ -43,8 +43,10 @@ public class Instrument {
      * 
      * @param instrumentName the new instrument name
      */
-    public void setInstrumentName(String instrumentName) {
-        this.instrumentName = instrumentName;
+    public boolean setInstrumentName(String instrumentName) {
+        if (instrumentName == null ) return false;
+        this.instrumentName= instrumentName;
+        return true; 
     }
 
     /**
@@ -61,8 +63,10 @@ public class Instrument {
      * 
      * @param songName the new song name
      */
-    public void setSongName(String songName) {
-        this.songName = songName;
+    public boolean setSongName(String songName) {
+        if (songName == null ) return false;
+        this.songName= songName;
+        return true; 
     }
 
     /**
@@ -79,8 +83,10 @@ public class Instrument {
      * 
      * @param tempo the new tempo in BPM
      */
-    public void setTempo(int tempo) {
-        this.tempo = tempo;
+    public boolean setTempo(int tempo) {
+        if (tempo < 0 ) return false;
+        this.tempo= tempo;
+        return true; 
     }
 
     /**
@@ -97,15 +103,17 @@ public class Instrument {
      * 
      * @param accuracyScore the new accuracy score
      */
-    public void setAccuracyScore(double accuracyScore) {
-        this.accuracyScore = accuracyScore;
+    public boolean setAccuracyScore(double accuracyScore) {
+        if (accuracyScore < 0.0 ) return false;
+        this.accuracyScore= accuracyScore;
+        return true; 
     }
 
     /**
      * Simulates playing the exercise by displaying the instrument name, song name, and tempo.
      */
-    public void playExercise() {
-        System.out.println(instrumentName + " is playing " + songName + " at " + tempo + " BPM.");
+    public String playExercise() {
+        return instrumentName + " is playing " + songName + " at " + tempo + " BPM.";
     }
 
     /**
@@ -113,9 +121,9 @@ public class Instrument {
      * 
      * @param newTempo the new tempo in BPM
      */
-    public void adjustTempo(int newTempo) {
+    public String adjustTempo(int newTempo) {
         this.tempo = newTempo;
-        System.out.println("Tempo adjusted to " + tempo + " BPM.");
+        return "Tempo adjusted to " + tempo + " BPM.";
     }
 
     /**
@@ -123,8 +131,8 @@ public class Instrument {
      * 
      * @param newScore the new accuracy score
      */
-    public void evaluatePerformance(double newScore) {
+    public String evaluatePerformance(double newScore) {
         this.accuracyScore = newScore;
-        System.out.println("Performance evaluated. New accuracy score: " + accuracyScore);
+         return "Performance evaluated. New accuracy score: " + accuracyScore;
     }
 }

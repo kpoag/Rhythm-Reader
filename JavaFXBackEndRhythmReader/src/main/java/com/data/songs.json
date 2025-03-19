@@ -8,8 +8,7 @@
         "rating":5.0,
         "instrument": "piano",
         "measures":"QUADRUPLE",
-        "chord":"G MAJOR",
-        "sheetMusic":["C", "F", "C", "F", "C", "G", "C"]
+        "chord":"G MAJOR"
     },{
         "songID":"d10369cc-14ec-46e1-9415-002bd86ed332",
         "songTitle":"Symphony No. 9",

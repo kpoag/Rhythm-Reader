@@ -40,8 +40,8 @@ public class Measure {
      *
      * @param note the Chords object to be added to the measure
      */
-    public void addNote(Chords note) {
-        notes.add(note);
+    public boolean addNote(Chords note) {
+        return notes.add(note);
     }
 
     /**
@@ -49,8 +49,8 @@ public class Measure {
      *
      * @param note the Chords object to be removed from the measure
      */
-    public void removeNote(Chords note) {
-        notes.remove(note);
+    public boolean removeNote(Chords note) {
+        return notes.remove(note);
     }
 
     /**
