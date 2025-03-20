@@ -130,9 +130,11 @@ public class DataLoader extends DataConstants{
 				DifficultyLevel difficulty = DifficultyLevel.valueOf((String)songJSON.get(SONG_DIFFICULTY));
 				String instrument = (String)songJSON.get(SONG_INSTRUMENT);
 				double rating = (double)songJSON.get(SONG_RATING);
-				//ArrayList<Measure> measures= (ArrayList)songJSON.get(SONG_MEASURES);
+				String timeSignature = (String)songJSON.get(SONG_TIME_SIGNATURE);
+				int tempo = ((Long)songJSON.get(SONG_TEMPO)).intValue();
+				ArrayList<Measure> measures= (ArrayList)songJSON.get(SONG_MEASURES);
 
-				songs.add(new Song(songID, songTitle, artist, genre, difficulty, instrument, rating));
+				songs.add(new Song(songID, songTitle, artist, genre, difficulty, instrument, rating, tempo, timeSignature));
 			}
 			
 			return songs;

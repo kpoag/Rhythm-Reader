@@ -23,6 +23,10 @@ public class FlashcardList {
     public Flashcard getFlashcard(String flashcardID) {
         if(!haveFlashcard(flashcardID)) return null;
 
-        return new Flashcard(flashcardID, "Question", "Answer", "Music Theory", "Beginner");
+        return new Flashcard(flashcardID, "Question", "Answer", "key_signature.png", "Music Theory", "Beginner");
+    }
+
+    public ArrayList<Flashcard> getFlashcards() {
+        return flashcardList;
     }
 }

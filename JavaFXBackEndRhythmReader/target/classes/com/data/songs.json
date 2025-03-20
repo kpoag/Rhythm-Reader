@@ -7,20 +7,29 @@
         "difficulty":"BEGINNER",
         "rating":5.0,
         "instrument": "piano",
-        "measures":"QUADRUPLE",
-        "chord":"G MAJOR",
-        "sheetMusic":["C", "F", "C", "F", "C", "G", "C"]
-    },{
+        "timeSignature": "4/4",
+        "tempo":120,
+        "measures":[
+            ["C4", "C4", "G4", "G4"],
+            ["A4", "A4","G4"],
+            ["F4","F4","E4", "E4"], 
+            ["D4","D4","C4"]
+        ]   
+        },{
         "songID":"d10369cc-14ec-46e1-9415-002bd86ed332",
-        "songTitle":"Symphony No. 9",
-        "artist":"Ludwig van Beethoven",
-        "genre":"CLASSICAL",
-        "difficulty":"ADVANCED",
+        "songTitle":"Happy Birthday",
+        "artist":"Patty and Mildred J. Hill",
+        "genre":"TRADITIONAL",
+        "difficulty":"INTERMEDIATE",
         "rating":3.7,
         "instrument": "piano",
-        "measures":["DUPLE","TRIPLE","QUADRUPLE"],
-        "chord":"D MINOR",
-        "sheetMusic":["B", "A", "A", "G", "G", "F"]
+        "timeSignature": "3/4",
+        "tempo": 125,
+        "measures":[
+            [["F#4", "A4"], "D4", "A4"],
+            [["G4", "B4"], ["F#4", "A4"],["F#4", "D4"]],
+            [["E4", "C#5"],["C#4", "A4"], ["E4", "A4"]]
+        ]   
     },{
         "songID":"783a4b77-0fd6-4d8b-af69-0e5a81aaafa7",
         "songTitle":"I'm Yours",
@@ -29,19 +38,19 @@
         "difficulty":"BEGINNER",
         "rating":5.0,
         "instrument": "piano",
-        "measures":"QUADRUPLE",
-        "chord":"B MAJOR",
-        "sheetMusic":["E", "E", "C", "C", "C", "D"]
+        "timeSignature":"4/4",
+        "tempo":90,
+        "measures":[]
     },{
         "songID":"97ef8080-08ce-4202-b4a0-44b5d6d8bf3b",
         "songTitle":"Fly Me To The Moon",
         "artist":"Bart Howard",
         "genre":"JAZZ",
-        "difficulty":"INTERMEDIATE",
+        "difficulty":"ADVANCED",
         "rating":4.9,
         "instrument": "piano",
-        "measures":"QUADRUPLE",
-        "chord":"C MAJOR",
-        "sheetMusic":["C", "D", "A", "C", "B", "G"]
+        "timeSignature":"3/4",
+        "tempo":100,
+        "measures":[]
     }
 ]

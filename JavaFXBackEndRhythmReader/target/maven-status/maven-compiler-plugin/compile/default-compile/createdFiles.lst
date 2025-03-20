@@ -1,8 +1,7 @@
+com\model\SongList.class
 module-info.class
-com/model/DifficultyLevel.class
-com/model/SongList.class
-com/model/Instrument.class
-com/model/Genre.class
-com/model/Song.class
-com/model/Chords.class
-com/model/Measure.class
+com\model\Song.class
+com\model\Genre.class
+com\model\Measure.class
+com\model\DifficultyLevel.class
+com\model\Chords.class

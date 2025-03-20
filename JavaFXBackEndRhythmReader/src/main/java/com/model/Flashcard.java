@@ -26,49 +26,57 @@ public class Flashcard {
     {
         return cardID;
     }
-    public void setCardID(String cardID)
+    public boolean setCardID(String cardID)
     {
+        if (cardID == null ) return false;
         this.cardID= cardID;
+        return true; 
     }
     public String getFrontText()
     {
         return frontText;
     }
-    public void setFrontText(String frontText)
+    public boolean setFrontText(String frontText)
     {
+        if (frontText == null ) return false;
         this.frontText= frontText;
+        return true; 
     }
     public String getBackText()
     {
         return backText;
     }
-    public void setBackText(String backText)
+    public boolean setBackText(String backText)
     {
-        this.backText= backText;
+        if (backText == null ) return false;
+        this.backText = backText ;
+        return true; 
     }
     public String getPicture()
     {
         return picture;
     }
-    public void setPicture(String picture)
-    {
-        this.picture= picture;
+    public boolean setPicture(String picture){
+        if (picture == null ) return false;
+        this.picture = picture ;
+        return true; 
     }
-    public String getCategory()
-    {
+    public String getCategory(){
         return category;
     }
-    public void setCategory(String category)
-    {
-        this.category= category;
+    public boolean setCategory(String category){
+        if (category == null ) return false;
+        this.category = category ;
+        return true;   
     }
     public String getDifficulty()
     {
         return difficulty;
     }
-    public void setDifficulty(String difficulty)
-    {
-        this.difficulty= difficulty;
+    public boolean setDifficulty(String difficulty){
+        if (difficulty == null ) return false;
+        this.difficulty = difficulty ;
+        return true;   
     }
         
     
@@ -86,9 +94,10 @@ public class Flashcard {
     public ArrayList<StudentUser> getAssignedStudents(){
         return assignedStudents;
     }
-    public void setAssignedStudents(ArrayList<StudentUser> assignedStudents)
-    {
-        this.assignedStudents= assignedStudents;
+    public boolean setAssignedStudents(ArrayList<StudentUser> assignedStudents) {
+        if (assignedStudents == null ) return false;
+        this.assignedStudents = assignedStudents ;
+        return true;   
     }
 
     public boolean hasStudentCompleted(String studentID){

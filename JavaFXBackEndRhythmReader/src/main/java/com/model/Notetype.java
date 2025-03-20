@@ -16,6 +16,8 @@ public enum Notetype {
      * Represents an eighth note (1/8 of a whole note).
      */
     EIGHTH_NOTE,
+
+    DOTTED_EIGHTH_NOTE,
     
     /**
      * Represents a quarter note (1/4 of a whole note).

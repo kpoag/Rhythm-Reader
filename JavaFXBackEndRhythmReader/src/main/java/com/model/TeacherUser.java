@@ -56,15 +56,19 @@ public class TeacherUser extends User {
     public ArrayList<String> getTeachingClasses() {
         return teachingClasses;
     }
-    public void setTeachingClasses(ArrayList<String> teachingClass) {
+    public boolean setTeachingClasses(ArrayList<String> teachingClass) {
+        if (teachingClasses == null ) return false;
         this.teachingClasses = teachingClass;
+        return true;  
     }
 
     public Map<String, ArrayList<Map<String, String>>> getGradebook() {
         return gradebook;
     }
-    public void setGradebook(Map<String, ArrayList<Map<String, String>>> gradebook){
+    public boolean setGradebook(Map<String, ArrayList<Map<String, String>>> gradebook){
+        if (gradebook == null ) return false;
         this.gradebook = gradebook;
+        return true;  
     }
 
     public double viewStudentsProgress(){
@@ -91,4 +95,11 @@ public class TeacherUser extends User {
         return true;
     }
     
+    /**
+     * Determines that current User is a Teacher
+     * @return boolean answer True that User is a Teacher
+     */
+    public boolean isTeacher() {
+        return true;
+    }
 }
