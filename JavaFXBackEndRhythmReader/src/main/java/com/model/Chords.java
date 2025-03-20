@@ -18,10 +18,18 @@ public class Chords {
     }
 
     public void addNote(String note) {
+        if(note == null || note.isEmpty() )
+        {
+            throw new IllegalArgumentException("Note cannot be null or empty");
+        }
         notes.add(note);
     }
 
     public void removeNote(String note) {
+        if(note == null || note.isEmpty() )
+        {
+            throw new IllegalArgumentException("Note cannot be null or empty");
+        }
         notes.remove(note);
     }
 
