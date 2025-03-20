@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Represents a musical measure containing a set of notes, tempo, time signature,
- * beats, and dynamics. This class allows adding and removing notes, changing the tempo,
- * and retrieving various details about the measure.
+ * Represents a musical measure with notes, beats, and dynamics. 
+ * Allows adding/removing notes, retrieving measure details, and modifying the measure.
  */
 public class Measure {
     
@@ -16,12 +15,7 @@ public class Measure {
     private String dynamics;
 
     /**
-     * Constructs a new Measure object.
-     *
-     * @param notes a list of Chords representing the notes in the measure
-     * @param timeSignature a string representing the time signature of the measure
-     * @param beats a string representing the beats per measure (e.g., "4/4")
-     * @param dynamics a string representing the dynamic markings (e.g., "f" for forte)
+     * Constructs a Measure with the specified notes, beats, and dynamics.
      */
     public Measure(List<Chords> notes, String beats, String dynamics) {
         this.measures = new ArrayList<>();
@@ -32,8 +26,6 @@ public class Measure {
 
     /**
      * Adds a note to the measure.
-     *
-     * @param note the Chords object to be added to the measure
      */
     public boolean addNote(Chords note) {
         return notes.add(note);
@@ -41,29 +33,20 @@ public class Measure {
 
     /**
      * Removes a note from the measure.
-     *
-     * @param note the Chords object to be removed from the measure
      */
     public boolean removeNote(Chords note) {
         return notes.remove(note);
     }
 
-
     /**
-     * Returns a list of notes (Chords) in the measure.
-     *
-     * @return a list of Chords objects
+     * Returns the list of notes in the measure.
      */
     public List<Chords> getNotes() {
         return notes;
     }
 
-
-
     /**
-     * Returns the beats per measure as a string (e.g., "4/4").
-     *
-     * @return a string representing the beats per measure
+     * Returns the beats per measure.
      */
     public String getBeats() {
         return beats;
@@ -71,18 +54,13 @@ public class Measure {
 
     /**
      * Returns the dynamic markings for the measure.
-     *
-     * @return a string representing the dynamics (e.g., "f", "mf", etc.)
      */
     public String getDynamics() {
         return dynamics;
     }
 
     /**
-     * Returns a string representation of the Measure object, including its notes,
-     * time signature, tempo, beats, and dynamics.
-     *
-     * @return a string representation of the Measure object
+     * Returns a string representation of the Measure.
      */
     public String toString() {
         return "Measure{" +
