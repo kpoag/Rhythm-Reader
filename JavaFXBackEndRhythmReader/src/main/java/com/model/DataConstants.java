@@ -34,8 +34,8 @@ public abstract class DataConstants {
 	protected static final String SONG_INSTRUMENT = "instrument";
 	protected static final String SONG_RATING = "rating";
     protected static final String SONG_MEASURES = "measures";
-	protected static final String SONG_CHORD = "chord";
-	protected static final String SONG_SHEET_MUSIC = "sheetMusic";
+	protected static final String SONG_TIME_SIGNATURE = "timeSignature";
+	protected static final String SONG_TEMPO = "tempo";
 
 	protected static final String FLASHCARD_FILE_NAME = "JavaFXBackEndRhythmReader/src/main/java/com/data/flashcards.json";
 	protected static final String FLASHCARD_TEMP_FILE_NAME = "JavaFXBackEndRhythmReader/src/main/java/com/data/flashcards_temp.json";

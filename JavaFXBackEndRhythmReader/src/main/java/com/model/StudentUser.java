@@ -35,65 +35,81 @@ public class StudentUser extends User {
     public double getProgress(){
         return progress;
     }
-    public void setProgress(double progress) {
-        this.progress = progress;
+    public boolean setProgress(double progress) {
+        if (progress < 0.0 || progress > 100.0 ) return false;
+        this.progress = progress ;
+        return true;  
     }
 
     public double getGrade() {
         return grade;
     }
-    public void setGrade(double grade) {
-        this.grade = grade;
+    public boolean setGrade(double grade) {
+        if (grade < 0.0 || grade > 100.0 ) return false;
+        this.grade = grade ;
+        return true;  
     }
 
 
     public ArrayList<String> getClasses() {
         return classes;
     }
-    public void setClasses(ArrayList<String> classes) {
-        this.classes = classes;
+    public boolean setClasses(ArrayList<String> classes) {
+        if (classes == null ) return false;
+        this.classes = classes ;
+        return true;  
     }
 
     public String getSkillLevel(){
         return skillLevel;
     }
-    public void setSkilllevel(String skillLevel) {
-        this.skillLevel = skillLevel;
+    public boolean setSkilllevel(String skillLevel) {
+        if (skillLevel == null ) return false;
+        this.skillLevel = skillLevel ;
+        return true;  
     }
 
     public ArrayList<String> getCompletedFlashcards() {
         return completedFlashcards;
     }
-    public void setCompletedFlashcards(ArrayList<String> completedFlashcards) {
-        this.completedFlashcards = completedFlashcards;
+    public boolean setCompletedFlashcards(ArrayList<String> completedFlashcards) {
+        if (completedFlashcards == null ) return false;
+        this.completedFlashcards = completedFlashcards ;
+        return true;  
     }
 
     public ArrayList<String> getAssignedFlashcards(){
         return assignedFlashcards;
     }
-    public void setAssignedFlashcards(ArrayList<String> assignedFlashcards) {
-        this.assignedFlashcards = assignedFlashcards;
+    public boolean setAssignedFlashcards(ArrayList<String> assignedFlashcards) {
+        if (assignedFlashcards == null ) return false;
+        this.assignedFlashcards = assignedFlashcards ;
+        return true;  
     }
 
     public Flashcard getCurrentFlashcard(){
         return currentFlashcard;
     }
-    public void setCurrentFlashcard(Flashcard currentFlashcard) {
-        this.currentFlashcard = currentFlashcard;
+    public boolean setCurrentFlashcard(Flashcard currentFlashcard) {
+        if (currentFlashcard == null ) return false;
+        this.currentFlashcard = currentFlashcard ;
+        return true;  
     }
 
     public Map<String, String> getDeadlines(){
         return deadlines;
     }
-    public void setDeadlines(Map<String, String> deadlines){
-        this.deadlines = deadlines;
+    public boolean setDeadlines(Map<String, String> deadlines){
+        if (deadlines == null ) return false;
+        this.deadlines = deadlines ;
+        return true; 
     }
 
     public boolean hasClassroomCode(String code) {
         //finish method
         return true;
     }
-    public void takePlacementTest(){
+    public boolean takePlacementTest(){
         //finish method
 
     }
