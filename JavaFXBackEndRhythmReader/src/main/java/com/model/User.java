@@ -135,11 +135,12 @@ public class User {
 		return userName;
 	}
 
-<<<<<<< HEAD
+	/**
+	 * Determines whether current user is a Teacher
+	 * @return boolean of User being a Teacher
+	 */
 	public boolean isTeacher(){
 		return false;
 	}
-=======
 	
->>>>>>> 21c2463c518621af58c161a0c6fe8d671917bc3d
 }

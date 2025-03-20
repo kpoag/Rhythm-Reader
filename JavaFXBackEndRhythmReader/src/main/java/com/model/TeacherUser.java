@@ -95,6 +95,10 @@ public class TeacherUser extends User {
         return true;
     }
     
+    /**
+     * Determines that current User is a Teacher
+     * @return boolean answer True that User is a Teacher
+     */
     public boolean isTeacher() {
         return true;
     }
