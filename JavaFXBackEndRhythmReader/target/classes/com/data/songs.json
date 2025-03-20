@@ -8,7 +8,7 @@
         "rating":5.0,
         "instrument": "piano",
         "timeSignature": "4/4",
-        "tempo":"120",
+        "tempo":120,
         "measures":[
             ["C4", "C4", "G4", "G4"],
             ["A4", "A4","G4"],
@@ -24,7 +24,7 @@
         "rating":3.7,
         "instrument": "piano",
         "timeSignature": "3/4",
-        "tempo": "125",
+        "tempo": 125,
         "measures":[
             [["F#4", "A4"], "D4", "A4"],
             [["G4", "B4"], ["F#4", "A4"],["F#4", "D4"]],
@@ -39,7 +39,7 @@
         "rating":5.0,
         "instrument": "piano",
         "timeSignature":"4/4",
-        "tempo":"90",
+        "tempo":90,
         "measures":[]
     },{
         "songID":"97ef8080-08ce-4202-b4a0-44b5d6d8bf3b",
@@ -50,7 +50,7 @@
         "rating":4.9,
         "instrument": "piano",
         "timeSignature":"3/4",
-        "tempo":"100",
+        "tempo":100,
         "measures":[]
     }
 ]

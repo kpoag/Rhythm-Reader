@@ -12,8 +12,6 @@ public class Measure {
     
     private List<String> measures;
     private List<Chords> notes;
-    private String timeSignature;
-    private int tempo;
     private String beats;
     private String dynamics;
 
@@ -22,15 +20,12 @@ public class Measure {
      *
      * @param notes a list of Chords representing the notes in the measure
      * @param timeSignature a string representing the time signature of the measure
-     * @param tempo the tempo (beats per minute) of the measure
      * @param beats a string representing the beats per measure (e.g., "4/4")
      * @param dynamics a string representing the dynamic markings (e.g., "f" for forte)
      */
-    public Measure(List<Chords> notes, String timeSignature, int tempo, String beats, String dynamics) {
+    public Measure(List<Chords> notes, String beats, String dynamics) {
         this.measures = new ArrayList<>();
         this.notes = new ArrayList<>(notes);
-        this.timeSignature = timeSignature;
-        this.tempo = tempo;
         this.beats = beats;
         this.dynamics = dynamics;
     }
@@ -53,16 +48,6 @@ public class Measure {
         return notes.remove(note);
     }
 
-    /**
-     * Changes the tempo of the measure.
-     *
-     * @param newTempo the new tempo (beats per minute) to set
-     * @return the updated tempo
-     */
-    public int changeTempo(int newTempo) {
-        this.tempo = newTempo;
-        return this.tempo;
-    }
 
     /**
      * Returns a list of notes (Chords) in the measure.
@@ -73,23 +58,7 @@ public class Measure {
         return notes;
     }
 
-    /**
-     * Returns the time signature of the measure.
-     *
-     * @return the time signature as a string (e.g., "4/4")
-     */
-    public String getTimeSignature() {
-        return timeSignature;
-    }
 
-    /**
-     * Returns the tempo of the measure.
-     *
-     * @return the tempo (beats per minute) as an integer
-     */
-    public int getTempo() {
-        return tempo;
-    }
 
     /**
      * Returns the beats per measure as a string (e.g., "4/4").
@@ -119,8 +88,6 @@ public class Measure {
         return "Measure{" +
                 "measures=" + measures +
                 ", notes=" + notes +
-                ", timeSignature='" + timeSignature + '\'' +
-                ", tempo=" + tempo +
                 ", beats='" + beats + '\'' +
                 ", dynamics='" + dynamics + '\'' +
                 '}';

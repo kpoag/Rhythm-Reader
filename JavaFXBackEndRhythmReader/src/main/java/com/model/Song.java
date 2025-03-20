@@ -14,14 +14,19 @@ public class Song {
     private DifficultyLevel difficulty;
     private String instrument;
     private double rating;
+    private int tempo;
+    private String timeSignature;
     private ArrayList<Measure> measures;
 
-    public Song(String songID, String songTitle, String artist, Genre genre, DifficultyLevel difficulty, String instrument, double rating) {
+    public Song(String songID, String songTitle, String artist, Genre genre, 
+    DifficultyLevel difficulty, String instrument, double rating, int tempo, String timeSignature) {
         this.songID= songID;
         this.songTitle = songTitle;
         this.artist = artist;
         this.genre = genre;
         this.difficulty = difficulty;
+        this.tempo = tempo;
+        this.timeSignature = timeSignature;
         this.instrument = instrument;
         this.rating = rating;
         this.measures = new ArrayList<>();
@@ -58,6 +63,32 @@ public class Song {
         }
         this.rating = rating;
         return true;
+    }
+    public double getTempo(){
+        return tempo;
+    }
+    public boolean setTempo(int tempo){
+        if (tempo < 0) return false;
+        this.tempo = tempo;
+        return true;
+    }
+    public String getTimeSignature(){
+        return timeSignature;
+    }
+    public boolean setTimeSignature(String timeSignature){
+        if(timeSignature == null) return false;
+        this.timeSignature = timeSignature;
+        return true;
+    }
+     /**
+     * Changes the tempo of the measure.
+     *
+     * @param newTempo the new tempo (beats per minute) to set
+     * @return the updated tempo
+     */
+    public int changeTempo(int newTempo) {
+        this.tempo = newTempo;
+        return this.tempo;
     }
     /* 
     public List<Song> filterMusic() {
@@ -117,7 +148,7 @@ public class Song {
     }
 
 
-    public boolean createSheetMusic() {
+    public boolean createSong() {
         
     }
     public boolean play(){
