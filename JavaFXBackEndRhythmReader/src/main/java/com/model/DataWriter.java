@@ -53,7 +53,7 @@ public class DataWriter extends DataConstants {
         userDetails.put(USER_BADGES, user.getBadges());
         userDetails.put(USER_FRIENDS, user.getFriendNames(userDetails));
         
-        if (userDetails.containsKey(USER_PROGRESS)) {
+        if (!user.isTeacher()) {
             userDetails.putAll(getStudentJSON((StudentUser) user));
         }
         else {

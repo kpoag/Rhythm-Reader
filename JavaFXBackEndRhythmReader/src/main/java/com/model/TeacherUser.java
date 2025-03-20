@@ -91,4 +91,7 @@ public class TeacherUser extends User {
         return true;
     }
     
+    public boolean isTeacher() {
+        return true;
+    }
 }

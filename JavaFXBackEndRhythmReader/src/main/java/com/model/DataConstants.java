@@ -3,7 +3,7 @@ package com.model;
 
 public abstract class DataConstants {
 	protected static final String USER_FILE_NAME = "JavaFXBackEndRhythmReader/src/main/java/com/data/users.json";
-	protected static final String USER_TEMP_FILE_NAME = "src/main/java/com/data/users_temp.json";
+	protected static final String USER_TEMP_FILE_NAME = "JavaFXBackEndRhythmReader/src/main/java/com/data/users_temp.json";
 	protected static final String USER_ID = "id";
 	protected static final String USER_USER_NAME = "username";
 	protected static final String USER_FIRST_NAME = "firstName";
@@ -25,7 +25,7 @@ public abstract class DataConstants {
 	protected static final String USER_FRIENDS= "friends";
 
 	protected static final String SONG_FILE_NAME = "JavaFXBackEndRhythmReader/src/main/java/com/data/songs.json";
-	protected static final String SONG_TEMP_FILE_NAME = "src/main/java/com/data/users_temp.json";
+	protected static final String SONG_TEMP_FILE_NAME = "JavaFXBackEndRhythmReader/src/main/java/com/data/users_temp.json";
 	protected static final String SONG_SONG_ID = "songID";
 	protected static final String SONG_SONGTITLE = "songTitle";
 	protected static final String SONG_ARTIST = "artist";
@@ -38,7 +38,7 @@ public abstract class DataConstants {
 	protected static final String SONG_SHEET_MUSIC = "sheetMusic";
 
 	protected static final String FLASHCARD_FILE_NAME = "JavaFXBackEndRhythmReader/src/main/java/com/data/flashcards.json";
-	protected static final String FLASHCARD_TEMP_FILE_NAME = "src/main/java/com/data/flashcards_temp.json";
+	protected static final String FLASHCARD_TEMP_FILE_NAME = "JavaFXBackEndRhythmReader/src/main/java/com/data/flashcards_temp.json";
 	protected static final String FLASHCARD_CARD_ID = "cardID";
 	protected static final String FLASHCARD_FRONT_TEXT = "frontText";
 	protected static final String FLASHCARD_BACK_TEXT = "backText";

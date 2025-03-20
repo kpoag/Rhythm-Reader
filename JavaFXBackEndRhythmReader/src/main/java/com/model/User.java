@@ -118,5 +118,8 @@ public class User {
 	public String toString() {
 		return userName;
 	}
-	
+
+	public boolean isTeacher(){
+		return false;
+	}
 }

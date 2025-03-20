@@ -1,3 +1,4 @@
+com\model\SongList.class
 module-info.class
 com\model\Song.class
 com\model\Genre.class
