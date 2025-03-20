@@ -13,7 +13,7 @@ import org.json.simple.parser.JSONParser;;
 
 public class DataLoader extends DataConstants{
 	/**
-	 * loadUsers method
+	 * loadUsers method that gets user information from the user.json file
 	 * @authors Jaylen and Kennedy
 	 */
 	public static ArrayList<User> loadUsers() {
@@ -81,7 +81,11 @@ public class DataLoader extends DataConstants{
 		
 		return users;
 	}
-
+	/**
+	 * gets information for the gradebook 
+	 * @param gradebookJSON
+	 * @return
+	 */
 	private static Map<String, ArrayList<Map<String, String>>> parseGradebook(JSONObject gradebookJSON) {
 		Map<String, ArrayList<Map<String, String>>> gradebook = new HashMap<>();
 
@@ -109,7 +113,7 @@ public class DataLoader extends DataConstants{
 
 
 	/**
-	 * loadSongs method
+	 * loadSongs method thats gets information from the songs.json
 	 * @authors Jaylen
 	 */
 
@@ -147,7 +151,7 @@ public class DataLoader extends DataConstants{
 	}
 
 	/**
-	 * loadFlashcards method
+	 * loadFlashcards method that gets information from the flashcard.json
 	 * @authors Jaylen
 	 */
 	public static ArrayList<Flashcard> loadFlashcards()
@@ -181,6 +185,10 @@ public class DataLoader extends DataConstants{
 		return flashcards;
 	}
 
+	/**
+	 * temparary main method to just check to make sure code works
+	 * @param args
+	 */
 	public static void main(String[] args) {
 
 		// Test Users
