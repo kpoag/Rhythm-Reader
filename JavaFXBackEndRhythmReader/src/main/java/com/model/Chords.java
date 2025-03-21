@@ -1,4 +1,5 @@
 package com.model;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,9 +35,9 @@ public class Chords {
     }
 
     /**
-     * Returns the list of notes in the chord.
+     * Returns the list of notes that make up the chord.
      *
-     * @return notes
+     * @return the list of objects
      */
     public List<Note> getNotes() {
         return notes;

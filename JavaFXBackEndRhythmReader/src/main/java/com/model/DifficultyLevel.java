@@ -5,12 +5,19 @@ package com.model;
  * It contains three levels: BEGINNER, INTERMEDIATE, and ADVANCED.
  */
 public enum DifficultyLevel {
-// Represents the beginner level difficulty.
-    BEGINNER, 
+    /**
+     * Represents the beginner level difficulty.
+     */
+    BEGINNER,
 
-// Represents the intermediate level difficulty.
+    /**
+     * Represents the intermediate level difficulty.
+     */
     INTERMEDIATE,
-    
-// Represents the advanced level difficulty.
-    ADVANCED; 
+
+    /**
+     * Represents the advanced level difficulty.
+     */
+    ADVANCED;
 }
+

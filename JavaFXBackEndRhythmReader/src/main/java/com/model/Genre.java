@@ -4,28 +4,48 @@ package com.model;
  * It includes a variety of music genres such as classical, jazz, blues, pop, and more.
  */
 
+/**
+ * Enum representing different music genres.
+ * It includes a variety of music genres such as classical, jazz, blues, pop, and more.
+ */
 public enum Genre {
-/**Represents classical music genre.*/
+    /**
+     * Represents classical music genre.
+     */
     CLASSICAL,
 
-/**Represents jazz music genre.*/
+    /**
+     * Represents jazz music genre.
+     */
     JAZZ,
 
-/**Represents blues music genre.*/
+    /**
+     * Represents blues music genre.
+     */
     BLUES,
 
-/**Represents pop music genre.*/
+    /**
+     * Represents pop music genre.
+     */
     POP,
 
-/**Represents traditional music genre.*/
+    /**
+     * Represents traditional music genre.
+     */
     TRADITIONAL,
 
-/**Represents contemporary music genre.*/
+    /**
+     * Represents contemporary music genre.
+     */
     CONTEMPORARY,
 
-/**Represents country music genre.*/
+    /**
+     * Represents country music genre.
+     */
     COUNTRY,
-    
-/**Represents hip-hop music genre.*/
+
+    /**
+     * Represents hip hop music genre.
+     */
     HIP_HOP;
 }

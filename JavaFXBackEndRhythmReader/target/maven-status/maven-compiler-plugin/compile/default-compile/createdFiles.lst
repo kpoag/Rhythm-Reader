@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 com\rhythmreader\PrimaryController.class
 com\model\DataConstants.class
 com\rhythmreader\App.class
@@ -9,6 +10,9 @@ com\model\SongList.class
 com\model\Notetype.class
 com\model\DataWriter.class
 com\model\StudentUser.class
+=======
+com\model\SongList.class
+>>>>>>> 505e36cdcd0368e9024110209bbaa586ed32dda3
 module-info.class
 com\model\DataLoader.class
 com\model\MusicPlayer.class

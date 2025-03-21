@@ -48,8 +48,6 @@ public class Measure {
 
     /**
      * Returns the dynamic markings for the measure.
-     *
-     * @return a string representing the dynamics (e.g., "f", "mf", etc.)
      */
     public String getDynamics() {
         return dynamics;

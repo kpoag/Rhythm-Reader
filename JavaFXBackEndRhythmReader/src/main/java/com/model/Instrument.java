@@ -113,6 +113,7 @@ public class Instrument {
         return instrumentName + " is playing " + songName + " at " + tempo + " BPM.";
     }
 
+
     /**
      * Evaluates the performance by updating the accuracy score.
      * 
