@@ -109,10 +109,11 @@ public class StudentUser extends User {
         //finish method
         return true;
     }
+    /* 
     public boolean takePlacementTest(){
         //finish method
 
-    }
+    }*/
     
 
 }

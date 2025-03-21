@@ -1,10 +1,7 @@
-/**
- * Package containing model classes.
- */
 package com.model;
 
 /**
- * The {@code Instrument} class represents a musical instrument used for practicing songs.
+ * The class represents a musical instrument used for practicing songs.
  * It contains details such as the instrument's name, the song being played, the tempo, 
  * and an accuracy score for evaluating performance.
  */
@@ -114,16 +111,6 @@ public class Instrument {
      */
     public String playExercise() {
         return instrumentName + " is playing " + songName + " at " + tempo + " BPM.";
-    }
-
-    /**
-     * Adjusts the tempo of the song.
-     * 
-     * @param newTempo the new tempo in BPM
-     */
-    public String adjustTempo(int newTempo) {
-        this.tempo = newTempo;
-        return "Tempo adjusted to " + tempo + " BPM.";
     }
 
     /**

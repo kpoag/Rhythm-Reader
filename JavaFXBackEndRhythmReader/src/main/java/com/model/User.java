@@ -135,5 +135,14 @@ public class User {
 		return userName;
 	}
 
+	/**
+	 * Determines whether current user is a Teacher
+	 * @return boolean of User being a Teacher
+	 */
+	public boolean isTeacher(){
+		return false;
+	}
+	
+
 	
 }
