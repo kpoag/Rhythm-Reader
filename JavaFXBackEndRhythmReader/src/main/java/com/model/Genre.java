@@ -1,4 +1,8 @@
 package com.model;
+/**
+ * Enum representing different music genres.
+ * It includes a variety of music genres such as classical, jazz, blues, pop, and more.
+ */
 
 /**
  * Enum representing different music genres.

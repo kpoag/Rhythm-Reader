@@ -16,6 +16,34 @@ public class TeacherUser extends User {
        this.teachingClasses = teachingClasses;
        this.gradebook = gradebook;
     }
+    public static TeacherUser createTeacherAccount(String userName, String firstName, String lastName, String email, String password) {
+        // Check if username already exists
+        if (UserList.getInstance().haveUser(userName)) {
+            return null;
+        }
+        
+        // Default values for new teacher users
+        int points = 0;
+        ArrayList<String> badges = new ArrayList<>();
+        badges.add("Instructor");
+        ArrayList<String> friends = new ArrayList<>();
+        
+        // Teacher-specific attributes
+        ArrayList<String> teachingClasses = new ArrayList<>();
+        Map<String, ArrayList<Map<String, String>>> gradebook = new HashMap<>();
+        
+        // Create and add the teacher user
+        TeacherUser newUser = new TeacherUser(userName, firstName, lastName, email, password, 
+                                             points, badges, friends, teachingClasses, gradebook);
+        
+        boolean success = UserList.getInstance().addUser(newUser);
+        
+        if (success) {
+            return newUser;
+        }
+        
+        return null;
+    }
 
     public boolean addStudent(StudentUser student) {
         if (teachingClasses == null || teachingClasses.isEmpty()) {
@@ -94,7 +122,7 @@ public class TeacherUser extends User {
 
         return true;
     }
-    
+
     /**
      * Determines that current User is a Teacher
      * @return boolean answer True that User is a Teacher

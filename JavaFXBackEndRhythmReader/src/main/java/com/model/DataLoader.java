@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import org.jfugue.player.Player;
+
+
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -13,7 +16,7 @@ import org.json.simple.parser.JSONParser;;
 
 public class DataLoader extends DataConstants{
 	/**
-	 * loadUsers method
+	 * loadUsers method that gets user information from the user.json file
 	 * @authors Jaylen and Kennedy
 	 */
 	public static ArrayList<User> loadUsers() {
@@ -81,6 +84,11 @@ public class DataLoader extends DataConstants{
 		
 		return users;
 	}
+	/**
+	 * gets information for the gradebook 
+	 * @param gradebookJSON
+	 * @return gradebook
+	 */
 
 	private static Map<String, ArrayList<Map<String, String>>> parseGradebook(JSONObject gradebookJSON) {
 		Map<String, ArrayList<Map<String, String>>> gradebook = new HashMap<>();
@@ -109,7 +117,7 @@ public class DataLoader extends DataConstants{
 
 
 	/**
-	 * loadSongs method
+	 * loadSongs method thats gets information from the songs.json
 	 * @authors Jaylen
 	 */
 
@@ -132,9 +140,19 @@ public class DataLoader extends DataConstants{
 				double rating = (double)songJSON.get(SONG_RATING);
 				String timeSignature = (String)songJSON.get(SONG_TIME_SIGNATURE);
 				int tempo = ((Long)songJSON.get(SONG_TEMPO)).intValue();
-				ArrayList<Measure> measures= (ArrayList)songJSON.get(SONG_MEASURES);
+				JSONArray measuresJSON = (JSONArray)songJSON.get(SONG_MEASURES);
+				ArrayList<Measure>  measureList = new ArrayList<>();
+				for (Object m : measuresJSON) {
+					JSONArray measureArray = (JSONArray) m;
+					Measure measure = Measure.fromJSON(m, timeSignature, "");
+					measureList.add(measure);
 
-				songs.add(new Song(songID, songTitle, artist, genre, difficulty, instrument, rating, tempo, timeSignature));
+				}
+				Song song = new Song(songID, songTitle, artist, genre, difficulty, instrument, rating, tempo, timeSignature);
+				song.setMeasures(measureList);
+				songs.add(song);
+
+
 			}
 			
 			return songs;
@@ -147,7 +165,7 @@ public class DataLoader extends DataConstants{
 	}
 
 	/**
-	 * loadFlashcards method
+	 * loadFlashcards method that gets information from the flashcard.json
 	 * @authors Jaylen
 	 */
 	public static ArrayList<Flashcard> loadFlashcards()
@@ -181,6 +199,10 @@ public class DataLoader extends DataConstants{
 		return flashcards;
 	}
 
+	/**
+	 * temparary main method to just check to make sure code works
+	 * @param args
+	 */
 	public static void main(String[] args) {
 
 		// Test Users
@@ -198,7 +220,16 @@ public class DataLoader extends DataConstants{
             System.out.println("No songs loaded. Check the JSON file or parsing logic.");
         } else {
             System.out.println("Loaded " + songs.size() + " songs.");
-        }
+		}	
+
+		// Test playing first song 
+		Song firstSong = songs.get(0);
+		firstSong.playSong();
+
+		// Test playing second song with custom tempo
+		Song secondSong = songs.get(1);
+        secondSong.playSongWithTempo(100);
+        
 
 		//Test flashcards
 		ArrayList<Flashcard> flashcard= loadFlashcards();

@@ -33,7 +33,7 @@ public class Notes {
      * Checks if the note is a rest.
      */
     public boolean isRest() {
-        return noteName.equals("rest");
+        return noteName.equalsIgnoreCase("rest");
     }
 
     /**
@@ -98,6 +98,7 @@ public class Notes {
     public String toString() {
         return "Note{" +
                 "noteName='" + noteName + '\'' +
+                ", chords=" + notes +
                 ", pitch='" + pitch + '\'' +
                 ", duration=" + duration +
                 ", accidental=" + accidental +
