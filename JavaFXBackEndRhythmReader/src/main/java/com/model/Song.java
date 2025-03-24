@@ -1,8 +1,9 @@
 package com.model;
 
 import java.util.ArrayList;
-import org.jfugue.player.Player;
+
 import org.jfugue.pattern.Pattern;  
+import org.jfugue.player.Player;  
 
 /**
  * Represents a song with a title, artist, genre, difficulty, instrument,
