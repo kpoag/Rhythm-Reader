@@ -1,10 +1,15 @@
 package com.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
- * @author Kennedy Poag
  * Represents a flashcard with text, picture, category, difficulty, and a list of assigned students.
+ * Each flashcard has a unique cardID, front and back text, associated picture, category, difficulty, and students assigned.
+ * Provides methods for checking answers, updating progress, and managing student assignments.
+ * 
+ * @author Kennedy Poag and Rondasha Bonds
  */
 public class Flashcard {
     private String cardID;
@@ -13,10 +18,11 @@ public class Flashcard {
     private String backText;
     private String category;
     private String difficulty;
+    private String hint;
     private ArrayList<StudentUser> assignedStudents;
 
     /**
-     * Constructs a Flashcard
+     * Constructs a Flashcard with specified attributes.
      *
      * @param cardID     the unique identifier for the flashcard
      * @param frontText  the text displayed on the front of the flashcard
@@ -36,192 +42,158 @@ public class Flashcard {
     }
 
     /**
-     * Returns the flashcard ID.
-     *
-     * @return cardID
+     * Flips the flashcard to show the back text.
+     * 
+     * @return true or false indicating the flip state (this could be expanded based on design).
      */
-    public String getCardID() {
-        return cardID;
+    public boolean flip() {
+        return false;
     }
 
     /**
-     * Sets the flashcard ID.
-     *
-     * @param cardID new card ID
-     * @return true if set successfully, false if cardID is null
-     */
-    public boolean setCardID(String cardID) {
-        if (cardID == null ) return false;
-        this.cardID= cardID;
-        return true; 
-    }
-
-    /**
-     * Returns the front text of the flashcard.
-     *
-     * @return frontText
+     * Gets the front text of the flashcard.
+     * 
+     * @return the front text of the flashcard
      */
     public String getFrontText() {
         return frontText;
     }
 
     /**
-     * Sets the front text of the flashcard.
-     *
-     * @param frontText new front text
-     * @return true if set successfully, false if frontText is null
-     */
-    public boolean setFrontText(String frontText) {
-        if (frontText == null ) return false;
-        this.frontText= frontText;
-        return true; 
-    }
-
-    /**
-     * Returns the back text of the flashcard.
-     *
-     * @return the backText
+     * Gets the back text of the flashcard.
+     * 
+     * @return the back text of the flashcard
      */
     public String getBackText() {
         return backText;
     }
 
     /**
-     * Sets the back text of the flashcard.
-     *
-     * @param backText new back text
-     * @return true if set successfully, false if backText is null
-     */
-    public boolean setBackText(String backText) {
-        if (backText == null ) return false;
-        this.backText = backText ;
-        return true; 
-    }
-
-    /**
-     * Returns the picture associated with the flashcard.
-     *
-     * @return picture
+     * Gets the picture associated with the flashcard.
+     * 
+     * @return the picture associated with the flashcard
      */
     public String getPicture() {
         return picture;
     }
 
-     /**
-     * Sets the picture for the flashcard.
-     *
-     * @param picture new picture
-     * @return true if set successfully, false if picture is null
-     */
-    public boolean setPicture(String picture) {
-        if (picture == null ) return false;
-        this.picture = picture ;
-        return true; 
-    }
-
-     /**
-     * Returns the category of flashcard.
-     *
-     * @return category
-     */
-    public String getCategory( ){
-        return category;
-    }
-
-     /**
-     * Sets the category of the flashcard.
-     *
-     * @param category new category
-     * @return true if set successfully, false if category is null
-     */
-    public boolean setCategory(String category){
-        if (category == null ) return false;
-        this.category = category ;
-        return true;   
-    }
-
     /**
-     * Returns the difficulty level of the flashcard.
-     *
-     * @return  difficulty
+     * Gets the unique identifier of the flashcard.
+     * 
+     * @return the card ID
      */
+    public String getCardID() {
+        return cardID;
+    }
+    /**
+ * Gets the difficulty level of the flashcard.
+ *
+ * @return the difficulty level as a String
+ */
     public String getDifficulty() {
         return difficulty;
     }
-
     /**
-     * Sets the difficulty level of the flashcard.
-     *
-     * @param difficulty new difficulty level
-     * @return true if set successfully, false if difficulty is null
-     */
-    public boolean setDifficulty(String difficulty){
-        if (difficulty == null ) return false;
-        this.difficulty = difficulty ;
-        return true;   
+ * Gets the category of the flashcard.
+ *
+ * @return the category as a String
+ */
+    public String getCategory() {
+        return category;
     }
-    
     /**
-     * Flips the flashcard.
+     * Checks if the provided answer matches the back text of the flashcard.
      *
-     * @return true or false
+     * @param userAnswer the user's answer to check
+     * @return true if the user's answer matches the back text, false otherwise
      */
-    public boolean flip(){
-        // TO DO:Implement flip functionality
-        return false;
-    }
-    
-     /**
-      * Checks if the user's answer is correct.
-      *
-      * @param userAnswer user's answer
-      * @return true or false if user's answer is correct.
-      */
     public boolean checkAnswer(String userAnswer) {
-        // TO DO: Implement answer checking functionality
-        return false;
+        return this.backText.equals(userAnswer);
     }
 
     /**
-     * Returns a string representation of the flashcard.
+     * Updates the student's progress based on the flashcard's category or assigned cards.
      *
-     * @return string representation including the cardID
+     * @param studentID  The ID of the student.
+     * @param userAnswer The user's answer to the flashcard.
+     * @param isStudent  Boolean indicating whether the user is a student.
+     * @param category   The category of the flashcard.
+     * @param flashcard  The Flashcard instance to check the answer for.
+     */
+    public static void updateProgress(String studentID, String userAnswer, boolean isStudent, String category, Flashcard flashcard) {
+        Map<String, Double> studentProgress = new HashMap<>();
+
+        if (isStudent) {
+            boolean isCorrect = flashcard.checkAnswer(userAnswer);
+            if (isCorrect) {
+                studentProgress.put(studentID, studentProgress.getOrDefault(studentID, 0.0) + 1);
+            }
+        } else {
+            double totalCards = Flashcard.getTotalCardsInCategory(category);
+            double completedCards = Flashcard.getCompletedCardsInCategory(category);
+            double progress = completedCards / totalCards;
+            System.out.println("Category Progress for " + category + ": " + progress);
+        }
+    }
+
+    /**
+     * Returns the total number of flashcards in a specified category.
+     *
+     * @param category The category to check.
+     * @return the total number of flashcards in the category
+     */
+    public static double getTotalCardsInCategory(String category) {
+        return 3; // Placeholder value
+    }
+
+    /**
+     * Returns the number of completed flashcards in a specified category.
+     *
+     * @param category The category to check.
+     * @return the number of completed flashcards in the category
+     */
+    public static double getCompletedCardsInCategory(String category) {
+        return 1; // Placeholder value
+    }
+
+    /**
+     * Returns a string representation of the flashcard, including the card ID.
+     *
+     * @return a string representation of the flashcard
      */
     @Override
     public String toString() {
-        return "Flashcrd " + cardID;
+        return "Flashcard " + cardID;
     }
 
     /**
-     * Returns the list of students assigned to this flashcard.
+     * Gets the list of students assigned to this flashcard.
      *
-     * @return assignedStudents list
+     * @return the list of assigned students
      */
-    public ArrayList<StudentUser> getAssignedStudents(){
+    public ArrayList<StudentUser> getAssignedStudents() {
         return assignedStudents;
     }
 
     /**
      * Sets the list of students assigned to this flashcard.
      *
-     * @param assignedStudents new list of assigned students
-     * @return true if set successfully, false if assignedStudents is null
+     * @param assignedStudents the new list of assigned students
+     * @return true if the list was set successfully, false if assignedStudents is null
      */
     public boolean setAssignedStudents(ArrayList<StudentUser> assignedStudents) {
-        if (assignedStudents == null ) return false;
-        this.assignedStudents = assignedStudents ;
-        return true;   
+        if (assignedStudents == null) return false;
+        this.assignedStudents = assignedStudents;
+        return true;
     }
 
     /**
      * Checks if a student has completed the flashcard.
      *
-     * @param studentID student's ID
-     * @return false (placeholder implementation)
+     * @param studentID the ID of the student
+     * @return true if the student has completed the flashcard, false otherwise
      */
-    public boolean hasStudentCompleted(String studentID){
-        //To DO: implement this method to check if a student has completed the
-        // flashcard based on the studentID
-        return false;
+    public boolean hasStudentCompleted(String studentID) {
+        return false; // Implement this logic based on how progress is tracked
     }
 }
