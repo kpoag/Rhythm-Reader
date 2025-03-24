@@ -5,6 +5,14 @@ import java.util.ArrayList;
 import org.jfugue.pattern.Pattern;  
 import org.jfugue.player.Player;  
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
+
 /**
  * Represents a song with a title, artist, genre, difficulty, instrument,
  * rating, tempo, time signature, and a list of measures.
@@ -441,4 +449,33 @@ public class Song {
             default: return 0;
         }
     }
+
+    /** 
+     * method thats ask user for info to create a song
+     */
+    private static Song createUserSong()
+    {
+        Scanner scanner= new Scanner(System.in);
+
+        System.out.print("Enter song ID: ");
+        String songID = scanner.nextLine();
+        
+        System.out.print("Enter song title: ");
+        String songTitle = scanner.nextLine();
+
+        System.out.print("Enter artist: ");
+        String artist = scanner.nextLine();
+
+        Genre genre = Genre.POP;  // Assume you have an enum Genre
+        DifficultyLevel difficulty = DifficultyLevel.BEGINNER;  // And an enum DifficultyLevel
+        String instrument = "piano";
+        double rating = 5.0; 
+        int tempo = 120;
+        String timeSignature = "4/4";
+
+        Song song= new Song(songID, songTitle, artist, genre,  difficulty, 
+        instrument, rating, tempo, timeSignature);
+    }
+
+
 }

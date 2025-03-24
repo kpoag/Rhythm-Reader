@@ -280,6 +280,8 @@ public class Measure {
     
     return pattern.toString().trim();
     }
+    
+
 
     /**
      * Returns a string representation of the Measure object
