@@ -2,6 +2,9 @@
 
 package com.model;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class RRFacade {
     private static RRFacade facade;
     private User currUser;
@@ -25,6 +28,15 @@ public class RRFacade {
 
     public Song getCurrentSong() {
         return currSong;
+    }
+
+    public User createAccount(String userName, String firstName, String lastName, String email,String password, Scanner scanner) {
+        User newUser = User.createAccountByType(userName, firstName, lastName, email, password, scanner);
+        if (newUser != null) {
+            this.currUser = newUser;
+        } 
+        return newUser;
+        
     }
 
     

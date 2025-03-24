@@ -2,6 +2,7 @@ package com.model;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.UUID;
 
 public class User {
@@ -40,6 +41,69 @@ public class User {
         this.badges= badges;
         this.friends= friends;
 	}
+
+	public static User createDefaultAccount(String firstName, String lastName, String userName, String email, String password) {
+
+		if (UserList.getInstance().haveUser(userName)) {
+			return null;
+		}
+		int points = 0;
+        ArrayList<String> badges = new ArrayList<>();
+        badges.add("Beginner");
+        ArrayList<String> friends = new ArrayList<>();
+
+		User newUser = new User(userName, firstName, lastName, email, password, points, badges, friends);
+		boolean success = UserList.getInstance().addUser(newUser);
+
+		if (success) {
+			return newUser;
+		}
+		return null;
+
+	}
+
+
+	public static User createAccountByType(String userName, String firstName, String lastName, String email, String password, Scanner scanner) {
+        System.out.println("What type of account would you like to create?");
+        System.out.println("1. Regular");
+        System.out.println("2. Student");
+        System.out.println("3. Teacher");
+        System.out.print("Enter your choice (1-3): ");
+
+		String input = scanner.nextLine().trim();
+		int accountType;
+
+		try {
+            accountType = Integer.parseInt(input);
+            
+            if (accountType < 1 || accountType > 3) {
+                System.out.println("Invalid choice. Please select 1, 2, or 3.");
+                return null;
+            }
+
+			User newUser = null;
+
+        	if (accountType == 1) {
+				newUser = User.createDefaultAccount(userName, firstName, lastName, email, password);
+			} else if (accountType == 2) {
+				newUser = StudentUser.createStudentUser(userName, firstName, lastName, email, password);
+			} else if (accountType == 3) {
+				newUser = TeacherUser.createTeacherAccount(userName, firstName, lastName, email, password);
+			}
+
+			if (newUser != null) {
+				System.out.println("Account created successfully!");
+			} else {
+				System.out.println("Failed to create account. Username may already be taken.");
+			}
+			return newUser;
+		} catch (NumberFormatException  e) {
+			System.out.println("Invalid input. Please enter a number between 1 and 3.");
+            return null;
+		}
+	}
+
+
 	
 	public UUID getId() {
 		return id;
@@ -124,6 +188,19 @@ public class User {
     }
     return friendNames;
 	}
+	public static boolean isEmailTaken(String email) {
+		for (User user : UserList.getInstance().getUsers()) {
+			if (user.getEmail().equalsIgnoreCase(email)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public static boolean isValidEmail(String email) {
+		String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$";
+    	return email.matches(emailRegex);
+	}
 	
 	public boolean setFriends(ArrayList<String> friends) {
 		if (friends == null ) return false;
@@ -142,6 +219,7 @@ public class User {
 	public boolean isTeacher(){
 		return false;
 	}
+
 	
 
 	

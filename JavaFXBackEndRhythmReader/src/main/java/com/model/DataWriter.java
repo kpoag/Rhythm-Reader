@@ -43,7 +43,7 @@ public class DataWriter extends DataConstants {
      */
     public static JSONObject getUserJSON(User user) {
         JSONObject userDetails = new JSONObject();
-        userDetails.put(USER_ID, user.getId());
+        userDetails.put(USER_ID, user.getId().toString());
         userDetails.put(USER_USER_NAME, user.getUserName());
         userDetails.put(USER_FIRST_NAME, user.getFirstName());
         userDetails.put(USER_LAST_NAME, user.getLastName());
@@ -124,7 +124,7 @@ public class DataWriter extends DataConstants {
      */
     public static JSONObject getSongJSON(Song song) {
         JSONObject songDetails = new JSONObject();
-        songDetails.put(SONG_SONG_ID, song.getSongID());
+        songDetails.put(SONG_SONG_ID, song.getSongID().toString());
         songDetails.put(SONG_SONGTITLE, song.getSongTitle());
         songDetails.put(SONG_ARTIST, song.getArtist());
         songDetails.put(SONG_GENRE, song.getGenre());
@@ -165,7 +165,7 @@ public class DataWriter extends DataConstants {
      */
     public static JSONObject getFlashcardJSON(Flashcard flashcard) {
         JSONObject flashcardDetails = new JSONObject();
-        flashcardDetails.put(FLASHCARD_CARD_ID, flashcard.getCardID());
+        flashcardDetails.put(FLASHCARD_CARD_ID, flashcard.getCardID().toString());
         flashcardDetails.put(FLASHCARD_FRONT_TEXT, flashcard.getFrontText());
         flashcardDetails.put(FLASHCARD_BACK_TEXT, flashcard.getBackText());
         flashcardDetails.put(FLASHCARD_CATEGORY, flashcard.getCategory());

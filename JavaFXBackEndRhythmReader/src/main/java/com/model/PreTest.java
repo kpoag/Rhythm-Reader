@@ -1,10 +1,6 @@
 package com.model;
 
 import java.util.List;
-<<<<<<< HEAD
-=======
-
->>>>>>> 505e36cdcd0368e9024110209bbaa586ed32dda3
 /**
  * Represents a pre-test with a set of questions, answers, level, and score. 
  * This class allows setting and getting test details, as well as evaluating the score.
@@ -17,10 +13,10 @@ public class PreTest {
 
     /**
      * Constructs a PreTest with the specified questions, answers, level, and score.
-<<<<<<< HEAD
-     * @param que
-=======
->>>>>>> 505e36cdcd0368e9024110209bbaa586ed32dda3
+     * @param questions 
+     * @param answers
+     * @param level
+     * @param score
      */
     public PreTest(List<String> questions, List<String> answers, String level, int score) {
         this.questions = questions;

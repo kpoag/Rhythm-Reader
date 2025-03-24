@@ -32,6 +32,36 @@ public class StudentUser extends User {
         this.deadlines = new HashMap<>();
         this.currentFlashcard = null;    
     }
+
+    public static StudentUser createStudentUser(String userName, String firstName, String lastName, String email, String password) {
+        if (UserList.getInstance().haveUser(userName)) {
+            return null;
+        }
+        int points = 0;
+        ArrayList<String> badges = new ArrayList<>();
+        badges.add("Beginner");
+        ArrayList<String> friends = new ArrayList<>();
+
+        double progress = 0.0;
+        double grade = 0.0;
+        ArrayList<String> classes = new ArrayList<>();
+        String skillLevel = "Beginner";
+        ArrayList<String> completedFlashcards = new ArrayList<>();
+        ArrayList<String> assignedFlashcards = new ArrayList<>();
+        Map<String, String> deadlines = new HashMap<>();
+
+         StudentUser newUser = new StudentUser(userName, firstName, lastName, email, password, 
+                                             points, badges, friends, progress, grade, classes, 
+                                             skillLevel, completedFlashcards, null, deadlines, assignedFlashcards);
+        
+        boolean success = UserList.getInstance().addUser(newUser);
+        
+        if (success) {
+            return newUser;
+        }
+        return null;
+    }
+
     public double getProgress(){
         return progress;
     }
