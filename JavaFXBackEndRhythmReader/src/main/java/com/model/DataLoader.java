@@ -239,6 +239,19 @@ public class DataLoader extends DataConstants{
             System.out.println("Loaded " + flashcard.size() + " flashcards.");
         }
 	
+		// Test checkAnswer method on a flashcard
+       if (!flashcard.isEmpty()) {
+    Flashcard testCard = flashcard.get(0);
+    System.out.println("Testing checkAnswer for flashcard: " + testCard.getFrontText());
+    
+    // Example test input
+    String userInput = testCard.getBackText();
+    boolean isCorrect = testCard.checkAnswer(userInput);
+    
+    System.out.println("User input: " + userInput);
+    System.out.println("Check Answer Result: " + isCorrect);
+}
+
 	}
 
 }
