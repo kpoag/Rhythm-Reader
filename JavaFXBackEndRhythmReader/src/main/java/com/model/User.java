@@ -47,6 +47,14 @@ public class User {
 		if (UserList.getInstance().haveUser(userName)) {
 			return null;
 		}
+		if (User.isEmailTaken(email)) {
+			System.out.println("Email is already registered. Please use a different email.");
+			return null;  
+		}
+		if (!User.isValidEmail(email)) {
+			System.out.println("Invalid email format. Please enter a valid email address.");
+			return null;  
+		}
 		int points = 0;
         ArrayList<String> badges = new ArrayList<>();
         badges.add("Beginner");
@@ -94,7 +102,7 @@ public class User {
 			if (newUser != null) {
 				System.out.println("Account created successfully!");
 			} else {
-				System.out.println("Failed to create account. Username may already be taken.");
+				System.out.println("Failed to create account. User may already exist.");
 			}
 			return newUser;
 		} catch (NumberFormatException  e) {

@@ -475,6 +475,7 @@ public class Song {
 
         Song song= new Song(songID, songTitle, artist, genre,  difficulty, 
         instrument, rating, tempo, timeSignature);
+        return song;
     }
 
 

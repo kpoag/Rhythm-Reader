@@ -29,4 +29,3 @@ com\model\DifficultyLevel.class
 com\model\Chords.class
 com\model\User.class
 com\model\Flashcard.class
-com\model\Notes.class
