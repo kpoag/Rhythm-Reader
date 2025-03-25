@@ -1,1 +1,108 @@
-[]
+[
+    {
+        "currentFlashcard": null,
+        "lastName": "Doe",
+        "classes": [],
+        "skillLevel": "Intermediate",
+        "deadlines": {},
+        "friends": [
+            "Unknown (08b83653-fe19-4dc8-b7e1-72b95bf91587)"
+        ],
+        "completedFlashcards": [],
+        "points": 1000,
+        "badges": [
+            "Scale Master",
+            "Rhythm Pro"
+        ],
+        "firstName": "John",
+        "password": "securepassword123",
+        "grade": 88.0,
+        "progress": 88.0,
+        "assignedFlashcards": [],
+        "id": "2e2d8d8f-7600-44e5-ae6a-1eafe074d7ad",
+        "email": "johndoe@example.com",
+        "username": "johndoe"
+    },
+    {
+        "badges": [
+            ""
+        ],
+        "firstName": "Emma",
+        "lastName": "Smith",
+        "password": "securepassword123",
+        "id": "514936a6-009d-41eb-9aef-c4655ae27084",
+        "gradebook": {
+            "MTH101": [
+                {
+                    "student": "John Doe",
+                    "grade": "88.0"
+                }
+            ],
+            "Advanced Composition": [
+                {}
+            ]
+        },
+        "teachingClasses": [
+            "MTH101"
+        ],
+        "email": "emmasmith@example.com",
+        "friends": [
+            "Unknown (Top Instructor)"
+        ],
+        "username": "emmasmith",
+        "points": 2000
+    },
+    {
+        "currentFlashcard": null,
+        "lastName": "Doe",
+        "classes": [],
+        "skillLevel": "Intermediate",
+        "deadlines": {},
+        "friends": [
+            "Unknown (08b83653-fe19-4dc8-b7e1-72b95bf91587)"
+        ],
+        "completedFlashcards": [],
+        "points": 1000,
+        "badges": [
+            "Scale Master",
+            "Rhythm Pro"
+        ],
+        "firstName": "John",
+        "password": "securepassword123",
+        "grade": 88.0,
+        "progress": 88.0,
+        "assignedFlashcards": [],
+        "id": "243a0015-03e0-4df8-9b07-8d4f914aa92b",
+        "email": "johndoe@example.com",
+        "username": "johndoe"
+    },
+    {
+        "badges": [
+            ""
+        ],
+        "firstName": "Emma",
+        "lastName": "Smith",
+        "password": "securepassword123",
+        "id": "f5ebafb8-541c-4c13-8376-81bd4b7fc16f",
+        "gradebook": {
+            "MTH101": [
+                {
+                    "student": "John Doe",
+                    "grade": "88.0"
+                }
+            ],
+            "Advanced Composition": [
+                {}
+            ]
+        },
+        "teachingClasses": [
+            "MTH101"
+        ],
+        "email": "emmasmith@example.com",
+        "friends": [
+            "Unknown (Top Instructor)"
+        ],
+        "username": "emmasmith",
+        "points": 2000
+    }
+]

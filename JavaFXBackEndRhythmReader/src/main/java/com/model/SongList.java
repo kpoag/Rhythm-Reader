@@ -9,7 +9,7 @@ public class SongList {
     private static SongList instance;
 
     private SongList() {
-        songs = new ArrayList<>();
+        songs = DataLoader.loadSongs();
     } 
     
     public static SongList getInstance(){
@@ -53,6 +53,10 @@ public class SongList {
 
     public boolean save() {
         return true;
+    }
+
+    public boolean saveSongs() {
+        return DataWriter.saveSongs();
     }
     
 }

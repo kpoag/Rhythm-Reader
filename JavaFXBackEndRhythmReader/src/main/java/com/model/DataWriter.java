@@ -26,11 +26,7 @@ public class DataWriter extends DataConstants {
         JSONArray jsonUsers = new JSONArray();
 
         System.out.println("Total users in UserList: " + users.getUsers().size());
-        /*
-        for (int i = 0; i < userList.size(); i++) {
-            jsonUsers.add(getUserJSON(userList.get(i)));
-        }
-        */
+        
         Set<String> uuid = new HashSet<>();
         for (User user : userList) {
             if (!uuid.contains(user.getId().toString())) {
@@ -59,6 +55,17 @@ public class DataWriter extends DataConstants {
      */
     public static JSONObject getUserJSON(User user) {
         JSONObject userDetails = new JSONObject();
+
+        if (user.isStudent()) {
+            if (user instanceof StudentUser) {
+            userDetails.putAll(getStudentJSON((StudentUser) user));
+            }
+        }
+        else if (user.isTeacher()) {
+            if (user instanceof TeacherUser) {
+            userDetails.putAll(getTeacherJSON((TeacherUser) user));
+            }
+        }
         userDetails.put(USER_ID, user.getId().toString());
         userDetails.put(USER_USER_NAME, user.getUserName());
         userDetails.put(USER_FIRST_NAME, user.getFirstName());
@@ -68,13 +75,6 @@ public class DataWriter extends DataConstants {
         userDetails.put(USER_POINTS, user.getPoints());
         userDetails.put(USER_BADGES, user.getBadges());
         userDetails.put(USER_FRIENDS, user.getFriendNames(userDetails));
-        
-        if (!user.isTeacher()) {
-            userDetails.putAll(getStudentJSON((StudentUser) user));
-        }
-        else {
-            userDetails.putAll(getTeacherJSON((TeacherUser) user));
-        }
         
         return userDetails;
     }   
@@ -166,6 +166,10 @@ public class DataWriter extends DataConstants {
         FlashcardList flashcards = FlashcardList.getInstance();
         ArrayList<Flashcard> flashcardList = flashcards.getFlashcards();
 
+        if (flashcardList.isEmpty()) {
+            System.out.println("No flashcards to save");
+        }
+
         JSONArray jsonFlashcards = new JSONArray();
 
         for (int i = 0; i < flashcardList.size(); i++) {
@@ -200,8 +204,8 @@ public class DataWriter extends DataConstants {
 
 
     public static void main(String[] args) {
-        // DataWriter.saveUsers();
+        DataWriter.saveUsers();
         DataWriter.saveSongs();
-        // DataWriter.saveFlashcards();
+        DataWriter.saveFlashcards();
     }
 }

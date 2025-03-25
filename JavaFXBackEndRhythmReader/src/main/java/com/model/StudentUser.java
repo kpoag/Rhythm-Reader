@@ -5,7 +5,6 @@ package com.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class StudentUser extends User {
@@ -145,5 +144,8 @@ public class StudentUser extends User {
 
     }*/
     
+    public boolean isStudent() {
+        return true;
+    }
 
 }

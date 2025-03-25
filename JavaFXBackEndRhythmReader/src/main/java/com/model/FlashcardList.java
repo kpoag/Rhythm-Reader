@@ -7,7 +7,7 @@ public class FlashcardList {
     private ArrayList<Flashcard> flashcardList;
 
     private FlashcardList(){
-        flashcardList = Database.getFlashcards();
+        flashcardList = DataLoader.loadFlashcards();
     }
     public static FlashcardList getInstance() {
         if(flashcards == null) {
