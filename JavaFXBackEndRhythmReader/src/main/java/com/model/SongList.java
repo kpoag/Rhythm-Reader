@@ -1,6 +1,7 @@
 package com.model;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class SongList {
 
@@ -24,14 +25,33 @@ public class SongList {
     }
 
     public ArrayList<Song> filterByGenre(String genre) {
-        return songs;
-
+        if (genre == null || genre.isEmpty()) {
+            return new ArrayList<>(songs);
+        }
+        ArrayList<Song> filteredSongs = new ArrayList<>();
+        for (Song song : songs) {
+            if (genre.equalsIgnoreCase(song.getGenre().toString())) {
+                filteredSongs.add(song);
+            }
+        }
+        return filteredSongs;
     }
+        
 
     public ArrayList<Song> filterByArtist(String artist) {
-        return songs;
-
+        if (artist == null || artist.isEmpty()) {
+            return new ArrayList<>(songs);
+        }
+        
+        ArrayList<Song> filteredSongs = new ArrayList<>();
+        for (Song song : songs) {
+            if (artist.equalsIgnoreCase(song.getArtist())) {
+                filteredSongs.add(song);
+            }
+        }
+        return filteredSongs;
     }
+
 
     public ArrayList<Song> sortAlphabetically() {
         return songs;
