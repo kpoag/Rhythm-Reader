@@ -3,6 +3,8 @@ package com.model;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -23,9 +25,19 @@ public class DataWriter extends DataConstants {
 
         JSONArray jsonUsers = new JSONArray();
 
-        for (int i = 0; i < userList.size(); i++) {
-            jsonUsers.add(getUserJSON(userList.get(i)));
+        System.out.println("Total users in UserList: " + users.getUsers().size());
+        
+        Set<String> uuid = new HashSet<>();
+        for (User user : userList) {
+            if (!uuid.contains(user.getId().toString())) {
+                jsonUsers.add(getUserJSON(user));
+                uuid.add(user.getId().toString());
+            }
+            else {
+                System.out.println("Duplicate user: " + user.getId());
+            }
         }
+        System.out.println("Writing " + userList.size() + " users to file.");
 
         try (FileWriter file = new FileWriter(USER_TEMP_FILE_NAME)) {
             file.write(jsonUsers.toJSONString());
@@ -43,6 +55,17 @@ public class DataWriter extends DataConstants {
      */
     public static JSONObject getUserJSON(User user) {
         JSONObject userDetails = new JSONObject();
+
+        if (user.isStudent()) {
+            if (user instanceof StudentUser) {
+            userDetails.putAll(getStudentJSON((StudentUser) user));
+            }
+        }
+        else if (user.isTeacher()) {
+            if (user instanceof TeacherUser) {
+            userDetails.putAll(getTeacherJSON((TeacherUser) user));
+            }
+        }
         userDetails.put(USER_ID, user.getId().toString());
         userDetails.put(USER_USER_NAME, user.getUserName());
         userDetails.put(USER_FIRST_NAME, user.getFirstName());
@@ -52,13 +75,6 @@ public class DataWriter extends DataConstants {
         userDetails.put(USER_POINTS, user.getPoints());
         userDetails.put(USER_BADGES, user.getBadges());
         userDetails.put(USER_FRIENDS, user.getFriendNames(userDetails));
-        
-        if (!user.isTeacher()) {
-            userDetails.putAll(getStudentJSON((StudentUser) user));
-        }
-        else {
-            userDetails.putAll(getTeacherJSON((TeacherUser) user));
-        }
         
         return userDetails;
     }   
@@ -71,6 +87,7 @@ public class DataWriter extends DataConstants {
     private static JSONObject getStudentJSON(StudentUser student) {
             JSONObject studentDetails = new JSONObject();
             studentDetails.put(USER_PROGRESS, student.getProgress());
+            studentDetails.put(USER_SKILL_LEVEL, student.getSkillLevel());
             studentDetails.put(USER_CLASSROOM, student.getClasses());
             studentDetails.put(USER_GRADES, student.getGrade());
             studentDetails.put(USER_ASSIGNED_FLASHCARDS, student.getAssignedFlashcards());
@@ -98,10 +115,13 @@ public class DataWriter extends DataConstants {
      * @return Boolean of whether Songs are saved in program correctly
      */
     public static boolean saveSongs() {
-        SongList songs = SongList.getInstance();
-        ArrayList<Song> songList = songs.getSongs();
-       
-       JSONArray jsonSongs = new JSONArray();
+      System.out.println("saveSongs() method called."); 
+      SongList songs = SongList.getInstance();
+      ArrayList<Song> songList = songs.getSongs();
+      
+      System.out.println("Number of songs: " + songList.size());
+
+      JSONArray jsonSongs = new JSONArray();
 
        for (int i = 0; i < songList.size(); i++) {
            jsonSongs.add(getSongJSON(songList.get(i)));
@@ -110,6 +130,7 @@ public class DataWriter extends DataConstants {
        try (FileWriter file = new FileWriter(SONG_TEMP_FILE_NAME)) {
            file.write(jsonSongs.toJSONString());
            file.flush();
+           System.out.println("Songs written to " + SONG_TEMP_FILE_NAME);
            return true;
        }
        catch(IOException e) {
@@ -131,6 +152,8 @@ public class DataWriter extends DataConstants {
         songDetails.put(SONG_DIFFICULTY, song.getDifficulty());
         songDetails.put(SONG_INSTRUMENT, song.getInstrument());
         songDetails.put(SONG_RATING, song.getRating());
+        songDetails.put(SONG_TIME_SIGNATURE, song.getTimeSignature());
+        songDetails.put(SONG_TEMPO, song.getTempo());
         songDetails.put(SONG_MEASURES, song.getMeasures());
         return songDetails;
     }
@@ -142,6 +165,10 @@ public class DataWriter extends DataConstants {
     public static boolean saveFlashcards() {
         FlashcardList flashcards = FlashcardList.getInstance();
         ArrayList<Flashcard> flashcardList = flashcards.getFlashcards();
+
+        if (flashcardList.isEmpty()) {
+            System.out.println("No flashcards to save");
+        }
 
         JSONArray jsonFlashcards = new JSONArray();
 

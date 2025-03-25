@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+module-info.class
+=======
 com\rhythmreader\PrimaryController.class
 com\model\DataConstants.class
 com\rhythmreader\App.class
@@ -29,3 +32,8 @@ com\model\DifficultyLevel.class
 com\model\Chords.class
 com\model\User.class
 com\model\Flashcard.class
+<<<<<<< HEAD
+=======
+com\model\Notes.class
+>>>>>>> 3ac0ad367f610c52bd881718dff18c8d3e082546
+>>>>>>> d88113fbc32bd97c96852157bc7fe1c350f4f000

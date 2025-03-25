@@ -1,0 +1,59 @@
+[
+    {
+        "songID":"a4cce3c4-d518-4ddb-9aa2-53ff0f211d9a",
+        "songTitle":"Twinkle Twinkle Little Star",
+        "artist":"Jane Taylor",
+        "genre":"TRADITIONAL",
+        "difficulty":"BEGINNER",
+        "rating":5.0,
+        "instrument": "piano",
+        "timeSignature": "4/4",
+        "tempo":120,
+        "measures":[
+            ["C4q", "C4q", "G4q", "G4q"], ["A4q", "A4q", "G4h"], ["F4q", "F4q", "E4q", "E4q"],
+            ["D4q", "D4q", "C4h"],["G4q", "G4q", "F4q", "F4q"], ["E4q", "E4q", "D4h"],
+            ["G4q", "G4q", "F4q", "F4q"], ["E4q", "E4q", "D4h"],["C4q", "C4q", "G4q", "G4q"],
+            ["A4q", "A4q", "G4h"], ["F4q", "F4q", "E4q", "E4q"], ["D4q", "D4q", "C4h"],
+            ["C4w"]   
+        ]   
+        },{
+        "songID":"d10369cc-14ec-46e1-9415-002bd86ed332",
+        "songTitle":"Happy Birthday",
+        "artist":"Patty and Mildred J. Hill",
+        "genre":"TRADITIONAL",
+        "difficulty":"INTERMEDIATE",
+        "rating":3.7,
+        "instrument": "piano",
+        "timeSignature": "3/4",
+        "tempo": 125,
+        "measures":[
+            ["G4i.", "G4q", "A4q"], [["G3q", "B3q", "D4q"]], ["G4q", "C5q", "B4q"], [["D3q", "F#3q", "A3q"]],
+            ["G4q", "G4q", "A4q"], [["G3q", "B3q", "D4q"]],["G4q", "D5q", "C5q"], [["D3q", "F#3q", "A3q"]],
+            ["G4q", "G4q", "G5q"], [["G3q", "B3q", "D4q"]], ["E5q", "C5i", "B4i", "A4q"],[["C3q", "E3q", "G3q"]],
+            ["F5q", "F5q", "E5q"], [["D3q", "F#3q", "A3q"]], ["C5q", "D5q", "C5q"],[["G3q", "B3q", "D4q"]]
+    
+        ]   
+    },{
+        "songID":"783a4b77-0fd6-4d8b-af69-0e5a81aaafa7",
+        "songTitle":"I'm Yours",
+        "artist":"Jason Mraz",
+        "genre":"POP",
+        "difficulty":"BEGINNER",
+        "rating":5.0,
+        "instrument": "piano",
+        "timeSignature":"4/4",
+        "tempo":90,
+        "measures":[["A5"]]
+    },{
+        "songID":"97ef8080-08ce-4202-b4a0-44b5d6d8bf3b",
+        "songTitle":"Fly Me To The Moon",
+        "artist":"Bart Howard",
+        "genre":"JAZZ",
+        "difficulty":"ADVANCED",
+        "rating":4.9,
+        "instrument": "piano",
+        "timeSignature":"3/4",
+        "tempo":100,
+        "measures":[["F5"]]
+    }
+]

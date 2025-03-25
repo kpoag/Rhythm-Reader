@@ -25,7 +25,7 @@ public abstract class DataConstants {
 	protected static final String USER_FRIENDS= "friends";
 
 	protected static final String SONG_FILE_NAME = "JavaFXBackEndRhythmReader/src/main/java/com/data/songs.json";
-	protected static final String SONG_TEMP_FILE_NAME = "/src/main/java/com/data/users_temp.json";
+	protected static final String SONG_TEMP_FILE_NAME = "JavaFXBackEndRhythmReader/src/main/java/com/data/songs_temp.json";
 	protected static final String SONG_SONG_ID = "songID";
 	protected static final String SONG_SONGTITLE = "songTitle";
 	protected static final String SONG_ARTIST = "artist";
