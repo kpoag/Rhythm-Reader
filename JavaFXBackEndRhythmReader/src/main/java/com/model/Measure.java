@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 /**
  * @author Kennedy Poag
@@ -279,6 +280,27 @@ public class Measure {
     }
     
     return pattern.toString().trim();
+    }
+
+    /**
+     * Converts the Measure object to a JSON object.
+     *
+     * @return a JSONObject representing the measure
+     */
+    @SuppressWarnings("unchecked")
+    public JSONObject toJSONObject() {
+        JSONObject measureJson = new JSONObject();
+        measureJson.put("beats", this.beats);
+        measureJson.put("dynamics", this.dynamics);
+
+        // Convert chords to JSON array
+        JSONArray chordsJson = new JSONArray();
+        for (Chords chord : this.chords) {
+            chordsJson.add(chord.toJSONObject()); 
+        }
+        measureJson.put("chords", chordsJson);
+
+        return measureJson;
     }
     
 

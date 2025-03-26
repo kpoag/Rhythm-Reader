@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 /**
  * @author Kennedy Poag
@@ -261,6 +262,29 @@ public class Chords {
         
         //Create and return a new Chords instance
         return new Chords(noteList, root, "", noteType, false);
+    }
+
+     /**
+     * Converts the Chords object to a JSON object.
+     *
+     * @return a JSONObject representing the chord
+     */
+    @SuppressWarnings("unchecked")
+    public JSONObject toJSONObject() {
+        JSONObject chordJson = new JSONObject();
+        chordJson.put("rootNote", this.rootNote);
+        chordJson.put("chordType", this.chordType);
+        chordJson.put("noteType", this.noteType.toString()); 
+        chordJson.put("isArpeggiated", this.isArpeggiated);
+
+        // Convert notes to JSON array
+        JSONArray notesJson = new JSONArray();
+        for (Note note : this.notes) {
+            notesJson.add(note.toJSONObject());
+        }
+        chordJson.put("notes", notesJson);
+
+        return chordJson;
     }
 
     /**
