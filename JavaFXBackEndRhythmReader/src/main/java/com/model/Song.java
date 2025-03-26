@@ -1,21 +1,16 @@
 package com.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.jfugue.pattern.Pattern;  
-import org.jfugue.player.Player;  
-
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.chrono.HijrahChronology;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.UUID;
 
+import org.jfugue.pattern.Pattern;
+import org.jfugue.player.Player;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-
-import java.util.UUID;
 
 
 /**
@@ -480,7 +475,6 @@ public class Song {
 
         Song song= new Song(songID, songTitle, artist, genre,  difficulty, 
         instrument, rating, tempo, timeSignature);
-<<<<<<< HEAD
 
         System.out.println("Now, let's add measures to the song.");
         while (true) {
@@ -513,9 +507,6 @@ public class Song {
                     }
                     
                     
-=======
-        return song;
->>>>>>> origin/main
     }
 }
 
