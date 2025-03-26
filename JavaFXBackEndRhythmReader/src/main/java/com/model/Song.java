@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -506,6 +507,63 @@ public class Song {
             case "drums": return 118;
             default: return 0;
         }
+    }
+
+/**
+ * Checks if a song matches a given search query.
+ * The search is case-insensitive and checks the song's title, artist, genre, and difficulty level.
+ *
+ * @param q the search query string
+ * @return true if the song matches the query in any field, false otherwise
+ */
+public boolean matches(String q) {
+    if (q == null || q.trim().isEmpty()) {
+        return false;
+    }
+    q = q.toLowerCase().trim();
+
+    if (songTitle != null && songTitle.toLowerCase().contains(q)) {
+        return true;
+    }
+
+    if (artist != null && artist.toLowerCase().contains(q)) {
+        return true;
+    }
+
+    if (genre != null && genre.toString().toLowerCase().contains(q)) {
+        return true;
+    }
+    
+    if(difficulty != null && difficulty.toString().contains(q)) {
+        return true;
+    }
+    return false;
+}
+
+/**
+ * Searches for songs in the database that match a given query.
+ * Loads songs from DataLoader and filters them based on the search query.
+ * The search is case-insensitive and looks for matches in title, artist, genre, and difficulty.
+ *
+ * @param q the search query string
+ * @return ArrayList of Song objects that match the search query
+ */
+    public static ArrayList<Song> searchSongs(String q) {
+        ArrayList<Song> results = new ArrayList<>();
+
+        if (q == null || q.trim().isEmpty()) {
+            return results;
+        }
+        ArrayList<Song> songs = DataLoader.loadSongs();
+        System.out.println(songs);
+
+        for (Song song : songs) {
+            if (song.matches(q)) {
+                results.add(song);
+            }
+        }
+        return results;
+    
     }
 
     /** 
