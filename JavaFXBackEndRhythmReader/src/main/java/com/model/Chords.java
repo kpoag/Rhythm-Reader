@@ -43,6 +43,17 @@ public class Chords {
     public List<Note> getNotes() {
         return notes;
     }
+    
+    /**
+    * Determines if this object represents a chord (multiple notes played simultaneously)
+     * or a single note.
+     *
+    * @return true if this is a chord (contains multiple notes), false if it's a single note
+    */
+    public boolean isChord() {
+         // A chord must have at least 2 notes to be considered a chord
+         return notes != null && notes.size() > 1;
+    }
 
     /**
      * Returns the root note of the chord.

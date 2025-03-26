@@ -1,0 +1,18 @@
+{
+    "difficulty": "BEGINNER",
+    "songTitle": "new song",
+    "measures": [
+        [
+            "a4q",
+            "c4q",
+            "d4q"
+        ]
+    ],
+    "artist": "kennedy",
+    "rating": 5.0,
+    "genre": "POP",
+    "tempo": 120,
+    "instrument": "piano",
+    "songID": "da3e6d42-bb73-4661-b077-237da09d615a",
+    "timeSignature": "4\/4"
+}
