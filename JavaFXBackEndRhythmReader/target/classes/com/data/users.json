@@ -95,5 +95,17 @@
           "badges": [
             "Top Instructor"
           ]
+        },
+        {
+      
+          "id": "959e734f-e626-476d-a32b-5ae94a799cb4",
+          "firstName": "Fellicia",
+          "lastName": "Fredrickson",
+          "username": "ffredrickson",
+          "email": "ffredrickson@gmail.com",
+          "password": "securepassword123",
+          "points": 100,
+          "friends": [""],
+          "badges": [""]
         }
 ]

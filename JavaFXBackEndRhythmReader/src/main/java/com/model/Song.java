@@ -309,6 +309,47 @@ public class Song {
         try {
             Player player = new Player();
             Pattern pattern = new Pattern();
+
+            System.out.println("\n===========================================");
+            System.out.println(songTitle.toUpperCase());
+            System.out.println("By " + artist);
+            System.out.println("Time Signature: " + timeSignature);
+            System.out.println("Tempo: " + tempo + " BPM");
+            System.out.println("===========================================\n");
+
+            int beatsPerMeasure = 4; // Default to 4/4
+            if (timeSignature != null && timeSignature.contains("/")) {
+                String[] parts = timeSignature.split("/");
+                if (parts.length == 2) {
+                    try {
+                        beatsPerMeasure = Integer.parseInt(parts[0]);
+                    } catch (NumberFormatException e) {
+                        System.err.println("Invalid time signature format. Defaulting to 4/4.");
+                }
+            }
+        }
+
+
+            System.out.println("Sheet Music:");
+            for (int i = 0; i < measures.size(); i++) {
+                if (i % 4 == 0) {
+                    System.out.println(); // New line for every 4 measures
+                    System.out.print("| "); // Start of measure line
+                }
+
+                Measure measure = measures.get(i);
+                if (measure != null) {
+                String measurePattern = measure.getJFuguePattern();
+                if (measurePattern != null && !measurePattern.isEmpty()) {
+                    // Format and print measure content
+                    String formattedMeasure = measurePattern.replace(" ", ", ");
+                    System.out.print(formattedMeasure + " | ");
+                    
+                    pattern.add(measurePattern);
+                }
+            }
+        }
+            System.out.println("\n");
             
             // Set the tempo
             pattern.setTempo(this.tempo);
@@ -321,17 +362,8 @@ public class Song {
             // Add a rest to start the pattern (JFugue cuts first note off)
             pattern.add("Rs32 ");
             
-            // Add each measure's pattern
-            for (Measure measure : measures) {
-                if (measure != null) {
-                    String measurePattern = measure.getJFuguePattern();
-                    if (measurePattern != null && !measurePattern.isEmpty()) {
-                        pattern.add(measurePattern);
-                    }
-                }
-            }
 
-            System.out.println("Playing " + songTitle + " with default tempo: " + tempo + " BPM");
+            System.out.println("Now Playing...");
             // Play the pattern using JFugue player
             player.play(pattern);
             return true;
@@ -360,32 +392,58 @@ public class Song {
         }
         
         try {
-            StringBuilder fullPattern = new StringBuilder();
+            System.out.println("\n===========================================");
+            System.out.println(songTitle.toUpperCase());
+            System.out.println("By " + artist);
+            System.out.println("Time Signature: " + timeSignature);
+            System.out.println("Tempo: " + customTempo + " BPM (Modified)");
+            System.out.println("===========================================\n");
 
-            // Sets tempo in the pattern
+            int beatsPerMeasure = 4; // Default to 4/4
+            if (timeSignature != null && timeSignature.contains("/")) {
+                String[] parts = timeSignature.split("/");
+                if (parts.length == 2) {
+                    try {
+                        beatsPerMeasure = Integer.parseInt(parts[0]);
+                    } catch (NumberFormatException e) {
+                        System.err.println("Invalid time signature: " + timeSignature + ". Using default 4/4.");
+                    }
+                }
+            }
+        
+            // Print measures in rows of 4
+            StringBuilder fullPattern = new StringBuilder();
             fullPattern.append("T").append(customTempo).append(" ");
-            
-            // Sets instrument in the pattern
-            int instrumentCode = getInstrumentCode(instrument);
-            fullPattern.append("I").append(instrumentCode).append(" ");
-            
-            
+            fullPattern.append("I").append(getInstrumentCode(instrument)).append(" ");
+        
             // Add time signature if available
             if (timeSignature != null && !timeSignature.isEmpty()) {
                 fullPattern.append("TIME:").append(timeSignature).append(" ");
             }
-            
-            // Append each measure's pattern to full pattern
-            for (Measure measure : measures) {
-                if (measure != null) {
-                    String measurePattern = measure.getJFuguePattern();
-                    if (measurePattern != null && !measurePattern.isEmpty()) {
-                        fullPattern.append(measurePattern).append(" ");
-                    }
-                }
+        
+            // Print sheet music
+            System.out.println("Sheet Music:");
+            for (int i = 0; i < measures.size(); i++) {
+                if (i % 4 == 0) {
+                    System.out.println(); // New line for every 4 measures
+                    System.out.print("| "); // Start of measure line
             }
             
-            System.out.println("Playing " + songTitle + " with tempo: " + customTempo + " BPM");
+            Measure measure = measures.get(i);
+            if (measure != null) {
+                String measurePattern = measure.getJFuguePattern();
+                if (measurePattern != null && !measurePattern.isEmpty()) {
+                    // Format and print measure content
+                    String formattedMeasure = measurePattern.replace(" ", ", ");
+                    System.out.print(formattedMeasure + " | ");
+                    
+                    fullPattern.append(measurePattern).append(" ");
+                }
+            }
+        }
+            System.out.println("\n");
+            
+            System.out.println("Now Playing ");
         
             Player player = new Player();
             player.play(fullPattern.toString());
