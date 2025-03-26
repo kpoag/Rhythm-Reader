@@ -30,13 +30,24 @@ public class RRFacade {
         return currSong;
     }
 
+
     public User createAccount(String userName, String firstName, String lastName, String email,String password, Scanner scanner) {
         User newUser = User.createAccountByType(userName, firstName, lastName, email, password, scanner);
         if (newUser != null) {
             this.currUser = newUser;
         } 
         return newUser;
-        
+    }
+
+    public boolean joinCourse(String code) {
+        if (currUser.isStudent()){
+            return StudentUser.joinCourse(code);
+        } else {
+            System.out.println("Only students can join courses.");
+            return false;
+        }
+            
+    
     }
 
     

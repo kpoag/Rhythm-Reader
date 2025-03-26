@@ -276,7 +276,7 @@ public class StudentUser extends User {
      * @param code the classroom code to check.
      * @return  true if the student has the specified classroom code;  false otherwise.
      */
-    public boolean hasClassroomCode(String code) {
+    public boolean joinCourse(String code) {
         //finish method
         return true;
     }

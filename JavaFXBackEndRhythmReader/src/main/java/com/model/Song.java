@@ -311,6 +311,47 @@ public class Song {
         try {
             Player player = new Player();
             Pattern pattern = new Pattern();
+
+            System.out.println("\n===========================================");
+            System.out.println(songTitle.toUpperCase());
+            System.out.println("By " + artist);
+            System.out.println("Time Signature: " + timeSignature);
+            System.out.println("Tempo: " + tempo + " BPM");
+            System.out.println("===========================================\n");
+
+            int beatsPerMeasure = 4; // Default to 4/4
+            if (timeSignature != null && timeSignature.contains("/")) {
+                String[] parts = timeSignature.split("/");
+                if (parts.length == 2) {
+                    try {
+                        beatsPerMeasure = Integer.parseInt(parts[0]);
+                    } catch (NumberFormatException e) {
+                        System.err.println("Invalid time signature format. Defaulting to 4/4.");
+                }
+            }
+        }
+
+
+            System.out.println("Sheet Music:");
+            for (int i = 0; i < measures.size(); i++) {
+                if (i % 4 == 0) {
+                    System.out.println(); // New line for every 4 measures
+                    System.out.print("| "); // Start of measure line
+                }
+
+                Measure measure = measures.get(i);
+                if (measure != null) {
+                String measurePattern = measure.getJFuguePattern();
+                if (measurePattern != null && !measurePattern.isEmpty()) {
+                    // Format and print measure content
+                    String formattedMeasure = measurePattern.replace(" ", ", ");
+                    System.out.print(formattedMeasure + " | ");
+                    
+                    pattern.add(measurePattern);
+                }
+            }
+        }
+            System.out.println("\n");
             
             // Set the tempo
             pattern.setTempo(this.tempo);
@@ -323,17 +364,8 @@ public class Song {
             // Add a rest to start the pattern (JFugue cuts first note off)
             pattern.add("Rs32 ");
             
-            // Add each measure's pattern
-            for (Measure measure : measures) {
-                if (measure != null) {
-                    String measurePattern = measure.getJFuguePattern();
-                    if (measurePattern != null && !measurePattern.isEmpty()) {
-                        pattern.add(measurePattern);
-                    }
-                }
-            }
 
-            System.out.println("Playing " + songTitle + " with default tempo: " + tempo + " BPM");
+            System.out.println("Now Playing...");
             // Play the pattern using JFugue player
             player.play(pattern);
             return true;
@@ -362,32 +394,56 @@ public class Song {
         }
         
         try {
-            StringBuilder fullPattern = new StringBuilder();
+            System.out.println("\n===========================================");
+            System.out.println(songTitle.toUpperCase());
+            System.out.println("By " + artist);
+            System.out.println("Time Signature: " + timeSignature);
+            System.out.println("Tempo: " + customTempo + " BPM (Modified)");
+            System.out.println("===========================================\n");
 
-            // Sets tempo in the pattern
-            fullPattern.append("T").append(customTempo).append(" ");
-            
-            // Sets instrument in the pattern
-            int instrumentCode = getInstrumentCode(instrument);
-            fullPattern.append("I").append(instrumentCode).append(" ");
-            
-            
-            // Add time signature if available
-            if (timeSignature != null && !timeSignature.isEmpty()) {
-                fullPattern.append("TIME:").append(timeSignature).append(" ");
-            }
-            
-            // Append each measure's pattern to full pattern
-            for (Measure measure : measures) {
-                if (measure != null) {
-                    String measurePattern = measure.getJFuguePattern();
-                    if (measurePattern != null && !measurePattern.isEmpty()) {
-                        fullPattern.append(measurePattern).append(" ");
+            int beatsPerMeasure = 4; // Default to 4/4
+            if (timeSignature != null && timeSignature.contains("/")) {
+                String[] parts = timeSignature.split("/");
+                if (parts.length == 2) {
+                    try {
+                        beatsPerMeasure = Integer.parseInt(parts[0]);
+                    } catch (NumberFormatException e) {
+                        System.err.println("Invalid time signature: " + timeSignature + ". Using default 4/4.");
                     }
                 }
             }
+        
+            // Print measures in rows of 4
+            StringBuilder fullPattern = new StringBuilder();
+            fullPattern.append("T").append(customTempo).append(" ");
+            fullPattern.append("I").append(getInstrumentCode(instrument)).append(" ");
+
+            if (timeSignature != null && !timeSignature.isEmpty()) {
+                fullPattern.append("TIME:").append(timeSignature).append(" ");
+            }
+        
+            System.out.println("Sheet Music:");
+            for (int i = 0; i < measures.size(); i++) {
+                if (i % 4 == 0) {
+                    System.out.println(); // New line for every 4 measures
+                    System.out.print("| "); // Start of measure line
+            }
             
-            System.out.println("Playing " + songTitle + " with tempo: " + customTempo + " BPM");
+            Measure measure = measures.get(i);
+            if (measure != null) {
+                String measurePattern = measure.getJFuguePattern();
+                if (measurePattern != null && !measurePattern.isEmpty()) {
+                    // Format and print measure content
+                    String formattedMeasure = measurePattern.replace(" ", ", ");
+                    System.out.print(formattedMeasure + " | ");
+                    
+                    fullPattern.append(measurePattern).append(" ");
+                }
+            }
+        }
+            System.out.println("\n");
+            
+            System.out.println("Now Playing...");
         
             Player player = new Player();
             player.play(fullPattern.toString());
@@ -521,6 +577,8 @@ public class Song {
             String dynamics = scanner.nextLine();
             
             Measure measure = new Measure(chordsForMeasure, beats , dynamics);
+            String jfuguePattern = measure.getJFuguePattern();
+
             song.addMeasure(measure);
         }
         return song;
@@ -536,31 +594,77 @@ public class Song {
     @SuppressWarnings("unchecked")
     public JSONObject toJSONObject() {
         JSONObject songJson = new JSONObject();
-        songJson.put("songID", this.songID);
-        songJson.put("songTitle", this.songTitle);
-        songJson.put("artist", this.artist);
-        songJson.put("genre", this.genre.toString()); 
-        songJson.put("difficulty", this.difficulty.toString()); 
-        songJson.put("instrument", this.instrument);
-        songJson.put("rating", this.rating);
         songJson.put("tempo", this.tempo);
         songJson.put("timeSignature", this.timeSignature);
+        songJson.put("instrument", this.instrument);
+        songJson.put("rating", this.rating);
+        songJson.put("difficulty", this.difficulty.toString()); 
+        songJson.put("genre", this.genre.toString()); 
+        songJson.put("artist", this.artist);
+        songJson.put("songTitle", this.songTitle);
+        songJson.put("songID", this.songID);
 
         // Convert measures to JSON array
         JSONArray measuresJson = new JSONArray();
         for (Measure measure : this.measures) {
-            measuresJson.add(measure.toJSONObject()); 
-        }
-        songJson.put("measures", measuresJson);
+            JSONArray measureNotesJson = new JSONArray();
+            List<Chords> chords = measure.getChords();
 
-        return songJson;
+            if (chords != null) {
+                for (Chords chord : chords) {
+                    if (chord.isChord() && chord.getNotes().size() > 1) {
+                        // For chords with multiple notes, create a nested array
+                        JSONArray chordNotesJson = new JSONArray();
+                        for (Note note : chord.getNotes()) {
+                            chordNotesJson.add(note.toString());
+                        }
+                        measureNotesJson.add(chordNotesJson);
+                    } else {
+                        // For single notes, add directly to the measure array
+                        if (!chord.getNotes().isEmpty()) {
+                            measureNotesJson.add(chord.getNotes().get(0).toString());
+                        }
+                    }
+                }
+        }
+
+        measuresJson.add(measureNotesJson);
+    }
+    songJson.put("measures", measuresJson);
+        
+
+    return songJson;
     }
 
-     /**
-     * Saves the song to a JSON file.
-     *
-     * @param fileName the name of the file to save the song to
+/**
+ * Saves the song to a JSON file with proper formatting.
+ * Fix Overwriting issue
+ * 
+ * @param fileName the name of the file to save the song to
+ */
+public void saveToJson(String fileName) {
+    JSONObject songJson = this.toJSONObject();
+
+    try (FileWriter file = new FileWriter(fileName)) {
+        String jsonString = songJson.toJSONString();
+        // Add indentation and line breaks
+        String prettyJson = formatJson(jsonString);
+        // fix overwriting issue
+        file.append(prettyJson);
+        System.out.println("Successfully wrote song to " + fileName);
+    } catch (IOException e) {
+        System.err.println("Error writing song to file: " + e.getMessage());
+        e.printStackTrace();
+    }
+}
+
+    /**
+    * Formats JSON string with proper indentation and line breaks.
+    *
+    * @param jsonString the JSON string to format
+    * @return formatted JSON string
      */
+<<<<<<< HEAD
     public void saveToJson(String fileName) {
         //JSONObject songJson = this.toJSONObject();
 
@@ -591,8 +695,63 @@ public class Song {
         } catch (IOException e) {
             System.err.println("Error writing song to file: " + e.getMessage());
             e.printStackTrace();
+=======
+    private String formatJson(String jsonString) {
+        StringBuilder formatted = new StringBuilder();
+        int indentLevel = 0;
+        boolean inQuotes = false;
+    
+        for (char c : jsonString.toCharArray()) {
+            switch (c) {
+                case '\"':
+                
+                    inQuotes = !inQuotes;
+                    formatted.append(c);
+                    break;
+                
+                case '{':
+                case '[':
+                    formatted.append(c);
+                    if (!inQuotes) {
+                        indentLevel++;
+                        formatted.append("\n").append("    ".repeat(indentLevel));
+                    }
+                    break;
+                
+                case '}':
+                case ']':
+                    if (!inQuotes) {
+                        indentLevel--;
+                        formatted.append("\n").append("    ".repeat(indentLevel));
+                    }
+                    formatted.append(c);
+                    break;
+                
+                case ',':
+                    formatted.append(c);
+                    if (!inQuotes) {
+                        formatted.append("\n").append("    ".repeat(indentLevel));
+                    }
+                    break;
+                
+                case ':':
+                    formatted.append(c);
+                    if (!inQuotes) {
+                        formatted.append(" ");
+                    }
+                    break;
+                
+                default:
+                    formatted.append(c);
+            }
+>>>>>>> origin/main
         }
-    }
+    
+        return formatted.toString();
+}
+
+
+    
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -608,10 +767,13 @@ public class Song {
                            "Instrument: " + newSong.getInstrument() + "\n" +
                            "Rating: " + newSong.getRating() + "\n" +
                            "Tempo: " + newSong.getTempo() + "\n" +
-                           "Time Signature: " + newSong.getTimeSignature() + "\n" +
-                           "Measures: " + newSong.getMeasures());
-        
-        scanner.close();                 
+                           "Time Signature: " + newSong.getTimeSignature());
+                           
+        System.out.println("\nMeasures:");
+        ArrayList<Measure> measures = newSong.getMeasures();
+        for (int i = 0; i < measures.size(); i++) {
+            System.out.println("Measure " + (i + 1) + ": " + measures.get(i).getJFuguePattern());
+        }
         
         String fileName = SONG_FILE_NAME;
         
