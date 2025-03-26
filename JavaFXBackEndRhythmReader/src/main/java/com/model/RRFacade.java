@@ -42,7 +42,5 @@ public class RRFacade {
         return newUser;
         
     }
-
-    
     
 }

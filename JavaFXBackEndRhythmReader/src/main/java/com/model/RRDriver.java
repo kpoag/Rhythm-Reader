@@ -88,38 +88,7 @@ public class RRDriver {
         }
     
     }
-
-    public boolean playASong() {
-        try {
-            SongList songList = SongList.getInstance();
-
-            System.out.print("How would you like to Filter Songs");
-            String filterChoice = scanner.nextLine();
-            
-            System.out.print("What artist would you like to play?");
-            String artist = scanner.nextLine();
-            // facade.getLibrary().filterByArtist(artist);
-            ArrayList<Song> filteredSongs = songList.filterByArtist(artist);
-
-            System.out.print("Here are the available songs by " + artist);
-            for (Song song : filteredSongs) {
-                System.out.println(song.getSongTitle() + " " + song.getArtist());
-            }
-
-            System.out.println("Which song would you like to play? (1-3): ");
-            int choice = scanner.nextInt();
-            if (choice == 1 || choice == 2  || choice == 3) {
-                System.out.println("Playing " + filteredSongs.get(choice) + "...");
-            }
-            else {
-                System.out.println("Sorry that is an invalid choice, please try again");
-            }
-
-            return true;
-            
-        } catch(Exception e) {
-            return false;
-        }
-    }
-    
+        
 }
+    
+

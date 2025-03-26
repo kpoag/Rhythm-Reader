@@ -1,7 +1,6 @@
 package com.model;
 
 import java.util.ArrayList;
-import java.util.stream.Collectors;
 
 public class SongList {
 
@@ -51,6 +50,7 @@ public class SongList {
         }
         return filteredSongs;
     }
+
 
 
     public ArrayList<Song> sortAlphabetically() {
