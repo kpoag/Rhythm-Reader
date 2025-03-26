@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "difficulty": "BEGINNER",
     "songTitle": "Test title",
@@ -10,3 +11,231 @@
     "songID": "6ed1dcd4-b620-4b47-9790-1ece1b3031ab",
     "timeSignature": "4\/4"
 }
+=======
+[
+    {
+        "difficulty": "BEGINNER",
+        "songTitle": "Twinkle Twinkle Little Star",
+        "measures": [
+            [
+                "C4q",
+                "C4q",
+                "G4q",
+                "G4q"
+            ],
+            [
+                "A4q",
+                "A4q",
+                "G4h"
+            ],
+            [
+                "F4q",
+                "F4q",
+                "E4q",
+                "E4q"
+            ],
+            [
+                "D4q",
+                "D4q",
+                "C4h"
+            ],
+            [
+                "G4q",
+                "G4q",
+                "F4q",
+                "F4q"
+            ],
+            [
+                "E4q",
+                "E4q",
+                "D4h"
+            ],
+            [
+                "G4q",
+                "G4q",
+                "F4q",
+                "F4q"
+            ],
+            [
+                "E4q",
+                "E4q",
+                "D4h"
+            ],
+            [
+                "C4q",
+                "C4q",
+                "G4q",
+                "G4q"
+            ],
+            [
+                "A4q",
+                "A4q",
+                "G4h"
+            ],
+            [
+                "F4q",
+                "F4q",
+                "E4q",
+                "E4q"
+            ],
+            [
+                "D4q",
+                "D4q",
+                "C4h"
+            ],
+            [
+                "C4w"
+            ]
+        ],
+        "artist": "Jane Taylor",
+        "genre": "TRADITIONAL",
+        "rating": 5.0,
+        "tempo": 120,
+        "instrument": "piano",
+        "songID": "a4cce3c4-d518-4ddb-9aa2-53ff0f211d9a",
+        "timeSignature": "4\/4"
+    },
+    {
+        "difficulty": "INTERMEDIATE",
+        "songTitle": "Happy Birthday",
+        "measures": [
+            [
+                "G4i.",
+                "G4q",
+                "A4q"
+            ],
+            [
+                [
+                    "G3q",
+                    "B3q",
+                    "D4q"
+                ]
+            ],
+            [
+                "G4q",
+                "C5q",
+                "B4q"
+            ],
+            [
+                [
+                    "D3q",
+                    "F#3q",
+                    "A3q"
+                ]
+            ],
+            [
+                "G4q",
+                "G4q",
+                "A4q"
+            ],
+            [
+                [
+                    "G3q",
+                    "B3q",
+                    "D4q"
+                ]
+            ],
+            [
+                "G4q",
+                "D5q",
+                "C5q"
+            ],
+            [
+                [
+                    "D3q",
+                    "F#3q",
+                    "A3q"
+                ]
+            ],
+            [
+                "G4q",
+                "G4q",
+                "G5q"
+            ],
+            [
+                [
+                    "G3q",
+                    "B3q",
+                    "D4q"
+                ]
+            ],
+            [
+                "E5q",
+                "C5i",
+                "B4i",
+                "A4q"
+            ],
+            [
+                [
+                    "C3q",
+                    "E3q",
+                    "G3q"
+                ]
+            ],
+            [
+                "F5q",
+                "F5q",
+                "E5q"
+            ],
+            [
+                [
+                    "D3q",
+                    "F#3q",
+                    "A3q"
+                ]
+            ],
+            [
+                "C5q",
+                "D5q",
+                "C5q"
+            ],
+            [
+                [
+                    "G3q",
+                    "B3q",
+                    "D4q"
+                ]
+            ]
+        ],
+        "artist": "Patty and Mildred J. Hill",
+        "genre": "TRADITIONAL",
+        "rating": 3.7,
+        "tempo": 125,
+        "instrument": "piano",
+        "songID": "d10369cc-14ec-46e1-9415-002bd86ed332",
+        "timeSignature": "3\/4"
+    },
+    {
+        "difficulty": "BEGINNER",
+        "songTitle": "I'm Yours",
+        "measures": [
+            [
+                "A5"
+            ]
+        ],
+        "artist": "Jason Mraz",
+        "genre": "POP",
+        "rating": 5.0,
+        "tempo": 90,
+        "instrument": "piano",
+        "songID": "783a4b77-0fd6-4d8b-af69-0e5a81aaafa7",
+        "timeSignature": "4\/4"
+    },
+    {
+        "difficulty": "ADVANCED",
+        "songTitle": "Fly Me To The Moon",
+        "measures": [
+            [
+                "F5"
+            ]
+        ],
+        "artist": "Bart Howard",
+        "genre": "JAZZ",
+        "rating": 4.9,
+        "tempo": 100,
+        "instrument": "piano",
+        "songID": "97ef8080-08ce-4202-b4a0-44b5d6d8bf3b",
+        "timeSignature": "3\/4"
+    }
+]
+>>>>>>> d9eaad1654ceb48e66490bb5444ae68934769ad9

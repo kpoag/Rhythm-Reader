@@ -345,20 +345,12 @@ public class Note {
     }
 
     /**
-     * Returns a string representation of the Note.
+     * Returns a JFugue string representation of the Note.
      *
      * @return a string containing the note's properties
      */
     @Override
     public String toString() {
-        return "Note{" +
-                "pitch='" + pitch + '\'' +
-                ", modifier='" + modifier + '\'' +
-                ", Note Type=" + noteType +
-                ", tie=" + tie +
-                ", articulation='" + articulation + '\'' +
-                ", octave=" + octave +
-                ", timeSignature='" + timeSignature + '\'' +
-                '}';
+        return toJFugueString();
     }
 }
