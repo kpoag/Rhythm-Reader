@@ -571,7 +571,7 @@ public boolean matches(String q) {
     /** 
      * method thats ask user for info to create a song
      */
-    private static Song createUserSong()
+    private static Song createUserSong(User user)
     {
         Scanner scanner= new Scanner(System.in);
 
@@ -581,267 +581,294 @@ public boolean matches(String q) {
         System.out.print("Enter song title: ");
         String songTitle = scanner.nextLine();
 
-        System.out.print("Enter artist: ");
-        String artist = scanner.nextLine();
-
-        Genre genre = Genre.POP;  
-        DifficultyLevel difficulty = DifficultyLevel.BEGINNER;  
-        String instrument = "piano";
-        double rating = 5.0; 
-        int tempo = 120;
-        String timeSignature = "4/4";
-
-        Song song= new Song(songID, songTitle, artist, genre,  difficulty, 
-        instrument, rating, tempo, timeSignature);
-
-        System.out.println("Now, let's add measures to the song.");
-        while (true) {
-            System.out.print("Do you want to add a measure? (yes/no): ");
-            String response = scanner.nextLine();
-            if (!response.equalsIgnoreCase("yes")) {
-                break;
+        //System.out.print("Enter artist: ");
+        String artist = user.getUserName();
+        
+                Genre genre = Genre.POP;  
+                DifficultyLevel difficulty = DifficultyLevel.BEGINNER;  
+                String instrument = "piano";
+                double rating = 5.0; 
+                int tempo = 120;
+                String timeSignature = "4/4";
+        
+                Song song= new Song(songID, songTitle, artist, genre,  difficulty, 
+                instrument, rating, tempo, timeSignature);
+        
+                System.out.println("Now, let's add measures to the song.");
+                while (true) {
+                    System.out.print("Do you want to add a measure? (yes/no): ");
+                    String response = scanner.nextLine();
+                    if (!response.equalsIgnoreCase("yes")) {
+                        break;
+                    }
+                    
+                    System.out.print("Enter chords for measure separated by commas (if any, leave empty if none): ");
+                    String chordsInput = scanner.nextLine();
+                    List<Chords> chordsForMeasure = new ArrayList<>();
+                    if (!chordsInput.isEmpty()) {
+            
+                        String[] chordStrings = chordsInput.split(",");
+                        for (String chordStr : chordStrings) {
+                            String trimmedChordStr = chordStr.trim();
+                            Note note= Note.fromString(trimmedChordStr);
+                            if(note != null)
+                            {
+                                List<Note> defaultNotes = new ArrayList<Note>();
+                                defaultNotes.add(note);
+                                Notetype chordNoteType= note.getNoteType();
+                                Chords chord = new Chords(defaultNotes, trimmedChordStr, "major", chordNoteType, false);
+                                chordsForMeasure.add(chord);
+                            }
+                            else
+                            {
+                                System.out.println("Invalid note format: " + trimmedChordStr);
+                            }
+                            
+                            
             }
-            
-            System.out.print("Enter chords for measure separated by commas (if any, leave empty if none): ");
-            String chordsInput = scanner.nextLine();
-            List<Chords> chordsForMeasure = new ArrayList<>();
-            if (!chordsInput.isEmpty()) {
-    
-                String[] chordStrings = chordsInput.split(",");
-                for (String chordStr : chordStrings) {
-                    String trimmedChordStr = chordStr.trim();
-                    Note note= Note.fromString(trimmedChordStr);
-                    if(note != null)
-                    {
-                        List<Note> defaultNotes = new ArrayList<Note>();
-                        defaultNotes.add(note);
-                        Notetype chordNoteType= note.getNoteType();
-                        Chords chord = new Chords(defaultNotes, trimmedChordStr, "major", chordNoteType, false);
-                        chordsForMeasure.add(chord);
-                    }
-                    else
-                    {
-                        System.out.println("Invalid note format: " + trimmedChordStr);
-                    }
-                    
-                    
-    }
-}
-
-            System.out.print("Enter beats per measure: ");
-            String beats = scanner.nextLine();
-
-            System.out.print("Enter dynamic markings: ");
-            String dynamics = scanner.nextLine();
-            
-            Measure measure = new Measure(chordsForMeasure, beats , dynamics);
-            String jfuguePattern = measure.getJFuguePattern();
-
-            song.addMeasure(measure);
         }
-        return song;
-    }
-
-    private static final String SONG_FILE_NAME = "JavaFXBackEndRhythmReader/src/main/java/com/data/songs.json";
-
-    /**
-    * Converts the Song object to a JSON object.
-    *
-    * @return a JSONObject representing the song
-    */
-    @SuppressWarnings("unchecked")
-    public JSONObject toJSONObject() {
-        JSONObject songJson = new JSONObject();
-        songJson.put("tempo", this.tempo);
-        songJson.put("timeSignature", this.timeSignature);
-        songJson.put("instrument", this.instrument);
-        songJson.put("rating", this.rating);
-        songJson.put("difficulty", this.difficulty.toString()); 
-        songJson.put("genre", this.genre.toString()); 
-        songJson.put("artist", this.artist);
-        songJson.put("songTitle", this.songTitle);
-        songJson.put("songID", this.songID);
-
-        // Convert measures to JSON array
-        JSONArray measuresJson = new JSONArray();
-        for (Measure measure : this.measures) {
-            JSONArray measureNotesJson = new JSONArray();
-            List<Chords> chords = measure.getChords();
-
-            if (chords != null) {
-                for (Chords chord : chords) {
-                    if (chord.isChord() && chord.getNotes().size() > 1) {
-                        // For chords with multiple notes, create a nested array
-                        JSONArray chordNotesJson = new JSONArray();
-                        for (Note note : chord.getNotes()) {
-                            chordNotesJson.add(note.toString());
+        
+                    System.out.print("Enter beats per measure: ");
+                    String beats = scanner.nextLine();
+        
+                    System.out.print("Enter dynamic markings: ");
+                    String dynamics = scanner.nextLine();
+                    
+                    Measure measure = new Measure(chordsForMeasure, beats , dynamics);
+                    String jfuguePattern = measure.getJFuguePattern();
+        
+                    song.addMeasure(measure);
+                }
+                return song;
+            }
+        
+            private static final String SONG_FILE_NAME = "JavaFXBackEndRhythmReader/src/main/java/com/data/songs.json";
+        
+            /**
+            * Converts the Song object to a JSON object.
+            *
+            * @return a JSONObject representing the song
+            */
+            @SuppressWarnings("unchecked")
+            public JSONObject toJSONObject() {
+                JSONObject songJson = new JSONObject();
+                songJson.put("tempo", this.tempo);
+                songJson.put("timeSignature", this.timeSignature);
+                songJson.put("instrument", this.instrument);
+                songJson.put("rating", this.rating);
+                songJson.put("difficulty", this.difficulty.toString()); 
+                songJson.put("genre", this.genre.toString()); 
+                //songJson.put("artist", this.artist);
+                songJson.put("songTitle", this.songTitle);
+                songJson.put("songID", this.songID);
+        
+                // Convert measures to JSON array
+                JSONArray measuresJson = new JSONArray();
+                for (Measure measure : this.measures) {
+                    JSONArray measureNotesJson = new JSONArray();
+                    List<Chords> chords = measure.getChords();
+        
+                    if (chords != null) {
+                        for (Chords chord : chords) {
+                            if (chord.isChord() && chord.getNotes().size() > 1) {
+                                // For chords with multiple notes, create a nested array
+                                JSONArray chordNotesJson = new JSONArray();
+                                for (Note note : chord.getNotes()) {
+                                    chordNotesJson.add(note.toString());
+                                }
+                                measureNotesJson.add(chordNotesJson);
+                            } else {
+                                // For single notes, add directly to the measure array
+                                if (!chord.getNotes().isEmpty()) {
+                                    measureNotesJson.add(chord.getNotes().get(0).toString());
+                                }
+                            }
                         }
-                        measureNotesJson.add(chordNotesJson);
-                    } else {
-                        // For single notes, add directly to the measure array
-                        if (!chord.getNotes().isEmpty()) {
-                            measureNotesJson.add(chord.getNotes().get(0).toString());
-                        }
+                }
+        
+                measuresJson.add(measureNotesJson);
+            }
+            songJson.put("measures", measuresJson);
+                
+        
+            return songJson;
+            }
+        
+        /**
+         * Saves the song to a JSON file with proper formatting.
+         * Fix Overwriting issue
+         * 
+         * @param fileName the name of the file to save the song to
+         */
+        public void saveToJson(String fileName, User user) {
+            //JSONObject songJson = this.toJSONObject();
+        
+            JSONParser parser = new JSONParser();
+            JSONArray songList = new JSONArray();
+        
+            try (FileReader reader = new FileReader(fileName)) {
+                Object obj = parser.parse(reader);
+                if (obj instanceof JSONArray) {
+                    songList = (JSONArray) obj;
+                }
+            } catch (IOException e) {
+                // File doesn't exist or is empty, so start with a new JSON array
+                System.out.println("Creating new JSON file.");
+            } catch (ParseException e) {
+                // File exists but is not valid JSON, so handle the error
+                System.err.println("Error parsing existing JSON file: " + e.getMessage());
+                System.err.println("Overwriting with new JSON data.");
+            }
+        
+            String username= user.getUserName();
+        
+            JSONObject songJson = this.toJSONObject();
+        
+            songJson.put("artist", username);
+        
+            songList.add(songJson);
+        
+            // Add the new song to the JSON array
+            //songList.add(this.toJSONObject());
+        
+            
+        
+            try (FileWriter file = new FileWriter(fileName)) {
+                String jsonString = songList.toJSONString();
+                // Add indentation and line breaks
+                String prettyJson = formatJson(jsonString);
+                // fix overwriting issue
+                file.append(prettyJson);
+                System.out.println("Successfully wrote song to " + fileName);
+            } catch (IOException e) {
+                System.err.println("Error writing song to file: " + e.getMessage());
+                e.printStackTrace();
+            }
+        }
+        
+            /**
+            * Formats JSON string with proper indentation and line breaks.
+            *
+            * @param jsonString the JSON string to format
+            * @return formatted JSON string
+             */
+            private String formatJson(String jsonString) {
+                StringBuilder formatted = new StringBuilder();
+                int indentLevel = 0;
+                boolean inQuotes = false;
+            
+                for (char c : jsonString.toCharArray()) {
+                    switch (c) {
+                        case '\"':
+                        
+                            inQuotes = !inQuotes;
+                            formatted.append(c);
+                            break;
+                        
+                        case '{':
+                        case '[':
+                            formatted.append(c);
+                            if (!inQuotes) {
+                                indentLevel++;
+                                formatted.append("\n").append("    ".repeat(indentLevel));
+                            }
+                            break;
+                        
+                        case '}':
+                        case ']':
+                            if (!inQuotes) {
+                                indentLevel--;
+                                formatted.append("\n").append("    ".repeat(indentLevel));
+                            }
+                            formatted.append(c);
+                            break;
+                        
+                        case ',':
+                            formatted.append(c);
+                            if (!inQuotes) {
+                                formatted.append("\n").append("    ".repeat(indentLevel));
+                            }
+                            break;
+                        
+                        case ':':
+                            formatted.append(c);
+                            if (!inQuotes) {
+                                formatted.append(" ");
+                            }
+                            break;
+                        
+                        default:
+                            formatted.append(c);
                     }
                 }
+            
+                return formatted.toString();
         }
-
-        measuresJson.add(measureNotesJson);
-    }
-    songJson.put("measures", measuresJson);
         
-
-    return songJson;
-    }
-
-/**
- * Saves the song to a JSON file with proper formatting.
- * Fix Overwriting issue
- * 
- * @param fileName the name of the file to save the song to
- */
-public void saveToJson(String fileName) {
-    //JSONObject songJson = this.toJSONObject();
-
-    JSONParser parser = new JSONParser();
-    JSONArray songList = new JSONArray();
-
-    try (FileReader reader = new FileReader(fileName)) {
-        Object obj = parser.parse(reader);
-        if (obj instanceof JSONArray) {
-            songList = (JSONArray) obj;
-        }
-    } catch (IOException e) {
-        // File doesn't exist or is empty, so start with a new JSON array
-        System.out.println("Creating new JSON file.");
-    } catch (ParseException e) {
-        // File exists but is not valid JSON, so handle the error
-        System.err.println("Error parsing existing JSON file: " + e.getMessage());
-        System.err.println("Overwriting with new JSON data.");
-    }
-
-    // Add the new song to the JSON array
-    songList.add(this.toJSONObject());
-
-
-
-    try (FileWriter file = new FileWriter(fileName)) {
-        String jsonString = songList.toJSONString();
-        // Add indentation and line breaks
-        String prettyJson = formatJson(jsonString);
-        // fix overwriting issue
-        file.append(prettyJson);
-        System.out.println("Successfully wrote song to " + fileName);
-    } catch (IOException e) {
-        System.err.println("Error writing song to file: " + e.getMessage());
-        e.printStackTrace();
-    }
-}
-
-    /**
-    * Formats JSON string with proper indentation and line breaks.
-    *
-    * @param jsonString the JSON string to format
-    * @return formatted JSON string
-     */
-    private String formatJson(String jsonString) {
-        StringBuilder formatted = new StringBuilder();
-        int indentLevel = 0;
-        boolean inQuotes = false;
-    
-        for (char c : jsonString.toCharArray()) {
-            switch (c) {
-                case '\"':
+        
+            
+        
+            public static void main(String[] args) {
+                Scanner scanner = new Scanner(System.in);
+        
+                DataLoader dataLoader= new DataLoader();
+        
+                User loggedInUser= getLoggedInUser();
+                 
+                 
+                if(loggedInUser == null)
+                {
+                    System.out.println("No user logged in.");
+                    return;
+                }
+             
+                Song newSong = createUserSong(loggedInUser);
                 
-                    inQuotes = !inQuotes;
-                    formatted.append(c);
-                    break;
+                // print the song details or perform assertions to check if the song was created correctly
+                System.out.println("Song Details:\n" +
+                                   "ID: " + newSong.getSongID() + "\n" +
+                                   "Title: " + newSong.getSongTitle() + "\n" +
+                                   "Artist: " + newSong.getArtist() + "\n" +
+                                   "Genre: " + newSong.getGenre() + "\n" +
+                                   "Difficulty: " + newSong.getDifficulty() + "\n" +
+                                   "Instrument: " + newSong.getInstrument() + "\n" +
+                                   "Rating: " + newSong.getRating() + "\n" +
+                                   "Tempo: " + newSong.getTempo() + "\n" +
+                                   "Time Signature: " + newSong.getTimeSignature());
+        
+                scanner.close();
+                                   
+                System.out.println("\nMeasures:");
+                ArrayList<Measure> measures = newSong.getMeasures();
+                for (int i = 0; i < measures.size(); i++) {
+                    System.out.println("Measure " + (i + 1) + ": " + measures.get(i).getJFuguePattern());
+                }
                 
-                case '{':
-                case '[':
-                    formatted.append(c);
-                    if (!inQuotes) {
-                        indentLevel++;
-                        formatted.append("\n").append("    ".repeat(indentLevel));
+                String fileName = SONG_FILE_NAME;
+                
+                newSong.saveToJson(fileName, loggedInUser);
+                
+                // Read back the file to verify its contents.
+                System.out.println("Reading contents of " + fileName + ":");
+                try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+                    String line;
+                    while ((line = br.readLine()) != null) {
+                        System.out.println(line);
                     }
-                    break;
+                } catch (IOException e) {
+                    System.err.println("Error reading the test file: " + e.getMessage());
+                    e.printStackTrace();
+                }
+        
                 
-                case '}':
-                case ']':
-                    if (!inQuotes) {
-                        indentLevel--;
-                        formatted.append("\n").append("    ".repeat(indentLevel));
-                    }
-                    formatted.append(c);
-                    break;
-                
-                case ',':
-                    formatted.append(c);
-                    if (!inQuotes) {
-                        formatted.append("\n").append("    ".repeat(indentLevel));
-                    }
-                    break;
-                
-                case ':':
-                    formatted.append(c);
-                    if (!inQuotes) {
-                        formatted.append(" ");
-                    }
-                    break;
-                
-                default:
-                    formatted.append(c);
             }
-        }
-    
-        return formatted.toString();
-}
 
-
-    
-
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        Song newSong = createUserSong();
-        
-        // print the song details or perform assertions to check if the song was created correctly
-        System.out.println("Song Details:\n" +
-                           "ID: " + newSong.getSongID() + "\n" +
-                           "Title: " + newSong.getSongTitle() + "\n" +
-                           "Artist: " + newSong.getArtist() + "\n" +
-                           "Genre: " + newSong.getGenre() + "\n" +
-                           "Difficulty: " + newSong.getDifficulty() + "\n" +
-                           "Instrument: " + newSong.getInstrument() + "\n" +
-                           "Rating: " + newSong.getRating() + "\n" +
-                           "Tempo: " + newSong.getTempo() + "\n" +
-                           "Time Signature: " + newSong.getTimeSignature());
-
-        scanner.close();
-                           
-        System.out.println("\nMeasures:");
-        ArrayList<Measure> measures = newSong.getMeasures();
-        for (int i = 0; i < measures.size(); i++) {
-            System.out.println("Measure " + (i + 1) + ": " + measures.get(i).getJFuguePattern());
-        }
-        
-        String fileName = SONG_FILE_NAME;
-        
-        newSong.saveToJson(fileName);
-        
-        // Read back the file to verify its contents.
-        System.out.println("Reading contents of " + fileName + ":");
-        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                System.out.println(line);
+            private static User getLoggedInUser() {
+                
+                return new User("testuser", "Test", "User", "test@example.com", "password", 0, new ArrayList<>(), new ArrayList<>());
             }
-        } catch (IOException e) {
-            System.err.println("Error reading the test file: " + e.getMessage());
-            e.printStackTrace();
-        }
-
         
-    }
+            
     
 
 
