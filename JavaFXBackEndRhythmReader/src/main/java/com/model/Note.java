@@ -1,5 +1,7 @@
 package com.model;
 
+import org.json.simple.JSONObject;
+
 /**
  * @author Kennedy Poag
  * Represents a musical note with properties such as pitch, modifier,
@@ -325,6 +327,21 @@ public class Note {
         }
         // Returnsa new Note object with the parsed properties
         return new Note(modifier, pitch, noteType, false, "", octave, "4/4");
+    }
+
+    /**
+     * Converts the Note object to a JSON object.
+     *
+     * @return a JSONObject representing the note
+     */
+    public JSONObject toJSONObject() {
+        JSONObject noteJson = new JSONObject();
+        noteJson.put("pitch", this.pitch);
+        noteJson.put("modifier", this.modifier);
+        noteJson.put("octave", this.octave);
+        noteJson.put("noteType", this.noteType.toString()); 
+
+        return noteJson;
     }
 
     /**

@@ -1,16 +1,21 @@
 package com.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.jfugue.pattern.Pattern;  
 import org.jfugue.player.Player;  
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.chrono.HijrahChronology;
 import java.util.Scanner;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+
+import java.util.UUID;
 
 
 /**
@@ -457,8 +462,8 @@ public class Song {
     {
         Scanner scanner= new Scanner(System.in);
 
-        System.out.print("Enter song ID: ");
-        String songID = scanner.nextLine();
+        String songID = UUID.randomUUID().toString();
+        System.out.println("Generated Song ID: " + songID);
         
         System.out.print("Enter song title: ");
         String songTitle = scanner.nextLine();
@@ -466,8 +471,8 @@ public class Song {
         System.out.print("Enter artist: ");
         String artist = scanner.nextLine();
 
-        Genre genre = Genre.POP;  // Assume you have an enum Genre
-        DifficultyLevel difficulty = DifficultyLevel.BEGINNER;  // And an enum DifficultyLevel
+        Genre genre = Genre.POP;  
+        DifficultyLevel difficulty = DifficultyLevel.BEGINNER;  
         String instrument = "piano";
         double rating = 5.0; 
         int tempo = 120;
@@ -475,7 +480,122 @@ public class Song {
 
         Song song= new Song(songID, songTitle, artist, genre,  difficulty, 
         instrument, rating, tempo, timeSignature);
+
+        System.out.println("Now, let's add measures to the song.");
+        while (true) {
+            System.out.print("Do you want to add a measure? (yes/no): ");
+            String response = scanner.nextLine();
+            if (!response.equalsIgnoreCase("yes")) {
+                break;
+            }
+            
+            System.out.print("Enter chords for measure separated by commas (if any, leave empty if none): ");
+            String chordsInput = scanner.nextLine();
+            List<Chords> chordsForMeasure = new ArrayList<>();
+            if (!chordsInput.isEmpty()) {
+    
+                String[] chordStrings = chordsInput.split(",");
+                for (String chordStr : chordStrings) {
+                    String trimmedChordStr = chordStr.trim();
+                    Note note= Note.fromString(trimmedChordStr);
+                    if(note != null)
+                    {
+                        List<Note> defaultNotes = new ArrayList<Note>();
+                        defaultNotes.add(note);
+                        Notetype chordNoteType= note.getNoteType();
+                        Chords chord = new Chords(defaultNotes, trimmedChordStr, "major", chordNoteType, false);
+                        chordsForMeasure.add(chord);
+                    }
+                    else
+                    {
+                        System.out.println("Invalid note format: " + trimmedChordStr);
+                    }
+                    
+                    
     }
+}
+
+            System.out.print("Enter beats per measure: ");
+            String beats = scanner.nextLine();
+
+            System.out.print("Enter dynamic markings: ");
+            String dynamics = scanner.nextLine();
+            
+            Measure measure = new Measure(chordsForMeasure, beats , dynamics);
+            song.addMeasure(measure);
+        }
+        return song;
+    }
+
+    private static final String SONG_FILE_NAME = "JavaFXBackEndRhythmReader/src/main/java/com/data/songs.json";
+
+    /**
+    * Converts the Song object to a JSON object.
+    *
+    * @return a JSONObject representing the song
+    */
+    @SuppressWarnings("unchecked")
+    public JSONObject toJSONObject() {
+        JSONObject songJson = new JSONObject();
+        songJson.put("songID", this.songID);
+        songJson.put("songTitle", this.songTitle);
+        songJson.put("artist", this.artist);
+        songJson.put("genre", this.genre.toString()); 
+        songJson.put("difficulty", this.difficulty.toString()); 
+        songJson.put("instrument", this.instrument);
+        songJson.put("rating", this.rating);
+        songJson.put("tempo", this.tempo);
+        songJson.put("timeSignature", this.timeSignature);
+
+        // Convert measures to JSON array
+        JSONArray measuresJson = new JSONArray();
+        for (Measure measure : this.measures) {
+            measuresJson.add(measure.toJSONObject()); 
+        }
+        songJson.put("measures", measuresJson);
+
+        return songJson;
+    }
+
+     /**
+     * Saves the song to a JSON file.
+     *
+     * @param fileName the name of the file to save the song to
+     */
+    public void saveToJson(String fileName) {
+        JSONObject songJson = this.toJSONObject();
+
+        try (FileWriter file = new FileWriter(fileName)) {
+            file.write(songJson.toJSONString());
+            System.out.println("Successfully wrote song to " + fileName);
+        } catch (IOException e) {
+            System.err.println("Error writing song to file: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Song newSong = createUserSong();
+        
+        // print the song details or perform assertions to check if the song was created correctly
+        System.out.println("Song Details:\n" +
+                           "ID: " + newSong.getSongID() + "\n" +
+                           "Title: " + newSong.getSongTitle() + "\n" +
+                           "Artist: " + newSong.getArtist() + "\n" +
+                           "Genre: " + newSong.getGenre() + "\n" +
+                           "Difficulty: " + newSong.getDifficulty() + "\n" +
+                           "Instrument: " + newSong.getInstrument() + "\n" +
+                           "Rating: " + newSong.getRating() + "\n" +
+                           "Tempo: " + newSong.getTempo() + "\n" +
+                           "Time Signature: " + newSong.getTimeSignature() + "\n" +
+                           "Measures: " + newSong.getMeasures());
+
+        scanner.close();
+    }
+    
+
+
 
 
 }
