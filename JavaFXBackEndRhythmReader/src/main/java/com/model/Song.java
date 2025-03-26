@@ -13,6 +13,8 @@ import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 
 /**
@@ -560,10 +562,31 @@ public class Song {
      * @param fileName the name of the file to save the song to
      */
     public void saveToJson(String fileName) {
-        JSONObject songJson = this.toJSONObject();
+        //JSONObject songJson = this.toJSONObject();
+
+        JSONParser parser = new JSONParser();
+        JSONArray songList = new JSONArray();
+
+        // Try to read the existing JSON file
+        try (FileReader reader = new FileReader(fileName)) {
+            Object obj = parser.parse(reader);
+            if (obj instanceof JSONArray) {
+                songList = (JSONArray) obj;
+            }
+        } catch (IOException e) {
+            // File doesn't exist or is empty, so start with a new JSON array
+            System.out.println("Creating new JSON file.");
+        } catch (ParseException e) {
+            // File exists but is not valid JSON, so handle the error
+            System.err.println("Error parsing existing JSON file: " + e.getMessage());
+            System.err.println("Overwriting with new JSON data.");
+        }
+
+        // Add the new song to the JSON array
+        songList.add(this.toJSONObject());
 
         try (FileWriter file = new FileWriter(fileName)) {
-            file.write(songJson.toJSONString());
+            file.write(songList.toJSONString());
             System.out.println("Successfully wrote song to " + fileName);
         } catch (IOException e) {
             System.err.println("Error writing song to file: " + e.getMessage());
@@ -590,7 +613,7 @@ public class Song {
         
         scanner.close();                 
         
-        String fileName = "Test_file";
+        String fileName = SONG_FILE_NAME;
         
         newSong.saveToJson(fileName);
         
