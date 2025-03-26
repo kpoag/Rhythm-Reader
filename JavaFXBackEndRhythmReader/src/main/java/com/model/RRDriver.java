@@ -45,10 +45,35 @@ public class RRDriver {
     }
     public boolean createAccount() {
         try {
-            String email = "emmasmith@example.com";
+            System.out.println("\n=== Account Creation ===");
+        
+            System.out.print("Enter username: ");
+            String userName = scanner.nextLine();
 
-            User newUser = facade.createAccount("emmassmith", "Emma", "Smith", email, "securepassword123", scanner); 
+           
 
+            System.out.print("Enter first name: ");
+            String firstName = scanner.nextLine();
+        
+            System.out.print("Enter last name: ");
+            String lastName = scanner.nextLine();
+        
+            System.out.print("Enter email: ");
+            String email = scanner.nextLine();
+
+            if (User.isEmailTaken(email)) {
+                System.out.println("Email is already registered. Please use a different email.");
+                return false;  
+            }
+            if (!User.isValidEmail(email)) {
+                System.out.println("Invalid email format. Please enter a valid email address.");
+                return false;  
+            }
+            System.out.print("Enter password: ");
+            String password = scanner.nextLine();
+    
+            User newUser = facade.createAccount(userName, firstName, lastName, email, password, scanner);
+        
             if (newUser != null) {
                 UserList.getInstance().saveUsers();
                 System.out.println("\nAccount creation successful!");
@@ -62,6 +87,39 @@ public class RRDriver {
             return false;
         }
     
+    }
+
+    public boolean playASong() {
+        try {
+            SongList songList = SongList.getInstance();
+
+            System.out.print("How would you like to Filter Songs");
+            String filterChoice = scanner.nextLine();
+            
+            System.out.print("What artist would you like to play?");
+            String artist = scanner.nextLine();
+            // facade.getLibrary().filterByArtist(artist);
+            ArrayList<Song> filteredSongs = songList.filterByArtist(artist);
+
+            System.out.print("Here are the available songs by " + artist);
+            for (Song song : filteredSongs) {
+                System.out.println(song.getSongTitle() + " " + song.getArtist());
+            }
+
+            System.out.println("Which song would you like to play? (1-3): ");
+            int choice = scanner.nextInt();
+            if (choice == 1 || choice == 2  || choice == 3) {
+                System.out.println("Playing " + filteredSongs.get(choice) + "...");
+            }
+            else {
+                System.out.println("Sorry that is an invalid choice, please try again");
+            }
+
+            return true;
+            
+        } catch(Exception e) {
+            return false;
+        }
     }
     
 }
