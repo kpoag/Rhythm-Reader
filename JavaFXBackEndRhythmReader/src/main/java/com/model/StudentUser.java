@@ -5,7 +5,6 @@ package com.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class StudentUser extends User {
@@ -37,6 +36,14 @@ public class StudentUser extends User {
         if (UserList.getInstance().haveUser(userName)) {
             return null;
         }
+        if (User.isEmailTaken(email)) {
+			System.out.println("Email is already registered. Please use a different email.");
+			return null;  
+		}
+		if (!User.isValidEmail(email)) {
+			System.out.println("Invalid email format. Please enter a valid email address.");
+			return null;  
+		}
         int points = 0;
         ArrayList<String> badges = new ArrayList<>();
         badges.add("Beginner");
@@ -145,5 +152,8 @@ public class StudentUser extends User {
 
     }*/
     
+    public boolean isStudent() {
+        return true;
+    }
 
 }

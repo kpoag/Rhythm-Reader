@@ -19,7 +19,7 @@ public class FlashcardList {
      * Private constructor to initialize the flashcards list by fetching data from the database.
      */
     private FlashcardList(){
-        flashcardList = Database.getFlashcards();
+        flashcardList = DataLoader.loadFlashcards();
     }
 
     /**

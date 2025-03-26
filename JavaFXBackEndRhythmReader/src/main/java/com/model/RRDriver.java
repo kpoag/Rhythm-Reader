@@ -45,35 +45,10 @@ public class RRDriver {
     }
     public boolean createAccount() {
         try {
-            System.out.println("\n=== Account Creation ===");
-        
-            System.out.print("Enter username: ");
-            String userName = scanner.nextLine();
+            String email = "emmasmith@example.com";
 
-           
+            User newUser = facade.createAccount("emmassmith", "Emma", "Smith", email, "securepassword123", scanner); 
 
-            System.out.print("Enter first name: ");
-            String firstName = scanner.nextLine();
-        
-            System.out.print("Enter last name: ");
-            String lastName = scanner.nextLine();
-        
-            System.out.print("Enter email: ");
-            String email = scanner.nextLine();
-
-            if (User.isEmailTaken(email)) {
-                System.out.println("Email is already registered. Please use a different email.");
-                return false;  
-            }
-            if (!User.isValidEmail(email)) {
-                System.out.println("Invalid email format. Please enter a valid email address.");
-                return false;  
-            }
-            System.out.print("Enter password: ");
-            String password = scanner.nextLine();
-    
-            User newUser = facade.createAccount(userName, firstName, lastName, email, password, scanner);
-        
             if (newUser != null) {
                 UserList.getInstance().saveUsers();
                 System.out.println("\nAccount creation successful!");

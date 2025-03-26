@@ -480,6 +480,7 @@ public class Song {
 
         Song song= new Song(songID, songTitle, artist, genre,  difficulty, 
         instrument, rating, tempo, timeSignature);
+<<<<<<< HEAD
 
         System.out.println("Now, let's add measures to the song.");
         while (true) {
@@ -512,6 +513,9 @@ public class Song {
                     }
                     
                     
+=======
+        return song;
+>>>>>>> origin/main
     }
 }
 
