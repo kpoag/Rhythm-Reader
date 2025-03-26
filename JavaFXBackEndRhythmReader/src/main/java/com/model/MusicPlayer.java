@@ -1,13 +1,20 @@
 package com.model;
 
-import com.rhythmreader.*;
+import com.rhythmreader.Music;
 
-import java.lang.Thread;
-
-
+/**
+ * The MusicPlayer class simulates playing a song by sequentially playing measures of notes.
+ * Each measure is played with a 300ms delay between them.
+ * 
+ *  The song consists of multiple measures, and the playSong method plays them in order.
+ *
+ * @see Music 
+ */
 public class MusicPlayer {
 
-
+    /**
+     * Plays the song by calling individual methods for each measure with delays.
+     */
     public void playSong() {
         try {
             playMeasure1and2();
@@ -75,7 +82,9 @@ private void playMeasure9(){
 }
 
 
-
+/**
+ * Main Mthod to test the functionality by playing the song.
+ */
     public static void main(String[] args){
         MusicPlayer player = new MusicPlayer();
         player.playSong();

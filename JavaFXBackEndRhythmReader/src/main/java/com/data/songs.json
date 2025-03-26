@@ -222,5 +222,21 @@
         "instrument": "piano",
         "songID": "97ef8080-08ce-4202-b4a0-44b5d6d8bf3b",
         "timeSignature": "3\/4"
+    },
+    {
+        "difficulty": "BEGINNER",
+        "songTitle": "Happy Birthday",
+        "measures": [
+            [
+                "G4q"
+            ]
+        ],
+        "artist": "Patty and Mildred J. Hill",
+        "rating": 5.0,
+        "genre": "POP",
+        "tempo": 120,
+        "instrument": "piano",
+        "songID": "01475e6a-0f49-4707-b341-c3754878aca2",
+        "timeSignature": "4\/4"
     }
 ]
