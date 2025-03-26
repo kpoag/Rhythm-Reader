@@ -14,6 +14,8 @@ import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 
 /**
@@ -699,10 +701,32 @@ public boolean matches(String q) {
  * @param fileName the name of the file to save the song to
  */
 public void saveToJson(String fileName) {
-    JSONObject songJson = this.toJSONObject();
+    //JSONObject songJson = this.toJSONObject();
+
+    JSONParser parser = new JSONParser();
+    JSONArray songList = new JSONArray();
+
+    try (FileReader reader = new FileReader(fileName)) {
+        Object obj = parser.parse(reader);
+        if (obj instanceof JSONArray) {
+            songList = (JSONArray) obj;
+        }
+    } catch (IOException e) {
+        // File doesn't exist or is empty, so start with a new JSON array
+        System.out.println("Creating new JSON file.");
+    } catch (ParseException e) {
+        // File exists but is not valid JSON, so handle the error
+        System.err.println("Error parsing existing JSON file: " + e.getMessage());
+        System.err.println("Overwriting with new JSON data.");
+    }
+
+    // Add the new song to the JSON array
+    songList.add(this.toJSONObject());
+
+
 
     try (FileWriter file = new FileWriter(fileName)) {
-        String jsonString = songJson.toJSONString();
+        String jsonString = songList.toJSONString();
         // Add indentation and line breaks
         String prettyJson = formatJson(jsonString);
         // fix overwriting issue
@@ -791,6 +815,8 @@ public void saveToJson(String fileName) {
                            "Rating: " + newSong.getRating() + "\n" +
                            "Tempo: " + newSong.getTempo() + "\n" +
                            "Time Signature: " + newSong.getTimeSignature());
+
+        scanner.close();
                            
         System.out.println("\nMeasures:");
         ArrayList<Measure> measures = newSong.getMeasures();
@@ -798,7 +824,7 @@ public void saveToJson(String fileName) {
             System.out.println("Measure " + (i + 1) + ": " + measures.get(i).getJFuguePattern());
         }
         
-        String fileName = "Test_file";
+        String fileName = SONG_FILE_NAME;
         
         newSong.saveToJson(fileName);
         
