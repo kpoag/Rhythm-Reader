@@ -225,6 +225,7 @@
     },
     {
         "difficulty": "BEGINNER",
+<<<<<<< HEAD
         "songTitle": "test 4",
         "measures": [
             [
@@ -232,11 +233,24 @@
             ]
         ],
         "artist": "testuser",
+=======
+        "songTitle": "Happy Birthday",
+        "measures": [
+            [
+                "G4q"
+            ]
+        ],
+        "artist": "Patty and Mildred J. Hill",
+>>>>>>> origin/main
         "rating": 5.0,
         "genre": "POP",
         "tempo": 120,
         "instrument": "piano",
+<<<<<<< HEAD
         "songID": "a27777d5-b2a6-4a67-9cb6-6c0f626f2034",
+=======
+        "songID": "01475e6a-0f49-4707-b341-c3754878aca2",
+>>>>>>> origin/main
         "timeSignature": "4\/4"
     }
 ]
