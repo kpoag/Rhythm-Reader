@@ -127,10 +127,10 @@ public class DataWriter extends DataConstants {
            jsonSongs.add(getSongJSON(songList.get(i)));
        }
 
-       try (FileWriter file = new FileWriter(SONG_TEMP_FILE_NAME)) {
+       try (FileWriter file = new FileWriter(SONG_FILE_NAME)) {
            file.write(jsonSongs.toJSONString());
            file.flush();
-           System.out.println("Songs written to " + SONG_TEMP_FILE_NAME);
+           System.out.println("Songs written to " + SONG_FILE_NAME);
            return true;
        }
        catch(IOException e) {

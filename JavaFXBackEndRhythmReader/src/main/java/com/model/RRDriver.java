@@ -14,25 +14,31 @@ public class RRDriver {
     }
 
     public void run() {
+        createFirstAccount();
+        createSecondAccount();
+        logout();
         login();
-        //createAccount();
-      // login();
-      // logout();
     }
 
     public boolean login(){
-        return facade.login("johndoe@example.com", "securepassword123");  
+        System.out.println("Logging in as Fred!");          
+        return facade.login("ffred@gmail.com", "securepassword123");  
     }
     
     public boolean logout() {
         return facade.logout();
     }
 
-    public boolean createAccount() {
-        String email = "emmasmith@example.com";
-
-        return facade.createAccount("emmassmith", "Emma", "Smith", email, "securepassword123", scanner); 
+    public boolean createFirstAccount() {
+        System.out.println("Attempting to create an account for Fred!");
+        return facade.createAccount("ffredrickson", "Fred", "Fredrickson", "ffredrickson@gmail.com", "securepassword123", scanner); 
     }
+
+    public boolean createSecondAccount() {
+        System.out.println("Let's try again!");
+        return facade.createAccount("ffred", "Fred", "Fredrickson", "ffred@gmail.com", "securepassword123", scanner); 
+    }
+
     
     
 }

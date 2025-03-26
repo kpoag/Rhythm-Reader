@@ -5,6 +5,8 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.UUID;
 
+import org.json.simple.JSONObject;
+
 /**
  * Represents a user in the system.
  * This class provides common attributes and behaviors for all types of users,
@@ -85,7 +87,7 @@ public class User {
      * @param password the user's password.
      * @return a new  User instance if successful; null otherwise.
      */
-	public static User createDefaultAccount(String firstName, String lastName, String userName, String email, String password) {
+	public static User createDefaultAccount(String userName, String firstName, String lastName, String email, String password) {
 
 		if (UserList.getInstance().haveUser(userName)) {
 			return null;
@@ -395,6 +397,42 @@ public class User {
 	public boolean isTeacher() {
 		return false;
 	}
+
+     public static JSONObject getUserJSON(User user) {
+    JSONObject userDetails = new JSONObject();
+
+    // Basic user information
+    userDetails.put("id", user.getId().toString());
+    userDetails.put("firstName", user.getFirstName());
+    userDetails.put("lastName", user.getLastName());
+    userDetails.put("username", user.getUserName());
+    userDetails.put("email", user.getEmail());
+    userDetails.put("password", user.getPassword());
+    userDetails.put("points", user.getPoints());
+    userDetails.put("badges", user.getBadges());
+    userDetails.put("friends", user.getFriendNames(userDetails));
+
+    // Add student-specific details
+    if (user.isStudent() && user instanceof StudentUser) {
+        StudentUser student = (StudentUser) user;
+        userDetails.put("classes", student.getClasses());
+        userDetails.put("assignedFlashcards", student.getAssignedFlashcards());
+        userDetails.put("completedFlashcards", student.getCompletedFlashcards());
+        userDetails.put("deadlines", student.getDeadlines());
+        userDetails.put("grade", student.getGrade());
+        userDetails.put("progress", student.getProgress());
+        userDetails.put("skillLevel", student.getSkillLevel());
+    }
+
+    // Add teacher-specific details
+    if (user.isTeacher() && user instanceof TeacherUser) {
+        TeacherUser teacher = (TeacherUser) user;
+        userDetails.put("teachingClasses", teacher.getTeachingClasses());
+        userDetails.put("gradebook", teacher.getGradebook());
+    }
+
+    return userDetails;
+}
 
 	/**
 	 * Determines whether current user is a Student

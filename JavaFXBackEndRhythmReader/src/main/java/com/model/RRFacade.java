@@ -51,6 +51,7 @@ public class RRFacade {
             return new ArrayList<>();
         }
 
+
         ArrayList<Song> results = Song.searchSongs(query);
         
         // Print search results
@@ -72,10 +73,9 @@ public class RRFacade {
         User newUser = User.createAccountByType(userName, firstName, lastName, email, password, scanner);
         if (newUser != null) {
             this.currUser = newUser;
-            System.out.println("Account created successfully");
+            DataWriter.saveUsers();
             return true;
         } 
-        System.out.println("Failed to create account");
         return false;
     }
 
