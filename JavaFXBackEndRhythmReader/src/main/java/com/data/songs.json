@@ -222,5 +222,21 @@
         "instrument": "piano",
         "songID": "97ef8080-08ce-4202-b4a0-44b5d6d8bf3b",
         "timeSignature": "3\/4"
+    },
+    {
+        "difficulty": "BEGINNER",
+        "songTitle": "test 4",
+        "measures": [
+            [
+                "c4q"
+            ]
+        ],
+        "artist": "testuser",
+        "rating": 5.0,
+        "genre": "POP",
+        "tempo": 120,
+        "instrument": "piano",
+        "songID": "a27777d5-b2a6-4a67-9cb6-6c0f626f2034",
+        "timeSignature": "4\/4"
     }
 ]
