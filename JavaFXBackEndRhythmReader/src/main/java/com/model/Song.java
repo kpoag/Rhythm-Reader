@@ -643,10 +643,32 @@ public class Song {
  * @param fileName the name of the file to save the song to
  */
 public void saveToJson(String fileName) {
-    JSONObject songJson = this.toJSONObject();
+    //JSONObject songJson = this.toJSONObject();
+
+    JSONParser parser = new JSONParser();
+    JSONArray songList = new JSONArray();
+
+    try (FileReader reader = new FileReader(fileName)) {
+        Object obj = parser.parse(reader);
+        if (obj instanceof JSONArray) {
+            songList = (JSONArray) obj;
+        }
+    } catch (IOException e) {
+        // File doesn't exist or is empty, so start with a new JSON array
+        System.out.println("Creating new JSON file.");
+    } catch (ParseException e) {
+        // File exists but is not valid JSON, so handle the error
+        System.err.println("Error parsing existing JSON file: " + e.getMessage());
+        System.err.println("Overwriting with new JSON data.");
+    }
+
+    // Add the new song to the JSON array
+    songList.add(this.toJSONObject());
+
+
 
     try (FileWriter file = new FileWriter(fileName)) {
-        String jsonString = songJson.toJSONString();
+        String jsonString = songList.toJSONString();
         // Add indentation and line breaks
         String prettyJson = formatJson(jsonString);
         // fix overwriting issue
@@ -664,38 +686,6 @@ public void saveToJson(String fileName) {
     * @param jsonString the JSON string to format
     * @return formatted JSON string
      */
-<<<<<<< HEAD
-    public void saveToJson(String fileName) {
-        //JSONObject songJson = this.toJSONObject();
-
-        JSONParser parser = new JSONParser();
-        JSONArray songList = new JSONArray();
-
-        // Try to read the existing JSON file
-        try (FileReader reader = new FileReader(fileName)) {
-            Object obj = parser.parse(reader);
-            if (obj instanceof JSONArray) {
-                songList = (JSONArray) obj;
-            }
-        } catch (IOException e) {
-            // File doesn't exist or is empty, so start with a new JSON array
-            System.out.println("Creating new JSON file.");
-        } catch (ParseException e) {
-            // File exists but is not valid JSON, so handle the error
-            System.err.println("Error parsing existing JSON file: " + e.getMessage());
-            System.err.println("Overwriting with new JSON data.");
-        }
-
-        // Add the new song to the JSON array
-        songList.add(this.toJSONObject());
-
-        try (FileWriter file = new FileWriter(fileName)) {
-            file.write(songList.toJSONString());
-            System.out.println("Successfully wrote song to " + fileName);
-        } catch (IOException e) {
-            System.err.println("Error writing song to file: " + e.getMessage());
-            e.printStackTrace();
-=======
     private String formatJson(String jsonString) {
         StringBuilder formatted = new StringBuilder();
         int indentLevel = 0;
@@ -744,7 +734,6 @@ public void saveToJson(String fileName) {
                 default:
                     formatted.append(c);
             }
->>>>>>> origin/main
         }
     
         return formatted.toString();
@@ -768,6 +757,8 @@ public void saveToJson(String fileName) {
                            "Rating: " + newSong.getRating() + "\n" +
                            "Tempo: " + newSong.getTempo() + "\n" +
                            "Time Signature: " + newSong.getTimeSignature());
+
+        scanner.close();
                            
         System.out.println("\nMeasures:");
         ArrayList<Measure> measures = newSong.getMeasures();
