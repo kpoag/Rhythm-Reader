@@ -14,6 +14,7 @@ public class RRDriver {
     }
 
     public void run() {
+        // Scenario 1: Create an account, log in, and log out
         createFirstAccount();
         createSecondAccount();
         logout();
