@@ -2,6 +2,11 @@ package com.model;
 
 import java.util.List;
 
+/**
+ * Represents the settings for a user account.
+ * This class contains methods to update and retrieve various account settings such as experience level,
+ * display name, banner style, profile bio, theme color, language, and content filters.
+ */
 public class Settings {
     private int experienceLevel;
     private String displayName;
@@ -11,6 +16,18 @@ public class Settings {
     private String language;
     private List<String> contentFilter;
 
+
+    /**
+     * Constructs a new Settings instance with the provided parameters.
+     *
+     * @param experienceLevel  user's experience level.
+     * @param displayName      display name of the user.
+     * @param bannerStyle      banner style for the account.
+     * @param profileBio       profile biography.
+     * @param themeColor       theme color.
+     * @param language         language preference.
+     * @param contentFilter   a list of content filters.
+     */
     public Settings(int experienceLevel, String displayName, String bannerStyle, 
                     String profileBio, String themeColor, String language, List<String> contentFilter) {
         this.experienceLevel = experienceLevel;
@@ -22,29 +39,67 @@ public class Settings {
         this.contentFilter = contentFilter;
     }
 
-    public void setProfilePicture() {
-        System.out.println("Profile picture set.");
+    /**
+     * Sets the profile picture.
+     *
+     * @return a confirmation message that the profile picture has been set.
+     */
+    public String setProfilePicture() {
+        return "Profile picture set.";
     }
 
+     /**
+     * Updates the profile biography.
+     *
+     * @param info  new profile bio information.
+     * @return a confirmation message that the profile bio has been updated.
+     */
     public String addProfileBio(String info) {
         this.profileBio = info;
         return "Profile bio updated.";
     }
 
+    /**
+     * Retrieves the user's experience level.
+     *
+     * @return the experience level.
+     */
     public int getExperienceLevel() {
         return experienceLevel;
     }
 
-    public void setThemeColor(String themeColor) {
-        this.themeColor = themeColor;
+     /**
+      * Sets the theme color for the account.
+      *
+      * @param themeColor the new theme color.
+      * @return true/false if the theme color was set.
+      */
+    public boolean setThemeColor(String themeColor) {
+        if (themeColor != null) {
+            this.themeColor = themeColor;
+            return true;
+        }
+        return false;
+        
     }
 
-    public void filterContent(List<String> content) {
+     /**
+     * Updates the content filter with the provided list.
+     *
+     * @param content the new list of content filters.
+     * @return a confirmation message that the content filter has been updated.
+     */
+    public String filterContent(List<String> content) {
         this.contentFilter = content;
-        System.out.println("Content filtered.");
+        return "Content filtered.";
     }
 
-    public void resetAccount() {
+    /**
+     * Resets the account settings to their default values.
+     *
+     * @return a confirmation message that the account has been reset.
+     */
+    public String resetAccount() {
         this.experienceLevel = 0;
         this.displayName = "";
         this.bannerStyle = "";
@@ -52,17 +107,29 @@ public class Settings {
         this.themeColor = "";
         this.language = "";
         this.contentFilter.clear();
-        System.out.println("Account reset.");
+        return "Account reset.";
     }
 
-    public void deleteAccount(String password) {
+    /**
+     * Deletes the account if the provided password is correct.
+     *
+     * @param password  password to authorize account deletion.
+     * @return a message indicating whether the account was deleted or if the password was incorrect.
+     */
+    public String deleteAccount(String password) {
         if ("correctPassword".equals(password)) {
-            System.out.println("Account deleted.");
+            return "Account deleted.";
         } else {
-            System.out.println("Incorrect password.");
+            return "Incorrect password.";
         }
     }
 
+    /**
+     * Enables or disables dark mode.
+     *
+     * @param mode 
+     * @return the mode that was set.
+     */
     public boolean darkMode(boolean mode) {
         if (mode) {
             System.out.println("Dark mode enabled.");
