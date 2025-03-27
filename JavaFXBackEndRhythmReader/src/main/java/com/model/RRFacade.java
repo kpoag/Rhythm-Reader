@@ -2,6 +2,8 @@
 
 package com.model;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -94,7 +96,10 @@ public class RRFacade {
     
         
         songList = songList.getInstance();
-        songList.addSong(freeFallin);
+        DataLoader.loadSongs();
+        
+        
+
         songList.addSong(maryJane);
         songList.addSong(wontBackDown);
 
@@ -107,19 +112,22 @@ public class RRFacade {
 
         System.out.println("Which song would you like to play by " + artist + " ? Enter (1-3)");
         System.out.println("Songs by " + artist + ":");
-        for (int i = 0; i < songList.getSongs().size(); i++) {
-            System.out.println((i + 1) + ". " + songList.getSongs().get(i).getSongTitle());
+        songList.filterByArtist(artist);
+        for (int i = 5; i < songList.getSongs().size(); i++) {
+            System.out.println((i - 4) + ". " + songList.getSongs().get(i).getSongTitle());
         }
 
+        // Song ff = freeFallin.searchSongs("Free Fallin'").get(0);
+        ArrayList<Song> searchResults = Song.searchSongs("Free Fallin'");
         System.out.println("Playing Free Fallin by Tom Petty");
-        freeFallin.playSongWithTempo(84);
+        searchResults.get(0).playSong();
 
         System.out.println("Would you like to print the sheet music? (y/n)");
         String choice = scanner.nextLine();
 
 
         if (choice.equalsIgnoreCase("y")) {
-            freeFallin.playSongWithTempo(option, freeFallin.getSongTitle()+".txt");
+            writeSheetMusicToFile("freeFallin.txt");
         }
           return true;
         } catch(Exception e) {
@@ -130,6 +138,36 @@ public class RRFacade {
 
         
     }
+
+    public String writeSheetMusic() {
+        
+        ArrayList<Song> searchResults = Song.searchSongs("Free Fallin'");
+        Song ff = searchResults.get(0);
+
+        StringBuilder sheetMusic = new StringBuilder();
+        sheetMusic.append("Title: ").append(ff.getSongTitle()).append("\n");
+        sheetMusic.append("Artist: ").append(ff.getArtist()).append("\n\n");
+
+
+        for (int i = 0; i < ff.getMeasures().size(); i++) {
+            sheetMusic.append("Measure ").append(i + 1).append(": ").append(ff.getMeasures().get(i).toString()).append("\n");
+        }
+        return sheetMusic.toString();
+    }
+
+
+    public boolean writeSheetMusicToFile(String fileName) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))){
+            String sheetMusic = writeSheetMusic();
+            writer.write(sheetMusic);
+            System.out.println("Sheet music has successfully been writter to " + fileName);
+            return true;
+        } catch (Exception e) {
+            System.err.println("Error writing sheet music to file: " + e.getMessage());
+            return false;
+        }
+    }
+
     
 
     
