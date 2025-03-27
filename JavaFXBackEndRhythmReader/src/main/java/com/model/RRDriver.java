@@ -35,12 +35,12 @@ public class RRDriver {
     public boolean logout() {
         return facade.logout();
     }
-
+    // Temporary method to create an account for testing purposes
     public boolean createFirstAccount() {
         System.out.println("Attempting to create an account for Fred!");
         return facade.createAccount("ffredrickson", "Fred", "Fredrickson", "ffredrickson@gmail.com", "securepassword123", scanner); 
     }
-
+    // Temporary method to create an account for testing purposes
     public boolean createSecondAccount() {
         System.out.println("Let's try again!");
         return facade.createAccount("ffred", "Fred", "Fredrickson", "ffred@gmail.com", "securepassword123", scanner); 
