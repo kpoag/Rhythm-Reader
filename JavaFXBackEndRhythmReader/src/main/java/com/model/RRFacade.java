@@ -11,14 +11,10 @@ public class RRFacade {
     private static RRFacade facade;
     private User currUser;
     private Song currSong;
-<<<<<<< HEAD
     private UserList userList;
     private DataLoader dataLoader;  
-=======
     private SongList songList;
-    private UserList userList;
     private Scanner scanner = new Scanner(System.in);  
->>>>>>> origin/main
 
     public RRFacade() {
         this.userList = UserList.getInstance();
@@ -93,7 +89,6 @@ public class RRFacade {
         return currUser != null;
     }
 
-<<<<<<< HEAD
     public Song createNewSong(User user,Scanner scanner)
     {
         if (currUser == null) {
@@ -127,7 +122,6 @@ public class RRFacade {
     }
 
             
-=======
 
     public boolean playASong() {
         try {
@@ -207,7 +201,6 @@ public class RRFacade {
         }
     }
 
->>>>>>> origin/main
     
 
     

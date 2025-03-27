@@ -61,7 +61,6 @@ public class RRDriver {
         return facade.createAccount("ffred", "Fred", "Fredrickson", "ffred@gmail.com", "securepassword123", scanner); 
     }
 
-<<<<<<< HEAD
      public boolean login3(){
         System.out.println("Logging in as Fellicia!");          
         return facade.login("ffredrickson@gmail.com", "securepassword123");  
@@ -93,10 +92,10 @@ public class RRDriver {
     public void searchSong()
     {
         facade.searchSongs("A horse's journey");
-=======
+    }
+    
     public boolean playASong() {
         return facade.playASong();
->>>>>>> origin/main
     }
     
 }
