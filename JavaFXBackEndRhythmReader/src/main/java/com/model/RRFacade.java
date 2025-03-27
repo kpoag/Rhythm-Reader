@@ -87,7 +87,7 @@ public class RRFacade {
         return currUser != null;
     }
 
-    
+
     public boolean playASong() {
         try {
         Song freeFallin = new Song("e6cd1fd6-024e-45e5-a3f6-a781a019f1ec", "Free Fallin", "Tom Petty", Genre.POP, DifficultyLevel.INTERMEDIATE, "Guitar", 9.5, 84, "4/4");
@@ -117,7 +117,6 @@ public class RRFacade {
             System.out.println((i - 4) + ". " + songList.getSongs().get(i).getSongTitle());
         }
 
-        // Song ff = freeFallin.searchSongs("Free Fallin'").get(0);
         ArrayList<Song> searchResults = Song.searchSongs("Free Fallin'");
         System.out.println("Playing Free Fallin by Tom Petty");
         searchResults.get(0).playSong();
@@ -154,7 +153,6 @@ public class RRFacade {
         }
         return sheetMusic.toString();
     }
-
 
     public boolean writeSheetMusicToFile(String fileName) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))){
