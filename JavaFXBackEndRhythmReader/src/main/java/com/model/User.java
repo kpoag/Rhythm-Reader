@@ -5,6 +5,8 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.UUID;
 
+import org.json.simple.JSONObject;
+
 /**
  * Represents a user in the system.
  * This class provides common attributes and behaviors for all types of users,
@@ -85,7 +87,7 @@ public class User {
      * @param password the user's password.
      * @return a new  User instance if successful; null otherwise.
      */
-	public static User createDefaultAccount(String firstName, String lastName, String userName, String email, String password) {
+	public static User createDefaultAccount(String userName, String firstName, String lastName, String email, String password) {
 
 		if (UserList.getInstance().haveUser(userName)) {
 			return null;
@@ -384,8 +386,14 @@ public class User {
 	 * 
 	 * @return the username.
 	 */
-	public String toString() {
-		return userName;
+	@Override
+     public String toString() {
+    return "User{" +
+            "userName='" + userName + '\'' +
+            ", firstName='" + firstName + '\'' +
+            ", lastName='" + lastName + '\'' +
+            ", email='" + email + '\'' +
+            "}";
 	}
 
 	/**
@@ -395,6 +403,7 @@ public class User {
 	public boolean isTeacher() {
 		return false;
 	}
+
 
 	/**
 	 * Determines whether current user is a Student

@@ -14,31 +14,41 @@ public class RRDriver {
     }
 
     public void run() {
-        //login();
+        // Scenario 1: Create an account, log in, and log out
+        User user = UserList.getInstance().getUser("ffredrickson@gmail.com", "securepassword123");
+        System.out.println("Existing user details: " + user.toString());
+        user = null;
+        createFirstAccount();
+        createSecondAccount();
+        logout();
+        login();
+
+        // Scenario 2: Search for songs by a certain artist, play a song, and print it to a text file
         playASong();
-        //createAccount();
-      // login();
-      // logout();
     }
 
     public boolean login(){
-        return facade.login("johndoe@example.com", "securepassword123");  
+        System.out.println("Logging in as Fred!");          
+        return facade.login("ffred@gmail.com", "securepassword123");  
     }
     
     public boolean logout() {
         return facade.logout();
     }
 
-    public boolean createAccount() {
-        String email = "emmasmith@example.com";
+    public boolean createFirstAccount() {
+        System.out.println("Attempting to create an account for Fred!");
+        return facade.createAccount("ffredrickson", "Fred", "Fredrickson", "ffredrickson@gmail.com", "securepassword123", scanner); 
+    }
 
-        return facade.createAccount("emmassmith", "Emma", "Smith", email, "securepassword123", scanner); 
+    public boolean createSecondAccount() {
+        System.out.println("Let's try again!");
+        return facade.createAccount("ffred", "Fred", "Fredrickson", "ffred@gmail.com", "securepassword123", scanner); 
     }
 
     public boolean playASong() {
         return facade.playASong();
     }
-    
     
 }
     
