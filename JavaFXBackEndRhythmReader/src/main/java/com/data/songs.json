@@ -1,256 +1,104 @@
 [
     {
         "difficulty": "BEGINNER",
-        "songTitle": "Twinkle Twinkle Little Star",
+        "songTitle": "A horse's journey",
         "measures": [
-            [
-                "C4q",
-                "C4q",
-                "G4q",
-                "G4q"
-            ],
-            [
-                "A4q",
-                "A4q",
-                "G4h"
-            ],
-            [
-                "F4q",
-                "F4q",
-                "E4q",
-                "E4q"
-            ],
-            [
-                "D4q",
-                "D4q",
-                "C4h"
-            ],
-            [
-                "G4q",
-                "G4q",
-                "F4q",
-                "F4q"
-            ],
-            [
-                "E4q",
-                "E4q",
-                "D4h"
-            ],
-            [
-                "G4q",
-                "G4q",
-                "F4q",
-                "F4q"
-            ],
-            [
-                "E4q",
-                "E4q",
-                "D4h"
-            ],
-            [
-                "C4q",
-                "C4q",
-                "G4q",
-                "G4q"
-            ],
-            [
-                "A4q",
-                "A4q",
-                "G4h"
-            ],
-            [
-                "F4q",
-                "F4q",
-                "E4q",
-                "E4q"
-            ],
-            [
-                "D4q",
-                "D4q",
-                "C4h"
-            ],
-            [
-                "C4w"
-            ]
+            
         ],
-        "artist": "Jane Taylor",
-        "genre": "TRADITIONAL",
-        "rating": 5.0,
-        "tempo": 120,
-        "instrument": "piano",
-        "songID": "a4cce3c4-d518-4ddb-9aa2-53ff0f211d9a",
-        "timeSignature": "4\/4"
-    },
-    {
-        "difficulty": "INTERMEDIATE",
-        "songTitle": "Happy Birthday",
-        "measures": [
-            [
-                "G4i.",
-                "G4q",
-                "A4q"
-            ],
-            [
-                [
-                    "G3q",
-                    "B3q",
-                    "D4q"
-                ]
-            ],
-            [
-                "G4q",
-                "C5q",
-                "B4q"
-            ],
-            [
-                [
-                    "D3q",
-                    "F#3q",
-                    "A3q"
-                ]
-            ],
-            [
-                "G4q",
-                "G4q",
-                "A4q"
-            ],
-            [
-                [
-                    "G3q",
-                    "B3q",
-                    "D4q"
-                ]
-            ],
-            [
-                "G4q",
-                "D5q",
-                "C5q"
-            ],
-            [
-                [
-                    "D3q",
-                    "F#3q",
-                    "A3q"
-                ]
-            ],
-            [
-                "G4q",
-                "G4q",
-                "G5q"
-            ],
-            [
-                [
-                    "G3q",
-                    "B3q",
-                    "D4q"
-                ]
-            ],
-            [
-                "E5q",
-                "C5i",
-                "B4i",
-                "A4q"
-            ],
-            [
-                [
-                    "C3q",
-                    "E3q",
-                    "G3q"
-                ]
-            ],
-            [
-                "F5q",
-                "F5q",
-                "E5q"
-            ],
-            [
-                [
-                    "D3q",
-                    "F#3q",
-                    "A3q"
-                ]
-            ],
-            [
-                "C5q",
-                "D5q",
-                "C5q"
-            ],
-            [
-                [
-                    "G3q",
-                    "B3q",
-                    "D4q"
-                ]
-            ]
-        ],
-        "artist": "Patty and Mildred J. Hill",
-        "genre": "TRADITIONAL",
-        "rating": 3.7,
-        "tempo": 125,
-        "instrument": "piano",
-        "songID": "d10369cc-14ec-46e1-9415-002bd86ed332",
-        "timeSignature": "3\/4"
-    },
-    {
-        "difficulty": "BEGINNER",
-        "songTitle": "I'm Yours",
-        "measures": [
-            [
-                "A5"
-            ]
-        ],
-        "artist": "Jason Mraz",
-        "genre": "POP",
-        "rating": 5.0,
-        "tempo": 90,
-        "instrument": "piano",
-        "songID": "783a4b77-0fd6-4d8b-af69-0e5a81aaafa7",
-        "timeSignature": "4\/4"
-    },
-    {
-        "difficulty": "ADVANCED",
-        "songTitle": "Fly Me To The Moon",
-        "measures": [
-            [
-                "F5"
-            ]
-        ],
-        "artist": "Bart Howard",
-        "genre": "JAZZ",
-        "rating": 4.9,
-        "tempo": 100,
-        "instrument": "piano",
-        "songID": "97ef8080-08ce-4202-b4a0-44b5d6d8bf3b",
-        "timeSignature": "3\/4"
-    },
-    {
-        "difficulty": "BEGINNER",
-<<<<<<< HEAD
-        "songTitle": "test 4",
-        "measures": [
-            [
-                "c4q"
-            ]
-        ],
-        "artist": "testuser",
-=======
-        "songTitle": "Happy Birthday",
-        "measures": [
-            [
-                "G4q"
-            ]
-        ],
-        "artist": "Patty and Mildred J. Hill",
->>>>>>> origin/main
+        "artist": "ffredrickson",
         "rating": 5.0,
         "genre": "POP",
         "tempo": 120,
         "instrument": "piano",
-<<<<<<< HEAD
-        "songID": "a27777d5-b2a6-4a67-9cb6-6c0f626f2034",
-=======
-        "songID": "01475e6a-0f49-4707-b341-c3754878aca2",
->>>>>>> origin/main
+        "songID": "7be988c4-5e56-4616-b3d0-9a65010271f9",
+        "timeSignature": "4\/4"
+    },
+    {
+        "difficulty": "BEGINNER",
+        "songTitle": "A horse's journey",
+        "measures": [
+            
+        ],
+        "artist": "ffredrickson",
+        "rating": 5.0,
+        "genre": "POP",
+        "tempo": 120,
+        "instrument": "piano",
+        "songID": "497fc429-fd47-4b80-b91d-6a8536c808c4",
+        "timeSignature": "4\/4"
+    },
+    {
+        "difficulty": "BEGINNER",
+        "songTitle": "A horse's journey",
+        "measures": [
+            [
+                "C4q"
+            ]
+        ],
+        "artist": "ffredrickson",
+        "rating": 5.0,
+        "genre": "POP",
+        "tempo": 120,
+        "instrument": "piano",
+        "songID": "e1d87b16-ef99-4726-bc39-af02fdd6f7c0",
+        "timeSignature": "4\/4"
+    },
+    {
+        "difficulty": "BEGINNER",
+        "songTitle": "A horse's journey",
+        "measures": [
+            [
+                "C4q",
+                "C4q",
+                "C4q",
+                "C4q"
+            ]
+        ],
+        "artist": "ffredrickson",
+        "rating": 5.0,
+        "genre": "POP",
+        "tempo": 120,
+        "instrument": "piano",
+        "songID": "2c64a63c-393d-4605-b91a-a4663510e775",
+        "timeSignature": "4\/4"
+    },
+    {
+        "difficulty": "BEGINNER",
+        "songTitle": "A horse's journey",
+        "measures": [
+            
+        ],
+        "artist": "ffredrickson",
+        "rating": 5.0,
+        "genre": "POP",
+        "tempo": 120,
+        "instrument": "piano",
+        "songID": "03025905-b4f7-4a72-be92-3bad475e44f0",
+        "timeSignature": "4\/4"
+    },
+    {
+        "difficulty": "BEGINNER",
+        "songTitle": "A horse's journey",
+        "measures": [
+            [
+                "A4q",
+                "B4q",
+                "C4q",
+                "D4q"
+            ],
+            [
+                "A4q",
+                "B4q",
+                "C4q",
+                "D4q"
+            ]
+        ],
+        "artist": "ffredrickson",
+        "rating": 5.0,
+        "genre": "POP",
+        "tempo": 120,
+        "instrument": "piano",
+        "songID": "e5b236d8-5753-4433-abbf-954d7668daf7",
         "timeSignature": "4\/4"
     }
 ]

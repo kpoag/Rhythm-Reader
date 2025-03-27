@@ -571,9 +571,9 @@ public boolean matches(String q) {
     /** 
      * method thats ask user for info to create a song
      */
-    private static Song createUserSong(User user)
+    public static Song createUserSong(User user, Scanner scanner)
     {
-        Scanner scanner= new Scanner(System.in);
+        //Scanner scanner= new Scanner(System.in);
 
         String songID = UUID.randomUUID().toString();
         System.out.println("Generated Song ID: " + songID);
@@ -822,7 +822,7 @@ public boolean matches(String q) {
                     return;
                 }
              
-                Song newSong = createUserSong(loggedInUser);
+                Song newSong = createUserSong(loggedInUser, scanner);
                 
                 // print the song details or perform assertions to check if the song was created correctly
                 System.out.println("Song Details:\n" +
