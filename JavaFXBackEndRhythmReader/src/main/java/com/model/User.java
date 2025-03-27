@@ -386,8 +386,14 @@ public class User {
 	 * 
 	 * @return the username.
 	 */
-	public String toString() {
-		return userName;
+	@Override
+     public String toString() {
+    return "User{" +
+            "userName='" + userName + '\'' +
+            ", firstName='" + firstName + '\'' +
+            ", lastName='" + lastName + '\'' +
+            ", email='" + email + '\'' +
+            "}";
 	}
 
 	/**
@@ -398,41 +404,6 @@ public class User {
 		return false;
 	}
 
-     public static JSONObject getUserJSON(User user) {
-    JSONObject userDetails = new JSONObject();
-
-    // Basic user information
-    userDetails.put("id", user.getId().toString());
-    userDetails.put("firstName", user.getFirstName());
-    userDetails.put("lastName", user.getLastName());
-    userDetails.put("username", user.getUserName());
-    userDetails.put("email", user.getEmail());
-    userDetails.put("password", user.getPassword());
-    userDetails.put("points", user.getPoints());
-    userDetails.put("badges", user.getBadges());
-    userDetails.put("friends", user.getFriendNames(userDetails));
-
-    // Add student-specific details
-    if (user.isStudent() && user instanceof StudentUser) {
-        StudentUser student = (StudentUser) user;
-        userDetails.put("classes", student.getClasses());
-        userDetails.put("assignedFlashcards", student.getAssignedFlashcards());
-        userDetails.put("completedFlashcards", student.getCompletedFlashcards());
-        userDetails.put("deadlines", student.getDeadlines());
-        userDetails.put("grade", student.getGrade());
-        userDetails.put("progress", student.getProgress());
-        userDetails.put("skillLevel", student.getSkillLevel());
-    }
-
-    // Add teacher-specific details
-    if (user.isTeacher() && user instanceof TeacherUser) {
-        TeacherUser teacher = (TeacherUser) user;
-        userDetails.put("teachingClasses", teacher.getTeachingClasses());
-        userDetails.put("gradebook", teacher.getGradebook());
-    }
-
-    return userDetails;
-}
 
 	/**
 	 * Determines whether current user is a Student

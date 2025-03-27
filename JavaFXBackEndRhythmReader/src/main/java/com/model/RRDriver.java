@@ -15,6 +15,9 @@ public class RRDriver {
 
     public void run() {
         // Scenario 1: Create an account, log in, and log out
+        User user = UserList.getInstance().getUser("ffredrickson@gmail.com", "securepassword123");
+        System.out.println("Existing user details: " + user.toString());
+        user = null;
         createFirstAccount();
         createSecondAccount();
         logout();
