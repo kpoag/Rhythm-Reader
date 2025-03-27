@@ -22,6 +22,9 @@ public class RRDriver {
         createSecondAccount();
         logout();
         login();
+
+        // Scenario 2: Search for songs by a certain artist, play a song, and print it to a text file
+        playASong();
     }
 
     public boolean login(){
@@ -43,6 +46,10 @@ public class RRDriver {
         return facade.createAccount("ffred", "Fred", "Fredrickson", "ffred@gmail.com", "securepassword123", scanner); 
     }
 
-    
+    public boolean playASong() {
+        return facade.playASong();
+    }
     
 }
+    
+

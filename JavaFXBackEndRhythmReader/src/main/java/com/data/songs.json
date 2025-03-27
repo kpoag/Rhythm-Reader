@@ -225,15 +225,6 @@
     },
     {
         "difficulty": "BEGINNER",
-<<<<<<< HEAD
-        "songTitle": "test 4",
-        "measures": [
-            [
-                "c4q"
-            ]
-        ],
-        "artist": "testuser",
-=======
         "songTitle": "Happy Birthday",
         "measures": [
             [
@@ -241,16 +232,53 @@
             ]
         ],
         "artist": "Patty and Mildred J. Hill",
->>>>>>> origin/main
         "rating": 5.0,
         "genre": "POP",
         "tempo": 120,
         "instrument": "piano",
-<<<<<<< HEAD
-        "songID": "a27777d5-b2a6-4a67-9cb6-6c0f626f2034",
-=======
         "songID": "01475e6a-0f49-4707-b341-c3754878aca2",
->>>>>>> origin/main
         "timeSignature": "4\/4"
+    }, {
+        "difficulty": "INTERMEDIATE",
+        "songTitle": "Free Fallin'",
+        "measures": [
+            [
+                "C4q", "D4q", "E4q", "F4q"
+            ],
+            [
+                "F4q", "E4q", "D4q", "C4q"
+            ],
+            [
+                "G4q", "A4q", "B4q", "C5q"
+            ],
+            [
+                "C5q", "B4q", "A4q", "G4q"
+            ],
+            [
+                "F4q", "E4q", "D4q", "C4q"
+            ],
+            [
+                "G4q", "A4q", "B4q", "C5q"
+            ],
+            [
+                "C5q", "B4q", "A4q", "G4q"
+            ],
+            [
+                "C4q", "D4q", "E4q", "F4q"
+            ],
+            [
+                "F4q", "E4q", "D4q", "C4q"
+            ],
+            [
+                "G4q", "A4q", "B4q", "C5q"
+            ]
+        ],
+        "artist": "Tom Petty",
+        "genre": "POP",
+        "rating": 4.8,
+        "tempo": 120,
+        "instrument": "guitar",
+        "songID": "f2b2b8c1-28a0-4d75-a2b8-2b5b97386b2a",
+        "timeSignature": "4/4"
     }
 ]

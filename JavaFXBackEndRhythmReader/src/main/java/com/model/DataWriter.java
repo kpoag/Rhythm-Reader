@@ -39,7 +39,7 @@ public class DataWriter extends DataConstants {
         }
         System.out.println("Writing " + userList.size() + " users to file.");
 
-        try (FileWriter file = new FileWriter(USER_TEMP_FILE_NAME)) {
+        try (FileWriter file = new FileWriter(USER_FILE_NAME)) {
             file.write(jsonUsers.toJSONString());
             file.flush();
             return true;
@@ -176,7 +176,7 @@ public class DataWriter extends DataConstants {
             jsonFlashcards.add(getFlashcardJSON(flashcardList.get(i)));
         }
 
-        try (FileWriter file = new FileWriter(FLASHCARD_TEMP_FILE_NAME)) {
+        try (FileWriter file = new FileWriter(FLASHCARD_FILE_NAME)) {
             file.write(jsonFlashcards.toJSONString());
             file.flush();
             return true;

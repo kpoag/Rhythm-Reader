@@ -1,6 +1,7 @@
 package com.model;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -455,6 +456,81 @@ public class Song {
             return false;
         }
     
+    }
+
+    public boolean playSongWithTempo(int customTempo, String sheetMusicFile) {
+        if (measures == null || measures.isEmpty()) {
+            System.err.println("No measures to play.");
+            return false;
+        }
+    
+        if (customTempo <= 0) {
+            System.err.println("Invalid tempo: " + customTempo + ". Using default tempo: " + this.tempo);
+            return playSongWithTempo(this.tempo);
+        }
+        
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(sheetMusicFile))) {
+            writer.write("===========================================\n");
+            writer.write(songTitle.toUpperCase() + "\n");
+            writer.write("By " + artist + "\n");
+            writer.write("Time Signature: " + timeSignature + "\n");
+            writer.write("Tempo: " + customTempo + " BPM (Modified)\n");
+            writer.write("===========================================\n\n");
+    
+            int beatsPerMeasure = 4; // Default to 4/4
+            if (timeSignature != null && timeSignature.contains("/")) {
+                String[] parts = timeSignature.split("/");
+                if (parts.length == 2) {
+                    try {
+                        beatsPerMeasure = Integer.parseInt(parts[0]);
+                    } catch (NumberFormatException e) {
+                        System.err.println("Invalid time signature: " + timeSignature + ". Using default 4/4.");
+                    }
+                }
+            }
+    
+            // Print measures in rows of 4
+            StringBuilder fullPattern = new StringBuilder();
+            fullPattern.append("T").append(customTempo).append(" ");
+            fullPattern.append("I").append(getInstrumentCode(instrument)).append(" ");
+    
+            if (timeSignature != null && !timeSignature.isEmpty()) {
+                fullPattern.append("TIME:").append(timeSignature).append(" ");
+            }
+    
+            writer.write("Sheet Music:\n");
+            for (int i = 0; i < measures.size(); i++) {
+                if (i % 4 == 0) {
+                    writer.write("\n| ");
+                }
+                
+                Measure measure = measures.get(i);
+                if (measure != null) {
+                    String measurePattern = measure.getJFuguePattern();
+                    if (measurePattern != null && !measurePattern.isEmpty()) {
+                        String formattedMeasure = measurePattern.replace(" ", ", ");
+                        writer.write(formattedMeasure + " | ");
+                        fullPattern.append(measurePattern).append(" ");
+                    }
+                }
+            }
+            writer.write("\n\n");
+            
+            System.out.println("Sheet Music exported to" + sheetMusicFile);
+            
+            System.out.println("Now Playing...");
+            
+            Player player = new Player();
+            player.play(fullPattern.toString());
+            return true;
+        } catch (IOException e) {
+            System.err.println("Error writing sheet music to file: " + e.getMessage());
+            return false;
+        } catch (Exception e) {
+            System.err.println("Error playing song with custom tempo: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
     }
     
     /**

@@ -2,6 +2,8 @@
 
 package com.model;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,7 +11,9 @@ public class RRFacade {
     private static RRFacade facade;
     private User currUser;
     private Song currSong;
-    private UserList userList;  
+    private SongList songList;
+    private UserList userList;
+    private Scanner scanner = new Scanner(System.in);  
 
     public RRFacade() {
         this.userList = UserList.getInstance();
@@ -83,7 +87,87 @@ public class RRFacade {
         return currUser != null;
     }
 
-            
+    
+    public boolean playASong() {
+        try {
+        Song freeFallin = new Song("e6cd1fd6-024e-45e5-a3f6-a781a019f1ec", "Free Fallin", "Tom Petty", Genre.POP, DifficultyLevel.INTERMEDIATE, "Guitar", 9.5, 84, "4/4");
+        Song maryJane = new Song("b7cd1fd6-034e-45e5-a3f6-a781a019f1ec", "Mary Jane's Last Dance", "Tom Petty", Genre.POP, DifficultyLevel.ADVANCED, "Guitar", 9.0, 96, "4/4");
+        Song wontBackDown = new Song("c8cd1fd6-044e-45e5-a3f6-a781a019f1ec", "I Won't Back Down", "Tom Petty", Genre.POP, DifficultyLevel.INTERMEDIATE, "Guitar", 8.5, 80, "4/4");
+    
+        
+        songList = songList.getInstance();
+        DataLoader.loadSongs();
+        
+        
+
+        songList.addSong(maryJane);
+        songList.addSong(wontBackDown);
+
+        System.out.println("How would you like to Filter Songs? Options : Genre (1) - Artist (2)");
+        int option = scanner.nextInt();
+
+        System.out.println("What artist would you like to play?");
+        scanner.nextLine();
+        String artist = scanner.nextLine();
+
+        System.out.println("Which song would you like to play by " + artist + " ? Enter (1-3)");
+        System.out.println("Songs by " + artist + ":");
+        songList.filterByArtist(artist);
+        for (int i = 5; i < songList.getSongs().size(); i++) {
+            System.out.println((i - 4) + ". " + songList.getSongs().get(i).getSongTitle());
+        }
+
+        // Song ff = freeFallin.searchSongs("Free Fallin'").get(0);
+        ArrayList<Song> searchResults = Song.searchSongs("Free Fallin'");
+        System.out.println("Playing Free Fallin by Tom Petty");
+        searchResults.get(0).playSong();
+
+        System.out.println("Would you like to print the sheet music? (y/n)");
+        String choice = scanner.nextLine();
+
+
+        if (choice.equalsIgnoreCase("y")) {
+            writeSheetMusicToFile("freeFallin.txt");
+        }
+          return true;
+        } catch(Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+
+
+        
+    }
+
+    public String writeSheetMusic() {
+        
+        ArrayList<Song> searchResults = Song.searchSongs("Free Fallin'");
+        Song ff = searchResults.get(0);
+
+        StringBuilder sheetMusic = new StringBuilder();
+        sheetMusic.append("Title: ").append(ff.getSongTitle()).append("\n");
+        sheetMusic.append("Artist: ").append(ff.getArtist()).append("\n\n");
+
+
+        for (int i = 0; i < ff.getMeasures().size(); i++) {
+            sheetMusic.append("Measure ").append(i + 1).append(": ").append(ff.getMeasures().get(i).toString()).append("\n");
+        }
+        return sheetMusic.toString();
+    }
+
+
+    public boolean writeSheetMusicToFile(String fileName) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))){
+            String sheetMusic = writeSheetMusic();
+            writer.write(sheetMusic);
+            System.out.println("Sheet music has successfully been writter to " + fileName);
+            return true;
+        } catch (Exception e) {
+            System.err.println("Error writing sheet music to file: " + e.getMessage());
+            return false;
+        }
+    }
+
     
 
     
