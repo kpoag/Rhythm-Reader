@@ -10,7 +10,8 @@ public class RRDriver {
 
     public static void main(String[] args) {
         RRDriver driver = new RRDriver();
-        driver.run();
+        //driver.run();
+        driver.scenario3();
     }
 
     public void run() {
@@ -20,6 +21,20 @@ public class RRDriver {
 
 
         
+
+    }
+
+    public void scenario3()
+    {
+        login3();
+        createSong();
+        saveSong();
+        playSong();
+        logout();
+        login();
+        searchSong();
+        playSong();
+
 
     }
 
@@ -42,6 +57,39 @@ public class RRDriver {
         return facade.createAccount("emmasmith", "Fred", "Fredrickson", "ffredrickson@gmail.com", "securepassword123", scanner); 
     }
 
+     public boolean login3(){
+        System.out.println("Logging in as Fellicia!");          
+        return facade.login("ffredrickson@gmail.com", "securepassword123");  
+    }
+
+    public boolean createSong()
+    {
+        Song newSong = facade.createNewSong(facade.getCurrentUser(), scanner);
+        if (newSong != null) {
+            newSong.setSongTitle("A horse's journey"); // Set the song title
+            //newSong.addMeasure()
+            return true;
+        } else {
+            System.out.println("Failed to create a new song.");
+            return false;
+        }
+    }
+
+    public void playSong()
+    {
+        facade.playCurrentSong();
+    }
+
+    public void saveSong()
+    {
+        facade.saveCurrentSong();
+    }
+
+    public void searchSong()
+    {
+        facade.searchSongs("A horse's journey");
+    }
+    
     public boolean playASong() {
         return facade.playASong();
     }

@@ -1,77 +1,9 @@
 [
     {
         "difficulty": "BEGINNER",
-        "songTitle": "Twinkle Twinkle Little Star",
+        "songTitle": "A horse's journey",
         "measures": [
-            [
-                "C4q",
-                "C4q",
-                "G4q",
-                "G4q"
-            ],
-            [
-                "A4q",
-                "A4q",
-                "G4h"
-            ],
-            [
-                "F4q",
-                "F4q",
-                "E4q",
-                "E4q"
-            ],
-            [
-                "D4q",
-                "D4q",
-                "C4h"
-            ],
-            [
-                "G4q",
-                "G4q",
-                "F4q",
-                "F4q"
-            ],
-            [
-                "E4q",
-                "E4q",
-                "D4h"
-            ],
-            [
-                "G4q",
-                "G4q",
-                "F4q",
-                "F4q"
-            ],
-            [
-                "E4q",
-                "E4q",
-                "D4h"
-            ],
-            [
-                "C4q",
-                "C4q",
-                "G4q",
-                "G4q"
-            ],
-            [
-                "A4q",
-                "A4q",
-                "G4h"
-            ],
-            [
-                "F4q",
-                "F4q",
-                "E4q",
-                "E4q"
-            ],
-            [
-                "D4q",
-                "D4q",
-                "C4h"
-            ],
-            [
-                "C4w"
-            ]
+            
         ],
         "artist": "Jane Taylor",
         "genre": "TRADITIONAL",

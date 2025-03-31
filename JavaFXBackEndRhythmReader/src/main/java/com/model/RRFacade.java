@@ -11,12 +11,14 @@ public class RRFacade {
     private static RRFacade facade;
     private User currUser;
     private Song currSong;
-    private SongList songList;
     private UserList userList;
+    private DataLoader dataLoader;  
+    private SongList songList;
     private Scanner scanner = new Scanner(System.in);  
 
     public RRFacade() {
         this.userList = UserList.getInstance();
+        this.dataLoader = new DataLoader();
     }
     
 
@@ -87,6 +89,39 @@ public class RRFacade {
         return currUser != null;
     }
 
+    public Song createNewSong(User user,Scanner scanner)
+    {
+        if (currUser == null) {
+            System.out.println("You must be logged in to create a song.");
+            return null;
+        } 
+
+        Song newSong = Song.createUserSong(currUser, scanner);
+        this.currSong = newSong; // Store the current song
+        return newSong;
+    }
+
+    public void playCurrentSong() {
+        if (currSong == null) {
+            System.out.println("No song selected to play.");
+            return;
+        }
+        currSong.playSong();
+    }
+
+    public void saveCurrentSong() {
+        if (currUser == null) {
+            System.out.println("You must be logged in to save a song.");
+            return;
+        }
+        if (currSong == null) {
+            System.out.println("No song created to save.");
+            return;
+        }
+        currSong.saveToJson(DataLoader.SONG_FILE_NAME, currUser);
+    }
+
+            
 
     public boolean playASong() {
         try {
