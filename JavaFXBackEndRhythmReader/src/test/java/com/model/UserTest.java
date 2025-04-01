@@ -1,11 +1,7 @@
 package com.model;
 
-import org.junit.Test;
-
 import static org.junit.Assert.assertTrue;
-
-import org.junit.Assert;
-import com.model.*;
+import org.junit.Test;
 
 public class UserTest {
     @Test
@@ -13,4 +9,5 @@ public class UserTest {
     {
         assertTrue(true);
     }
+
 }
