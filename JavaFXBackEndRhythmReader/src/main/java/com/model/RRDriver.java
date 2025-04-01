@@ -15,6 +15,7 @@ public class RRDriver {
 
     public void run() {
         // Scenario 1: Create an account, log in, and log out
+    /*
         User user = UserList.getInstance().getUser("ffredrickson@gmail.com", "securepassword123");
         System.out.println("Existing user details: " + user.toString());
         user = null;
@@ -22,7 +23,7 @@ public class RRDriver {
         createSecondAccount();
         logout();
         login();
-
+    */
         // Scenario 2: Search for songs by a certain artist, play a song, and print it to a text file
         playASong();
     }

@@ -3,6 +3,7 @@ module com.rhythmreader {
     requires javafx.fxml;
     requires json.simple;
     requires jfugue;
+    requires junit;
 
     opens com.rhythmreader to javafx.fxml;
     exports com.rhythmreader;
