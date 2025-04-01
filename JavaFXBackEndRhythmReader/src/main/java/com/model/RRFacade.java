@@ -46,6 +46,7 @@ public class RRFacade {
         }
         System.out.println("Logout successful. Goodbye, " + currUser.getUserName() + "!");
         this.currUser = null;
+        userList.saveUsers();
         return true;
     }
 

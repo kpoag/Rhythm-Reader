@@ -287,5 +287,19 @@
         "instrument": "piano",
         "songID": "80fa285e-bd56-40ed-bc93-cbc7d1ebd60b",
         "timeSignature": "4\/4"
+    },
+    {
+        "difficulty": "BEGINNER",
+        "songTitle": "A horse's journey",
+        "measures": [
+            
+        ],
+        "artist": "ffredrickson",
+        "rating": 5.0,
+        "genre": "POP",
+        "tempo": 120,
+        "instrument": "piano",
+        "songID": "48c39ec1-c2eb-404e-98cf-d805fd157d3d",
+        "timeSignature": "4\/4"
     }
 ]
