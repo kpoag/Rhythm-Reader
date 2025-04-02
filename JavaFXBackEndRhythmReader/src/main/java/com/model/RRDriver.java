@@ -2,7 +2,7 @@ package com.model;
 import java.util.Scanner;
 
 public class RRDriver {
-    public RRFacade facade = new RRFacade();
+    public RRFacade facade = RRFacade.getInstance();
     private Scanner scanner = new Scanner(System.in);
 
     

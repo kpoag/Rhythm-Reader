@@ -2,8 +2,10 @@ package com.model;
 
 
 public abstract class DataConstants {
+	
 	protected static final String USER_FILE_NAME = "JavaFXBackEndRhythmReader/src/main/java/com/data/users.json";
 	protected static final String USER_TEMP_FILE_NAME = "JavaFXBackEndRhythmReader/src/main/java/com/data/users_temp.json";
+	protected static final String TEST_USER_FILE_NAME = "JavaFXBackEndRhythmReader/src/test/java/com/data/users.json";
 	protected static final String USER_ID = "id";
 	protected static final String USER_USER_NAME = "username";
 	protected static final String USER_FIRST_NAME = "firstName";
@@ -26,6 +28,7 @@ public abstract class DataConstants {
 
 	protected static final String SONG_FILE_NAME = "JavaFXBackEndRhythmReader/src/main/java/com/data/songs.json";
 	protected static final String SONG_TEMP_FILE_NAME = "JavaFXBackEndRhythmReader/src/main/java/com/data/songs_temp.json";
+	protected static final String TEST_SONG_FILE_NAME = "JavaFXBackEndRhythmReader/src/test/java/com/data/songs.json";
 	protected static final String SONG_SONG_ID = "songID";
 	protected static final String SONG_SONGTITLE = "songTitle";
 	protected static final String SONG_ARTIST = "artist";
@@ -39,6 +42,7 @@ public abstract class DataConstants {
 
 	protected static final String FLASHCARD_FILE_NAME = "JavaFXBackEndRhythmReader/src/main/java/com/data/flashcards.json";
 	protected static final String FLASHCARD_TEMP_FILE_NAME = "JavaFXBackEndRhythmReader/src/main/java/com/data/flashcards_temp.json";
+    protected static final String TEST_FLASHCARD_FILE_NAME = "JavaFXBackEndRhythmReader/src/test/java/com/data/flashcards.json";
 	protected static final String FLASHCARD_CARD_ID = "cardID";
 	protected static final String FLASHCARD_FRONT_TEXT = "frontText";
 	protected static final String FLASHCARD_BACK_TEXT = "backText";
@@ -46,5 +50,14 @@ public abstract class DataConstants {
 	protected static final String FLASHCARD_DIFFICULTY = "difficulty";
 	protected static final String FLASHCARD_PICTURE = "picture";
 	protected static final String FLASHCARD_ASSIGNED_STUDENTS = "assignedStudents";
+
+	public static boolean isJUnitTest() {  
+		for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
+		  if (element.getClassName().startsWith("org.junit.")) {
+			return true;
+		  }           
+		}
+		return false;
+	  }
 
 }
