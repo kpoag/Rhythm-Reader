@@ -4,7 +4,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
-
+/**
+ * Test for Note methods
+ * 
+ * @author Jaylen
+ */
 public class NoteTest{
     @Test
     public void testTesting()
@@ -142,6 +146,76 @@ public class NoteTest{
         assertEquals("A2s", note.toJFugueString());
     }
 
+    @Test
+    public void getNoteWithoutDuration_validNote() {
+        Note note = new Note("#", "C", Notetype.QUARTER_NOTE, false, "Staccato", 4, "4/4");
+        assertEquals("C#4", note.getNoteWithoutDuration());
+    }
+
+    @Test
+    public void getNoteWithoutDuration_noModifier() {
+        Note note = new Note("", "D", Notetype.HALF_NOTE, false, "", 5, "4/4");
+        assertEquals("D5", note.getNoteWithoutDuration());
+    }
+
+    @Test
+    public void getNoteWithoutDuration_noModifierOctaveZero() {
+        Note note = new Note("", "E", Notetype.EIGHTH_NOTE, true, "", 0, "4/4");
+        assertEquals("E0", note.getNoteWithoutDuration());
+    }
+
+    @Test
+    public void getNoteWithoutDuration_modifierAndNegativeOctave() {
+        Note note = new Note("b", "F", Notetype.WHOLE_NOTE, false, "", -1, "4/4");
+        assertEquals("F-1", note.getNoteWithoutDuration());
+    }
+
+    @Test
+    public void getNoteWithoutDuration_differentNote() {
+        Note note = new Note("#", "G", Notetype.SIXTEENTH_NOTE, false, "", 2, "4/4");
+        assertEquals("G#2", note.getNoteWithoutDuration());
+    }
+
+    @Test
+    public void fromString_validString() {
+        Note note = Note.fromString("C4q");
+        assertEquals("C", note.getPitch());
+        assertEquals(4, note.getOctave());
+        assertEquals(Notetype.QUARTER_NOTE, note.getNoteType());
+    }
+
+    @Test
+    public void fromString_stringWithModifier() {
+        Note note = Note.fromString("C#4q");
+        assertEquals("C", note.getPitch());
+        assertEquals("#", note.getModifier());
+        assertEquals(4, note.getOctave());
+        assertEquals(Notetype.QUARTER_NOTE, note.getNoteType());
+    }
+
+    @Test
+    public void fromString_stringWithDifferentNoteType() {
+        Note note = Note.fromString("D5h");
+        assertEquals("D", note.getPitch());
+        assertEquals(5, note.getOctave());
+        assertEquals(Notetype.HALF_NOTE, note.getNoteType());
+    }
+
+    @Test
+    public void fromString_stringWithNegativeOctave() {
+        Note note = Note.fromString("E-1i");
+        assertEquals("E", note.getPitch());
+        assertEquals(-1, note.getOctave());
+        assertEquals(Notetype.EIGHTH_NOTE, note.getNoteType());
+    }
+
+    @Test
+    public void fromString_stringWithNoOctave() {
+        Note note = Note.fromString("A0s");
+        assertEquals("A", note.getPitch());
+        assertEquals(0, note.getOctave());
+        assertEquals(Notetype.SIXTEENTH_NOTE, note.getNoteType());
+    }
 
 
 }
