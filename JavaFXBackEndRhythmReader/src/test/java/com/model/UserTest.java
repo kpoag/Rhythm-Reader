@@ -1,9 +1,5 @@
 package com.model;
 
-<<<<<<< HEAD
-import static org.junit.Assert.assertTrue;
-import org.junit.Test;
-=======
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -19,7 +15,6 @@ import org.junit.Assert;
 import org.junit.Before;
 
 import com.model.*;
->>>>>>> 9fdb6916aa2f72193d840da4eddc38f4636da0ed
 
 /**
  * Test class for User-related functionality in the RhythmReader application.

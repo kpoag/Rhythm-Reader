@@ -120,19 +120,25 @@ public class Flashcard {
      * @param category   The category of the flashcard.
      * @param flashcard  The Flashcard instance to check the answer for.
      */
-    public static void updateProgress(String studentID, String userAnswer, boolean isStudent, String category, Flashcard flashcard) {
+    public static boolean updateProgress(String studentID, String userAnswer, boolean isStudent, String category, Flashcard flashcard) {
         Map<String, Double> studentProgress = new HashMap<>();
 
         if (isStudent) {
             boolean isCorrect = flashcard.checkAnswer(userAnswer);
             if (isCorrect) {
                 studentProgress.put(studentID, studentProgress.getOrDefault(studentID, 0.0) + 1);
+                return true;
             }
+            return false;
         } else {
             double totalCards = Flashcard.getTotalCardsInCategory(category);
             double completedCards = Flashcard.getCompletedCardsInCategory(category);
+            if (totalCards > 0) {
             double progress = completedCards / totalCards;
             System.out.println("Category Progress for " + category + ": " + progress);
+            return true;
+            }
+           return false; 
         }
     }
 
