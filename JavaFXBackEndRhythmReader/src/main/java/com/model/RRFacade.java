@@ -158,7 +158,9 @@ public class RRFacade {
         for (int i = 5; i < songList.getSongs().size(); i++) {
             System.out.println((i - 4) + ". " + songList.getSongs().get(i).getSongTitle());
         }
-
+        scanner.nextInt();
+        scanner.nextLine();
+        
         ArrayList<Song> searchResults = Song.searchSongs("Free Fallin'");
         System.out.println("Playing Free Fallin by Tom Petty");
         searchResults.get(0).playSong();
