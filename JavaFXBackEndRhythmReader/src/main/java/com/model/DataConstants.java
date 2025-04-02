@@ -20,6 +20,7 @@ public abstract class DataConstants {
 	protected static final String USER_DEADLINES= "deadlines";
 	protected static final String USER_GRADES= "grade";
 	protected static final String USER_BADGES= "badges";
+	protected static final String USER_STUDENTS= "students";
 	protected static final String USER_PROGRESS= "progress";
 	protected static final String USER_SKILL_LEVEL= "skillLevel";
 	protected static final String USER_TEACHING_CLASSES= "teachingClasses";

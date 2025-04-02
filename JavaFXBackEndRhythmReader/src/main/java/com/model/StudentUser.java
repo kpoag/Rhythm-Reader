@@ -46,11 +46,11 @@ public class StudentUser extends User {
         super(userName, firstName, lastName, email, password, points, badges, friends);
         this.progress = progress;
         this.grade = grade;
-        this.classes = new ArrayList<>();
+        this.classes = classes != null ? classes : new ArrayList<>();
         this.skillLevel = skillLevel;
-        this.completedFlashcards = new ArrayList<>();
-        this.assignedFlashcards = new ArrayList<>();
-        this.deadlines = new HashMap<>();
+        this.completedFlashcards = completedFlashcards != null ? completedFlashcards : new ArrayList<>();; ;
+        this.assignedFlashcards = assignedFlashcards != null ? assignedFlashcards : new ArrayList<>();
+        this.deadlines = deadlines != null ? deadlines : new HashMap<>();
         this.currentFlashcard = null;    
     }
 
