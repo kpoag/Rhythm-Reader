@@ -38,64 +38,7 @@
         "friends": [""],
         "badges": ["Top Instructor"]
       },
-        {
-          "id": "c65ef3ab-a65d-4afc-9e51-76eeb1ed0bb2",
-          "firstName": "John",
-          "lastName": "Doe",
-          "username": "johndoe",
-          "email": "johndoe@example.com",
-          "password": "securepassword123",
-          "points": 1000,
-          "classes": [
-            "MTH101"
-          ],
-          "assignedFlashcards": [
-            "a7974f66-0ccc-46f5-92e4-814f7c44df74"
-          ],
-          "completedFlashcards": [],
-          "deadlines": {
-            "a7974f66-0ccc-46f5-92e4-814f7c44df74": "2025-04-22"
-          },
-          "grade": 88,
-          "badges": [
-            "Scale Master",
-            "Rhythm Pro"
-          ],
-          "progress": 75.5,
-          "skillLevel": "Intermediate",
-          "friends": [
-            "08b83653-fe19-4dc8-b7e1-72b95bf91587"
-          ]
-        },
-        {
-          "id": "08b83653-fe19-4dc8-b7e1-72b95bf91587",
-          "firstName": "Emma",
-          "lastName": "Smith",
-          "username": "emmasmith",
-          "email": "emmasmith@example.com",
-          "password": "securepassword123",
-          "points": 2000,
-          "teachingClasses": [
-            "MTH101"
-          ],
-          "gradebook": {
-            "MTH101": [
-              {
-                "student": "John Doe",
-                "grade": "88.0"
-              }
-            ],
-            "Advanced Composition": [
-              {}
-            ]
-          },
-          "friends": [
-            ""
-          ],
-          "badges": [
-            "Top Instructor"
-          ]
-        },
+      
         {
       
           "id": "959e734f-e626-476d-a32b-5ae94a799cb4",

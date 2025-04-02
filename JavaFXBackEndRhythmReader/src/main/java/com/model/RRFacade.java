@@ -16,15 +16,21 @@ public class RRFacade {
     private SongList songList;
     private Scanner scanner = new Scanner(System.in);  
 
-    public RRFacade() {
-        this.userList = UserList.getInstance();
-        this.dataLoader = new DataLoader();
+    private RRFacade() {
+        DataLoader.loadUsers(); 
+    }
+
+    public static RRFacade getInstance() {
+        if (facade == null) {
+            facade = new RRFacade();
+        }
+        return facade;
     }
     
 
     public boolean login(String email, String password) {
         User user = UserList.getInstance().getUser(email, password);
-        if(user != null && user.getPassword().equals(password)) {
+        if(user != null) {
             this.currUser = user;   
             System.out.println("Login successful! Welcome, "+ user.getUserName());
             return true;
@@ -40,6 +46,7 @@ public class RRFacade {
         }
         System.out.println("Logout successful. Goodbye, " + currUser.getUserName() + "!");
         this.currUser = null;
+        userList.saveUsers();
         return true;
     }
 
@@ -200,6 +207,8 @@ public class RRFacade {
             return false;
         }
     }
+
+    
 
     
 

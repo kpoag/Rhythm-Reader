@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /Users/jaylengraham/CSCE247/Rhythm-Reader/JavaFXBackEndRhythmReader/src/main/java/com/model/DataWriter.java
 /Users/jaylengraham/CSCE247/Rhythm-Reader/JavaFXBackEndRhythmReader/src/main/java/com/model/SongList.java
 /Users/jaylengraham/CSCE247/Rhythm-Reader/JavaFXBackEndRhythmReader/src/main/java/com/model/Instrument.java
@@ -28,3 +29,35 @@
 /Users/jaylengraham/CSCE247/Rhythm-Reader/JavaFXBackEndRhythmReader/src/main/java/com/model/Notetype.java
 /Users/jaylengraham/CSCE247/Rhythm-Reader/JavaFXBackEndRhythmReader/src/main/java/com/rhythmreader/PianoController.java
 /Users/jaylengraham/CSCE247/Rhythm-Reader/JavaFXBackEndRhythmReader/src/main/java/com/model/Song.java
+=======
+C:\Users\poagk\OneDrive\Desktop\CSCE247\Rhythm-Reader\Rhythm-Reader\JavaFXBackEndRhythmReader\src\main\java\com\model\MusicPlayer.java
+C:\Users\poagk\OneDrive\Desktop\CSCE247\Rhythm-Reader\Rhythm-Reader\JavaFXBackEndRhythmReader\src\main\java\com\rhythmreader\PianoController.java
+C:\Users\poagk\OneDrive\Desktop\CSCE247\Rhythm-Reader\Rhythm-Reader\JavaFXBackEndRhythmReader\src\main\java\com\model\User.java
+C:\Users\poagk\OneDrive\Desktop\CSCE247\Rhythm-Reader\Rhythm-Reader\JavaFXBackEndRhythmReader\src\main\java\module-info.java
+C:\Users\poagk\OneDrive\Desktop\CSCE247\Rhythm-Reader\Rhythm-Reader\JavaFXBackEndRhythmReader\src\main\java\com\model\Song.java
+C:\Users\poagk\OneDrive\Desktop\CSCE247\Rhythm-Reader\Rhythm-Reader\JavaFXBackEndRhythmReader\src\main\java\com\model\Genre.java
+C:\Users\poagk\OneDrive\Desktop\CSCE247\Rhythm-Reader\Rhythm-Reader\JavaFXBackEndRhythmReader\src\main\java\com\model\Measure.java
+C:\Users\poagk\OneDrive\Desktop\CSCE247\Rhythm-Reader\Rhythm-Reader\JavaFXBackEndRhythmReader\src\main\java\com\model\DataWriter.java
+C:\Users\poagk\OneDrive\Desktop\CSCE247\Rhythm-Reader\Rhythm-Reader\JavaFXBackEndRhythmReader\src\main\java\com\model\FlashcardList.java
+C:\Users\poagk\OneDrive\Desktop\CSCE247\Rhythm-Reader\Rhythm-Reader\JavaFXBackEndRhythmReader\src\main\java\com\model\Notetype.java
+C:\Users\poagk\OneDrive\Desktop\CSCE247\Rhythm-Reader\Rhythm-Reader\JavaFXBackEndRhythmReader\src\main\java\com\model\UserList.java
+C:\Users\poagk\OneDrive\Desktop\CSCE247\Rhythm-Reader\Rhythm-Reader\JavaFXBackEndRhythmReader\src\main\java\com\model\TeacherUser.java
+C:\Users\poagk\OneDrive\Desktop\CSCE247\Rhythm-Reader\Rhythm-Reader\JavaFXBackEndRhythmReader\src\main\java\com\model\Flashcard.java
+C:\Users\poagk\OneDrive\Desktop\CSCE247\Rhythm-Reader\Rhythm-Reader\JavaFXBackEndRhythmReader\src\main\java\com\model\StudentUser.java
+C:\Users\poagk\OneDrive\Desktop\CSCE247\Rhythm-Reader\Rhythm-Reader\JavaFXBackEndRhythmReader\src\main\java\com\model\Note.java
+C:\Users\poagk\OneDrive\Desktop\CSCE247\Rhythm-Reader\Rhythm-Reader\JavaFXBackEndRhythmReader\src\main\java\com\model\SongList.java
+C:\Users\poagk\OneDrive\Desktop\CSCE247\Rhythm-Reader\Rhythm-Reader\JavaFXBackEndRhythmReader\src\main\java\com\model\Chords.java
+C:\Users\poagk\OneDrive\Desktop\CSCE247\Rhythm-Reader\Rhythm-Reader\JavaFXBackEndRhythmReader\src\main\java\com\model\Settings.java
+C:\Users\poagk\OneDrive\Desktop\CSCE247\Rhythm-Reader\Rhythm-Reader\JavaFXBackEndRhythmReader\src\main\java\com\rhythmreader\Music.java
+C:\Users\poagk\OneDrive\Desktop\CSCE247\Rhythm-Reader\Rhythm-Reader\JavaFXBackEndRhythmReader\src\main\java\com\rhythmreader\SecondaryController.java
+C:\Users\poagk\OneDrive\Desktop\CSCE247\Rhythm-Reader\Rhythm-Reader\JavaFXBackEndRhythmReader\src\main\java\com\model\RRFacade.java
+C:\Users\poagk\OneDrive\Desktop\CSCE247\Rhythm-Reader\Rhythm-Reader\JavaFXBackEndRhythmReader\src\main\java\com\model\DataConstants.java
+C:\Users\poagk\OneDrive\Desktop\CSCE247\Rhythm-Reader\Rhythm-Reader\JavaFXBackEndRhythmReader\src\main\java\com\model\Database.java
+C:\Users\poagk\OneDrive\Desktop\CSCE247\Rhythm-Reader\Rhythm-Reader\JavaFXBackEndRhythmReader\src\main\java\com\model\DataLoader.java
+C:\Users\poagk\OneDrive\Desktop\CSCE247\Rhythm-Reader\Rhythm-Reader\JavaFXBackEndRhythmReader\src\main\java\com\model\RRDriver.java
+C:\Users\poagk\OneDrive\Desktop\CSCE247\Rhythm-Reader\Rhythm-Reader\JavaFXBackEndRhythmReader\src\main\java\com\model\PreTest.java
+C:\Users\poagk\OneDrive\Desktop\CSCE247\Rhythm-Reader\Rhythm-Reader\JavaFXBackEndRhythmReader\src\main\java\com\rhythmreader\PrimaryController.java
+C:\Users\poagk\OneDrive\Desktop\CSCE247\Rhythm-Reader\Rhythm-Reader\JavaFXBackEndRhythmReader\src\main\java\com\model\DifficultyLevel.java
+C:\Users\poagk\OneDrive\Desktop\CSCE247\Rhythm-Reader\Rhythm-Reader\JavaFXBackEndRhythmReader\src\main\java\com\rhythmreader\App.java
+C:\Users\poagk\OneDrive\Desktop\CSCE247\Rhythm-Reader\Rhythm-Reader\JavaFXBackEndRhythmReader\src\main\java\com\model\Instrument.java
+>>>>>>> origin/main
