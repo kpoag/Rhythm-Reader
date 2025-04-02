@@ -224,6 +224,14 @@ public class TeacherUser extends User {
 
         return true;
     }
+    /**
+    * Retrieves the list of students associated with this teacher.
+    *
+    * @return an ArrayList of StudentUser objects representing the students managed by this teacher
+    */
+    public ArrayList<StudentUser> getStudents() {
+        return new ArrayList<>(students); 
+    }
 
     /**
      * Determines that current User is a Teacher
