@@ -1,12 +1,15 @@
 -------------------------------------------------------------------------------
 Test set: com.model.DataWriterTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.446 s <<< FAILURE! -- in com.model.DataWriterTest
-com.model.DataWriterTest.testWritingOneUser -- Time elapsed: 0.123 s <<< FAILURE!
-java.lang.AssertionError: Saving users should return true
-	at junit@4.13.2/org.junit.Assert.fail(Assert.java:89)
-	at junit@4.13.2/org.junit.Assert.assertTrue(Assert.java:42)
-	at com.rhythmreader/com.model.DataWriterTest.testWritingOneUser(DataWriterTest.java:68)
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.388 s <<< FAILURE! -- in com.model.DataWriterTest
+com.model.DataWriterTest.testSaveMultipleUsers -- Time elapsed: 0.272 s <<< ERROR!
+java.lang.IndexOutOfBoundsException: Index 2 out of bounds for length 0
+	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:100)
+	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:106)
+	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:302)
+	at java.base/java.util.Objects.checkIndex(Objects.java:365)
+	at java.base/java.util.ArrayList.get(ArrayList.java:428)
+	at com.rhythmreader/com.model.DataWriterTest.testSaveMultipleUsers(DataWriterTest.java:76)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at junit@4.13.2/org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)

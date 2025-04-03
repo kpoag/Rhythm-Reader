@@ -1,8 +1,1 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-com/model/DataConstants.class
-=======
-com\model\SongList.class
->>>>>>> origin/main
->>>>>>> f67ca49585b817377c190c1c6b3c90235ba3f8d6
+com\model\DataConstants.class

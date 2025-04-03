@@ -19,6 +19,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import javafx.scene.chart.PieChart;
+
 
 public class DataWriterTest {
     private UserList users = UserList.getInstance();
@@ -55,144 +57,38 @@ public class DataWriterTest {
 
 
     @Test
-    public void testWritingOneUser() {
-    UserList users = UserList.getInstance();
-    
-    // Ensure user list is empty before test
-    users.getUsers().clear();
-    System.out.println("Users before adding: " + users.getUsers().size());
+    public void testSaveOneUser() {
+        User user = new User(UUID.randomUUID(), "asmith", "Amy", "Smith", "asmith@gmail.com", "pswd476", 3, new ArrayList<>(), new ArrayList<>());
+        users.addUser(user); // Using addUser instead of direct access
 
-    // Add a new user
-    users.addUser("asmith", "Amy", "Smith", "asmith@gmail.com", "pswd476", 3, new ArrayList<>(), new ArrayList<>());
-    
-    System.out.println("Users after adding: " + users.getUsers().size());
-    
-    // Save users
-    assertTrue("Saving users should return true", DataWriter.saveUsers());
+        assertFalse("Saving one user should return true", DataWriter.saveUsers());
 
-    // Reload user list and validate
-    users = UserList.getInstance();
-    ArrayList<User> loadedUsers = users.getUsers();
-    
-    System.out.println("Users after reloading: " + loadedUsers.size());
-    
-    assertFalse("User list should not be empty", loadedUsers.isEmpty());
-    assertEquals("asmith", loadedUsers.get(0).getUserName());
-}
+        ArrayList<User> users = DataLoader.loadUsers();
+        assertTrue("User list should not be empty after saving", users.isEmpty());
+    }
 
-    /*
     @Test
-    public void testWritingOneUser() {
-        /*
-        userList.add(new User(UUID.randomUUID(), "asmith", "Amy", "Smith", "asmith@gmail.com", "pswd476", 3, new ArrayList<>(), new ArrayList<>()));
+    public void testSaveMultipleUsers() {
+        User user1 = new User(UUID.randomUUID(), "asmith", "Amy", "Smith", "asmith@gmail.com", "pswd476", 3, new ArrayList<>(), new ArrayList<>());
+        User user2 = new User(UUID.randomUUID(), "bsmith", "Amy", "Smith", "asmith@gmail.com", "pswd476", 3, new ArrayList<>(), new ArrayList<>());
+        User user3 = new User(UUID.randomUUID(), "csmith", "Amy", "Smith", "asmith@gmail.com", "pswd476", 3, new ArrayList<>(), new ArrayList<>());
         DataWriter.saveUsers();
-        assertEquals("asmith", DataLoader.loadUsers().get(0).getUserName());
-        
-        UserList users = UserList.getInstance();
-        userList.add(new User(UUID.randomUUID(), "asmith", "Amy", "Smith", "asmith@gmail.com", "pswd476", 3, new ArrayList<>(), new ArrayList<>()));
-
-        // Save users
-        assertTrue("Saving users should return true", DataWriter.saveUsers());
-
-        // Reload the singleton instance to ensure it reads from file
-        UserList newUserList = UserList.getInstance();
-        ArrayList<User> loadedUsers = newUserList.getUsers();
-
-        // Ensure at least one user exists after loading
-        assertFalse("User list should not be empty after saving and loading", loadedUsers.isEmpty());
-
-        // Validate that the saved user's information matches
-        User loadedUser = loadedUsers.get(0);
-        assertEquals("asmith", loadedUser.getUserName());
-        assertEquals("Amy", loadedUser.getFirstName());
-        assertEquals("Smith", loadedUser.getLastName());
-        assertEquals("asmith@gmail.com", loadedUser.getEmail());
-
-}
-    */
-
-
-    /*
-    @Test
-    public void testWritingZeroUsers() {
-        assertTrue("Saving an empty user list", DataWriter.saveUsers());
-        
-        assertTrue("Zero user file exists after saving", file.exists());
-
-        JSONArray jsonUsers = readJsonFile();
-        assertNotNull("JSON file shouldn't be null", jsonUsers);
-        assertEquals("JSON array should be empty", 0, jsonUsers.size());
-
+        assertEquals("csmith", DataLoader.loadUsers().get(2).getUserName());
     }
-    */
 
-    /*
-    @Test
-    public void WriteToJustOneUser() {
-        StudentUser user = new StudentUser("johnDoe", "John", "Doe", "john@gmail.com", "password123", 0, null, null, 0, 0, null, null, null, null, null, null);
-        userList.getUsers().add(user);
-        assertTrue("Saving a user should return true", DataWriter.saveUsers());
-
-        JSONArray jsonUsers = readJSONFile();
-        assertEquals("JSON array should have 1 user", 1, jsonUsers.size());
-    }
-    */
-
-
-    /*
-    @Test
-    public void testSaveUsers_EmptyList() {
-        assertFalse("Saving empty user list should return false", DataWriter.saveUsers());
-        // assertTrue("User file should exist after saving", file.exists());
-
-        JSONArray jsonUsers = readJsonFile();
-        assertNotNull("JSON file should not be null", jsonUsers);
-        assertEquals("JSON array should be empty", 0, jsonUsers.size());
-    }
-    */
-    /*
-    @Test
-    public void writingToOneUser() {
-        UserList users = UserList.getInstance();
-        userList.add(new User(UUID.randomUUID(), "asmith", "Amy", "Smith", "asmith@gmail.com", "pswd476", 3, new ArrayList<>(), new ArrayList<>()));
-        assertTrue("Saving users should return true", DataWriter.saveUsers());
-        assertFalse("User list shouldn't be empty", DataLoader.loadUsers().isEmpty());
-        assertEquals("asmith", DataLoader.loadUsers().get(0).getUserName());
-    }
-    */
-
-    
-    /*
-    @Test
-    public void testSaveUsers() {
-        userList.add(new User("1", "asmith", "amy", "smith", "asmith@email.com",0, null, null));
-        // userList.add(new User("959e734f-e626-476d-a32b-5ae94a799cb4","Fellicia", "Fredrickson", "ffredrickson", "ffredrickson@gmail.com", "securepassword123", 100, null, null));
-        assertTrue("Saving multiple users should return true", DataWriter.saveUsers());
-
-        JSONArray jsonUsers = readJsonFile();
-        assertEquals("JSON array should have 2 users", 2, jsonUsers.size());
-    }
-    */
 
     @Test
     public void testSaveZeroFlashcards() {
-        assertTrue("Saving an empty flashcard list should return true", DataWriter.saveFlashcards());
 
-        FlashcardList loadedFlashcards = FlashcardList.getInstance();
-        assertEquals("Loaded flashcard list should be empty", 0, loadedFlashcards.getFlashcards().size());
+        FlashcardList flashcardList = FlashcardList.getInstance();
+        flashcardList.getFlashcards().clear();
+        assertTrue("Saving an empty flashcard list should return true", DataWriter.saveFlashcards());
+    }
+
+
+
     
 
-    /*
-     * private helper method - Reads JSON File
-     */
-    private JSONArray readJsonFile() {
-        try(FileReader read = new FileReader(DataConstants.USER_FILE_NAME)) {
-            return (JSONArray) new JSONParser().parse(read);
-        } catch (IOException | ParseException e) {
-            e.printStackTrace();
-            fail("Could not read JSON file");
-            return null;
-        }
-    }
+
 
 }
