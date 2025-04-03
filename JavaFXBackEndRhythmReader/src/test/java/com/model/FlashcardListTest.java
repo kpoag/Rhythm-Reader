@@ -53,7 +53,7 @@ public class FlashcardListTest {
     }
 
     @Test
-    public void testGetExistingFlashcard2() {
+    public void testGetExistingFlashcardNotNull() {
         Flashcard copyFlashcard = flashcardList.getFlashcard("1");
         assertNotNull(copyFlashcard);
     }
@@ -65,7 +65,7 @@ public class FlashcardListTest {
     }
 
     @Test
-    public void testFlashcardList2() {
+    public void testFlashcardListSize() {
         ArrayList<Flashcard> listOfFlashcards = flashcardList.getFlashcards();
         assertEquals(1, listOfFlashcards.size());
     }
