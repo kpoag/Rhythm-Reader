@@ -13,9 +13,10 @@ public class TeacherUser extends User {
 
     private ArrayList<String> teachingClasses;
     private Map<String, ArrayList<Map<String, String>>> gradebook;
+    private ArrayList<StudentUser> students;
 
     /**
-     * Constructs a new  TeacherUser with the specified parameters.
+     * Constructs a new TeacherUser with the specified parameters.
      *
      * @param userName        the username of the teacher.
      * @param firstName       the teacher's first name.
@@ -25,15 +26,17 @@ public class TeacherUser extends User {
      * @param points          the initial points for the teacher.
      * @param badges          a list of badges earned by the teacher.
      * @param friends         a list of the teacher's friends.
-     * @param teachingClasses an  ArrayList of classes the teacher is teaching.
-     * @param gradebook       a  Map mapping class codes to lists of student records.
+     * @param teachingClasses an ArrayList of classes the teacher is teaching.
+     * @param gradebook       a Map mapping class codes to lists of student records.
+     * @param students        a list of students in the teacher's classes.
      */
     public TeacherUser(String userName, String firstName, String lastName, String email,
     String password, int points, ArrayList<String> badges, ArrayList<String> friends, 
-    ArrayList<String> teachingClasses, Map<String, ArrayList<Map<String, String>>> gradebook ) {
+    ArrayList<String> teachingClasses, Map<String, ArrayList<Map<String, String>>> gradebook, ArrayList<StudentUser> students ) {
        super(userName, firstName, lastName, email, password, points, badges, friends);
        this.teachingClasses = teachingClasses;
        this.gradebook = gradebook;
+       this.students = students;
     }
 
     /**
@@ -66,6 +69,8 @@ public class TeacherUser extends User {
         ArrayList<String> badges = new ArrayList<>();
         badges.add("Instructor");
         ArrayList<String> friends = new ArrayList<>();
+        ArrayList<StudentUser> students = new ArrayList<>();
+
         
         // Teacher-specific attributes
         ArrayList<String> teachingClasses = new ArrayList<>();
@@ -73,7 +78,7 @@ public class TeacherUser extends User {
         
         // Create and add the teacher user
         TeacherUser newUser = new TeacherUser(userName, firstName, lastName, email, password, 
-                                             points, badges, friends, teachingClasses, gradebook);
+                                             points, badges, friends, teachingClasses, gradebook, students);
         
         boolean success = UserList.getInstance().addUser(newUser);
         
@@ -93,6 +98,10 @@ public class TeacherUser extends User {
      * @return  true if the student was successfully added to at least one class; false otherwise.
      */
     public boolean addStudent(StudentUser student) {
+        if (student == null) {
+            System.out.println("Cannot add null student");
+            return false;
+        }
         if (teachingClasses == null || teachingClasses.isEmpty()) {
             System.out.println("Teacher has no classes assigned.");
             return false;
@@ -124,6 +133,10 @@ public class TeacherUser extends User {
             System.out.println("Student " + student.getLastName() +" " + student.getLastName() + 
             " is already enrolled in class.");
             return false;
+        }
+
+        if (!students.contains(student)) {
+            students.add(student);
         }
          return true;
     }
@@ -187,8 +200,16 @@ public class TeacherUser extends User {
      * @param userName the username of the student receiving feedback.
      * @return a confirmation message regarding the feedback.
      */
-    public String sendFeedback(String feedback, String userName){
-        return "Good Job";
+    public String sendFeedback(StudentUser student, String feedback){
+        if (student == null || feedback == null || feedback.trim().isEmpty()) {
+            return "Error: Invalid student or feedback message";
+        }
+
+        if (!students.contains(student)){
+            return "Error: Student is not enrolled in your class";
+        }
+
+        return "Feedback sent to " + student.getFirstName() + " " + student.getLastName() + ": " + feedback;
     }
 
     /**
@@ -198,7 +219,26 @@ public class TeacherUser extends User {
      * @return the unique identifier for the created classroom.
      */
     public String createClassroom(String className){
-        return "XYZ";
+        if (className == null || className.trim().isEmpty()) {
+            return null;
+        }
+        
+        // Check if the class already exists
+        if (teachingClasses.contains(className)) {
+            return null; // Class already exists
+        }
+        
+        // Generate a unique class code (in a real app, this might be more sophisticated)
+        String classCode = className.replaceAll("\\s+", "").substring(0, Math.min(className.length(), 3)).toUpperCase() 
+                         + "-" + String.format("%03d", teachingClasses.size() + 1);
+        
+        // Add the class to the teacher's teaching classes
+        teachingClasses.add(className);
+        
+        // Initialize an empty gradebook for the new class
+        gradebook.put(className, new ArrayList<>());
+        
+        return classCode;
     }
 
     /**
@@ -208,7 +248,39 @@ public class TeacherUser extends User {
      * @return true if the student was successfully removed; false  otherwise.
      */
     public boolean removeStudent(StudentUser student) {
-        return false;
+        if (student == null || !students.contains(student)) {
+            return false;
+        }
+        
+        boolean removed = false;
+        
+        // Remove the student from the students list
+        removed = students.remove(student);
+        
+        // Remove the student from all classes they're enrolled in
+        for (String classCode : teachingClasses) {
+            if (student.getClasses().contains(classCode)) {
+                student.getClasses().remove(classCode);
+                
+                // Remove the student's record from the gradebook
+                ArrayList<Map<String, String>> classRecords = gradebook.get(classCode);
+                if (classRecords != null) {
+                    // Find and remove the student's record
+                    for (int i = 0; i < classRecords.size(); i++) {
+                        Map<String, String> record = classRecords.get(i);
+                        if (record.get("First Name").equals(student.getFirstName()) && 
+                            record.get("Last Name").equals(student.getLastName())) {
+                            classRecords.remove(i);
+                            break;
+                        }
+                    }
+                }
+                
+                removed = true;
+            }
+        }
+        
+        return removed;
     }
 
     /**
@@ -220,9 +292,38 @@ public class TeacherUser extends User {
      * @return true if the flashcard was successfully assigned; false otherwise.
      */
     public boolean assignFlashcard(Flashcard flashcard, String assignedClass) {
-        // Finish method
-
-        return true;
+        if (flashcard == null || assignedClass == null || assignedClass.trim().isEmpty()) {
+            return false;
+        }
+        
+        // Check if the class exists
+        if (!teachingClasses.contains(assignedClass)) {
+            return false;
+        }
+        
+        // Assign the flashcard to all students in the class
+        boolean assigned = false;
+        for (StudentUser student : students) {
+            if (student.getClasses().contains(assignedClass)) {
+                // Add the flashcard to the student's assigned flashcards
+                // Assuming the Flashcard class has a getUUID() or getId() method
+                String flashcardId = flashcard.getCardID(); // or getUUID() depending on your implementation
+                if (!student.getAssignedFlashcards().contains(flashcardId)) {
+                    student.getAssignedFlashcards().add(flashcardId);
+                    assigned = true;
+                }
+            }
+        }
+        
+        return assigned;
+    }
+    /**
+    * Retrieves the list of students associated with this teacher.
+    *
+    * @return an ArrayList of StudentUser objects representing the students managed by this teacher
+    */
+    public ArrayList<StudentUser> getStudents() {
+        return students;
     }
 
     /**
