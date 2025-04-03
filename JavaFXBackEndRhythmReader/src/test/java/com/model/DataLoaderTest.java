@@ -8,6 +8,12 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Test cases for dataLoader 
+ * 
+ * @author Jaylen
+ */
+
 public class DataLoaderTest {
 	 //private static final String TEST_USER_FILE_NAME = "JavaFXBackEndRhythmReader/src/test/java/com/data/users.json";
      
