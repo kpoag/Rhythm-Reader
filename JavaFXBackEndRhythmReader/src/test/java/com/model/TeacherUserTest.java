@@ -13,7 +13,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-
+/**
+ * Test class for  TeacherUser. 
+ */
 public class TeacherUserTest {
 
     private TeacherUser teacherUser;
@@ -21,8 +23,10 @@ public class TeacherUserTest {
     private StudentUser student2;
     private StudentUser student3;
 
-
-     @Before
+    /**
+     * Sets up the test environment before each test execution.
+     */
+    @Before
     public void setUp() {
         // Create a teacher user for testing
         String userName = "testTeacher";
@@ -80,6 +84,10 @@ public class TeacherUserTest {
 
     }
 
+     /**
+     * Tests the addition of a new student to the teacher's student list.
+     * Verifies that the student is added correctly.
+     */
     @Test 
     public void testAddStudent() {
         ArrayList<String> emptyClasses = new ArrayList<>();
@@ -90,8 +98,7 @@ public class TeacherUserTest {
         ArrayList<String> emptyAssignedFlashcards = new ArrayList<>();
         
         student3 = new StudentUser("person", "New", "Student", "student3@example.com", "pass3",
-        0, emptyBadges, emptyFriends, 0, 0, emptyClasses,
-        "Beginner", emptyFlashcards, null, emptyDeadlines, emptyAssignedFlashcards);
+        0, emptyBadges, emptyFriends, 0, 0, emptyClasses, "Beginner", emptyFlashcards, null, emptyDeadlines, emptyAssignedFlashcards);
 
         boolean result = teacherUser.addStudent(student3);
         System.out.println(result);
@@ -99,25 +106,26 @@ public class TeacherUserTest {
 
         assertTrue(result);
         assertTrue(teacherUser.getStudents().contains(student3));
-        System.out.println(teacherUser.getStudents().size());
-        System.out.println("Student3 classes: " + student3.getClasses());
-        System.out.println("Teacher's students contains student3: " + teacherUser.getStudents().contains(student3));
         assertEquals(3, teacherUser.getStudents().size());
 
     }
 
+    
+    /**
+     * Tests that adding a student fails when the teacher does not have any classes.
+     */
     @Test
     public void testAddStudent_NoClasses() {
+        TeacherUser teacherWithNoClasses = new TeacherUser("noClassTeacher", "No", "Classes", "noclasses@example.com", "password", 0, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new HashMap<>(), new ArrayList<>());
+        StudentUser newStudent = StudentUser.createStudentUser("student4", "Another", "Student","anotherstudent@example.com", "password456");
+        boolean result = teacherWithNoClasses.addStudent(newStudent);
 
-        TeacherUser teacherWithNoClasses = new TeacherUser("noClassTeacher", "No", "Classes", "noclasses@example.com", 
-            "password", 0, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new HashMap<>(), new ArrayList<>());
-
-            StudentUser newStudent = StudentUser.createStudentUser("student4", "Another", "Student",
-                "anotherstudent@example.com", "password456");
-                boolean result = teacherWithNoClasses.addStudent(newStudent);
         assertFalse("Should fail to add student since teacher does not have a class", result);
     }
 
+     /**
+     * Tests that attempting to add a student who is already enrolled results in failure.
+     */
     @Test
     public void testAddStudent_AlreadyEnrolled() {
         boolean result = teacherUser.addStudent(student1);
@@ -125,6 +133,10 @@ public class TeacherUserTest {
         assertFalse("Should fail to add student who is already enrolled in all classes", result);
     }
 
+    /**
+     * Tests the sendFeedback method to ensure that valid feedback includes the student's first and last name,
+     * as well as the provided feedback message.
+     */
     @Test
     public void testSendFeedback() {
         String feedback = "Great job!";
@@ -133,24 +145,42 @@ public class TeacherUserTest {
         assertTrue("Feedback should have student's name", result.contains(student1.getFirstName()) && result.contains(student1.getLastName()));
         assertTrue("Feedback should have the message", result.contains(feedback));
     }
+
+    /**
+     * Tests the sendFeedback method for a student who is not enrolled in any of the teacher's classes.
+     */
     @Test
     public void testSendFeedback_StudentNotInClass() {
         StudentUser outsideStudent = new StudentUser("outside", "Outside", "Student", "outside@example.com", "pass", 0, null, null, 0, 0, null, null, null, null, null, null);
         String result = teacherUser.sendFeedback(outsideStudent, "Good job!");
+
         assertTrue("Should return error for student not in class", result.startsWith("Error"));
     }
+
+    /**
+     * Tests the sendFeedback method with a null student.
+     */
     @Test
     public void testSendFeedback_nullStudent() {
         String result = teacherUser.sendFeedback(null, "Good job!");
+
         assertTrue("Should return error for null student", result.startsWith("Error"));
     }
+
+    /**
+     * Tests the sendFeedback method with a null feeedback message.
+     */
     @Test
     public void testSendFeedback_nullFeedback() {
         String result = teacherUser.sendFeedback(student1, null);
         assertTrue("Should return error for null feedback", result.startsWith("Error"));
     }
 
-     @Test
+     /**
+     * Tests the creation of a new classroom. Verifies that a valid class code is returned,
+     * that the teaching classes list is updated, and that a new entry is added to the gradebook.
+     */
+    @Test
     public void testCreateClassroom() {
         String className = "Piano Basics";
         String classCode = teacherUser.createClassroom(className);
@@ -159,22 +189,34 @@ public class TeacherUserTest {
         assertTrue("Teaching classes should contain new class", teacherUser.getTeachingClasses().contains(className));
         assertTrue("Gradebook should have entry for new class", teacherUser.getGradebook().containsKey(className));
     }
+
+    /**
+     * Tests classroom creation with a null class name.
+     */
     @Test
     public void testCreateClassroom_NullClassName() {
         assertNull("Should return null for null class name", teacherUser.createClassroom(null));
     }
+
+     /**
+     * Tests classroom creation with a duplicate class name.
+     */
     @Test
     public void testCreateClassroom_DuplicateClassName() {
         assertNull("Should return null for duplicate class name", teacherUser.createClassroom("Music Theory 101"));
     }
 
+    /**
+     * Tests the removal of a student from the teacher's list.
+     * Verifies that the student is removed from both the student list and from any associated class records and gradebook entries.
+     */
     @Test
     public void testRemoveStudent() {
         boolean result = teacherUser.removeStudent(student1);
     
         assertTrue("Should successfully remove student", result);
         assertFalse("Student list should no longer contain removed student", 
-                teacherUser.getStudents().contains(student1));
+        teacherUser.getStudents().contains(student1));
         assertEquals("Should have one student remaining", 1, teacherUser.getStudents().size());
     
         // Verify student was removed from classes
@@ -195,9 +237,13 @@ public class TeacherUserTest {
                 }
             }
             assertFalse("Student record should be removed from gradebook for " + classCode, 
-                   foundInGradebook);
+                foundInGradebook);
         }
     }   
+
+    /**
+     * Tests removal of a null student.
+     */
     @Test
     public void testRemoveStudent_NullStudent() {
         boolean result = teacherUser.removeStudent(null);

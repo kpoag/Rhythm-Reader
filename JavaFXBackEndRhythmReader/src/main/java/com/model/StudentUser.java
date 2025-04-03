@@ -277,9 +277,68 @@ public class StudentUser extends User {
      * @return  true if the student has the specified classroom code;  false otherwise.
      */
     public boolean joinCourse(String code) {
-        //finish method
+        if (code == null || code.trim().isEmpty()) {
+            return false;
+        }
+        
+        // Initialize classes list if it's null
+        if (this.classes == null) {
+            this.classes = new ArrayList<>();
+        }
+        
+        // Check if the student is already enrolled in this course
+        if (this.classes.contains(code)) {
+            return false; // Already enrolled
+        }
+        
+        // Find the teacher who created this class code
+        TeacherUser teacher = findTeacherByClassCode(code);
+        if (teacher == null) {
+            return false; // No teacher found with this class code
+        }
+        
+        // Add the course to the student's classes
+        this.classes.add(code);
+        
+        // Add the student to the teacher's student list if not already there
+        if (!teacher.getStudents().contains(this)) {
+            teacher.addStudent(this);
+        }
         return true;
     }
+
+/**
+ * Helper method to find a teacher by class code.
+ * This method searches through all users to find a teacher who has created the given class code.
+ *
+ * @param code The class code to search for
+ * @return The TeacherUser who created the class code, or null if not found
+ */
+public TeacherUser findTeacherByClassCode(String code) {
+    // Get all users from the UserList
+    ArrayList<User> allUsers = UserList.getInstance().getUsers();
+    
+    // Look for teachers who might have created this class code
+    for (User user : allUsers) {
+        if (user instanceof TeacherUser) {
+            TeacherUser teacher = (TeacherUser) user;
+            
+            // Check if this teacher has a class that matches the code
+            for (String className : teacher.getTeachingClasses()) {
+                // Generate the class code for this class name to see if it matches
+                // This assumes the teacher uses the same code generation logic as in createClassroom
+                String generatedCode = className.replaceAll("\\s+", "").substring(0, Math.min(className.length(), 3)).toUpperCase() 
+                                     + "-" + String.format("%03d", teacher.getTeachingClasses().indexOf(className) + 1);
+                
+                if (generatedCode.equals(code)) {
+                    return teacher;
+                }
+            }
+        }
+    }
+    
+    return null; // No teacher found with this class code
+}
     
     /**
      * Indicates that this user is a student.
