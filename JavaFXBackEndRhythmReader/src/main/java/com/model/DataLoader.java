@@ -69,8 +69,14 @@ public class DataLoader extends DataConstants{
 					JSONObject gradebookJSON = (JSONObject) personJSON.get(USER_GRADEBOOK);
 					Map<String, ArrayList<Map<String, String>>> gradebook = parseGradebook(gradebookJSON);
 
+					ArrayList<StudentUser> students = new ArrayList<>();
+					if (personJSON.get(USER_STUDENTS) != null) {
+                        ArrayList<String> studentUsernames = (ArrayList<String>) personJSON.get(USER_STUDENTS);
+                        // Convert usernames to StudentUser objects if needed
+                    }
+
 					TeacherUser teacher = new TeacherUser(userName, firstName, lastName, email, password, points, 
-					friends, badges, teachingClasses, gradebook);
+					friends, badges, teachingClasses, gradebook, students);
 
 					users.add(teacher);
 				}
