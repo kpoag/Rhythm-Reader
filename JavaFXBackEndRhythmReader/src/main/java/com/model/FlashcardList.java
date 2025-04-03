@@ -58,7 +58,7 @@ public class FlashcardList {
      */
     public Flashcard getFlashcard(String flashcardID) {
         for (Flashcard flashcard : flashcardList) {
-            if (flashcard.getID().equals(flashcardID)) {
+            if (flashcard.getCardID().equals(flashcardID)) {
                 return flashcard;
             }
         }
@@ -75,5 +75,6 @@ public class FlashcardList {
     public ArrayList<Flashcard> getFlashcards() {
         return flashcardList;
     }
+
 }
 
