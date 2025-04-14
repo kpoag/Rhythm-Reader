@@ -25,7 +25,7 @@ public class DataWriter extends DataConstants {
 
         JSONArray jsonUsers = new JSONArray();
 
-        System.out.println("Total users in UserList: " + users.getUsers().size());
+        System.out.println("Total users in UserList: " + userList.size());
         
         Set<String> uuid = new HashSet<>();
         for (User user : userList) {
@@ -37,7 +37,7 @@ public class DataWriter extends DataConstants {
                 System.out.println("Duplicate user: " + user.getId());
             }
         }
-        System.out.println("Writing " + userList.size() + " users to file.");
+        System.out.println("Writing " + jsonUsers.size() + " users to file.");
 
         try (FileWriter file = new FileWriter(USER_FILE_NAME)) {
             file.write(jsonUsers.toJSONString());

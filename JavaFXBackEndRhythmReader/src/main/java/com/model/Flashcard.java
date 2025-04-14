@@ -3,6 +3,7 @@ package com.model;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * Represents a flashcard with text, picture, category, difficulty, and a list of assigned students.
@@ -39,6 +40,11 @@ public class Flashcard {
         this.category = category;
         this.difficulty = difficulty;
         this.assignedStudents = new ArrayList<>();
+    }
+
+    public Flashcard(UUID randomUUID, String string, String string2, String string3, int i, String string4,
+            ArrayList arrayList) {
+        //TODO Auto-generated constructor stub
     }
 
     /**

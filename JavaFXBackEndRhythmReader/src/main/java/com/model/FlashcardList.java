@@ -42,7 +42,12 @@ public class FlashcardList {
      * @return true if the flashcard exists; false otherwise.
      */
     public boolean haveFlashcard(String flashcardID) {
-        return true;  // This can be modified to properly check the existence of the flashcard
+        for (Flashcard flashcard : flashcardList) {
+            if (flashcard.getCardID().equals(flashcardID)) {
+                return true;
+            }
+        }
+        return false;  // This can be modified to properly check the existence of the flashcard
     }
 
     /**
@@ -52,10 +57,14 @@ public class FlashcardList {
      * @return The Flashcard object with the specified ID, or null if not found.
      */
     public Flashcard getFlashcard(String flashcardID) {
-        if(!haveFlashcard(flashcardID)) return null;
-
+        for (Flashcard flashcard : flashcardList) {
+            if (flashcard.getCardID().equals(flashcardID)) {
+                return flashcard;
+            }
+        }
+        return null;
         // This is a placeholder; it can be replaced with a proper flashcard retrieval logic
-        return new Flashcard(flashcardID, "Question", "Answer", "key_signature.png", "Music Theory", "Beginner");
+        // return new Flashcard(flashcardID, "Question", "Answer", "key_signature.png", "Music Theory", "Beginner");
     }
 
     /**
@@ -66,5 +75,6 @@ public class FlashcardList {
     public ArrayList<Flashcard> getFlashcards() {
         return flashcardList;
     }
+
 }
 
