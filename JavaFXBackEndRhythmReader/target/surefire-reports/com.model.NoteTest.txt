@@ -1,12 +1,12 @@
 -------------------------------------------------------------------------------
 Test set: com.model.NoteTest
 -------------------------------------------------------------------------------
-Tests run: 31, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 0.159 s <<< FAILURE! -- in com.model.NoteTest
-com.model.NoteTest.getNoteWithoutDuration_noModifierOctaveZero -- Time elapsed: 0.011 s <<< FAILURE!
+Tests run: 31, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 0.023 s <<< FAILURE! -- in com.model.NoteTest
+com.model.NoteTest.getNoteWithoutDuration_noModifierOctaveZero -- Time elapsed: 0.001 s <<< FAILURE!
 org.junit.ComparisonFailure: expected:<E[0]> but was:<E[4]>
 	at junit@4.13.2/org.junit.Assert.assertEquals(Assert.java:117)
 	at junit@4.13.2/org.junit.Assert.assertEquals(Assert.java:146)
-	at com.rhythmreader/com.model.NoteTest.getNoteWithoutDuration_noModifierOctaveZero(NoteTest.java:164)
+	at com.rhythmreader@1.0-SNAPSHOT/com.model.NoteTest.getNoteWithoutDuration_noModifierOctaveZero(NoteTest.java:164)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at junit@4.13.2/org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
@@ -34,11 +34,11 @@ org.junit.ComparisonFailure: expected:<E[0]> but was:<E[4]>
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
 
-com.model.NoteTest.getNoteWithoutDuration_modifierAndNegativeOctave -- Time elapsed: 0.004 s <<< FAILURE!
+com.model.NoteTest.getNoteWithoutDuration_modifierAndNegativeOctave -- Time elapsed: 0.001 s <<< FAILURE!
 org.junit.ComparisonFailure: expected:<F[-1]> but was:<F[b4]>
 	at junit@4.13.2/org.junit.Assert.assertEquals(Assert.java:117)
 	at junit@4.13.2/org.junit.Assert.assertEquals(Assert.java:146)
-	at com.rhythmreader/com.model.NoteTest.getNoteWithoutDuration_modifierAndNegativeOctave(NoteTest.java:170)
+	at com.rhythmreader@1.0-SNAPSHOT/com.model.NoteTest.getNoteWithoutDuration_modifierAndNegativeOctave(NoteTest.java:170)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at junit@4.13.2/org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
@@ -66,13 +66,13 @@ org.junit.ComparisonFailure: expected:<F[-1]> but was:<F[b4]>
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
 
-com.model.NoteTest.fromString_stringWithNegativeOctave -- Time elapsed: 0.002 s <<< FAILURE!
+com.model.NoteTest.fromString_stringWithNegativeOctave -- Time elapsed: 0 s <<< FAILURE!
 java.lang.AssertionError: expected:<-1> but was:<4>
 	at junit@4.13.2/org.junit.Assert.fail(Assert.java:89)
 	at junit@4.13.2/org.junit.Assert.failNotEquals(Assert.java:835)
 	at junit@4.13.2/org.junit.Assert.assertEquals(Assert.java:647)
 	at junit@4.13.2/org.junit.Assert.assertEquals(Assert.java:633)
-	at com.rhythmreader/com.model.NoteTest.fromString_stringWithNegativeOctave(NoteTest.java:208)
+	at com.rhythmreader@1.0-SNAPSHOT/com.model.NoteTest.fromString_stringWithNegativeOctave(NoteTest.java:208)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at junit@4.13.2/org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
@@ -100,13 +100,13 @@ java.lang.AssertionError: expected:<-1> but was:<4>
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
 
-com.model.NoteTest.fromString_stringWithNoOctave -- Time elapsed: 0.002 s <<< FAILURE!
+com.model.NoteTest.fromString_stringWithNoOctave -- Time elapsed: 0.001 s <<< FAILURE!
 java.lang.AssertionError: expected:<0> but was:<4>
 	at junit@4.13.2/org.junit.Assert.fail(Assert.java:89)
 	at junit@4.13.2/org.junit.Assert.failNotEquals(Assert.java:835)
 	at junit@4.13.2/org.junit.Assert.assertEquals(Assert.java:647)
 	at junit@4.13.2/org.junit.Assert.assertEquals(Assert.java:633)
-	at com.rhythmreader/com.model.NoteTest.fromString_stringWithNoOctave(NoteTest.java:216)
+	at com.rhythmreader@1.0-SNAPSHOT/com.model.NoteTest.fromString_stringWithNoOctave(NoteTest.java:216)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at junit@4.13.2/org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)

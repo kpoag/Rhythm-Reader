@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.model.FlashcardTest" time="0.001" tests="10" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.model.MeasureTest" time="0.001" tests="11" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="23"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -59,20 +59,18 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="67.0"/>
   </properties>
-  <testcase name="testEmptySpaceinAnswer" classname="com.model.FlashcardTest" time="0.0"/>
-  <testcase name="testTesting" classname="com.model.FlashcardTest" time="0.0"/>
-  <testcase name="testProgressWithTeacherInEmptyCategory" classname="com.model.FlashcardTest" time="0.001">
-    <system-out><![CDATA[Category Progress for Musician Fun Facts: 0.3333333333333333
-]]></system-out>
+  <testcase name="testFromJSONWithInvalidInputType" classname="com.model.MeasureTest" time="0.0">
+    <system-err><![CDATA[Error: Unexpected data type: org.json.simple.JSONObject
+]]></system-err>
   </testcase>
-  <testcase name="testProgressWithTeacher" classname="com.model.FlashcardTest" time="0.0">
-    <system-out><![CDATA[Category Progress for Music Theory: 0.3333333333333333
-]]></system-out>
-  </testcase>
-  <testcase name="testProgressWithIncorrectAnswer" classname="com.model.FlashcardTest" time="0.0"/>
-  <testcase name="testEmptyAnswer" classname="com.model.FlashcardTest" time="0.0"/>
-  <testcase name="testProgressWithCorrectAnswer" classname="com.model.FlashcardTest" time="0.0"/>
-  <testcase name="testCheckIncorrectAnswer" classname="com.model.FlashcardTest" time="0.0"/>
-  <testcase name="testCheckAnswerCaseSensitive" classname="com.model.FlashcardTest" time="0.0"/>
-  <testcase name="testCheckCorrectAnswer" classname="com.model.FlashcardTest" time="0.0"/>
+  <testcase name="testGetJFuguePattern" classname="com.model.MeasureTest" time="0.0"/>
+  <testcase name="testFromJSONWithChord" classname="com.model.MeasureTest" time="0.0"/>
+  <testcase name="testGetExpectedBeats" classname="com.model.MeasureTest" time="0.0"/>
+  <testcase name="testFromJSONWithNullInput" classname="com.model.MeasureTest" time="0.0"/>
+  <testcase name="testGetExpectedBeatsInvalidBeats" classname="com.model.MeasureTest" time="0.0"/>
+  <testcase name="testFromJSONWithEmptyArray" classname="com.model.MeasureTest" time="0.0"/>
+  <testcase name="testGetTotalBeats" classname="com.model.MeasureTest" time="0.0"/>
+  <testcase name="testGetTotalBeatsWithNullChords" classname="com.model.MeasureTest" time="0.0"/>
+  <testcase name="testFromJSONWithSingleNote" classname="com.model.MeasureTest" time="0.0"/>
+  <testcase name="testGetExpectedBeatsInvalidTimeSignature" classname="com.model.MeasureTest" time="0.0"/>
 </testsuite>
