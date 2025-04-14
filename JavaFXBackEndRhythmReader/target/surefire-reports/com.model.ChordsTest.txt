@@ -1,12 +1,13 @@
 -------------------------------------------------------------------------------
-Test set: com.model.UsersTest
+Test set: com.model.ChordsTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.091 s <<< FAILURE! -- in com.model.UsersTest
-com.model.UsersTest.testValidLogin -- Time elapsed: 0.048 s <<< FAILURE!
-java.lang.AssertionError: Login should be successful
+Tests run: 20, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! -- in com.model.ChordsTest
+com.model.ChordsTest.testFromJSONArray_MixedValidAndInvalidNotes -- Time elapsed: 0 s <<< FAILURE!
+java.lang.AssertionError: Expected chord to contain only valid notes expected:<2> but was:<3>
 	at junit@4.13.2/org.junit.Assert.fail(Assert.java:89)
-	at junit@4.13.2/org.junit.Assert.assertTrue(Assert.java:42)
-	at com.rhythmreader@1.0-SNAPSHOT/com.model.UsersTest.testValidLogin(UsersTest.java:22)
+	at junit@4.13.2/org.junit.Assert.failNotEquals(Assert.java:835)
+	at junit@4.13.2/org.junit.Assert.assertEquals(Assert.java:647)
+	at com.rhythmreader@1.0-SNAPSHOT/com.model.ChordsTest.testFromJSONArray_MixedValidAndInvalidNotes(ChordsTest.java:185)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at junit@4.13.2/org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)

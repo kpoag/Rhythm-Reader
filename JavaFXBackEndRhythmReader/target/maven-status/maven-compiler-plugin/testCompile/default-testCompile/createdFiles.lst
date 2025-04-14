@@ -1,1 +1,13 @@
+<<<<<<< HEAD
+com/model/MeasureTest.class
+com/model/NoteTest.class
+com/model/FlashcardTest.class
+com/model/StudentUserTest.class
+com/model/DataConstants.class
+com/model/DataLoaderTest.class
+com/model/UserTest.class
+com/model/TeacherUserTest.class
+com/model/ChordsTest.class
+=======
 com\model\DataConstants.class
+>>>>>>> origin/main
