@@ -41,3 +41,51 @@
     -fx-font-family: Coiny;
     -fx-text-alignment: center;
 }
+
+#welcomeLabel { 
+    -fx-font-size: 14px; 
+    -fx-text-fill: #FFFFFF;
+}
+#menuButton {
+
+}
+.dashboard-tile {
+    -fx-pref-width: 300px;
+    -fx-pref-height: 200px;
+    -fx-background-radius: 15;
+    -fx-background-color: #EFEFEF; 
+    -fx-border-color: #CCCCCC;
+    -fx-border-radius: 15;
+    -fx-font-size: 16px;
+    -fx-text-fill: #000000;
+    -fx-alignment: CENTER;
+    -fx-wrap-text: true; 
+    -fx-line-spacing: 2em;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 15px;
+}
+
+.dashboard-tile:hover {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #AAAAAA;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 0);
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-padding: 10px;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane > .scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane > .scroll-bar:vertical .thumb {
+    -fx-background-color: #CCCCCC;
+    -fx-background-radius: 5px;
+}

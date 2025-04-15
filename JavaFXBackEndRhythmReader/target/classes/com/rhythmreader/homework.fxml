@@ -1,0 +1,14 @@
+
+
+
+
+
+
+
+
+<AnchorPane id="AnchorPane" prefHeight="430" prefWidth="932" fx:id="launch_pane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.homeworkController">
+    
+   <stylesheets>
+      <URL value="@styles.css" />
+   </stylesheets>
+</AnchorPane>

@@ -34,7 +34,9 @@ public class LoginController implements Initializable {
             label_error.setText("Invalid username or password");
             return;
         }
-        //App.setRoot("Use")
+        if (facade.getCurrentUser().isStudent()) {
+            App.setRoot("userDashboard");
+        }
     }
 
     @FXML
