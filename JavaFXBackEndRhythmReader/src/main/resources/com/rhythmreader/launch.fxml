@@ -11,6 +11,6 @@
       <Button fx:id="loginButton" layoutX="31" layoutY= "423" prefWidth="365" prefHeight="73" onAction="#onLoginButtonClicked" text="Login" />
       <Button fx:id="signUpButton" layoutX="32" layoutY= "578" prefWidth="365" prefHeight="73" onAction="#onSignupClicked" text="Create Account" />
    <stylesheets>
-      <URL value="@styles.css" />0
+      <URL value="@styles.css" />
    </stylesheets>
 </AnchorPane>
