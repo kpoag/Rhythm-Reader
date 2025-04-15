@@ -11,14 +11,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
-<<<<<<< HEAD
-=======
 import java.io.IOException;
 import java.util.UUID;
 
 import com.model.RRFacade;
 
->>>>>>> origin/main
 /**
  * JavaFX App
  */
