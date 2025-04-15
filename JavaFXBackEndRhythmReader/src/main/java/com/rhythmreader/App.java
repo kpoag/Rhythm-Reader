@@ -11,14 +11,12 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
-<<<<<<< HEAD
-=======
 import java.io.IOException;
 import java.util.UUID;
 
 import com.model.RRFacade;
 
->>>>>>> origin/main
+
 /**
  * JavaFX App
  */
@@ -28,7 +26,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("launch"), 430, 932);
+        scene = new Scene(loadFXML("launch"), 800, 48);
         stage.setScene(scene);
         stage.show();
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
@@ -46,7 +44,7 @@ public class App extends Application {
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/" + fxml + ".fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource( fxml + ".fxml"));
         return fxmlLoader.load();
     }
 
