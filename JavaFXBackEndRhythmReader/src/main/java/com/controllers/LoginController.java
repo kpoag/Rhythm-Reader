@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import com.model.RRFacade;
 import com.rhythmreader.App;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -38,6 +39,11 @@ public class LoginController implements Initializable {
         if (facade.getCurrentUser().isStudent()) {
             App.navigateTo("userDashboard");
         }
+    }
+    
+    @FXML
+    private void handleBack(ActionEvent event) throws IOException {
+        App.navigateTo("launch");
     }
 
 

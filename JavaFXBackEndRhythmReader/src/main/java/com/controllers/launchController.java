@@ -20,7 +20,7 @@ public class launchController implements Initializable {
 
     @FXML
     private void onSignupClicked(ActionEvent event) throws IOException{
-        App.navigateTo("signup");
+        App.navigateTo("createAccount");
     }
 
     @Override
