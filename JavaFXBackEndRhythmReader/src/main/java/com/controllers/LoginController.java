@@ -32,17 +32,15 @@ public class LoginController implements Initializable {
 
         if (!facade.login(username, password)) {
             label_error.setText("Invalid username or password");
+            label_error.styleProperty();
             return;
         }
         if (facade.getCurrentUser().isStudent()) {
-            App.setRoot("userDashboard");
+            App.navigateTo("userDashboard");
         }
     }
 
-    @FXML
-    private void backButtonClicked(MouseEvent event) throws IOException {
-        App.setRoot("launch");
-    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

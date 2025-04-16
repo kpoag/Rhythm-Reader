@@ -6,16 +6,33 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+<?import java.net.*?>
 
-<AnchorPane id="AnchorPane" fx:id="login_pane" prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.LoginController">
- <children>
-      <Label fx:id="titleLabel" layoutX="150.0" layoutY="264.0" text="Sign in" />
-      <Button fx:id="signInButton" layoutX="75.0" layoutY="695.0" mnemonicParsing="false" onMouseClicked="#buttonLogginClicked" prefHeight="55.0" prefWidth="292.0" text="Sign in" />
-      <TextField fx:id="txt_username" layoutX="23.0" layoutY="396.0" prefHeight="67.0" prefWidth="382.0" promptText="Email*" />
-      <TextField fx:id="txt_password" layoutX="23.0" layoutY="504.0" prefHeight="67.0" prefWidth="382.0" promptText="Password*" />
-      <Label fx:id="label_error" layoutX="120.0" layoutY="640.0"  />
-      <Button layoutX="14.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#backButtonClicked" text="back" styleClass="back-button" />
-   </children>
+<AnchorPane id="AnchorPane" fx:id="login_pane" maxHeight="800.0" maxWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.LoginController">
+ <VBox alignment="CENTER" spacing="30" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <padding>
+         <Insets top="20" right="20" bottom="20" left="20" />
+      </padding>
+      <VBox alignment="CENTER" spacing="40">
+         <Label fx:id="titleLabel" text="Sign in"/>
+         
+         <VBox alignment="CENTER" spacing="40">
+            <TextField fx:id="txt_username" maxWidth="400" prefHeight="67.0" promptText="Email*" />
+            <TextField fx:id="txt_password" maxWidth="400" prefHeight="67.0" promptText="Password*" />
+            
+            <Label fx:id="label_error" styleClass="error-label" />
+         </VBox>
+         
+         <VBox alignment="CENTER" spacing="20">
+            <padding>
+                <Insets top="40" />
+            </padding>
+            <Button fx:id="signInButton" mnemonicParsing="false" onMouseClicked="#buttonLogginClicked" prefHeight="55.0" prefWidth="292.0" text="Sign in" />
+         </VBox>
+      </VBox>
+   </VBox>
    <stylesheets>
       <URL value="@styles.css" />
    </stylesheets>
