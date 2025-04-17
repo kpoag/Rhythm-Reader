@@ -1,16 +1,9 @@
 .root {
+    -fx-font-family: "Coiny";
     -fx-background-color: #ad987f;
 }
 
-#titleLabel {
-    -fx-font-size: 48px;
-    -fx-text-fill: #000000;
-    -fx-font-family: "Coiny";
-    -fx-font-weight: bold;
-
-}
-
-#loginButton, #signUpButton, #signInButton {
+.button {
     -fx-font-family: "Coiny";
     -fx-font-size: 18px;
     -fx-background-radius: 100px;
@@ -19,12 +12,132 @@
     -fx-text-fill: #000000;
     -fx-cursor: hand;
 }
-.back-button {
-    -fx-background-color: transparent;
-    -fx-text-fill: black;
+
+.button:hover {
+    -fx-background-color: #c2dfed;
+}
+
+.button:pressed {
+    -fx-background-color: #c2dfed;
+}
+
+#contentArea {
+    -fx-background-color: #ad987f;
+    -fx-padding: 20px;
+}
+
+#mainBorderPane .label {
+    -fx-text-fill: #ececec;
+}
+
+#mainBorderPane .separator {
+    -fx-background-color: #000000;
+}
+
+#titleLabel {
+    -fx-font-size: 48px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ececec;
+    -fx-alignment: center;
+    -fx-padding: 20px 0 40px 0; 
+}
+#rb_regular, #rb_teacher {
+    -fx-font-family: "Coiny";
+    -fx-font-size: 18px;
+    -fx-text-fill: #ececec;
+
+}
+
+.progressBar {
+    -fx-accent: #c2dfed;
+}
+
+.progressLabel {
+    -fx-font-size: 14px;
+    -fx-font-family: "Coiny";
+    -fx-text-fill: #ececec;
+}
+
+.dashboard-tile {
+    -fx-pref-width: 280px;
+    -fx-pref-height: 200px;
+    -fx-background-radius: 15;
+    -fx-background-color: #ececec;
+    -fx-border-color: #CCCCCC;
+    -fx-border-radius: 15;
+    -fx-font-size: 16px;
+    -fx-font-family: "Coiny";
+    -fx-text-fill: #000000;
+    -fx-alignment: CENTER;
+    -fx-content-display: TOP;
+    -fx-wrap-text: true;
+    -fx-line-spacing: 1em;
     -fx-font-weight: bold;
     -fx-cursor: hand;
+    -fx-padding: 15px;
+    -fx-text-alignment: CENTER;
 }
+
+.dashboard-tile:hover {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #AAAAAA;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 0);
+}
+
+.transparent-scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+}
+
+.transparent-scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.transparent-scroll-pane .scroll-bar:vertical {
+    -fx-opacity: 0;
+    -fx-pref-width: 0;
+}
+
+.transparent-scroll-pane .scroll-bar:horizontal {
+    -fx-opacity: 0;
+    -fx-pref-width: 0;
+}
+
+.transparent-scroll-pane > .corner {
+    -fx-background-color: transparent;
+}
+
+
+/*.icon-button {
+    -fx-background-radius: 20;
+    -fx-background-color: #ececec;
+    -fx-cursor: hand;
+}
+
+.icon-button:hover {
+    -fx-background-color: #c2dfed;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 0);
+}*/
+
+
+#backButton {
+    -fx-font-size: 14px;
+    -fx-padding: 8px 16px;
+}
+.text-field {
+    -fx-font-family: "Coiny";
+    -fx-border-radius: 10px;
+    -fx-border-color: #FFFFFF;
+    -fx-border-width: 2;
+    -fx-font-size: 18px;
+    -fx-text-fill: #000000;
+    -fx-prompt-text-fill: #888888;
+    -fx-background-color: #ececec;
+}
+
+
 .txt_username, .txt_password { 
     −fx-font-family: "Coiny"; 
     -fx-border-radius: 10px;
@@ -35,57 +148,13 @@
     -fx-prompt-text-fill: #888888; 
     
 }
-#label_error {
-    -fx-text-fill: red;
-    -fx-font-size: 15px;
-    -fx-font-family: Coiny;
-    -fx-text-alignment: center;
+.app-header {
+    -fx-alignment: center;
 }
 
-#welcomeLabel { 
-    -fx-font-size: 14px; 
-    -fx-text-fill: #FFFFFF;
-}
-#menuButton {
-
-}
-.dashboard-tile {
-    -fx-pref-width: 300px;
-    -fx-pref-height: 200px;
-    -fx-background-radius: 15;
-    -fx-background-color: #EFEFEF; 
-    -fx-border-color: #CCCCCC;
-    -fx-border-radius: 15;
-    -fx-font-size: 16px;
-    -fx-text-fill: #000000;
-    -fx-alignment: CENTER;
-    -fx-wrap-text: true; 
-    -fx-line-spacing: 2em;
-    -fx-font-weight: bold;
-    -fx-cursor: hand;
-    -fx-padding: 15px;
+.nav-button {
+    -fx-alignment: center;
 }
 
-.dashboard-tile:hover {
-    -fx-background-color: #FFFFFF;
-    -fx-border-color: #AAAAAA;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 0);
-}
 
-.scroll-pane {
-    -fx-background-color: transparent;
-    -fx-padding: 10px;
-}
 
-.scroll-pane > .viewport {
-    -fx-background-color: transparent;
-}
-
-.scroll-pane > .scroll-bar:vertical {
-    -fx-background-color: transparent;
-}
-
-.scroll-pane > .scroll-bar:vertical .thumb {
-    -fx-background-color: #CCCCCC;
-    -fx-background-radius: 5px;
-}

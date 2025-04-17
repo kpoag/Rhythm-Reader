@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Button?>
 <?import javafx.geometry.Insets?>
 <?import java.net.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="430" prefWidth="932" fx:id="launch_pane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.launchController">
-      <Label fx:id="titleLabel" layoutX="33.0" layoutY="105.0" text="Rhythm Reader" />
-      <Button fx:id="loginButton" layoutX="31" layoutY= "423" prefWidth="365" prefHeight="73" onAction="#onLoginButtonClicked" text="Login" />
-      <Button fx:id="signUpButton" layoutX="32" layoutY= "578" prefWidth="365" prefHeight="73" onAction="#onSignupClicked" text="Create Account" />
+<AnchorPane id="AnchorPane" maxHeight="800" maxWidth="600" fx:id="launch_pane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.launchController">
+   <VBox alignment="CENTER" spacing="30" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <padding>
+         <Insets top="20" right="20" bottom="20" left="20" />
+      </padding>
+      <VBox alignment="CENTER" spacing="200">
+         <Label fx:id="titleLabel" text="Rhythm Reader"/>
+      </VBox>
+
+      <VBox alignment="CENTER" spacing="100">
+         <Button fx:id="loginButton" prefWidth="365" prefHeight="73" onAction="#onLoginButtonClicked" text="Login" />
+         <Button fx:id="signUpButton" prefWidth="365" prefHeight="73" onAction="#onSignupClicked" text="Create Account" />
+      </VBox>
+   </VBox>
    <stylesheets>
       <URL value="@styles.css" />
    </stylesheets>

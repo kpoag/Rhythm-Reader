@@ -10,12 +10,13 @@ import org.junit.Before;
 import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.regex.Pattern;
 
 public class SongTest {
 
     private Song song;
-    private Object chordNotes;
+    private  List<Note> chordNotes;
 
     @Before
     public void setUp() {
@@ -31,7 +32,10 @@ public class SongTest {
 
         ArrayList<Measure> measures = new ArrayList<>();
         measures.add(sampleMeasure);
-        song = new Song("Test Song", "Test Artist", "4/4", 120, "piano", measures);
+        Genre genre = Genre.HIP_HOP;
+        DifficultyLevel difficulty = DifficultyLevel.BEGINNER;
+        String newUUID = UUID.randomUUID().toString();
+        song = new Song(newUUID,"Test Song", "Test Artist",genre, difficulty, "piano",3.5, 120, "4/4");
     }
 
     @Test

@@ -118,39 +118,25 @@ public class User {
 	/**
      * Creates an account of a specified type by prompting the user for input.
      *
-     * @param userName the desired username.
-     * @param firstName the first name of the user.
-     * @param lastName the last name of the user.
-     * @param email the email address of the user.
-     * @param password the user's password.
-     * @param scanner a scanner instance to read user input.
-     * @return a new User instance of the selected type if successful; null otherwise.
+     * @param userName    the desired username.
+     * @param firstName   the first name of the user.
+     * @param lastName    the last name of the user.
+     * @param email       the email address of the user.
+     * @param password    the user's password.
+     * @param accountType a boolean to indicate the type of account to create.
+     * @return a new User instance of the selected type if successful; null
+     *         otherwise.
      */
-	public static User createAccountByType(String userName, String firstName, String lastName, String email, String password, Scanner scanner) {
-        System.out.println("What type of account would you like to create?");
-        System.out.println("1. Regular");
-        System.out.println("2. Student");
-        System.out.println("3. Teacher");
-        System.out.print("Enter your choice (1-3): ");
-
-		String input = scanner.nextLine().trim();
-		int accountType;
+	public static User createAccountByType(String userName, String firstName, String lastName, String email, String password, boolean accountType) {
+      
 
 		try {
-            accountType = Integer.parseInt(input);
-            
-            if (accountType < 1 || accountType > 3) {
-                System.out.println("Invalid choice. Please select 1, 2, or 3.");
-                return null;
-            }
 
 			User newUser = null;
 
-        	if (accountType == 1) {
+        	if (accountType == true) {
 				newUser = User.createDefaultAccount(userName, firstName, lastName, email, password);
-			} else if (accountType == 2) {
-				newUser = StudentUser.createStudentUser(userName, firstName, lastName, email, password);
-			} else if (accountType == 3) {
+			} else if (accountType == false) {
 				newUser = TeacherUser.createTeacherAccount(userName, firstName, lastName, email, password);
 			}
 
@@ -161,7 +147,7 @@ public class User {
 			}
 			return newUser;
 		} catch (NumberFormatException  e) {
-			System.out.println("Invalid input. Please enter a number between 1 and 3.");
+			System.out.println("Invalid input.");
             return null;
 		}
 	}
