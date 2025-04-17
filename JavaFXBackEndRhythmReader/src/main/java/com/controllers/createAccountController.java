@@ -56,6 +56,12 @@ public class createAccountController implements Initializable {
 
     private RRFacade facade;
 
+
+    @FXML
+    private void onBackClicked(ActionEvent event) throws IOException {
+        App.navigateTo("launch");
+    }
+
     @FXML
     private void onSignUpClicked(ActionEvent event) {
 
@@ -97,10 +103,7 @@ public class createAccountController implements Initializable {
         
     
 
-    @FXML
-    private void handleBack(ActionEvent event) throws IOException {
-        App.navigateTo("launch");
-    }
+  
 
 
 

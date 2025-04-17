@@ -79,8 +79,7 @@ public class templateController implements Initializable {
         
         homeButton.setVisible(isLoggedIn);
         homeButton.setManaged(isLoggedIn);
-        profileButton.setVisible(isLoggedIn);
-        profileButton.setManaged(isLoggedIn);
+
     }
 
     public void loadContent(String fxml) throws IOException {

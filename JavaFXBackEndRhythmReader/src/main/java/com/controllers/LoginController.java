@@ -40,9 +40,9 @@ public class LoginController implements Initializable {
             App.navigateTo("userDashboard");
         }
     }
-    
+
     @FXML
-    private void handleBack(ActionEvent event) throws IOException {
+    private void onBackClicked(ActionEvent event) throws IOException {
         App.navigateTo("launch");
     }
 

@@ -13,7 +13,6 @@
                     <Insets top="10" right="20" bottom="10" left="20" />
                 </padding>
                 <Button fx:id="homeButton" text="Home" onAction="#navigateToHome" styleClass="nav-button"/>
-                <Button fx:id="profileButton" text="Profile" onAction="#navigateToProfile" styleClass="nav-button"/>
             </HBox>
                 <ProgressBar fx:id="loadingBar" progress="0.0" visible="false" styleClass="loading-bar" maxWidth="Infinity" /> 
         </VBox>
