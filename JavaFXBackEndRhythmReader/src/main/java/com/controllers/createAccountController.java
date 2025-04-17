@@ -83,7 +83,12 @@ public class createAccountController implements Initializable {
             boolean success = facade.createAccount(username, firstName, lastName, email, password, regularUser);
             
             if (success) {
-                App.navigateTo("login");
+                if(regularUser == true) {
+                    App.navigateTo("userDashboard");
+                } else {
+                    App.navigateTo("teacherDashboard");
+                }
+                
             } else {
                 label_error.setText("Failed to create account. Username or email may already exist.");
             }
