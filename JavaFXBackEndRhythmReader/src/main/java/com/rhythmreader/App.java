@@ -11,14 +11,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
-<<<<<<< HEAD
-=======
-import java.io.IOException;
 import java.util.UUID;
 
 import com.model.RRFacade;
 
->>>>>>> origin/main
 /**
  * JavaFX App
  */
@@ -46,7 +42,7 @@ public class App extends Application {
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/" + fxml + ".fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/com/rhythmreader/" + fxml + ".fxml"));
         return fxmlLoader.load();
     }
 

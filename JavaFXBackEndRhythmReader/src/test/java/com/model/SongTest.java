@@ -1,21 +1,18 @@
 package com.model;
 
-import static org.junit.Assert.assertEquals;
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-
-import org.jfugue.theory.Chord;
 import org.junit.Before;
 import org.junit.Test;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Pattern;
 
 public class SongTest {
 
     private Song song;
-    private Object chordNotes;
+    private List<Note> chordNotes;
 
     @Before
     public void setUp() {
@@ -31,7 +28,7 @@ public class SongTest {
 
         ArrayList<Measure> measures = new ArrayList<>();
         measures.add(sampleMeasure);
-        song = new Song("Test Song", "Test Artist", "4/4", 120, "piano", measures);
+        song = new Song("Test Song", "Test Artist", "4/4", Genre.JAZZ, DifficultyLevel.BEGINNER, "piano", 4.5, 40, "4/4");
     }
 
     @Test
@@ -105,10 +102,10 @@ public class SongTest {
     }
 
     @Test
-public void testCreateSongPattern() {
-    org.jfugue.pattern.Pattern pattern = song.createSongPattern(140);
-    assertNotNull("The song pattern should be created successfully.", pattern);
-}
+    public void testCreateSongPattern() {
+        org.jfugue.pattern.Pattern pattern = song.createSongPattern(140);
+        assertNotNull("The song pattern should be created successfully.", pattern);
+    }
 
 
     @Test

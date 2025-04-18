@@ -1,8 +1,10 @@
+com/controllers/LoginController.class
 com/model/Note.class
 com/rhythmreader/App.class
 com/model/DataConstants.class
 com/model/RRFacade.class
 com/model/Database.class
+com/rhythmreader/App$1.class
 com/model/DataWriter.class
 com/model/TeacherUser.class
 com/model/Flashcard.class
@@ -24,6 +26,7 @@ com/model/DifficultyLevel.class
 com/model/RRDriver.class
 com/model/PreTest.class
 com/model/StudentUser.class
+com/controllers/launchController.class
 com/model/SongList.class
 com/model/Song.class
 com/model/Notetype.class
