@@ -145,7 +145,7 @@ public class Settings {
      * @return
      */
 
-    public boolean changeUserName(User user,String newUsername)
+    public boolean changeUsername(User user,String newUsername)
     {
 
         if (user == null || newUsername == null) return false;

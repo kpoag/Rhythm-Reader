@@ -70,7 +70,7 @@ public class SettingsTest {
 
     @Test
     public void testChangeUsername_Success() {
-        User u = new User(UUID.randomUUID(), "oldName", );
+        User u = new User(UUID.randomUUID(),"oldUser", "Amy", "Smith", "princessdiana@gmail.com", "Ilov3Dogs", 25, new ArrayList<>(), new ArrayList<>() );
         boolean ok = settings.changeUsername(u, "newName");
         assertTrue("Should succeed when new username is valid", ok);
         assertEquals("newName", u.getUserName());
