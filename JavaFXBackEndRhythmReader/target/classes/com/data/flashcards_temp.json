@@ -1,0 +1,56 @@
+[
+    {
+        "difficulty": "Beginner",
+        "assignedStudents": [],
+        "cardID": "7d7f89ce-3cf6-4d0f-8b5e-a0d48c3b216c",
+        "frontText": "What does the treble clef indicate?",
+        "category": "Clefs",
+        "backText": "Treble clef indicates the position of the G note on the second line of the staff and is used for higher-pitched instruments. ",
+        "picture": "treble_clef.png"
+    },
+    {
+        "difficulty": "Beginner",
+        "assignedStudents": [],
+        "cardID": "9d36c052-a217-4941-b966-35f3c7a886c7",
+        "frontText": "What are the names of the spaces in the treble clef (from bottom to top)?",
+        "category": "Clefs",
+        "backText": "F, A, C, E",
+        "picture": "treble_space.png"
+    },
+    {
+        "difficulty": "Intermediate",
+        "assignedStudents": [],
+        "cardID": "77c08146-389e-4543-b4be-21af9479448c",
+        "frontText": "What does a key signature in a piece of music indicate?",
+        "category": "Key Signatures",
+        "backText": "It shows which notes are consistently played as sharps or flats throughout the music.",
+        "picture": "key_signature.png"
+    },
+    {
+        "difficulty": "Intermediate",
+        "assignedStudents": [],
+        "cardID": "a7974f66-0ccc-46f5-92e4-814f7c44df74",
+        "frontText": "What is the C major scale and how many flats & sharps exist?",
+        "category": "Scales",
+        "backText": "The C major scale is: C, D, E, F, G, A, B. There are zero sharps and flats",
+        "picture": "scale_example.png"
+    },
+    {
+        "difficulty": "Advanced",
+        "assignedStudents": [],
+        "cardID": "646bd4f7-4cc2-47ed-b009-fc34ac9fc814",
+        "frontText": "What is the circle of fifths used for in music theory?",
+        "category": "Music Theory",
+        "backText": "It helps show the relationships between the 12 tones, their key signatures, and associated major and minor keys.",
+        "picture": "circle_of_fifths.png"
+    },
+    {
+        "difficulty": "Advanced",
+        "assignedStudents": [],
+        "cardID": "ae6ba750-9f48-42ee-960f-a5d99ae2aa60",
+        "frontText": "What is the difference between natural minor and harmonic minor scales?",
+        "category": "Scales",
+        "backText": "The harmonic minor scale is raises the seventh note of a natural minor scale, creating a leading tone.",
+        "picture": "minor_scales.png"
+    }
+]

@@ -12,14 +12,15 @@ import javafx.fxml.Initializable;
 
 public class launchController implements Initializable {
 
+
     @FXML
     private void onLoginButtonClicked(ActionEvent event) throws IOException{
-        App.setRoot("login");
+        App.navigateTo("login");
     }
 
     @FXML
     private void onSignupClicked(ActionEvent event) throws IOException{
-        App.setRoot("signup");
+        App.navigateTo("createAccount");
     }
 
     @Override

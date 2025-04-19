@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import com.model.RRFacade;
 import com.rhythmreader.App;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -32,15 +33,20 @@ public class LoginController implements Initializable {
 
         if (!facade.login(username, password)) {
             label_error.setText("Invalid username or password");
+            label_error.styleProperty();
             return;
         }
-        //App.setRoot("Use")
+        if (facade.getCurrentUser().isStudent()) {
+            App.navigateTo("userDashboard");
+        }
     }
 
     @FXML
-    private void backButtonClicked(MouseEvent event) throws IOException {
-        App.setRoot("launch");
+    private void onBackClicked(ActionEvent event) throws IOException {
+        App.navigateTo("launch");
     }
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

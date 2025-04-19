@@ -82,8 +82,8 @@ public class RRFacade {
     }
 
 
-    public boolean createAccount(String userName, String firstName, String lastName, String email,String password, Scanner scanner) {
-        User newUser = User.createAccountByType(userName, firstName, lastName, email, password, scanner);
+    public boolean createAccount(String userName, String firstName, String lastName, String email,String password, boolean type) {
+        User newUser = User.createAccountByType(userName, firstName, lastName, email, password, type );
         if (newUser != null) {
             this.currUser = newUser;
             DataWriter.saveUsers();
