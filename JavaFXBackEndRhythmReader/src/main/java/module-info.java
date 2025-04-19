@@ -5,6 +5,7 @@ module com.rhythmreader {
     requires jfugue;
     requires javafx.graphics;
     requires javafx.base;
+    requires junit;
 
     opens com.rhythmreader to javafx.fxml;
     exports com.rhythmreader;

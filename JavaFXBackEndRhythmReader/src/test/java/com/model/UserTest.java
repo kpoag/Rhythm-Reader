@@ -61,7 +61,7 @@ public class UserTest {
         InputStream in = new ByteArrayInputStream(Input.getBytes());            
         Scanner scanner = new Scanner(in);      
 
-        boolean accountCreated = facade.createAccount("Jpear", "jane", "pear", "jpear@example.com", "password123", scanner);
+        boolean accountCreated = facade.createAccount("Jpear", "jane", "pear", "jpear@example.com", "password123", true);
         
         assertTrue("Regular account creation should be successful", accountCreated);
 
@@ -82,7 +82,7 @@ public class UserTest {
         InputStream in = new ByteArrayInputStream(Input.getBytes());            
         Scanner scanner = new Scanner(in);      
 
-        boolean accountCreated = facade.createAccount("Lsmith", "Lauren", "smith", "lsmith@example.com", "password123", scanner);
+        boolean accountCreated = facade.createAccount("Lsmith", "Lauren", "smith", "lsmith@example.com", "password123", true);
         
         assertTrue("Regular account creation should be successful", accountCreated);
 
@@ -102,7 +102,7 @@ public class UserTest {
         InputStream in = new ByteArrayInputStream(Input.getBytes());            
         Scanner scanner = new Scanner(in);      
 
-        boolean success = facade.createAccount("kpoag", "kennedy", "poag", "kpoag@gmail.com", "password123", scanner);
+        boolean success = facade.createAccount("kpoag", "kennedy", "poag", "kpoag@gmail.com", "password123", true);
         
         assertTrue("Regular account creation should be successful", success);
         assertNotNull("Current user should not be null", facade.getCurrentUser());
@@ -120,7 +120,7 @@ public class UserTest {
         InputStream in = new ByteArrayInputStream(Input.getBytes());            
         Scanner scanner = new Scanner(in);      
 
-        boolean success = facade.createAccount("tStudent", "test", "student", "tStudent@gmail.com", "password123", scanner);
+        boolean success = facade.createAccount("tStudent", "test", "student", "tStudent@gmail.com", "password123", true);
         
         assertTrue("Student account creation should be successful", success);
         assertNotNull("Current user should not be null", facade.getCurrentUser());
@@ -138,7 +138,7 @@ public class UserTest {
         InputStream in = new ByteArrayInputStream(Input.getBytes());            
         Scanner scanner = new Scanner(in);      
 
-        boolean success = facade.createAccount("tTeacher", "test", "teacher", "tTeacher@gmail.com", "password123", scanner);
+        boolean success = facade.createAccount("tTeacher", "test", "teacher", "tTeacher@gmail.com", "password123", true);
         
         assertTrue("Regular account creation should be successful", success);
         assertNotNull("Current user should not be null", facade.getCurrentUser());
@@ -157,7 +157,7 @@ public class UserTest {
         InputStream in = new ByteArrayInputStream(Input.getBytes());            
         Scanner scanner = new Scanner(in);      
 
-        boolean emptyEmailAccount = facade.createAccount("rPerson", "random", "person", "random.com", "password123", scanner);
+        boolean emptyEmailAccount = facade.createAccount("rPerson", "random", "person", "random.com", "password123", true);
         
         assertFalse("Account creation with empty email should fail", emptyEmailAccount);
     }
@@ -172,7 +172,7 @@ public class UserTest {
         InputStream in = new ByteArrayInputStream(Input.getBytes());            
         Scanner scanner = new Scanner(in);      
 
-        boolean accountCreated = facade.createAccount("invalidAccount", "Invalid", "Account", "invalid@gmail.com", "password123", scanner);
+        boolean accountCreated = facade.createAccount("invalidAccount", "Invalid", "Account", "invalid@gmail.com", "password123", true);
   
         assertFalse("Account creation with invalid type should fail", accountCreated);
         Assert.assertNull("Current user should be null after failed account creation", facade.getCurrentUser());
@@ -188,7 +188,7 @@ public class UserTest {
         InputStream in1 = new ByteArrayInputStream(input1.getBytes());            
         Scanner scanner1 = new Scanner(in1);      
 
-        boolean firstAccountCreated = facade.createAccount( "testUser", "Test", "User", "testuser@example.com", "password123", scanner1);
+        boolean firstAccountCreated = facade.createAccount( "testUser", "Test", "User", "testuser@example.com", "password123", true);
     
         assertTrue("First account creation should be successful", firstAccountCreated);
 
@@ -197,7 +197,7 @@ public class UserTest {
         InputStream in2 = new ByteArrayInputStream(input2.getBytes());            
         Scanner scanner2 = new Scanner(in2);
     
-        boolean duplicateUsernameAccount = facade.createAccount("testUser","Different", "Person", "different@example.com", "password456", scanner2);
+        boolean duplicateUsernameAccount = facade.createAccount("testUser","Different", "Person", "different@example.com", "password456", true);
     
         assertFalse("Account creation with duplicate username should fail", duplicateUsernameAccount);
     

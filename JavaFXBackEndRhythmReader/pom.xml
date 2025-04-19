@@ -31,12 +31,20 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13.2</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>com.github.JensPiegsa</groupId>
             <artifactId>jfugue</artifactId>
             <version>5.0.9</version>
+            <exclusions>
+            <!-- drop xml‑apis so only Xerces remains -->
+                <exclusion>
+                    <groupId>xml-apis</groupId>
+                    <artifactId>xml-apis</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
