@@ -1,14 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import java.net.*?>
 
-
-
-
-
-
-
-<AnchorPane id="AnchorPane" prefHeight="430" prefWidth="932" fx:id="launch_pane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.pianoController">
+<AnchorPane id="AnchorPane" maxHeight="800.0" maxWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.pianoController">
+    <VBox spacing="5" styleClass="piano-container"  AnchorPane.topAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="10.0">
+        <!-- Song Selection Section -->
+        <HBox spacing="5" alignment="CENTER">
+            <padding>
+                <Insets top="5" right="5" bottom="5" left="5"/>
+            </padding>
+            <Label text="Select a Song:" styleClass="section-label"/>
+            <ComboBox fx:id="songSelector" prefWidth="180"/>
+            <Button fx:id="playSongButton" text="Play Song" onAction="#playSong" styleClass="action-button"/>
+            <Label fx:id="tempoLabel" text="Tempo: "/>
+            <Slider fx:id="tempoSlider" min="60" max="200" value="120" showTickLabels="true" showTickMarks="true"/>
+        </HBox>
+        
+        <!-- Sheet Music Display -->
+        <ScrollPane fx:id="sheetMusicScroll" VBox.vgrow="ALWAYS" styleClass="sheet-music-container">
+            <VBox fx:id="sheetMusicContainer" spacing="10" alignment="CENTER">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+            </VBox>
+        </ScrollPane>
+        
+        <!-- Piano Keys Container - Using AnchorPane for absolute positioning -->
+        <AnchorPane prefHeight="150" styleClass="piano-keyboard" VBox.vgrow="NEVER">
+            <!-- White Keys -->
+            <HBox fx:id="whiteKeysContainer" alignment="CENTER" spacing="0" 
+                  AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" 
+                  AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+                <Button text="F2" onAction="#playF2" styleClass="white-key"/>
+                <Button text="G2" onAction="#playG2" styleClass="white-key"/>
+                <Button text="A2" onAction="#playA2" styleClass="white-key"/>
+                <Button text="B2" onAction="#playB2" styleClass="white-key"/>
+                <!-- First Octave (C3 to B3) -->
+                <Button text="C3" onAction="#playC3" styleClass="white-key"/>
+                <Button text="D3" onAction="#playD3" styleClass="white-key"/>
+                <Button text="E3" onAction="#playE3" styleClass="white-key"/>
+                <Button text="F3" onAction="#playF3" styleClass="white-key"/>
+                <Button text="G3" onAction="#playG3" styleClass="white-key"/>
+                <Button text="A3" onAction="#playA3" styleClass="white-key"/>
+                <Button text="B3" onAction="#playB3" styleClass="white-key"/>
+                
+                <!-- Second Octave (C4 to B4) -->
+                <Button text="C4" onAction="#playC4" styleClass="white-key"/>
+                <Button text="D4" onAction="#playD4" styleClass="white-key"/>
+                <Button text="E4" onAction="#playE4" styleClass="white-key"/>
+                <Button text="F4" onAction="#playF4" styleClass="white-key"/>
+                <Button text="G4" onAction="#playG4" styleClass="white-key"/>
+                <Button text="A4" onAction="#playA4" styleClass="white-key"/>
+                <Button text="B4" onAction="#playB4" styleClass="white-key"/>
+                
+                <!-- Third Octave (C5 to B5) -->
+                <Button text="C5" onAction="#playC5" styleClass="white-key"/>
+                <Button text="D5" onAction="#playD5" styleClass="white-key"/>
+                <Button text="E5" onAction="#playE5" styleClass="white-key"/>
+                <Button text="F5" onAction="#playF5" styleClass="white-key"/>
+                <Button text="G5" onAction="#playG5" styleClass="white-key"/>
+                <Button text="A5" onAction="#playA5" styleClass="white-key"/>
+                <Button text="B5" onAction="#playB5" styleClass="white-key"/>
+                
+                <!-- Fourth Octave (Partial: C6 to E6) -->
+                <Button text="C6" onAction="#playC6" styleClass="white-key"/>
+                <Button text="D6" onAction="#playD6" styleClass="white-key"/>
+                <Button text="E6" onAction="#playE6" styleClass="white-key"/>
+            </HBox>
+            
+            <!-- Black Keys - Using individual positioning between white keys -->
+            <!-- Octave 2 Black Keys -->
+            <Button layoutX="26" layoutY="0" text="F#2" onAction="#playF2Sharp" styleClass="black-key"/>
+            <Button layoutX="61" layoutY="0" text="G#2" onAction="#playG2Sharp" styleClass="black-key"/>
+            <Button layoutX="96" layoutY="0" text="A#2" onAction="#playA2Sharp" styleClass="black-key"/>
+            
+            <!-- First Octave Black Keys (C3 to B3) -->
+            <Button layoutX="166" layoutY="0" text="C#3" onAction="#playC3Sharp" styleClass="black-key"/>
+            <Button layoutX="201" layoutY="0" text="D#3" onAction="#playD3Sharp" styleClass="black-key"/>
+            <Button layoutX="271" layoutY="0" text="F#3" onAction="#playF3Sharp" styleClass="black-key"/>
+            <Button layoutX="306" layoutY="0" text="G#3" onAction="#playG3Sharp" styleClass="black-key"/>
+            <Button layoutX="341" layoutY="0" text="A#3" onAction="#playA3Sharp" styleClass="black-key"/>
+            
+            <!-- Second Octave Black Keys (C4 to B4) -->
+            <Button layoutX="411" layoutY="0" text="C#4" onAction="#playC4Sharp" styleClass="black-key"/>
+            <Button layoutX="446" layoutY="0" text="D#4" onAction="#playD4Sharp" styleClass="black-key"/>
+            <Button layoutX="516" layoutY="0" text="F#4" onAction="#playF4Sharp" styleClass="black-key"/>
+            <Button layoutX="551" layoutY="0" text="G#4" onAction="#playG4Sharp" styleClass="black-key"/>
+            <Button layoutX="586" layoutY="0" text="A#4" onAction="#playA4Sharp" styleClass="black-key"/>
+            
+            <!-- Third Octave Black Keys (C5 to B5) -->
+            <Button layoutX="656" layoutY="0" text="C#5" onAction="#playC5Sharp" styleClass="black-key"/>
+            <Button layoutX="691" layoutY="0" text="D#5" onAction="#playD5Sharp" styleClass="black-key"/>
+            <Button layoutX="761" layoutY="0" text="F#5" onAction="#playF5Sharp" styleClass="black-key"/>
+            <Button layoutX="796" layoutY="0" text="G#5" onAction="#playG5Sharp" styleClass="black-key"/>
+            <Button layoutX="831" layoutY="0" text="A#5" onAction="#playA5Sharp" styleClass="black-key"/>
+            
+            <!-- Fourth Octave Black Keys (C6 to B6) -->
+            <Button layoutX="901" layoutY="0" text="C#6" onAction="#playC6Sharp" styleClass="black-key"/>
+            <Button layoutX="936" layoutY="0" text="D#6" onAction="#playD6Sharp" styleClass="black-key"/>
+        </AnchorPane>
+    </VBox>
     
-   <stylesheets>
-      <URL value="@styles.css" />
-   </stylesheets>
+    <stylesheets>
+        <URL value="@styles.css"/>
+    </stylesheets>
 </AnchorPane>
