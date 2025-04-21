@@ -1,6 +1,7 @@
 package com.model;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Represents the settings for a user account.
@@ -137,6 +138,34 @@ public class Settings {
             System.out.println("Dark mode disabled.");
         }
         return mode;
+    }
+    /**
+     * Changes the user's username
+     * @param newUserName
+     * @return
+     */
+
+    public boolean changeUsername(User user,String newUsername)
+    {
+
+        if (user == null || newUsername == null) return false;
+        newUsername = newUsername.trim();
+        if (newUsername.isEmpty()) return false;
+
+        List<User> allUsers = UserList.getInstance().getUsers();
+        for(User u : allUsers)
+        {
+            if (Objects.equals(u.getId(), user.getId())) continue;
+            if (newUsername.equalsIgnoreCase(u.getUserName())) {
+                // already taken
+                return false;
+            }
+        }
+        boolean changeApplied= user.setUserName(newUsername);
+        if(!changeApplied) return false;
+
+        DataWriter.saveUsers();
+        return true;
     }
 
     public static void main(String[] args) {

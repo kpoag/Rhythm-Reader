@@ -14,36 +14,36 @@ import com.rhythmreader.App;
 public class userDashboardController implements Initializable {
     @FXML
     private void onFlashcardsClicked(MouseEvent event) throws IOException {
-        App.setRoot("flashcards");
+        App.navigateTo("flashcards");
     }
 
     @FXML
     private void onPianoClicked(ActionEvent event) throws IOException {
-        App.setRoot("piano");
+        App.navigateTo("piano");
     }
 
     @FXML
     private void onComposeClicked(ActionEvent event) throws IOException {
-        App.setRoot("compose");
+        App.navigateTo("compose");
     }
     
     @FXML
     private void onLibraryClicked(ActionEvent event) throws IOException {
-        App.setRoot("library");
+        App.navigateTo("library");
     }
 
     @FXML
     private void onHomeworkClicked(ActionEvent event) throws IOException {
-        App.setRoot("homework");
+        App.navigateTo("homework");
     }
 
     @FXML
     private void onFriendsClicked(ActionEvent event) throws IOException {
-        App.setRoot("friends");
+        App.navigateTo("friends");
     }
     @FXML
     private void onProfileClicked(ActionEvent event) throws IOException {
-        App.setRoot("profile");
+        App.navigateTo("profile");
     }
 
     @Override

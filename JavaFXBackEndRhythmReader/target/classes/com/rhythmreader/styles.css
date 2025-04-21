@@ -12,6 +12,15 @@
     -fx-text-fill: #000000;
     -fx-cursor: hand;
 }
+#dashboard_pane {
+    -fx-background-color: #000000;
+
+}
+.sidebar {
+    -fx-background-color: #f5f4fb;
+    -fx-alignment: TOP_CENTER;
+    -fx-padding: 20;
+}
 
 .button:hover {
     -fx-background-color: #c2dfed;
@@ -24,6 +33,12 @@
 #contentArea {
     -fx-background-color: #ad987f;
     -fx-padding: 20px;
+}
+/* Additional styles for the sidebar and stacked title */
+.sidebar {
+    -fx-background-color: #8a7a65; /* Darker shade of the main background */
+    -fx-alignment: TOP_LEFT;
+    -fx-padding: 20;
 }
 
 #mainBorderPane .label {
@@ -58,25 +73,50 @@
     -fx-text-fill: #ececec;
 }
 
-.dashboard-tile {
-    -fx-pref-width: 280px;
-    -fx-pref-height: 200px;
-    -fx-background-radius: 15;
-    -fx-background-color: #ececec;
-    -fx-border-color: #CCCCCC;
-    -fx-border-radius: 15;
-    -fx-font-size: 16px;
-    -fx-font-family: "Coiny";
-    -fx-text-fill: #000000;
-    -fx-alignment: CENTER;
-    -fx-content-display: TOP;
-    -fx-wrap-text: true;
-    -fx-line-spacing: 1em;
+/* Add these CSS rules to your styles.css file */
+
+.title-label {
+    -fx-font-size: 32px;
     -fx-font-weight: bold;
-    -fx-cursor: hand;
-    -fx-padding: 15px;
-    -fx-text-alignment: CENTER;
+    -fx-text-fill: #ececec;
+    -fx-alignment: center-left;
+    -fx-padding: 0;
+    -fx-line-spacing: -5px;
 }
+
+.subtitle-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #ececec;
+    -fx-padding: 5 0 0 0;
+}
+
+.logo {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ececec;
+    -fx-padding: 10px 0;
+}
+
+.dashboard-tile {
+    -fx-pref-width: 150;
+    -fx-pref-height: 100;
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-wrap-text: true;
+    -fx-background-radius: 20;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+/* Fix for multiple style classes */
+.dashboard-tile.flashcard-color { -fx-background-color: #fbc02d; }
+.dashboard-tile.piano-color { -fx-background-color: #ec407a; }
+.dashboard-tile.compose-color { -fx-background-color: #fb8c00; }
+.dashboard-tile.library-color { -fx-background-color: #7e57c2; }
+.dashboard-tile.homework-color { -fx-background-color: #ec407a; }
+.dashboard-tile.friends-color { -fx-background-color: #fb8c00; }
+
 
 .dashboard-tile:hover {
     -fx-background-color: #FFFFFF;
@@ -110,16 +150,6 @@
 }
 
 
-/*.icon-button {
-    -fx-background-radius: 20;
-    -fx-background-color: #ececec;
-    -fx-cursor: hand;
-}
-
-.icon-button:hover {
-    -fx-background-color: #c2dfed;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 0);
-}*/
 
 
 #backButton {
@@ -136,7 +166,6 @@
     -fx-prompt-text-fill: #888888;
     -fx-background-color: #ececec;
 }
-
 
 .txt_username, .txt_password { 
     −fx-font-family: "Coiny"; 
@@ -155,6 +184,75 @@
 .nav-button {
     -fx-alignment: center;
 }
+.piano-container {
+    -fx-background-color: #333;
+    -fx-border-color: #222;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-padding: 0;
 
 
+}
 
+.section-label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.sheet-music-container {
+    -fx-background-color: white;
+    -fx-border-color: #ddd;
+    -fx-border-width: 1px;
+}
+#whiteKeysContainer {
+    -fx-spacing: 0;
+    -fx-padding: 0;
+}
+
+#blackKeysContainer {
+    -fx-spacing: 0;
+    -fx-padding: 0;
+}
+
+.white-key {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-background-radius: 0 0 5 5;
+    -fx-border-color: #999;
+    -fx-border-width: 1px;
+    -fx-font-weight: bold;
+    -fx-font-size: 10px;
+    -fx-padding: 0 0 5 0;
+    -fx-alignment: bottom-center;
+    -fx-pref-height: 180;
+    -fx-max-width: Infinity;
+    -fx-min-width: 42;
+    -HBox-hgrow: ALWAYS;
+}
+
+.black-key {
+    -fx-background-color: #222;
+    -fx-text-fill: white;
+    -fx-background-radius: 0 0 5 5;
+    -fx-border-color: #111;
+    -fx-border-width: 1px;
+    -fx-font-weight: bold;
+    -fx-font-size: 8px;
+    -fx-padding: 0 0 3 0;
+    -fx-alignment: bottom-center;
+    -fx-pref-width: 28;
+    -fx-min-width: 28;
+    -fx-max-width: 28;
+    -fx-pref-height: 110;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 5, 0.0, 0, 1);
+}
+
+.white-key:pressed {
+    -fx-background-color: #eee;
+    -fx-effect: innershadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 5);
+}
+
+.black-key:pressed {
+    -fx-background-color: #333;
+    -fx-effect: innershadow(gaussian, rgba(0,0,0,0.8), 10, 0, 0, 5);
+}
