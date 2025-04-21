@@ -3,6 +3,7 @@ package com.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -65,6 +66,14 @@ public class SettingsTest {
     public void testDarkMode() {
         assertTrue(settings.darkMode(true));
         assertFalse(settings.darkMode(false));
+    }
+
+    @Test
+    public void testChangeUsername_Success() {
+        User u = new User(UUID.randomUUID(),"oldUser", "Amy", "Smith", "princessdiana@gmail.com", "Ilov3Dogs", 25, new ArrayList<>(), new ArrayList<>() );
+        boolean ok = settings.changeUsername(u, "newName");
+        assertTrue("Should succeed when new username is valid", ok);
+        assertEquals("newName", u.getUserName());
     }
 }
 

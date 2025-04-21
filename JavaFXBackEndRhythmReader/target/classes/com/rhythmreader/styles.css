@@ -184,36 +184,37 @@
 .nav-button {
     -fx-alignment: center;
 }
-/* Piano specific styles */
 .piano-container {
-    -fx-background-color: #f5f5f5;
-    -fx-border-color: #ddd;
-    -fx-border-width: 1px;
-    -fx-border-radius: 5px;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 2);
-}
-
-.section-label {
-    -fx-font-size: 14px;
-    -fx-font-weight: bold;
-    -fx-font-color: #0000;
-}
-
-.sheet-music-container {
-    -fx-background-color: white;
-    -fx-border-color: #0000;
-    -fx-border-width: 1px;
-}
-/* Piano specific styles */
-.piano-keyboard {
     -fx-background-color: #333;
     -fx-border-color: #222;
     -fx-border-width: 2px;
     -fx-border-radius: 5px;
     -fx-padding: 0;
+
+
 }
 
-.button.white-key {
+.section-label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.sheet-music-container {
+    -fx-background-color: white;
+    -fx-border-color: #ddd;
+    -fx-border-width: 1px;
+}
+#whiteKeysContainer {
+    -fx-spacing: 0;
+    -fx-padding: 0;
+}
+
+#blackKeysContainer {
+    -fx-spacing: 0;
+    -fx-padding: 0;
+}
+
+.white-key {
     -fx-background-color: white;
     -fx-text-fill: black;
     -fx-background-radius: 0 0 5 5;
@@ -223,13 +224,13 @@
     -fx-font-size: 10px;
     -fx-padding: 0 0 5 0;
     -fx-alignment: bottom-center;
-    -fx-pref-height: 150;
-    -fx-min-width: 35;
-    -fx-max-width: 35;
-    -fx-cursor: hand;
+    -fx-pref-height: 180;
+    -fx-max-width: Infinity;
+    -fx-min-width: 42;
+    -HBox-hgrow: ALWAYS;
 }
 
-.button.black-key {
+.black-key {
     -fx-background-color: #222;
     -fx-text-fill: white;
     -fx-background-radius: 0 0 5 5;
@@ -239,63 +240,19 @@
     -fx-font-size: 8px;
     -fx-padding: 0 0 3 0;
     -fx-alignment: bottom-center;
-    -fx-pref-width: 24;
-    -fx-min-width: 24;
-    -fx-max-width: 24;
-    -fx-pref-height: 90;
+    -fx-pref-width: 28;
+    -fx-min-width: 28;
+    -fx-max-width: 28;
+    -fx-pref-height: 110;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 5, 0.0, 0, 1);
-    -fx-cursor: hand;
-    -fx-translate-x: -12; /* Center black keys between white keys */
 }
 
-.button.white-key:pressed {
+.white-key:pressed {
     -fx-background-color: #eee;
     -fx-effect: innershadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 5);
 }
 
-.button.black-key:pressed {
+.black-key:pressed {
     -fx-background-color: #333;
     -fx-effect: innershadow(gaussian, rgba(0,0,0,0.8), 10, 0, 0, 5);
-}
-
-.black-keys-row {
-    -fx-padding: 0;
-    -fx-spacing: 0;
-    -fx-alignment: TOP_CENTER;
-    -fx-translate-y: 0;
-}
-
-
-
-
-  
-
-.song-title {
-    -fx-font-size: 24px;
-    -fx-font-weight: bold;
-    -fx-padding: 10 0 5 0;
-}
-
-.song-artist {
-    -fx-font-size: 16px;
-    -fx-font-style: italic;
-    -fx-padding: 0 0 20 0;
-}
-
-.measure {
-    -fx-font-family: monospace;
-    -fx-font-size: 14px;
-    -fx-padding: 5 0;
-}
-
-.action-button {
-    -fx-background-color: #4CAF50;
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-padding: 6px 12px;
-    -fx-background-radius: 5px;
-}
-
-.action-button:hover {
-    -fx-background-color: #45a049;
 }
