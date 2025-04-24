@@ -1,8 +1,3 @@
-.root {
-    -fx-font-family: "Coiny";
-    -fx-background-color: #ad987f;
-}
-
 .button {
     -fx-font-family: "Coiny";
     -fx-font-size: 18px;
@@ -11,15 +6,39 @@
     -fx-background-color: #ececec;
     -fx-text-fill: #000000;
     -fx-cursor: hand;
+
 }
+.mainBorderPane {
+    -fx-background-color: #ad987f;
+
+}
+
+
 #dashboard_pane {
     -fx-background-color: #000000;
 
 }
 .sidebar {
-    -fx-background-color: #f5f4fb;
-    -fx-alignment: TOP_CENTER;
-    -fx-padding: 20;
+    -fx-background-color:#8ab480;
+    -fx-background-radius: 0 20 20 0;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 5, 0);
+    -fx-padding: 25 15;
+}
+
+.title-label-top {
+    -fx-font-family: "Coiny";
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 3, 0, 1, 1);
+}
+
+.title-label-bottom {
+    -fx-font-family: "Coiny";
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 3, 0, 1, 1);
 }
 
 .button:hover {
@@ -36,7 +55,7 @@
 }
 /* Additional styles for the sidebar and stacked title */
 .sidebar {
-    -fx-background-color: #8a7a65; /* Darker shade of the main background */
+    -fx-background-color: #8ab480;
     -fx-alignment: TOP_LEFT;
     -fx-padding: 20;
 }
@@ -64,13 +83,13 @@
 }
 
 .progressBar {
-    -fx-accent: #c2dfed;
+    -fx-accent: #000;
 }
 
 .progressLabel {
     -fx-font-size: 14px;
     -fx-font-family: "Coiny";
-    -fx-text-fill: #ececec;
+    -fx-text-fill: #0000;
 }
 
 /* Add these CSS rules to your styles.css file */
@@ -87,6 +106,7 @@
 .subtitle-label {
     -fx-font-size: 14px;
     -fx-text-fill: #ececec;
+    -fx-font-style: italic;
     -fx-padding: 5 0 0 0;
 }
 
@@ -108,21 +128,10 @@
     -fx-text-alignment: center;
     -fx-alignment: center;
 }
-
-/* Fix for multiple style classes */
-.dashboard-tile.flashcard-color { -fx-background-color: #fbc02d; }
-.dashboard-tile.piano-color { -fx-background-color: #ec407a; }
-.dashboard-tile.compose-color { -fx-background-color: #fb8c00; }
-.dashboard-tile.library-color { -fx-background-color: #7e57c2; }
-.dashboard-tile.homework-color { -fx-background-color: #ec407a; }
-.dashboard-tile.friends-color { -fx-background-color: #fb8c00; }
-
-
-.dashboard-tile:hover {
-    -fx-background-color: #FFFFFF;
-    -fx-border-color: #AAAAAA;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 0);
+.dashboard-background {
+    -fx-fill: #ad987f;
 }
+
 
 .transparent-scroll-pane {
     -fx-background-color: transparent;
@@ -150,7 +159,29 @@
 }
 
 
+.profile-section {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 15;
+    -fx-padding: 15;
+    -fx-spacing: 10;
+    -fx-alignment: center;
+    -fx-text-fill: #0000;
+}
 
+.avatar-circle {
+    -fx-background-color: #0000;
+    -fx-background-radius: 50;
+    -fx-min-width: 60;
+    -fx-min-height: 60;
+    -fx-max-width: 60;
+    -fx-max-height: 60;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 1);
+}
+
+.avatar-text {
+    -fx-font-size: 30px;
+    -fx-text-fill: #0000;
+}
 
 #backButton {
     -fx-font-size: 14px;
@@ -167,11 +198,152 @@
     -fx-background-color: #ececec;
 }
 
+
+.username-label {
+    -fx-font-family: "Coiny";
+    -fx-font-size: 16px;
+    -fx-text-fill: #0000;
+    -fx-font-weight: bold;
+}
+
+/* Progress Bar Styling */
+.progress-title {
+    -fx-font-size: 14px;
+    -fx-text-fill: #0000;
+    -fx-padding: 10 0 0 0;
+}
+
+.progress-bar {
+    -fx-accent: #0000;
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-background-radius: 10;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.progress-bar > .bar {
+    -fx-background-radius: 10;
+    -fx-background-insets: 0;
+}
+
+.progress-percent {
+    -fx-font-size: 12px;
+    -fx-text-fill: #0000;
+    -fx-padding: 2 0 0 0;
+}
+
+/* Logout Button */
+.logout-button {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-background-radius: 20;
+    -fx-padding: 8 15;
+    -fx-cursor: hand;
+}
+
+.logout-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Main Content Area */
+.content-area {
+    -fx-fill: linear-gradient(to bottom right, #8a7a65, #8ab480);
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 5);
+}
+
+/* Welcome Section */
+.welcome-label {
+    -fx-font-family: "Coiny";
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0000;
+}
+
+.welcome-subtitle {
+    -fx-font-size: 14px;
+    -fx-text-fill: #0000;
+}
+
+/* Feature Tiles */
+.feature-tile {
+    -fx-background-radius: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 8, 0, 0, 2);
+    -fx-min-width: 180;
+    -fx-min-height: 200;
+    -fx-pref-width: 180;
+    -fx-pref-height: 200;
+    -fx-padding: 10;
+    -fx-cursor: hand;
+}
+
+.feature-icon {
+    -fx-font-size: 32px;
+}
+
+.feature-title {
+    -fx-font-family: "Coiny";
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.feature-description {
+    -fx-font-size: 12px;
+    -fx-text-fill: rgba(255, 255, 255, 0.9);
+    -fx-text-alignment: center;
+}
+
+.invisible-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 15;
+    -fx-min-width: 180;
+    -fx-min-height: 200;
+    -fx-pref-width: 180;
+    -fx-pref-height: 200;
+    -fx-cursor: hand;
+    -fx-opacity: 0;
+}
+
+/* Feature Tile Colors */
+.flashcard-color { 
+    -fx-background-color: linear-gradient(to bottom right, #ffd54f, #fbc02d); 
+}
+
+.piano-color { 
+    -fx-background-color: linear-gradient(to bottom right, #f48fb1, #ec407a); 
+}
+
+.compose-color { 
+    -fx-background-color: linear-gradient(to bottom right, #ffb74d, #fb8c00); 
+}
+
+.library-color { 
+    -fx-background-color: linear-gradient(to bottom right, #9575cd, #7e57c2); 
+}
+
+.homework-color { 
+    -fx-background-color: linear-gradient(to bottom right, #4fc3f7, #039be5); 
+}
+
+.friends-color { 
+    -fx-background-color: linear-gradient(to bottom right, #81c784, #43a047); 
+}
+
+/* Hover Effects */
+.feature-tile:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 12, 0, 0, 4);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-transition: all 0.2s ease-in-out;
+}
+
 .txt_username, .txt_password { 
     −fx-font-family: "Coiny"; 
     -fx-border-radius: 10px;
     -fx-border-color: #FFFFFF;
-    -fx-border-width: 2;
+    -fx-border-width: 1px;
     -fx-font-size: 50px;
     -fx-text-fill: #000000;
     -fx-prompt-text-fill: #888888; 
