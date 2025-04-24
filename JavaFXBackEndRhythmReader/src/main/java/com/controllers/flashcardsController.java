@@ -1,34 +1,28 @@
 package com.controllers;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
-import javafx.stage.Stage;
 
-public class flashcardsController implements Initializable {
+public class flashcardsController {
 
     @FXML private GridPane grid_genre;
     @FXML private GridPane grid_instrument;
     @FXML private GridPane grid_skill;
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // Add checks to ensure the GridPanes are not null
-        if (grid_genre == null || grid_instrument == null || grid_skill == null) {
-            System.err.println("One of the GridPanes is null!");
-        } else {
-            displayGenres();
-            displayInstruments();
-            displaySkillLevels();
-        }
+    @FXML private VBox flashcardsVBox; // VBox to hold the flashcards content dynamically
+
+    private String categoryType;
+    private String categoryName;
+
+    // Initial setup: populate the grids with genre, instrument, skill buttons
+    public void initialize() {
+        displayGenres();
+        displayInstruments();
+        displaySkillLevels();
     }
 
     private void displayGenres() {
@@ -69,28 +63,33 @@ public class flashcardsController implements Initializable {
         return btn;
     }
 
+    // Handle category selection and display corresponding flashcards
     private void handleCategoryClick(String categoryType, String categoryName) {
+        this.categoryType = categoryType;
+        this.categoryName = categoryName;
         System.out.println("Clicked " + categoryType + ": " + categoryName);
-        try {
-            loadNextScene(categoryType, categoryName);  // Transition to next scene
-        } catch (IOException e) {
-            e.printStackTrace();
+        
+        // Update the layout with flashcards or category information
+        updateFlashcardsContent(categoryType, categoryName);
+    }
+
+    // Update the VBox with content based on the selected category
+    private void updateFlashcardsContent(String categoryType, String categoryName) {
+        // Clear previous content
+        flashcardsVBox.getChildren().clear();
+
+        // Create and add category label to the VBox
+        Label categoryLabel = new Label("Category: " + categoryType + " - " + categoryName);
+        flashcardsVBox.getChildren().add(categoryLabel);
+
+        // Optionally, add more flashcard content or buttons dynamically based on the category
+        Label flashcardDemo = new Label("Here are the flashcards for: " + categoryType + " - " + categoryName);
+        flashcardsVBox.getChildren().add(flashcardDemo);
+        
+        // For example, add a few flashcards
+        for (int i = 1; i <= 3; i++) {
+            Label flashcard = new Label("Flashcard " + i + " for " + categoryType + " - " + categoryName);
+            flashcardsVBox.getChildren().add(flashcard);
         }
     }
-
-    private void loadNextScene(String categoryType, String categoryName) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/views/flashcardsDisplay.fxml"));
-        Scene scene = new Scene(loader.load());
-        
-        // Set the scene
-        Stage stage = (Stage) grid_genre.getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    }
-    @FXML
-    private void handleButtonClick(javafx.event.ActionEvent event) {
-        Button sourceButton = (Button) event.getSource();
-        System.out.println("Button clicked: " + sourceButton.getText());
-    }
 }
-
