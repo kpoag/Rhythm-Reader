@@ -227,7 +227,7 @@
     -fx-pref-height: 180;
     -fx-max-width: Infinity;
     -fx-min-width: 42;
-    -HBox-hgrow: ALWAYS;
+    HBox.hgrow: ALWAYS;
 }
 
 .black-key {
