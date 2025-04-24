@@ -20,7 +20,7 @@
     </top>
 
     <center>
-      <StackPane fx:id="contentArea" styleClass="content-area">
+      <StackPane fx:id="contentArea" styleClass="content-area" alignment="CENTER">
       </StackPane>
    </center>
    

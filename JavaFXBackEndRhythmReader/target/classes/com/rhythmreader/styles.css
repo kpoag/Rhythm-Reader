@@ -189,21 +189,34 @@
     -fx-border-color: #222;
     -fx-border-width: 2px;
     -fx-border-radius: 5px;
-    -fx-padding: 0;
+    -fx-padding: 10;
+    -fx-max-width: 600;
+}
+.piano-keyboard {
+    -fx-background-color: #333;
+    -fx-min-height: 150px;
+    -fx-pref-height: 150px;
+    -fx-max-height: 150px;
+}
 
+
+.sheet-music-scroll {
+    -fx-background-color: white;
+    -fx-background: white;
+    -fx-border-color: #dddddd;
+    -fx-border-width: 1;
 
 }
+
+
 
 .section-label {
     -fx-font-size: 16px;
     -fx-font-weight: bold;
+    -fx-font-color: #0000;
 }
 
-.sheet-music-container {
-    -fx-background-color: white;
-    -fx-border-color: #ddd;
-    -fx-border-width: 1px;
-}
+
 #whiteKeysContainer {
     -fx-spacing: 0;
     -fx-padding: 0;
@@ -221,13 +234,16 @@
     -fx-border-color: #999;
     -fx-border-width: 1px;
     -fx-font-weight: bold;
-    -fx-font-size: 10px;
+    -fx-font-size: 8px;
     -fx-padding: 0 0 5 0;
     -fx-alignment: bottom-center;
-    -fx-pref-height: 180;
-    -fx-max-width: Infinity;
-    -fx-min-width: 42;
-    -HBox-hgrow: ALWAYS;
+    -fx-min-height: 150;
+    -fx-pref-height: 150;
+    -fx-max-height: 150;
+    -fx-min-width: 25;
+    -fx-pref-width: 25;
+    -fx-max-width: 25;
+    -fx-cursor: hand;
 }
 
 .black-key {
@@ -237,16 +253,30 @@
     -fx-border-color: #111;
     -fx-border-width: 1px;
     -fx-font-weight: bold;
-    -fx-font-size: 8px;
+    -fx-font-size: 6px;
     -fx-padding: 0 0 3 0;
     -fx-alignment: bottom-center;
-    -fx-pref-width: 28;
-    -fx-min-width: 28;
-    -fx-max-width: 28;
-    -fx-pref-height: 110;
+    -fx-min-width: 15;
+    -fx-pref-width: 15;
+    -fx-max-width: 15;
+    -fx-min-height: 100;
+    -fx-pref-height: 100;
+    -fx-max-height: 100;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 5, 0.0, 0, 1);
+    -fx-cursor: hand;
 }
 
+#whiteKeysContainer {
+    -fx-spacing: 0;
+    -fx-padding: 0;
+    -fx-alignment: center;
+    
+}
+.controls-container {
+    -fx-max-width: 780;
+    -fx-spacing: 5;
+    -fx-padding: 5;
+}
 .white-key:pressed {
     -fx-background-color: #eee;
     -fx-effect: innershadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 5);
@@ -255,4 +285,121 @@
 .black-key:pressed {
     -fx-background-color: #333;
     -fx-effect: innershadow(gaussian, rgba(0,0,0,0.8), 10, 0, 0, 5);
+}
+
+/* Sheet Music Display Styles */
+.sheet-music-container {
+    -fx-background-color: white;
+    -fx-padding: 20;
+    -fx-spacing: 10;
+    -fx-text-fill: #0000;
+    -fx-alignment: center;
+}
+
+.measure-text {
+    -fx-font-family: "Coiny";
+    -fx-font-size: 14px;
+    -fx-text-fill: #0000;
+    -fx-background-color: #8a7a65;
+    -fx-padding: 8 12;
+    -fx-border-color: #ad987f;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+}
+
+.bar-line {
+    -fx-font-family: "Coiny";
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0000;
+    -fx-padding: 0 5;
+}
+
+.measure-row {
+    -fx-spacing: 10;
+    -fx-alignment: center;
+    -fx-padding: 5;
+    -fx-background-color: transparent;
+}
+
+.measures-container {
+    -fx-spacing: 15;
+    -fx-padding: 10;
+    -fx-background-color: transparent;
+}
+
+.song-title {
+    -fx-font-family: "Coiny";
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #00000000;
+    -fx-padding: 10 0 5 0;
+}
+
+.song-artist {
+    -fx-font-family: "Coiny";
+    -fx-font-size: 18px;
+    -fx-text-fill: #00000000;
+    -fx-padding: 0 0 5 0;
+}
+
+.song-info {
+    -fx-font-family: "Coiny";
+    -fx-font-size: 16px;
+    -fx-text-fill: #00000000;
+    -fx-padding: 0 0 20 0;
+}
+
+.instruction-label {
+    -fx-font-family: "Coiny";
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #00000000;
+    -fx-padding: 10 0;
+}
+
+.note-text {
+    -fx-text-fill: #0000;
+    -fx-font-weight: bold;
+}
+
+.time-signature-text {
+    -fx-text-fill: #0000;
+    -fx-font-weight: bold;
+}
+
+.dynamics-text {
+    -fx-text-fill: #0000;
+    -fx-font-style: italic;
+}
+.staff-container {
+    -fx-background-color: white;
+    -fx-padding: 20;
+    -fx-border-color: #dddddd;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+}
+
+.staff-canvas {
+    -fx-background-color: white;
+}
+
+.metronome-toggle {
+    -fx-font-family: "Coiny";
+    -fx-font-size: 14px;
+    -fx-text-fill: #ececec;
+}
+
+.metronome-toggle .box {
+    -fx-background-color: #ececec;
+    -fx-border-color: #c2dfed;
+    -fx-border-width: 2px;
+}
+
+.metronome-toggle:selected .box {
+    -fx-background-color: #c2dfed;
+}
+
+.metronome-toggle:selected .mark {
+    -fx-background-color: #000000;
 }

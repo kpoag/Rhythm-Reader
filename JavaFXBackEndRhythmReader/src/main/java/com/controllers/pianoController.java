@@ -1,29 +1,50 @@
 package com.controllers;
 
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.layout.Pane;
+import javafx.application.Platform;
+import javafx.geometry.Pos;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import com.model.Song;
+import com.model.Chords;
 import com.model.DataLoader;
+import com.model.Measure;
+import com.model.Note;
+import com.model.Notetype;
+import com.model.RRFacade;
+
 import org.jfugue.player.Player;
 import java.util.ArrayList;
+import java.util.List;
 
 public class pianoController implements Initializable {
     @FXML private ComboBox<String> songSelector;
     @FXML private Slider tempoSlider;
     @FXML private VBox sheetMusicContainer;
+    @FXML private CheckBox metronomeToggle;
     
     private ArrayList<Song> songs;
     private Player player;
+   private RRFacade facade;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // Initialize JFugue player
         player = new Player();
+        
+        // Get the facade instance
+        facade = RRFacade.getInstance();
         
         // Load available songs
         songs = DataLoader.loadSongs();
@@ -41,33 +62,20 @@ public class pianoController implements Initializable {
     void playSong(ActionEvent event) {
         String selectedSong = songSelector.getValue();
         if (selectedSong != null) {
+            // Find the song
             for (Song song : songs) {
                 if (song.getSongTitle().equals(selectedSong)) {
-                    song.setTempo((int) tempoSlider.getValue());
-                    displaySheetMusic(song);
-                    song.playSong();
+                    // Display sheet music first
+                    song.renderSheetMusic(sheetMusicContainer);
+                    
+                    // Play the song
+                    facade.playSong(selectedSong, (int) tempoSlider.getValue(), metronomeToggle.isSelected());
                     break;
                 }
             }
         }
     }
-    
-    private void displaySheetMusic(Song song) {
-        sheetMusicContainer.getChildren().clear();
-        
-        Label titleLabel = new Label(song.getSongTitle());
-        titleLabel.getStyleClass().add("song-title");
-        Label artistLabel = new Label("By " + song.getArtist());
-        artistLabel.getStyleClass().add("song-artist");
-        
-        sheetMusicContainer.getChildren().addAll(titleLabel, artistLabel);
-        
-        song.getMeasures().forEach(measure -> {
-            Label measureLabel = new Label(measure.getJFuguePattern());
-            measureLabel.getStyleClass().add("measure");
-            sheetMusicContainer.getChildren().add(measureLabel);
-        });
-    }
+
     
     // Octave 2 (F2 to B2)
     @FXML void playF2(ActionEvent event) { playNote("F2q"); }
@@ -140,4 +148,6 @@ public class pianoController implements Initializable {
             System.err.println("Error playing note: " + e.getMessage());
         }
     }
+
+ 
 }
