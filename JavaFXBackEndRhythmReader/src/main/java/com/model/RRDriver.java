@@ -49,12 +49,12 @@ public class RRDriver {
     // Temporary method to create an account for testing purposes
     public boolean createFirstAccount() {   
         System.out.println("Attempting to create an account for Fred!");
-        return facade.createAccount("ffredrickson", "Fellicia", "Fredrickson", "ffredrickson@gmail.com", "securepassword123", scanner); 
+        return facade.createAccount("ffredrickson", "Fellicia", "Fredrickson", "ffredrickson@gmail.com", "securepassword123", true); 
     }
     // Temporary method to create an account for testing purposes
     public boolean createSecondAccount() {
         System.out.println("Let's try again!");
-        return facade.createAccount("emmasmith", "Fred", "Fredrickson", "ffredrickson@gmail.com", "securepassword123", scanner); 
+        return facade.createAccount("emmasmith", "Fred", "Fredrickson", "ffredrickson@gmail.com", "securepassword123", true); 
     }
 
      public boolean login3(){
@@ -91,7 +91,7 @@ public class RRDriver {
     }
     
     public boolean playASong() {
-        return facade.playASong();
+        return facade.playSong("testSong", 60, true);
     }
     
 }
