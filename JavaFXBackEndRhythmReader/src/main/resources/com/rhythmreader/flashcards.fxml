@@ -5,9 +5,25 @@
 
 
 
-<AnchorPane id="AnchorPane" prefHeight="430" prefWidth="932" fx:id="launch_pane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.flashcardsController">
-    
-   <stylesheets>
-      <URL value="@styles.css" />
-   </stylesheets>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<AnchorPane id="AnchorPane" prefHeight="430" prefWidth="932" fx:id="launch_pane"
+            xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.controllers.flashcardsController">
+
+    <stylesheets>
+        <URL value="@styles.css"/>
+    </stylesheets>
+
+    <children>
+       
+        <Button fx:id="btnOne" layoutX="400" layoutY="20" text="Click Me" onAction="#handleButtonClick"/>
+        <Button fx:id="myButton" layoutX="400" layoutY="60" text="Another Click" onAction="#handleButtonClick"/>
+
+        
+        <GridPane fx:id="grid_genre" layoutX="50" layoutY="120" hgap="10" vgap="10"/>
+        <GridPane fx:id="grid_instrument" layoutX="50" layoutY="220" hgap="10" vgap="10"/>
+        <GridPane fx:id="grid_skill" layoutX="50" layoutY="320" hgap="10" vgap="10"/>
+    </children>
 </AnchorPane>
+

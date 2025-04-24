@@ -12,9 +12,7 @@
 
 <AnchorPane id="AnchorPane" fx:id="login_pane" maxHeight="800.0" maxWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.LoginController">
 
-   <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackClicked" text="Back" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
-
-   <VBox alignment="CENTER" spacing="30" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+   <VBox alignment="CENTER" spacing="30" AnchorPane.topAnchor="60.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
       <padding>
          <Insets top="20" right="20" bottom="20" left="20" />
       </padding>
@@ -36,6 +34,8 @@
          </VBox>
       </VBox>
    </VBox>
+      <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackClicked" text="Back" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
+
    <stylesheets>
       <URL value="@styles.css" />
    </stylesheets>

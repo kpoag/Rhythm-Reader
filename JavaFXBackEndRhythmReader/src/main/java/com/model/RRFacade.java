@@ -7,6 +7,10 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import org.jfugue.player.Player;
+
+import javafx.scene.layout.VBox;
+
 public class RRFacade {
     private static RRFacade facade;
     private User currUser;
@@ -128,59 +132,6 @@ public class RRFacade {
         currSong.saveToJson(DataLoader.SONG_FILE_NAME, currUser);
     }
 
-            
-
-    public boolean playASong() {
-        try {
-        Song freeFallin = new Song("e6cd1fd6-024e-45e5-a3f6-a781a019f1ec", "Free Fallin", "Tom Petty", Genre.POP, DifficultyLevel.INTERMEDIATE, "Guitar", 9.5, 84, "4/4");
-        Song maryJane = new Song("b7cd1fd6-034e-45e5-a3f6-a781a019f1ec", "Mary Jane's Last Dance", "Tom Petty", Genre.POP, DifficultyLevel.ADVANCED, "Guitar", 9.0, 96, "4/4");
-        Song wontBackDown = new Song("c8cd1fd6-044e-45e5-a3f6-a781a019f1ec", "I Won't Back Down", "Tom Petty", Genre.POP, DifficultyLevel.INTERMEDIATE, "Guitar", 8.5, 80, "4/4");
-    
-        
-        songList = songList.getInstance();
-        DataLoader.loadSongs();
-        
-        
-
-        songList.addSong(maryJane);
-        songList.addSong(wontBackDown);
-
-        System.out.println("How would you like to Filter Songs? Options : Genre (1) - Artist (2)");
-        int option = scanner.nextInt();
-
-        System.out.println("What artist would you like to play?");
-        scanner.nextLine();
-        String artist = scanner.nextLine();
-
-        System.out.println("Which song would you like to play by " + artist + " ? Enter (1-3)");
-        System.out.println("Songs by " + artist + ":");
-        songList.filterByArtist(artist);
-        for (int i = 5; i < songList.getSongs().size(); i++) {
-            System.out.println((i - 4) + ". " + songList.getSongs().get(i).getSongTitle());
-        }
-        scanner.nextInt();
-        scanner.nextLine();
-        
-        ArrayList<Song> searchResults = Song.searchSongs("Free Fallin'");
-        System.out.println("Playing Free Fallin by Tom Petty");
-        searchResults.get(0).playSong();
-
-        System.out.println("Would you like to print the sheet music? (y/n)");
-        String choice = scanner.nextLine();
-
-
-        if (choice.equalsIgnoreCase("y")) {
-            writeSheetMusicToFile("freeFallin.txt");
-        }
-          return true;
-        } catch(Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-
-
-        
-    }
 
     public String writeSheetMusic() {
         
@@ -209,6 +160,67 @@ public class RRFacade {
             return false;
         }
     }
+
+     public boolean renderSheetMusic(String songTitle, VBox container) {
+        if (songTitle == null || container == null) {
+            return false;
+        }
+        
+        Song song = findSongByTitle(songTitle);
+        if (song == null) {
+            return false;
+        }
+        
+        song.renderSheetMusic(container);
+        return true;
+    }
+
+    private Song findSongByTitle(String title) {
+        ArrayList<Song> songs = DataLoader.loadSongs();
+        for (Song song : songs) {
+            if (song.getSongTitle().equals(title)) {
+                return song;
+            }
+        }
+        return null;
+    }
+
+    public boolean playPianoNote(String note) {
+        try {
+            Player player = new Player();
+            player.play("I[Piano] " + note);
+            return true;
+        } catch (Exception e) {
+            System.err.println("Error playing note: " + e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean playSong(String songTitle, int tempo, boolean useMetronome) {
+        if (songTitle == null) {
+            return false;
+        }
+        
+        Song song = findSongByTitle(songTitle);
+        if (song == null) {
+            return false;
+        }
+        
+        song.setTempo(tempo);
+        
+        if (useMetronome) {
+            song.playSongWithMetronome(() -> {
+                System.out.println("Song finished playing");
+            });
+        } else {
+            song.playSongAsync(() -> {
+                System.out.println("Song finished playing");
+            });
+        }
+        
+        return true;
+    }
+
 
     
 

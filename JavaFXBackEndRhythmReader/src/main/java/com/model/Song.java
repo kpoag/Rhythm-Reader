@@ -18,6 +18,16 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import javafx.application.Platform;
+import javafx.geometry.Pos;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+
 
 /**
  * Represents a song with a title, artist, genre, difficulty, instrument,
@@ -373,161 +383,6 @@ public class Song {
             return true;
         } catch (Exception e) {
             System.err.println("Error playing song: " + e.getMessage());
-            e.printStackTrace();
-            return false;
-        }
-    }
-    
-    /**
-     * Plays the song with a specified tempo.
-     * 
-     * @param customTempo tempo to use for playback (in BPM)
-     * @return true if the song was played successfully, false otherwise
-     */
-    public boolean playSongWithTempo(int customTempo) {
-        if (measures == null || measures.isEmpty()) {
-            System.err.println("No measures to play.");
-            return false;
-        }
-
-        if (customTempo <= 0) {
-            System.err.println("Invalid tempo: " + customTempo + ". Using default tempo: " + this.tempo);
-            return playSongWithTempo(this.tempo);
-        }
-        
-        try {
-            System.out.println("\n===========================================");
-            System.out.println(songTitle.toUpperCase());
-            System.out.println("By " + artist);
-            System.out.println("Time Signature: " + timeSignature);
-            System.out.println("Tempo: " + customTempo + " BPM (Modified)");
-            System.out.println("===========================================\n");
-
-            int beatsPerMeasure = 4; // Default to 4/4
-            if (timeSignature != null && timeSignature.contains("/")) {
-                String[] parts = timeSignature.split("/");
-                if (parts.length == 2) {
-                    try {
-                        beatsPerMeasure = Integer.parseInt(parts[0]);
-                    } catch (NumberFormatException e) {
-                        System.err.println("Invalid time signature: " + timeSignature + ". Using default 4/4.");
-                    }
-                }
-            }
-        
-            // Print measures in rows of 4
-            StringBuilder fullPattern = new StringBuilder();
-            fullPattern.append("T").append(customTempo).append(" ");
-            fullPattern.append("I").append(getInstrumentCode(instrument)).append(" ");
-
-            if (timeSignature != null && !timeSignature.isEmpty()) {
-                fullPattern.append("TIME:").append(timeSignature).append(" ");
-            }
-        
-            System.out.println("Sheet Music:");
-            for (int i = 0; i < measures.size(); i++) {
-                if (i % 4 == 0) {
-                    System.out.println(); // New line for every 4 measures
-                    System.out.print("| "); // Start of measure line
-            }
-            
-            Measure measure = measures.get(i);
-            if (measure != null) {
-                String measurePattern = measure.getJFuguePattern();
-                if (measurePattern != null && !measurePattern.isEmpty()) {
-                    // Format and print measure content
-                    String formattedMeasure = measurePattern.replace(" ", ", ");
-                    System.out.print(formattedMeasure + " | ");
-                    
-                    fullPattern.append(measurePattern).append(" ");
-                }
-            }
-        }
-            System.out.println("\n");
-            
-            System.out.println("Now Playing...");
-        
-            Player player = new Player();
-            player.play(fullPattern.toString());
-            return true;
-        } catch (Exception e) {
-            System.err.println("Error playing song with custom tempo: " + e.getMessage());
-            e.printStackTrace();
-            return false;
-        }
-    
-    }
-
-    public boolean playSongWithTempo(int customTempo, String sheetMusicFile) {
-        if (measures == null || measures.isEmpty()) {
-            System.err.println("No measures to play.");
-            return false;
-        }
-    
-        if (customTempo <= 0) {
-            System.err.println("Invalid tempo: " + customTempo + ". Using default tempo: " + this.tempo);
-            return playSongWithTempo(this.tempo);
-        }
-        
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(sheetMusicFile))) {
-            writer.write("===========================================\n");
-            writer.write(songTitle.toUpperCase() + "\n");
-            writer.write("By " + artist + "\n");
-            writer.write("Time Signature: " + timeSignature + "\n");
-            writer.write("Tempo: " + customTempo + " BPM (Modified)\n");
-            writer.write("===========================================\n\n");
-    
-            int beatsPerMeasure = 4; // Default to 4/4
-            if (timeSignature != null && timeSignature.contains("/")) {
-                String[] parts = timeSignature.split("/");
-                if (parts.length == 2) {
-                    try {
-                        beatsPerMeasure = Integer.parseInt(parts[0]);
-                    } catch (NumberFormatException e) {
-                        System.err.println("Invalid time signature: " + timeSignature + ". Using default 4/4.");
-                    }
-                }
-            }
-    
-            // Print measures in rows of 4
-            StringBuilder fullPattern = new StringBuilder();
-            fullPattern.append("T").append(customTempo).append(" ");
-            fullPattern.append("I").append(getInstrumentCode(instrument)).append(" ");
-    
-            if (timeSignature != null && !timeSignature.isEmpty()) {
-                fullPattern.append("TIME:").append(timeSignature).append(" ");
-            }
-    
-            writer.write("Sheet Music:\n");
-            for (int i = 0; i < measures.size(); i++) {
-                if (i % 4 == 0) {
-                    writer.write("\n| ");
-                }
-                
-                Measure measure = measures.get(i);
-                if (measure != null) {
-                    String measurePattern = measure.getJFuguePattern();
-                    if (measurePattern != null && !measurePattern.isEmpty()) {
-                        String formattedMeasure = measurePattern.replace(" ", ", ");
-                        writer.write(formattedMeasure + " | ");
-                        fullPattern.append(measurePattern).append(" ");
-                    }
-                }
-            }
-            writer.write("\n\n");
-            
-            System.out.println("Sheet Music exported to" + sheetMusicFile);
-            
-            System.out.println("Now Playing...");
-            
-            Player player = new Player();
-            player.play(fullPattern.toString());
-            return true;
-        } catch (IOException e) {
-            System.err.println("Error writing sheet music to file: " + e.getMessage());
-            return false;
-        } catch (Exception e) {
-            System.err.println("Error playing song with custom tempo: " + e.getMessage());
             e.printStackTrace();
             return false;
         }
@@ -945,7 +800,385 @@ public boolean matches(String q) {
             }
         
             
+public void playSongAsync(Runnable onComplete) {
+    new Thread(() -> {
+        try {
+            playSong();
+            if (onComplete != null) {
+                Platform.runLater(onComplete);
+            }
+        } catch (Exception e) {
+            System.err.println("Error playing song: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }).start();
+}
+
+
+
+ public void renderSheetMusic(VBox container) {
+        System.out.println("Displaying sheet music for: " + this.songTitle);
+        
+        if (container == null) {
+            System.err.println("Sheet music container is null!");
+            return;
+        }
+        
+        container.getChildren().clear();
+        
+        Label titleLabel = new Label(this.songTitle);
+        titleLabel.getStyleClass().add("song-title");
+        
+        Label artistLabel = new Label("By " + this.artist);
+        artistLabel.getStyleClass().add("song-artist");
+        
+        Label infoLabel = new Label(String.format("Tempo: %d BPM | Time Signature: %s", 
+            this.tempo, this.timeSignature));
+        infoLabel.getStyleClass().add("song-info");
+        
+        container.getChildren().addAll(titleLabel, artistLabel, infoLabel);
+        
+        if (this.measures == null || this.measures.isEmpty()) {
+            Label noMeasuresLabel = new Label("No sheet music available for this song");
+            noMeasuresLabel.getStyleClass().add("no-measures");
+            container.getChildren().add(noMeasuresLabel);
+            System.out.println("No measures found for song: " + this.songTitle);
+            return;
+        }
+        
+        VBox staffContainer = new VBox(20);
+        staffContainer.getStyleClass().add("staff-container");
+        staffContainer.setAlignment(Pos.CENTER);
+        
+        for (int staffStart = 0; staffStart < this.measures.size(); staffStart += 4) {
+            Canvas staffCanvas = new Canvas(600, 150);
+            staffCanvas.getStyleClass().add("staff-canvas");
+            
+            drawStaff(staffCanvas, staffStart, Math.min(staffStart + 4, this.measures.size()));
+            
+            staffContainer.getChildren().add(staffCanvas);
+        }
+        
+        container.getChildren().add(staffContainer);
+    }
     
+    private void drawStaff(Canvas canvas, int startIndex, int endIndex) {
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        
+        gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        
+        gc.setStroke(Color.BLACK);
+        gc.setLineWidth(1.0);
+        
+        double staffTop = 40;
+        double lineSpacing = 10;
+        
+        for (int i = 0; i < 5; i++) {
+            double y = staffTop + i * lineSpacing;
+            gc.strokeLine(30, y, canvas.getWidth() - 30, y);
+        }
+        
+        gc.setFill(Color.BLACK);
+        gc.setFont(Font.font("Arial", FontWeight.BOLD, 40));
+        gc.fillText("𝄞", 10, staffTop + 2 * lineSpacing); // Treble clef
+        
+        String timeSignature = this.measures.get(0).getBeats();
+        if (timeSignature != null && !timeSignature.isEmpty()) {
+            gc.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+            String[] parts = timeSignature.split("/");
+            if (parts.length == 2) {
+                gc.fillText(parts[0], 60, staffTop + 2 * lineSpacing - 5);
+                gc.fillText(parts[1], 60, staffTop + 3 * lineSpacing + 5);
+            }
+        }
+        
+        double measureStartX = 80;
+        double measureWidth = (canvas.getWidth() - measureStartX - 30) / (endIndex - startIndex);
+        
+        for (int i = startIndex; i < endIndex; i++) {
+            Measure measure = this.measures.get(i);
+            double measureX = measureStartX + (i - startIndex) * measureWidth;
+            
+            gc.strokeLine(measureX, staffTop, measureX, staffTop + 4 * lineSpacing);
+            
+            drawMeasureNotes(gc, measure, measureX, measureWidth, staffTop, lineSpacing);
+        }
+        
+        gc.strokeLine(measureStartX + (endIndex - startIndex) * measureWidth, 
+                     staffTop, 
+                     measureStartX + (endIndex - startIndex) * measureWidth, 
+                     staffTop + 4 * lineSpacing);
+    }
+    
+    private void drawMeasureNotes(GraphicsContext gc, Measure measure, double measureX, double measureWidth, 
+                                 double staffTop, double lineSpacing) {
+        List<Chords> chords = measure.getChords();
+        if (chords == null || chords.isEmpty()) {
+            return;
+        }
+        
+        double noteSpacing = measureWidth / (chords.size() + 1);
+        
+        for (int i = 0; i < chords.size(); i++) {
+            Chords chord = chords.get(i);
+            double noteX = measureX + (i + 1) * noteSpacing;
+            
+            if (chord.getNotes().isEmpty()) {
+                continue;
+            }
+            
+            if (chord.getNotes().size() == 1) {
+                Note note = chord.getNotes().get(0);
+                drawNote(gc, note, noteX, staffTop, lineSpacing, chord.getNotetype());
+            } else {
+                for (Note note : chord.getNotes()) {
+                    drawNote(gc, note, noteX, staffTop, lineSpacing, chord.getNotetype());
+                }
+                
+                double topNoteY = getNoteYPosition(chord.getNotes().get(0), staffTop, lineSpacing);
+                double bottomNoteY = getNoteYPosition(chord.getNotes().get(chord.getNotes().size() - 1), staffTop, lineSpacing);
+                gc.strokeLine(noteX - 6, topNoteY, noteX - 6, bottomNoteY);
+            }
+        }
+    }
+    
+    private void drawNote(GraphicsContext gc, Note note, double x, double staffTop, double lineSpacing, Notetype noteType) {
+        double y = getNoteYPosition(note, staffTop, lineSpacing);
+        
+        drawLedgerLines(gc, x, y, staffTop, lineSpacing);
+        
+        switch (noteType) {
+            case WHOLE_NOTE:
+                drawWholeNote(gc, x, y);
+                break;
+            case HALF_NOTE:
+                drawHalfNote(gc, x, y);
+                break;
+            case QUARTER_NOTE:
+                drawQuarterNote(gc, x, y);
+                break;
+            case EIGHTH_NOTE:
+                drawEighthNote(gc, x, y);
+                break;
+            case SIXTEENTH_NOTE:
+                drawSixteenthNote(gc, x, y);
+                break;
+            case DOTTED_EIGHTH_NOTE:
+                drawEighthNote(gc, x, y);
+                gc.fillOval(x + 12, y - 2, 4, 4);
+                break;
+            case WHOLE_REST:
+            case HALF_REST:
+            case QUARTER_REST:
+                drawRest(gc, x, staffTop, lineSpacing, noteType);
+                break;
+            default:
+                drawQuarterNote(gc, x, y); // Default to quarter note
+        }
+        
+        if (note.getModifier() != null && !note.getModifier().isEmpty()) {
+            drawAccidental(gc, x, y, note.getModifier());
+        }
+    }
+    
+    private double getNoteYPosition(Note note, double staffTop, double lineSpacing) {
+        int octave = note.getOctave();
+        String pitch = note.getPitch();
+        
+        int semitones = 0;
+        
+        semitones += (octave - 4) * 12;
+        
+        switch (pitch) {
+            case "C": semitones += 0; break;
+            case "D": semitones += 2; break;
+            case "E": semitones += 4; break;
+            case "F": semitones += 5; break;
+            case "G": semitones += 7; break;
+            case "A": semitones += 9; break;
+            case "B": semitones += 11; break;
+        }
+        
+        // Adjust for sharps and flats
+        if (note.getModifier().equals("#")) {
+            semitones += 1;
+        } else if (note.getModifier().equals("b")) {
+            semitones -= 1;
+        }
+        
+
+        double steps = semitones / 2.0;
+        
+        return staffTop + 5 * lineSpacing - steps * (lineSpacing / 2);
+    }
+    
+    private void drawLedgerLines(GraphicsContext gc, double x, double y, double staffTop, double lineSpacing) {
+        if (y < staffTop - lineSpacing / 2) {
+            for (double ly = staffTop - lineSpacing; ly >= y - lineSpacing / 2; ly -= lineSpacing) {
+                gc.strokeLine(x - 10, ly, x + 10, ly);
+            }
+        }
+        
+        if (y > staffTop + 4 * lineSpacing + lineSpacing / 2) {
+            for (double ly = staffTop + 5 * lineSpacing; ly <= y + lineSpacing / 2; ly += lineSpacing) {
+                gc.strokeLine(x - 10, ly, x + 10, ly);
+            }
+        }
+    }
+    
+    private void drawWholeNote(GraphicsContext gc, double x, double y) {
+        gc.setFill(Color.WHITE);
+        gc.fillOval(x - 6, y - 4, 12, 8);
+        gc.setStroke(Color.BLACK);
+        gc.strokeOval(x - 6, y - 4, 12, 8);
+    }
+    
+    private void drawHalfNote(GraphicsContext gc, double x, double y) {
+        gc.setFill(Color.WHITE);
+        gc.fillOval(x - 6, y - 4, 12, 8);
+        gc.setStroke(Color.BLACK);
+        gc.strokeOval(x - 6, y - 4, 12, 8);
+        
+        gc.strokeLine(x + 6, y, x + 6, y - 30);
+    }
+    
+    private void drawQuarterNote(GraphicsContext gc, double x, double y) {
+        gc.setFill(Color.BLACK);
+        gc.fillOval(x - 6, y - 4, 12, 8);
+        
+        gc.strokeLine(x + 6, y, x + 6, y - 30);
+    }
+    
+    private void drawEighthNote(GraphicsContext gc, double x, double y) {
+        gc.setFill(Color.BLACK);
+        gc.fillOval(x - 6, y - 4, 12, 8);
+        
+        gc.strokeLine(x + 6, y, x + 6, y - 30);
+        
+        gc.beginPath();
+        gc.moveTo(x + 6, y - 30);
+        gc.bezierCurveTo(x + 6, y - 30, x + 20, y - 25, x + 20, y - 15);
+        gc.stroke();
+    }
+    
+    private void drawSixteenthNote(GraphicsContext gc, double x, double y) {
+        gc.setFill(Color.BLACK);
+        gc.fillOval(x - 6, y - 4, 12, 8);
+        
+        gc.strokeLine(x + 6, y, x + 6, y - 30);
+        
+        gc.beginPath();
+        gc.moveTo(x + 6, y - 30);
+        gc.bezierCurveTo(x + 6, y - 30, x + 20, y - 25, x + 20, y - 15);
+        gc.stroke();
+        
+        gc.beginPath();
+        gc.moveTo(x + 6, y - 25);
+        gc.bezierCurveTo(x + 6, y - 25, x + 20, y - 20, x + 20, y - 10);
+        gc.stroke();
+    }
+    
+    private void drawRest(GraphicsContext gc, double x, double staffTop, double lineSpacing, Notetype restType) {
+        gc.setFill(Color.BLACK);
+        
+        switch (restType) {
+            case WHOLE_REST:
+                // Draw whole rest 
+                gc.fillRect(x - 6, staffTop + lineSpacing - 3, 12, 3);
+                break;
+            case HALF_REST:
+                // Draw half rest 
+                gc.fillRect(x - 6, staffTop + 2 * lineSpacing, 12, 3);
+                break;
+            case QUARTER_REST:
+                // Draw quarter rest symbol
+                gc.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+                gc.fillText("𝄽", x - 5, staffTop + 2 * lineSpacing + 5);
+                break;
+        }
+    }
+    
+    private void drawAccidental(GraphicsContext gc, double x, double y, String modifier) {
+        gc.setFont(Font.font("Arial", FontWeight.BOLD, 16));
+        
+        if (modifier.equals("#")) {
+            gc.fillText("♯", x - 15, y + 5);
+        } else if (modifier.equals("b")) {
+            gc.fillText("♭", x - 15, y + 5);
+        }
+    }
+    
+    private Player metronomePlayer;
+    private volatile boolean isMetronomePlaying = false;
+    private Thread metronomeThread;
+    
+    /**
+     * Starts the metronome at the song's tempo.
+     */
+    public void startMetronome() {
+        if (metronomePlayer == null) {
+            metronomePlayer = new Player();
+        }
+        
+        if (metronomeThread != null && metronomeThread.isAlive()) {
+            return;
+        }
+        
+        isMetronomePlaying = true;
+        metronomeThread = new Thread(() -> {
+            while (isMetronomePlaying) {
+                try {
+                    metronomePlayer.play("I[Woodblock] A5s");
+                    
+                    // Calculate delay based on tempo (beats per minute)
+                    long delayMillis = (60_000 / tempo); // Convert BPM to milliseconds
+                    
+                    Thread.sleep(delayMillis);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    break;
+                }
+            }
+        });
+        metronomeThread.setDaemon(true);
+        metronomeThread.start();
+    }
+    
+    /**
+     * Stops the metronome.
+     */
+    public void stopMetronome() {
+        isMetronomePlaying = false;
+        if (metronomeThread != null) {
+            metronomeThread.interrupt();
+            metronomeThread = null;
+        }
+    }
+    
+    /**
+     * Plays the song with metronome.
+     * 
+     * @param onComplete Callback to run when the song finishes playing
+     */
+    public void playSongWithMetronome(Runnable onComplete) {
+        startMetronome();
+        
+        new Thread(() -> {
+            try {
+                Thread.sleep(4 * (60_000 / tempo));
+                
+                playSong();
+                
+                stopMetronome();
+                
+                if (onComplete != null) {
+                    Platform.runLater(onComplete);
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
+    }
 
 
 
