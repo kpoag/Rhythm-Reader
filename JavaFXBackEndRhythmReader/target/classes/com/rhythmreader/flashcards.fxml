@@ -7,33 +7,38 @@
 
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox spacing="20" padding="20" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.controllers.flashcardsController" styleClass="flashcard-container">
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.flashcardsController">
 
-    <!-- Category Selection Grids -->
-    <Label text="Choose a Genre:" styleClass="section-label"/>
-    <GridPane fx:id="grid_genre" hgap="10" vgap="10" alignment="center" />
-    
-    <Label text="Choose an Instrument:" styleClass="section-label"/>
-    <GridPane fx:id="grid_instrument" hgap="10" vgap="10" alignment="center" />
-    
-    <Label text="Choose a Skill Level:" styleClass="section-label"/>
-    <GridPane fx:id="grid_skill" hgap="10" vgap="10" alignment="center" />
+    <!-- Top Section: Title -->
+    <top>
+        <Label text="Flashcards" style="-fx-font-size: 24px; -fx-font-weight: bold;" BorderPane.alignment="CENTER"/>
+    </top>
 
-    <!-- Flashcards Display Area (Populated after category selection) -->
-    <Label text="Flashcards" styleClass="section-label"/>
-    <VBox fx:id="flashcardsVBox" spacing="10" styleClass="flashcard-content-container" />
+    <!-- Center Section: Flashcards List -->
+    <center>
+        <ScrollPane fitToWidth="true">
+            <VBox fx:id="flashcardsContainer" spacing="10" padding="10">
+                <!-- Flashcards will be dynamically added here -->
+            </VBox>
+        </ScrollPane>
+    </center>
 
-    <!-- Optional: add a button to generate flashcards or confirm selections -->
-    <Button text="Generate Flashcards" fx:id="generateFlashcardsButton" styleClass="action-button"/>
+    <!-- Bottom Section: New Flashcard Creator -->
+    <bottom>
+        <HBox spacing="10" padding="10" alignment="CENTER">
+            <TextField fx:id="questionField" promptText="Enter question..." />
+            <TextField fx:id="answerField" promptText="Enter answer..." />
+            <Button text="Add Flashcard" onAction="#handleAddFlashcard"/>
+        </HBox>
+    </bottom>
 
-    <!-- Optional: add CSS -->
-    <stylesheets>
-        <URL value="@styles.css"/>
-    </stylesheets>
-
-</VBox>
+</BorderPane>
