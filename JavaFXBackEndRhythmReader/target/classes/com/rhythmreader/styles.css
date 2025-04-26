@@ -409,12 +409,6 @@
     -fx-font-size: 8px;
     -fx-padding: 0 0 5 0;
     -fx-alignment: bottom-center;
-<<<<<<< HEAD
-    -fx-pref-height: 180;
-    -fx-max-width: Infinity;
-    -fx-min-width: 42;
-    HBox.hgrow: ALWAYS;
-=======
     -fx-min-height: 150;
     -fx-pref-height: 150;
     -fx-max-height: 150;
@@ -422,7 +416,6 @@
     -fx-pref-width: 25;
     -fx-max-width: 25;
     -fx-cursor: hand;
->>>>>>> 5847cfa9c22c8441d3f0a5bb615532a338d6fe5e
 }
 
 .black-key {

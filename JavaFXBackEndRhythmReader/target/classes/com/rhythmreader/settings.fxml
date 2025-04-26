@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: ad987f;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controler="com.controllers.settingsController">
+   <children>
+      <Text layoutX="24.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile Bio">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <TextField fx:id="profileBio" layoutX="24.0" layoutY="98.0" prefHeight="73.0" prefWidth="540.0" promptText="Add a bio to your profile" />
+      <Text layoutX="257.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Settings">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="24.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filter Content">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <MenuButton layoutX="500.0" layoutY="190.0" mnemonicParsing="false" text="Filters">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Action 1" />
+          <MenuItem mnemonicParsing="false" text="Action 2" />
+        </items>
+      </MenuButton>
+      <Text layoutX="24.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Push Notifications">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <ButtonBar layoutX="43.0" layoutY="288.0" prefHeight="40.0" prefWidth="200.0" />
+      <ToggleButton fx:id="notificationToggle" layoutX="527.0" layoutY="230.0" mnemonicParsing="false" onAction="#handleNotificationToggle" text="OFF" />
+      <ImageView fitHeight="32.0" fitWidth="36.0" layoutX="24.0" layoutY="14.0" onMouseClicked="#onBackButtonClicked" onTouchPressed="#switchToProfile" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/back.png" preserveRatio="true" />
+         </image>
+      </ImageView>
+      <Text layoutX="24.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dark Mode">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <ToggleButton fx:id="darkModeToggle" layoutX="527.0" layoutY="270.0" mnemonicParsing="false" onAction="#handleDarkModeToggle" text="OFF" />
+      <ImageView fx:id="resetAccountButton" fitHeight="32.0" fitWidth="27.0" layoutX="529.0" layoutY="310.0" onMouseClicked="#resetAccountClicked" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/refresh-arrow.png" preserveRatio="true" />
+         </image>
+      </ImageView>
+      <Text layoutX="24.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Delete Account">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="24.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reset Account">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="deleteAccountButton" fitHeight="32.0" fitWidth="27.0" layoutX="532.0" layoutY="349.0" onMouseClicked="#deleteAccountClicked" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/remove-user.png" preserveRatio="true" />
+         </image>
+      </ImageView>
+   </children>
+
+   <stylesheets>
+        <URL value="@styles.css" />
+    </stylesheets>
+</AnchorPane>
