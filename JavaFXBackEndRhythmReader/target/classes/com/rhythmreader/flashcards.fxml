@@ -7,23 +7,38 @@
 
 <?xml version="1.0" encoding="UTF-8"?>
 
-<AnchorPane id="AnchorPane" prefHeight="430" prefWidth="932" fx:id="launch_pane"
-            xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.controllers.flashcardsController">
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-    <stylesheets>
-        <URL value="@styles.css"/>
-    </stylesheets>
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.flashcardsController">
 
-    <children>
-       
-        <Button fx:id="btnOne" layoutX="400" layoutY="20" text="Click Me" onAction="#handleButtonClick"/>
-        <Button fx:id="myButton" layoutX="400" layoutY="60" text="Another Click" onAction="#handleButtonClick"/>
+    <!-- Top Section: Title -->
+    <top>
+        <Label text="Flashcards" style="-fx-font-size: 24px; -fx-font-weight: bold;" BorderPane.alignment="CENTER"/>
+    </top>
 
-        
-        <GridPane fx:id="grid_genre" layoutX="50" layoutY="120" hgap="10" vgap="10"/>
-        <GridPane fx:id="grid_instrument" layoutX="50" layoutY="220" hgap="10" vgap="10"/>
-        <GridPane fx:id="grid_skill" layoutX="50" layoutY="320" hgap="10" vgap="10"/>
-    </children>
-</AnchorPane>
+    <!-- Center Section: Flashcards List -->
+    <center>
+        <ScrollPane fitToWidth="true">
+            <VBox fx:id="flashcardsContainer" spacing="10" padding="10">
+                <!-- Flashcards will be dynamically added here -->
+            </VBox>
+        </ScrollPane>
+    </center>
 
+    <!-- Bottom Section: New Flashcard Creator -->
+    <bottom>
+        <HBox spacing="10" padding="10" alignment="CENTER">
+            <TextField fx:id="questionField" promptText="Enter question..." />
+            <TextField fx:id="answerField" promptText="Enter answer..." />
+            <Button text="Add Flashcard" onAction="#handleAddFlashcard"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>
