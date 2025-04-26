@@ -43,7 +43,7 @@ public class profileController {
     private Text settings;
 
     @FXML
-    private Button settingsButton;
+    private ImageView settingsButton;
 
     @FXML
     private Text username;
