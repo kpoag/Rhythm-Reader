@@ -10,8 +10,8 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: ad987f;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.favoritesController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fafdf3" height="26.0" layoutX="-4.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="607.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fafdf3" height="94.0" layoutX="-4.0" layoutY="67.0" stroke="BLACK" strokeType="INSIDE" width="607.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9fbfdc" height="94.0" layoutX="-4.0" layoutY="161.0" stroke="BLACK" strokeType="INSIDE" width="607.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fafdf3" height="94.0" layoutX="-4.0" layoutY="67.0" stroke="#fafdf3" strokeType="INSIDE" width="607.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9fbfdc" height="94.0" layoutX="-4.0" layoutY="161.0" stroke="#9fbfdc" strokeType="INSIDE" width="607.0" />
       <Text layoutX="24.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="My Songs:">
          <font>
             <Font name="System Bold" size="14.0" />
@@ -53,17 +53,13 @@
       <Text layoutX="24.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rating: 5.0/5.0" />
       <ImageView fitHeight="75.0" fitWidth="68.0" layoutX="476.0" layoutY="174.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/Free_Fallin'_Single_art.png" preserveRatio="true" />
+            <Image preserveRatio="true" url="@images/Free_Fallin'_Single_art.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="68.0" fitWidth="68.0" layoutX="476.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/imyours_coverart.png" preserveRatio="true" />
+            <Image preserveRatio="true" url="@images/imyours_coverart.png" />
          </image>
       </ImageView>
    </children>
-
-   <stylesheets>
-        <URL value="@styles.css" />
-    </stylesheets>
 </AnchorPane>

@@ -6,20 +6,12 @@ import com.model.RRFacade;
 import com.model.User;
 import com.rhythmreader.App;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 public class profileController {
-
-    @FXML
-    private Text editProfile;
-
-    @FXML
-    private Button editProfileButton;
 
     @FXML
     private Text emailAddress;
@@ -47,11 +39,6 @@ public class profileController {
 
     @FXML
     private Text username;
-
-    @FXML
-    void switchToEditProfile(ActionEvent event) throws IOException {
-       // App.navigateTo("editProfile");
-    }
 
     @FXML
     void favoritesButtonClicked(MouseEvent event) throws IOException {
