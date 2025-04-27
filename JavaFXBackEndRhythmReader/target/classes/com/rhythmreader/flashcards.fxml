@@ -1,44 +1,25 @@
-
-
-
-
-
-
-
 <?xml version="1.0" encoding="UTF-8"?>
-
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Pos?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.flashcardsController">
-
-    <!-- Top Section: Title -->
-    <top>
-        <Label text="Flashcards" style="-fx-font-size: 24px; -fx-font-weight: bold;" BorderPane.alignment="CENTER"/>
-    </top>
-
-    <!-- Center Section: Flashcards List -->
-    <center>
-        <ScrollPane fitToWidth="true">
-            <VBox fx:id="flashcardsContainer" spacing="10" padding="10">
-                <!-- Flashcards will be dynamically added here -->
-            </VBox>
-        </ScrollPane>
-    </center>
-
-    <!-- Bottom Section: New Flashcard Creator -->
-    <bottom>
-        <HBox spacing="10" padding="10" alignment="CENTER">
-            <TextField fx:id="questionField" promptText="Enter question..." />
-            <TextField fx:id="answerField" promptText="Enter answer..." />
-            <Button text="Add Flashcard" onAction="#handleAddFlashcard"/>
-        </HBox>
-    </bottom>
-
-</BorderPane>
+<VBox spacing="10" alignment="CENTER" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.FlashcardController">
+    
+    
+    <Label fx:id="flashcardLabel" text="Welcome to Flashcards!" styleClass="flashcard-label" />
+    
+ 
+    <HBox spacing="10" alignment="CENTER">
+        <Button fx:id="nextButton" text="Next Card" onAction="#nextFlashcard" styleClass="action-button" />
+        <Button fx:id="showAnswerButton" text="Show Answer" onAction="#showAnswer" styleClass="action-button" />
+    </HBox>
+    
+    
+    <ComboBox fx:id="categorySelector" prefWidth="150" />
+    
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+    
+</VBox>
