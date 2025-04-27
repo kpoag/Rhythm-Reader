@@ -1,14 +1,70 @@
 package com.controllers;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.ArrayList;
+import java.util.List;
 
-import javafx.fxml.Initializable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 
-public class libraryController implements Initializable {
+public class libraryController {
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    @FXML private TextField searchField;
+    @FXML private Button searchButton;
+    @FXML private Button addMusicButton;
+    @FXML private ListView<String> musicListView;
+    @FXML private VBox musicDetailsContainer;
+
+    private ObservableList<String> musicItems;
+    private List<String> musicData;
+
+    @FXML
+    public void initialize() {
+        // Example music data
+        musicData = new ArrayList<>();
+        musicData.add("Shape of You - Ed Sheeran");
+        musicData.add("Blinding Lights - The Weeknd");
+        musicData.add("Rolling in the Deep - Adele");
+        
+        musicItems = FXCollections.observableArrayList(musicData);
+        musicListView.setItems(musicItems);
     }
-    
+
+    @FXML
+    void searchMusic(ActionEvent event) {
+        String searchQuery = searchField.getText().toLowerCase();
+        ObservableList<String> filteredMusic = FXCollections.observableArrayList();
+
+        for (String music : musicData) {
+            if (music.toLowerCase().contains(searchQuery)) {
+                filteredMusic.add(music);
+            }
+        }
+
+        musicListView.setItems(filteredMusic);
+    }
+
+    @FXML
+    void addMusic(ActionEvent event) {
+        // Example of adding a new music entry
+        String newMusic = "New Song - Artist Name";
+        musicData.add(newMusic);
+        musicItems.add(newMusic);
+    }
+
+    @FXML
+    void showMusicDetails(ActionEvent event) {
+        String selectedMusic = musicListView.getSelectionModel().getSelectedItem();
+        if (selectedMusic != null) {
+            musicDetailsContainer.getChildren().clear();
+            Label musicDetails = new Label("Details for: " + selectedMusic);
+            musicDetailsContainer.getChildren().add(musicDetails);
+        }
+    }
 }

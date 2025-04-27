@@ -6,34 +6,27 @@
 
 
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
 
-<VBox spacing="20" padding="20" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.controllers.flashcardsController" styleClass="flashcard-container">
-
-    <!-- Category Selection Grids -->
-    <Label text="Choose a Genre:" styleClass="section-label"/>
-    <GridPane fx:id="grid_genre" hgap="10" vgap="10" alignment="center" />
+<VBox spacing="10" alignment="CENTER" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.FlashcardController">
     
-    <Label text="Choose an Instrument:" styleClass="section-label"/>
-    <GridPane fx:id="grid_instrument" hgap="10" vgap="10" alignment="center" />
+    <!-- Flashcard Question Section -->
+    <Label fx:id="flashcardLabel" text="Welcome to Flashcards!" styleClass="flashcard-label" />
     
-    <Label text="Choose a Skill Level:" styleClass="section-label"/>
-    <GridPane fx:id="grid_skill" hgap="10" vgap="10" alignment="center" />
-
-    <!-- Flashcards Display Area (Populated after category selection) -->
-    <Label text="Flashcards" styleClass="section-label"/>
-    <VBox fx:id="flashcardsVBox" spacing="10" styleClass="flashcard-content-container" />
-
-    <!-- Optional: add a button to generate flashcards or confirm selections -->
-    <Button text="Generate Flashcards" fx:id="generateFlashcardsButton" styleClass="action-button"/>
-
-    <!-- Optional: add CSS -->
-    <stylesheets>
-        <URL value="@styles.css"/>
-    </stylesheets>
-
+    <!-- Control Buttons -->
+    <HBox spacing="10" alignment="CENTER">
+        <Button fx:id="nextButton" text="Next Card" onAction="#nextFlashcard" styleClass="action-button" />
+        <Button fx:id="showAnswerButton" text="Show Answer" onAction="#showAnswer" styleClass="action-button" />
+    </HBox>
+    
+    <!-- Category Selector (Optional) -->
+    <ComboBox fx:id="categorySelector" prefWidth="150" />
+    
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+    
 </VBox>
