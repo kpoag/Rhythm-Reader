@@ -1,95 +1,95 @@
 package com.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 
 public class flashcardsController {
 
-    @FXML private GridPane grid_genre;
-    @FXML private GridPane grid_instrument;
-    @FXML private GridPane grid_skill;
+    @FXML private TextField searchField;
+    @FXML private Button searchButton;
+    @FXML private Button addFlashcardButton;
+    @FXML private Button playButton;  // Button to simulate playing the flashcard with tempo
+    @FXML private ListView<String> flashcardListView;
+    @FXML private VBox flashcardDetailsContainer;
+    @FXML private TextField tempoField;  // Field to input tempo
 
-    @FXML private VBox flashcardsVBox; // VBox to hold the flashcards content dynamically
+    private ObservableList<String> flashcardItems;
+    private List<String> flashcardData;
 
-    private String categoryType;
-    private String categoryName;
-
-    // Initial setup: populate the grids with genre, instrument, skill buttons
+    @FXML
     public void initialize() {
-        displayGenres();
-        displayInstruments();
-        displaySkillLevels();
+        // Example flashcard data
+        flashcardData = new ArrayList<>();
+        flashcardData.add("Question: What is Java? - Answer: A programming language");
+        flashcardData.add("Question: What is the capital of France? - Answer: Paris");
+        flashcardData.add("Question: What is 2 + 2? - Answer: 4");
+
+        flashcardItems = FXCollections.observableArrayList(flashcardData);
+        flashcardListView.setItems(flashcardItems);
     }
 
-    private void displayGenres() {
-        String[] genres = {"POP", "R&B", "JAZZ"};
-        for (int i = 0; i < genres.length; i++) {
-            final String genre = genres[i];
-            Button btn = createStyledButton(genre);
-            grid_genre.add(btn, i, 0);
-            btn.setOnAction(e -> handleCategoryClick("Genre", genre));
+    @FXML
+    void searchFlashcard(ActionEvent event) {
+        String searchQuery = searchField.getText().toLowerCase();
+        ObservableList<String> filteredFlashcards = FXCollections.observableArrayList();
+
+        for (String flashcard : flashcardData) {
+            if (flashcard.toLowerCase().contains(searchQuery)) {
+                filteredFlashcards.add(flashcard);
+            }
+        }
+
+        flashcardListView.setItems(filteredFlashcards);
+    }
+
+    @FXML
+    void addFlashcard(ActionEvent event) {
+        // Example of adding a new flashcard entry
+        String newFlashcard = "Question: What is 5 + 5? - Answer: 10";
+        flashcardData.add(newFlashcard);
+        flashcardItems.add(newFlashcard);
+    }
+
+    @FXML
+    void showFlashcardDetails(ActionEvent event) {
+        String selectedFlashcard = flashcardListView.getSelectionModel().getSelectedItem();
+        if (selectedFlashcard != null) {
+            flashcardDetailsContainer.getChildren().clear();
+            Label flashcardDetails = new Label("Details for: " + selectedFlashcard);
+            flashcardDetailsContainer.getChildren().add(flashcardDetails);
         }
     }
 
-    private void displayInstruments() {
-        String[] instruments = {"PIANO", "DRUMS", "FLUTE"};
-        for (int i = 0; i < instruments.length; i++) {
-            final String instrument = instruments[i];
-            Button btn = createStyledButton(instrument);
-            grid_instrument.add(btn, i, 0);
-            btn.setOnAction(e -> handleCategoryClick("Instrument", instrument));
-        }
-    }
+    @FXML
+    void playFlashcardWithTempo(ActionEvent event) {
+        String selectedFlashcard = flashcardListView.getSelectionModel().getSelectedItem();
+        if (selectedFlashcard != null) {
+            // Extract question and answer from the selected flashcard
+            String[] parts = selectedFlashcard.split(" - ");
+            String question = parts[0];
+            String answer = parts[1];
 
-    private void displaySkillLevels() {
-        String[] levels = {"BEGINNER", "INTERMEDIATE", "EXPERT"};
-        for (int i = 0; i < levels.length; i++) {
-            final String level = levels[i];
-            Button btn = createStyledButton(level);
-            grid_skill.add(btn, i, 0);
-            btn.setOnAction(e -> handleCategoryClick("Skill Level", level));
-        }
-    }
+            // Get the tempo from the TextField, or use a default value if empty
+            int tempo = 120;  // Default tempo
+            try {
+                tempo = Integer.parseInt(tempoField.getText());
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid tempo input, using default: " + tempo);
+            }
 
-    private Button createStyledButton(String label) {
-        Button btn = new Button(label);
-        btn.setMinSize(100, 60);
-        btn.setFont(Font.font("Arial", 14));
-        btn.getStyleClass().add("category-button");
-        return btn;
-    }
-
-    // Handle category selection and display corresponding flashcards
-    private void handleCategoryClick(String categoryType, String categoryName) {
-        this.categoryType = categoryType;
-        this.categoryName = categoryName;
-        System.out.println("Clicked " + categoryType + ": " + categoryName);
-        
-        // Update the layout with flashcards or category information
-        updateFlashcardsContent(categoryType, categoryName);
-    }
-
-    // Update the VBox with content based on the selected category
-    private void updateFlashcardsContent(String categoryType, String categoryName) {
-        // Clear previous content
-        flashcardsVBox.getChildren().clear();
-
-        // Create and add category label to the VBox
-        Label categoryLabel = new Label("Category: " + categoryType + " - " + categoryName);
-        flashcardsVBox.getChildren().add(categoryLabel);
-
-        // Optionally, add more flashcard content or buttons dynamically based on the category
-        Label flashcardDemo = new Label("Here are the flashcards for: " + categoryType + " - " + categoryName);
-        flashcardsVBox.getChildren().add(flashcardDemo);
-        
-        // For example, add a few flashcards
-        for (int i = 1; i <= 3; i++) {
-            Label flashcard = new Label("Flashcard " + i + " for " + categoryType + " - " + categoryName);
-            flashcardsVBox.getChildren().add(flashcard);
+            // Simulate "playing" the flashcard with the tempo (outputting to console)
+            System.out.println("Showing flashcard with question: '" + question + "' at tempo " + tempo);
+            System.out.println("Answer: " + answer);
         }
     }
 }

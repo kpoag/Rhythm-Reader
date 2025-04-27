@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: ad987f;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.favoritesController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fafdf3" height="26.0" layoutX="-4.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="607.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fafdf3" height="94.0" layoutX="-4.0" layoutY="67.0" stroke="#fafdf3" strokeType="INSIDE" width="607.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9fbfdc" height="94.0" layoutX="-4.0" layoutY="161.0" stroke="#9fbfdc" strokeType="INSIDE" width="607.0" />
+      <Text layoutX="24.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="My Songs:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text fill="#fafdf3" layoutX="123.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You haven't created or edited any music. Visit home to start composing!" textAlignment="CENTER" wrappingWidth="353.205078125">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="233.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Favorites &amp; My Songs">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="backButton" fitHeight="19.0" fitWidth="20.0" layoutX="14.0" layoutY="18.0" onMouseClicked="#backButtonClicked" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image preserveRatio="true" url="@images/back.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="24.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Favorites">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="24.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jason Mraz - I'm Yours">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="24.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Genre: POP" />
+      <Text layoutX="24.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rating: 3.5/5.0" />
+      <Text layoutX="22.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tom Petty - Free Fallin'">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="24.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Genre: ROCK" />
+      <Text layoutX="24.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rating: 5.0/5.0" />
+      <ImageView fitHeight="75.0" fitWidth="68.0" layoutX="476.0" layoutY="174.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image preserveRatio="true" url="@images/Free_Fallin'_Single_art.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="68.0" fitWidth="68.0" layoutX="476.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image preserveRatio="true" url="@images/imyours_coverart.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
