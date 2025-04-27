@@ -1,60 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.shape.*?>
-<?import java.net.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane id="AnchorPane" fx:id="dashboard_pane" maxHeight="800.0" maxWidth="600.0" 
-            xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" 
-            fx:controller="com.controllers.userDashboardController">
+<AnchorPane id="AnchorPane" fx:id="dashboard_pane" maxHeight="800.0" maxWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.userDashboardController">
 
     <!-- Background with gradient -->
-    <Rectangle width="800" height="650" styleClass="dashboard-background" AnchorPane.topAnchor="0.0" 
-               AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0"/>
+    <Rectangle height="650" styleClass="dashboard-background" width="800" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                
 
     <!-- Left sidebar with cute design -->
-    <VBox prefWidth="275" styleClass="sidebar" AnchorPane.topAnchor="0.0" 
-          AnchorPane.leftAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+    <VBox prefWidth="275" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
         <padding>
-            <Insets top="25" right="15" bottom="25" left="15" />
+            <Insets bottom="25" left="15" right="15" top="25" />
         </padding>
         
         <!-- Logo and title -->
         <VBox alignment="CENTER" spacing="5">
             <!-- Music note icon could be added here -->
-            <Label fx:id="titleLabel" text="Rhythm" styleClass="title-label-top"/>
-            <ImageView fitWidth="200" fitHeight="50">
+            <Label fx:id="titleLabel" styleClass="title-label-top" text="Rhythm" />
+            <ImageView fitHeight="50" fitWidth="200">
             <image>
-               <Image url="@images/logo.png" preserveRatio="true" />
+               <Image preserveRatio="true" url="@images/logo.png" />
             </image>
          </ImageView>
-            <Label text="Reader" styleClass="title-label-bottom"/>
-            <Label fx:id="subtitleLabel" text="Learn Music Fundamentals!" styleClass="subtitle-label" wrapText="true" />
+            <Label styleClass="title-label-bottom" text="Reader" />
+            <Label fx:id="subtitleLabel" styleClass="subtitle-label" text="Learn Music Fundamentals!" wrapText="true" />
         </VBox>
         
         <!-- User profile section -->
-        <Region VBox.vgrow="ALWAYS"/>
+        <Region VBox.vgrow="ALWAYS" />
         <VBox alignment="CENTER" spacing="10" styleClass="profile-section">
             <padding>
-                <Insets top="25" right="0" bottom="25" left="0" />
+                <Insets bottom="25" left="0" right="0" top="25" />
             </padding>
             
             <!-- Circle avatar placeholder -->
             <StackPane styleClass="avatar-circle">
-                <Label text="👤" styleClass="avatar-text"/>
+                <Label styleClass="avatar-text" text="👤" />
             </StackPane>
             
-            <Label fx:id="usernameLabel" text="Username" styleClass="username-label"/>
+            <Label fx:id="usernameLabel" styleClass="username-label" text="Username" />
             
             <!-- Progress section -->
-            <VBox spacing="8" alignment="CENTER">
-                <Label fx:id="progressLabel" text="Your Progress" styleClass="progress-title"/>
-                <ProgressBar fx:id="progress" prefWidth="140" progress="0.4" styleClass="progress-bar"/>
-                <Label fx:id="progressPercentLabel" text="40% Complete" styleClass="progress-percent"/>
+            <VBox alignment="CENTER" spacing="8">
+                <Label fx:id="progressLabel" styleClass="progress-title" text="Your Progress" />
+                <ProgressBar fx:id="progress" prefWidth="140" progress="0.4" styleClass="progress-bar" />
+                <Label fx:id="progressPercentLabel" styleClass="progress-percent" text="40% Complete" />
             </VBox>
         </VBox>
         
@@ -62,88 +66,76 @@
     </VBox>
 
     <!-- Main content area with rounded corners -->
-    <AnchorPane styleClass="content-area" AnchorPane.topAnchor="0.0" 
-                AnchorPane.leftAnchor="275.0" AnchorPane.rightAnchor="0.0" 
-                AnchorPane.bottomAnchor="0.0">
+    <AnchorPane styleClass="content-area" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="275.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         
         <!-- Welcome header -->
-        <VBox alignment="CENTER_LEFT" AnchorPane.topAnchor="15.0" 
-              AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
-            <Label fx:id="welcomeLabel" text="Welcome back!" styleClass="welcome-label"/>
-            <Label text="What would you like to learn today?" styleClass="welcome-subtitle"/>
+        <VBox alignment="CENTER_LEFT" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">
+            <Label fx:id="welcomeLabel" styleClass="welcome-label" text="Welcome back!" />
+            <Label styleClass="welcome-subtitle" text="What would you like to learn today?" />
         </VBox>
         
         <!-- Feature tiles in a flowing grid -->
-    <ScrollPane fitToWidth="true" fitToHeight="true" pannable="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED"
-            AnchorPane.topAnchor="80.0" AnchorPane.leftAnchor="20.0"
-            AnchorPane.rightAnchor="15.0" AnchorPane.bottomAnchor="20.0"
-            styleClass="transparent-scroll-pane">
-    <FlowPane fx:id="featureGrid" hgap="20" vgap="20" prefWrapLength="360" alignment="CENTER">
+    <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" pannable="true" styleClass="transparent-scroll-pane" vbarPolicy="AS_NEEDED" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="80.0">
+    <FlowPane fx:id="featureGrid" alignment="CENTER" hgap="20" prefWrapLength="360" vgap="20">
 
             <!-- Flashcards tile with icon -->
             <StackPane styleClass="feature-tile, flashcard-color">
                 <VBox alignment="CENTER" spacing="10">
-                    <Label text="🎴" styleClass="feature-icon"/>
-                    <Label text="Flashcards" styleClass="feature-title"/>
-                    <Label text="Learn music fundamentals" styleClass="feature-description" wrapText="true"/>
+                    <Label styleClass="feature-icon" text="🎴" />
+                    <Label styleClass="feature-title" text="Flashcards" />
+                    <Label styleClass="feature-description" text="Learn music fundamentals" wrapText="true" />
                 </VBox>
-                <Button fx:id="flashcardsButton" onAction="#onFlashcardsClicked" 
-                        styleClass="invisible-button"/>
+                <Button fx:id="flashcardsButton" onAction="#onFlashcardsClicked" styleClass="invisible-button" />
             </StackPane>
             
             <!-- Piano tile with icon -->
             <StackPane styleClass="feature-tile, piano-color">
                 <VBox alignment="CENTER" spacing="10">
-                    <Label text="🎹" styleClass="feature-icon"/>
-                    <Label text="Piano" styleClass="feature-title"/>
-                    <Label text="Play and practice" styleClass="feature-description" wrapText="true"/>
+                    <Label styleClass="feature-icon" text="🎹" />
+                    <Label styleClass="feature-title" text="Piano" />
+                    <Label styleClass="feature-description" text="Play and practice" wrapText="true" />
                 </VBox>
-                <Button fx:id="pianoButton" onAction="#onPianoClicked" 
-                        styleClass="invisible-button"/>
+                <Button fx:id="pianoButton" onAction="#onPianoClicked" styleClass="invisible-button" />
             </StackPane>
             
             <!-- Compose tile with icon -->
             <StackPane styleClass="feature-tile, compose-color">
                 <VBox alignment="CENTER" spacing="10">
-                    <Label text="🎼" styleClass="feature-icon"/>
-                    <Label text="Compose" styleClass="feature-title"/>
-                    <Label text="Create or edit sheet music" styleClass="feature-description" wrapText="true"/>
+                    <Label styleClass="feature-icon" text="🎼" />
+                    <Label styleClass="feature-title" text="Compose" />
+                    <Label styleClass="feature-description" text="Create or edit sheet music" wrapText="true" />
                 </VBox>
-                <Button fx:id="composeButton" onAction="#onComposeClicked" 
-                        styleClass="invisible-button"/>
+                <Button fx:id="composeButton" onAction="#onComposeClicked" styleClass="invisible-button" />
             </StackPane>
             
             <!-- Library tile with icon -->
             <StackPane styleClass="feature-tile, library-color">
                 <VBox alignment="CENTER" spacing="10">
-                    <Label text="📚" styleClass="feature-icon"/>
-                    <Label text="Library" styleClass="feature-title"/>
-                    <Label text="Browse the song library" styleClass="feature-description" wrapText="true"/>
+                    <Label styleClass="feature-icon" text="📚" />
+                    <Label styleClass="feature-title" text="Library" />
+                    <Label styleClass="feature-description" text="Browse the song library" wrapText="true" />
                 </VBox>
-                <Button fx:id="libraryButton" onAction="#onLibraryClicked" 
-                        styleClass="invisible-button"/>
+                <Button fx:id="libraryButton" onAction="#onLibraryClicked" styleClass="invisible-button" />
             </StackPane>
             
             <!-- Homework tile with icon -->
             <StackPane styleClass="feature-tile, homework-color">
                 <VBox alignment="CENTER" spacing="10">
-                    <Label text="📝" styleClass="feature-icon"/>
-                    <Label text="Homework" styleClass="feature-title"/>
-                    <Label text="View course grades and work" styleClass="feature-description" wrapText="true"/>
+                    <Label styleClass="feature-icon" text="📝" />
+                    <Label styleClass="feature-title" text="Homework" />
+                    <Label styleClass="feature-description" text="View course grades and work" wrapText="true" />
                 </VBox>
-                <Button fx:id="homeworkButton" onAction="#onHomeworkClicked" 
-                        styleClass="invisible-button"/>
+                <Button fx:id="homeworkButton" onAction="#onHomeworkClicked" styleClass="invisible-button" />
             </StackPane>
             
             <!-- Friends tile with icon -->
             <StackPane styleClass="feature-tile, friends-color">
                 <VBox alignment="CENTER" spacing="10">
-                    <Label text="👥" styleClass="feature-icon"/>
-                    <Label text="Friends" styleClass="feature-title"/>
-                    <Label text="Add and manage friends" styleClass="feature-description" wrapText="true"/>
+                    <Label styleClass="feature-icon" text="👥" />
+                    <Label styleClass="feature-title" text="Friends" />
+                    <Label styleClass="feature-description" text="Add and manage friends" wrapText="true" />
                 </VBox>
-                <Button fx:id="friendsButton" onAction="#onFriendsClicked" 
-                        styleClass="invisible-button"/>
+                <Button fx:id="friendsButton" onAction="#onFriendsClicked" styleClass="invisible-button" />
             </StackPane>
         </FlowPane>
         </ScrollPane>

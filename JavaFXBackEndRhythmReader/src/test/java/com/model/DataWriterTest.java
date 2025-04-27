@@ -129,7 +129,7 @@ public class DataWriterTest {
         assertEquals(3, flashcardList.getFlashcards().size());
 
         // assertTrue(DataWriter.saveFlashcards());
-        // assertFalse(isFileEmpty(DataConstants.FLASHCARD_FILE_NAME));
+        // assertFalse(isFileEmpty(DataConstants.FLASHCARD_TEMP_FILE_NAME));
     }
 
     @Test
@@ -152,7 +152,7 @@ public class DataWriterTest {
         assertEquals(3, songListInstance.getSongs().size());
 
         // assertTrue(DataWriter.saveSongs());
-        // assertFalse(isFileEmpty(DataConstants.SONG_FILE_NAME));
+        // assertFalse(isFileEmpty(DataConstants.SONG_TEMP_FILE_NAME));
     }
 
 
