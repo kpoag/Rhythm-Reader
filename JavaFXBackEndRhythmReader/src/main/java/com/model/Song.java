@@ -1,11 +1,9 @@
 package com.model;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -515,63 +513,64 @@ public boolean matches(String q) {
         //System.out.print("Enter artist: ");
         String artist = user.getUserName();
         
-                Genre genre = Genre.POP;  
-                DifficultyLevel difficulty = DifficultyLevel.BEGINNER;  
-                String instrument = "piano";
-                double rating = 5.0; 
-                int tempo = 120;
-                String timeSignature = "4/4";
+        Genre genre = Genre.POP;  
+        DifficultyLevel difficulty = DifficultyLevel.BEGINNER;  
+        String instrument = "piano";
+        double rating = 5.0; 
+        int tempo = 120;
+        String timeSignature = "4/4";
         
-                Song song= new Song(songID, songTitle, artist, genre,  difficulty, 
-                instrument, rating, tempo, timeSignature);
+        Song song= new Song(songID, songTitle, artist, genre,  difficulty, 
+        instrument, rating, tempo, timeSignature);
         
-                System.out.println("Now, let's add measures to the song.");
-                while (true) {
-                    System.out.print("Do you want to add a measure? (yes/no): ");
-                    String response = scanner.nextLine();
-                    if (!response.equalsIgnoreCase("yes")) {
-                        break;
-                    }
+        System.out.println("Now, let's add measures to the song.");
+        while (true) {
+            System.out.print("Do you want to add a measure? (yes/no): ");
+            String response = scanner.nextLine().trim().toLowerCase();
                     
-                    System.out.print("Enter chords for measure separated by commas (if any, leave empty if none): ");
-                    String chordsInput = scanner.nextLine();
-                    List<Chords> chordsForMeasure = new ArrayList<>();
-                    if (!chordsInput.isEmpty()) {
-            
-                        String[] chordStrings = chordsInput.split(",");
-                        for (String chordStr : chordStrings) {
-                            String trimmedChordStr = chordStr.trim();
-                            Note note= Note.fromString(trimmedChordStr);
-                            if(note != null)
-                            {
-                                List<Note> defaultNotes = new ArrayList<Note>();
-                                defaultNotes.add(note);
-                                Notetype chordNoteType= note.getNoteType();
-                                Chords chord = new Chords(defaultNotes, trimmedChordStr, "major", chordNoteType, false);
-                                chordsForMeasure.add(chord);
-                            }
-                            else
-                            {
-                                System.out.println("Invalid note format: " + trimmedChordStr);
-                            }
-                            
-                            
+            if (!response.equalsIgnoreCase("yes")) {
+                break;
             }
-        }
+                    
+            System.out.print("Enter chords for measure separated by commas (if any, leave empty if none): ");
+            String chordsInput = scanner.nextLine();
+            List<Chords> chordsForMeasure = new ArrayList<>();
+            if (!chordsInput.isEmpty()) {
+            
+                String[] chordStrings = chordsInput.split(",");
+                for (String chordStr : chordStrings) {
+                    String trimmedChordStr = chordStr.trim();
+                    Note note= Note.fromString(trimmedChordStr);
+                    if(note != null)
+                    {
+                        List<Note> defaultNotes = new ArrayList<Note>();
+                        defaultNotes.add(note);
+                        Notetype chordNoteType= note.getNoteType();
+                        Chords chord = new Chords(defaultNotes, trimmedChordStr, "major", chordNoteType, false);
+                        chordsForMeasure.add(chord);
+                    }
+                    else
+                    {
+                        System.out.println("Invalid note format: " + trimmedChordStr);
+                    }
+                            
+                            
+                }
+            }
         
                     System.out.print("Enter beats per measure: ");
-                    String beats = scanner.nextLine();
+                    String beats = scanner.nextLine().trim();
         
                     System.out.print("Enter dynamic markings: ");
-                    String dynamics = scanner.nextLine();
+                    String dynamics = scanner.nextLine().trim();
                     
                     Measure measure = new Measure(chordsForMeasure, beats , dynamics);
                     String jfuguePattern = measure.getJFuguePattern();
         
                     song.addMeasure(measure);
-                }
+        }
                 return song;
-            }
+    }
         
             private static final String SONG_FILE_NAME = "JavaFXBackEndRhythmReader/src/main/java/com/data/songs.json";
         
