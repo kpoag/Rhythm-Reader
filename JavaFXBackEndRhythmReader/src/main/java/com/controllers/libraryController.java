@@ -18,8 +18,10 @@ public class libraryController {
     @FXML private TextField searchField;
     @FXML private Button searchButton;
     @FXML private Button addMusicButton;
+    @FXML private Button playButton;  // Button to play the song with tempo
     @FXML private ListView<String> musicListView;
     @FXML private VBox musicDetailsContainer;
+    @FXML private TextField tempoField;  // Field to input tempo
 
     private ObservableList<String> musicItems;
     private List<String> musicData;
@@ -65,6 +67,28 @@ public class libraryController {
             musicDetailsContainer.getChildren().clear();
             Label musicDetails = new Label("Details for: " + selectedMusic);
             musicDetailsContainer.getChildren().add(musicDetails);
+        }
+    }
+
+    @FXML
+    void playMusicWithTempo(ActionEvent event) {
+        String selectedMusic = musicListView.getSelectionModel().getSelectedItem();
+        if (selectedMusic != null) {
+            // Extract song name and artist from the selected music
+            String[] parts = selectedMusic.split(" - ");
+            String songName = parts[0];
+            String artist = parts[1];
+
+            // Get the tempo from the TextField, or use a default value if empty
+            int tempo = 120;  // Default tempo
+            try {
+                tempo = Integer.parseInt(tempoField.getText());
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid tempo input, using default: " + tempo);
+            }
+
+            // Simulate playing the song at the specified tempo
+            System.out.println("Playing " + songName + " by " + artist + " at tempo " + tempo);
         }
     }
 }

@@ -1,68 +1,95 @@
 package com.controllers;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
-public class flashcardsController implements Initializable {
+public class flashcardsController {
 
-    @FXML private Label flashcardLabel;
-    @FXML private Button nextButton;
-    @FXML private Button showAnswerButton;
-    @FXML private ComboBox<String> categorySelector;
-    @FXML private VBox flashcardContainer;
+    @FXML private TextField searchField;
+    @FXML private Button searchButton;
+    @FXML private Button addFlashcardButton;
+    @FXML private Button playButton;  // Button to simulate playing the flashcard with tempo
+    @FXML private ListView<String> flashcardListView;
+    @FXML private VBox flashcardDetailsContainer;
+    @FXML private TextField tempoField;  // Field to input tempo
 
-    private List<String> flashcards;
-    private int currentFlashcardIndex;
-    private boolean showingAnswer;
+    private ObservableList<String> flashcardItems;
+    private List<String> flashcardData;
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // Initialize flashcards list
-        flashcards = new ArrayList<>();
-        flashcards.add("What is the capital of France?");
-        flashcards.add("What is 2 + 2?");
-        flashcards.add("Who wrote 'To Kill a Mockingbird'?");
-        currentFlashcardIndex = 0;
-        showingAnswer = false;
-        
-        // Set default flashcard
-        flashcardLabel.setText(flashcards.get(currentFlashcardIndex));
-        
-        // Initialize categorySelector (this can be expanded with more categories)
-        categorySelector.getItems().addAll("General Knowledge", "Math", "Literature");
+    @FXML
+    public void initialize() {
+        // Example flashcard data
+        flashcardData = new ArrayList<>();
+        flashcardData.add("Question: What is Java? - Answer: A programming language");
+        flashcardData.add("Question: What is the capital of France? - Answer: Paris");
+        flashcardData.add("Question: What is 2 + 2? - Answer: 4");
+
+        flashcardItems = FXCollections.observableArrayList(flashcardData);
+        flashcardListView.setItems(flashcardItems);
     }
 
     @FXML
-    void nextFlashcard(ActionEvent event) {
-        if (currentFlashcardIndex < flashcards.size() - 1) {
-            currentFlashcardIndex++;
-        } else {
-            currentFlashcardIndex = 0; // Loop back to the first card
+    void searchFlashcard(ActionEvent event) {
+        String searchQuery = searchField.getText().toLowerCase();
+        ObservableList<String> filteredFlashcards = FXCollections.observableArrayList();
+
+        for (String flashcard : flashcardData) {
+            if (flashcard.toLowerCase().contains(searchQuery)) {
+                filteredFlashcards.add(flashcard);
+            }
         }
-        flashcardLabel.setText(flashcards.get(currentFlashcardIndex));
-        showingAnswer = false;
+
+        flashcardListView.setItems(filteredFlashcards);
     }
 
     @FXML
-    void showAnswer(ActionEvent event) {
-        // Show the answer for the current flashcard
-        if (!showingAnswer) {
-            flashcardLabel.setText("The answer is: Paris"); // This would be dynamic based on the flashcard
-            showingAnswer = true;
-        } else {
-            flashcardLabel.setText(flashcards.get(currentFlashcardIndex)); // Show the question again
-            showingAnswer = false;
+    void addFlashcard(ActionEvent event) {
+        // Example of adding a new flashcard entry
+        String newFlashcard = "Question: What is 5 + 5? - Answer: 10";
+        flashcardData.add(newFlashcard);
+        flashcardItems.add(newFlashcard);
+    }
+
+    @FXML
+    void showFlashcardDetails(ActionEvent event) {
+        String selectedFlashcard = flashcardListView.getSelectionModel().getSelectedItem();
+        if (selectedFlashcard != null) {
+            flashcardDetailsContainer.getChildren().clear();
+            Label flashcardDetails = new Label("Details for: " + selectedFlashcard);
+            flashcardDetailsContainer.getChildren().add(flashcardDetails);
         }
     }
 
+    @FXML
+    void playFlashcardWithTempo(ActionEvent event) {
+        String selectedFlashcard = flashcardListView.getSelectionModel().getSelectedItem();
+        if (selectedFlashcard != null) {
+            // Extract question and answer from the selected flashcard
+            String[] parts = selectedFlashcard.split(" - ");
+            String question = parts[0];
+            String answer = parts[1];
+
+            // Get the tempo from the TextField, or use a default value if empty
+            int tempo = 120;  // Default tempo
+            try {
+                tempo = Integer.parseInt(tempoField.getText());
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid tempo input, using default: " + tempo);
+            }
+
+            // Simulate "playing" the flashcard with the tempo (outputting to console)
+            System.out.println("Showing flashcard with question: '" + question + "' at tempo " + tempo);
+            System.out.println("Answer: " + answer);
+        }
+    }
 }
