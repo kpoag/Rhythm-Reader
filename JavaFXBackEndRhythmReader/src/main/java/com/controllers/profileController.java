@@ -28,7 +28,7 @@ public class profileController {
     private Text favorites;
 
     @FXML
-    private Button favoritesButton;
+    private ImageView favoritesButton;
 
     @FXML
     private Text firstName;
@@ -49,13 +49,14 @@ public class profileController {
     private Text username;
 
     @FXML
-    void switchToEditProfile(ActionEvent event) {
-       // App.navigateTo(editProfile.fxml);
+    void switchToEditProfile(ActionEvent event) throws IOException {
+       // App.navigateTo("editProfile");
     }
 
     @FXML
-    void switchToFavorites(ActionEvent event) {
-        // App.navigateTo(favorites.fxml);
+    void favoritesButtonClicked(MouseEvent event) throws IOException {
+        App.navigateTo("favorites");
+
     }
 
     @FXML

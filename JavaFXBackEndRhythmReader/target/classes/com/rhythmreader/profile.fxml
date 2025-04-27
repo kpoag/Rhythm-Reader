@@ -13,7 +13,7 @@
       <Circle fx:id="profileImage" fill="#ffd9c2" layoutX="134.0" layoutY="88.0" radius="73.0" stroke="BLACK" strokeType="INSIDE" />
       <ImageView fx:id="profileImage" fitHeight="84.0" fitWidth="82.0" layoutX="93.0" layoutY="47.0" opacity="0.56" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/user (1).png" preserveRatio="true"/>
+            <Image url="@../../../../../../../../../../Downloads/user%20(1).png" />
          </image>
       </ImageView>
       <Text fx:id="username" layoutX="108.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username" />
@@ -38,7 +38,12 @@
       <ButtonBar prefHeight="40.0" prefWidth="200.0" />
       <ImageView fx:id="settingsButton" fitHeight="40.0" fitWidth="35.0" layoutX="463.0" layoutY="257.0" onMouseClicked="#settingsButtonClicked" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/settings.png" preserveRatio="true" />
+            <Image preserveRatio="true" url="@images/settings.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="favoritesButton" fitHeight="40.0" fitWidth="35.0" layoutX="463.0" layoutY="214.0" onMouseClicked="#favoritesButtonClicked" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/heart.png" preserveRatio="true" />
          </image>
       </ImageView>
    </children>
