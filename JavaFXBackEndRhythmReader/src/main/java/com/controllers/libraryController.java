@@ -33,6 +33,28 @@ public class libraryController {
         musicData.add("Shape of You - Ed Sheeran");
         musicData.add("Blinding Lights - The Weeknd");
         musicData.add("Rolling in the Deep - Adele");
+        musicData.add("Levitating - Dua Lipa");
+    musicData.add("Uptown Funk - Bruno Mars");
+    musicData.add("Bad Guy - Billie Eilish");
+    musicData.add("Happier Than Ever - Billie Eilish");
+    musicData.add("Senorita - Shawn Mendes & Camila Cabello");
+    musicData.add("Watermelon Sugar - Harry Styles");
+    musicData.add("Old Town Road - Lil Nas X");
+    musicData.add("Sunflower - Post Malone & Swae Lee");
+    musicData.add("Perfect - Ed Sheeran");
+    musicData.add("Dance Monkey - Tones and I");
+    musicData.add("Lucid Dreams - Juice WRLD");
+    musicData.add("Peaches - Justin Bieber");
+    musicData.add("Don't Start Now - Dua Lipa");
+    musicData.add("Savage Love - Jason Derulo");
+    musicData.add("Memories - Maroon 5");
+    musicData.add("Drivers License - Olivia Rodrigo");
+    musicData.add("Good 4 U - Olivia Rodrigo");
+    musicData.add("Stay - The Kid LAROI & Justin Bieber");
+    musicData.add("As It Was - Harry Styles");
+    musicData.add("Flowers - Miley Cyrus");
+    musicData.add("Anti-Hero - Taylor Swift");
+    musicData.add("Calm Down - Rema & Selena Gomez");
         
         musicItems = FXCollections.observableArrayList(musicData);
         musicListView.setItems(musicItems);
