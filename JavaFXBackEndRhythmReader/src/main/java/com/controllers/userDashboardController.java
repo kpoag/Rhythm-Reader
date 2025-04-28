@@ -4,14 +4,14 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.model.RRFacade;
+import com.rhythmreader.App;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-
-import com.model.RRFacade;
-import com.rhythmreader.App;
 
 public class userDashboardController implements Initializable {
     @FXML
@@ -49,8 +49,9 @@ public class userDashboardController implements Initializable {
     private void onFriendsClicked(ActionEvent event) throws IOException {
         App.navigateTo("friends");
     }
+    
     @FXML
-    private void onProfileClicked(ActionEvent event) throws IOException {
+    void onProfileIconCLicked(MouseEvent event) throws IOException {
         App.navigateTo("profile");
     }
 
