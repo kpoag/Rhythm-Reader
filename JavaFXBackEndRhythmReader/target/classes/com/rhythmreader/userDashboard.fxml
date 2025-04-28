@@ -48,7 +48,7 @@
             </padding>
             
             <!-- Circle avatar placeholder -->
-            <StackPane styleClass="avatar-circle">
+            <StackPane fx:id="profileIcon" onMouseClicked="#onProfileIconCLicked" styleClass="avatar-circle">
                 <Label styleClass="avatar-text" text="👤" />
             </StackPane>
             
