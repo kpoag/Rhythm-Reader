@@ -5,12 +5,13 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
+<?import java.net.URL?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="username" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.profileController">
+<AnchorPane fx:id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.profileController">
    <children>
-      <Circle fx:id="profileImage" fill="#ffd9c2" layoutX="134.0" layoutY="88.0" radius="73.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="profile" fill="#ffd9c2" layoutX="134.0" layoutY="88.0" radius="73.0" stroke="BLACK" strokeType="INSIDE" />
       <ImageView fx:id="profileImage" fitHeight="84.0" fitWidth="82.0" layoutX="93.0" layoutY="47.0" opacity="0.56" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../../../../../Downloads/user%20(1).png" />
