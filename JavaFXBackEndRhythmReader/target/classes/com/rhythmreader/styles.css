@@ -15,7 +15,7 @@
 
 
 #dashboard_pane {
-    -fx-background-color: #000000;
+    -fx-background-color: #ad987f;
 
 }
 .sidebar {
@@ -23,6 +23,12 @@
     -fx-background-radius: 0 20 20 0;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 5, 0);
     -fx-padding: 25 15;
+}
+.error-label {
+    -fx-font-family: "Coiny";
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #df0000;
 }
 
 .title-label-top {
@@ -65,7 +71,7 @@
 }
 
 #mainBorderPane .separator {
-    -fx-background-color: #000000;
+    -fx-background-color: black;
 }
 
 #titleLabel {
@@ -160,16 +166,16 @@
 
 
 .profile-section {
-    -fx-background-color: #ffffff;
+    -fx-background-color: #8ab480;
     -fx-background-radius: 15;
     -fx-padding: 15;
     -fx-spacing: 10;
     -fx-alignment: center;
-    -fx-text-fill: #0000;
+    -fx-text-fill: black;
 }
 
 .avatar-circle {
-    -fx-background-color: #0000;
+    -fx-background-color: black;
     -fx-background-radius: 50;
     -fx-min-width: 60;
     -fx-min-height: 60;
@@ -180,7 +186,7 @@
 
 .avatar-text {
     -fx-font-size: 30px;
-    -fx-text-fill: #0000;
+    -fx-text-fill: black;
 }
 
 #backButton {
@@ -202,19 +208,19 @@
 .username-label {
     -fx-font-family: "Coiny";
     -fx-font-size: 16px;
-    -fx-text-fill: #0000;
+    -fx-text-fill: black;
     -fx-font-weight: bold;
 }
 
 /* Progress Bar Styling */
 .progress-title {
     -fx-font-size: 14px;
-    -fx-text-fill: #0000;
+    -fx-text-fill: black;
     -fx-padding: 10 0 0 0;
 }
 
 .progress-bar {
-    -fx-accent: #0000;
+    -fx-accent: black;
     -fx-background-color: rgba(255, 255, 255, 0.2);
     -fx-background-radius: 10;
     -fx-background-insets: 0;
@@ -228,7 +234,7 @@
 
 .progress-percent {
     -fx-font-size: 12px;
-    -fx-text-fill: #0000;
+    -fx-text-fill: black;
     -fx-padding: 2 0 0 0;
 }
 
@@ -345,7 +351,7 @@
     -fx-border-color: #FFFFFF;
     -fx-border-width: 1px;
     -fx-font-size: 50px;
-    -fx-text-fill: #000000;
+    -fx-text-fill: black;
     -fx-prompt-text-fill: #888888; 
     
 }
@@ -355,6 +361,9 @@
 
 .nav-button {
     -fx-alignment: center;
+    -fx-text-fill: #8ab480;
+    -fx-font-size: 20px;
+    -fx-background-color: transparent;
 }
 .piano-container {
     -fx-background-color: #333;
@@ -380,12 +389,13 @@
 
 }
 
-
-
+.compositionTitleField {
+    -fx-text-fill: black;
+}
 .section-label {
     -fx-font-size: 16px;
     -fx-font-weight: bold;
-    -fx-font-color: #0000;
+    -fx-text-fill: black;
 }
 
 
@@ -464,14 +474,14 @@
     -fx-background-color: white;
     -fx-padding: 20;
     -fx-spacing: 10;
-    -fx-text-fill: #0000;
+    -fx-text-fill: black;
     -fx-alignment: center;
 }
 
 .measure-text {
     -fx-font-family: "Coiny";
     -fx-font-size: 14px;
-    -fx-text-fill: #0000;
+    -fx-text-fill: black;
     -fx-background-color: #8a7a65;
     -fx-padding: 8 12;
     -fx-border-color: #ad987f;
@@ -483,7 +493,7 @@
     -fx-font-family: "Coiny";
     -fx-font-size: 20px;
     -fx-font-weight: bold;
-    -fx-text-fill: #0000;
+    -fx-text-fill: black;
     -fx-padding: 0 5;
 }
 
@@ -504,21 +514,21 @@
     -fx-font-family: "Coiny";
     -fx-font-size: 28px;
     -fx-font-weight: bold;
-    -fx-text-fill: #00000000;
+    -fx-text-fill: black;
     -fx-padding: 10 0 5 0;
 }
 
 .song-artist {
     -fx-font-family: "Coiny";
     -fx-font-size: 18px;
-    -fx-text-fill: #00000000;
+    -fx-text-fill: black;
     -fx-padding: 0 0 5 0;
 }
 
 .song-info {
     -fx-font-family: "Coiny";
     -fx-font-size: 16px;
-    -fx-text-fill: #00000000;
+    -fx-text-fill: black;
     -fx-padding: 0 0 20 0;
 }
 
@@ -526,26 +536,27 @@
     -fx-font-family: "Coiny";
     -fx-font-size: 20px;
     -fx-font-weight: bold;
-    -fx-text-fill: #00000000;
+    -fx-text-fill: black;
     -fx-padding: 10 0;
 }
 
 .note-text {
-    -fx-text-fill: #0000;
+    -fx-text-fill: black;
     -fx-font-weight: bold;
 }
 
 .time-signature-text {
-    -fx-text-fill: #0000;
+    -fx-text-fill: black;
     -fx-font-weight: bold;
 }
 
 .dynamics-text {
-    -fx-text-fill: #0000;
+    -fx-text-fill: black;
     -fx-font-style: italic;
 }
 .staff-container {
     -fx-background-color: white;
+    -fx-text-fill: black;
     -fx-padding: 20;
     -fx-border-color: #dddddd;
     -fx-border-width: 1;
@@ -554,8 +565,12 @@
 
 .staff-canvas {
     -fx-background-color: white;
-}
+    -fx-text-fill: black;
 
+}
+.compser-container {
+    -fx-text-fill: black;
+}
 .metronome-toggle {
     -fx-font-family: "Coiny";
     -fx-font-size: 14px;
@@ -573,5 +588,5 @@
 }
 
 .metronome-toggle:selected .mark {
-    -fx-background-color: #000000;
+    -fx-background-color: black;
 }

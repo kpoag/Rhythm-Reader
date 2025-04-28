@@ -1,12 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.geometry.Insets?>
+<?import javafx.collections.FXCollections?>
+<?import java.net.*?>
+<?import javafx.scene.canvas.Canvas?>
 
-
-
-
-
-<AnchorPane id="AnchorPane" prefHeight="430" prefWidth="932" fx:id="launch_pane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.composeController">
+<VBox spacing="10" styleClass="composer-container" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.ComposerController">
+    <!-- Top Controls Section -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <padding>
+            <Insets top="10" right="10" bottom="10" left="10"/>
+        </padding>
+        <Label text="Composition Title:" styleClass="section-label"/>
+        <TextField fx:id="compositionTitleField" promptText="Enter title" prefWidth="200"/>
+        <Region HBox.hgrow="ALWAYS" />
+        <Button fx:id="saveButton" text="Save Composition" onAction="#saveComposition" styleClass="action-button"/>
+        <Button fx:id="playButton" text="Play Composition" onAction="#playComposition" styleClass="action-button"/>
+    </HBox>
     
-   <stylesheets>
-      <URL value="@styles.css" />
-   </stylesheets>
-</AnchorPane>
+    <!-- Time Signature and Tempo Controls -->
+      <HBox spacing="10" alignment="CENTER_LEFT">
+        <padding>
+            <Insets top="5" right="10" bottom="5" left="10"/>
+        </padding>
+        <Label text="Time Signature:" styleClass="section-label"/>
+        <ComboBox fx:id="timeSignatureSelector" prefWidth="80">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="4/4"/>
+                    <String fx:value="3/4"/>
+                    <String fx:value="2/4"/>
+                    <String fx:value="6/8"/>
+                </FXCollections>
+            </items>
+            <value>
+                <String fx:value="4/4"/>
+            </value>
+        </ComboBox>
+        <Label text="Tempo:" styleClass="section-label"/>
+        <Slider fx:id="tempoSlider" min="60" max="200" value="120" prefWidth="150"/>
+        <Label fx:id="tempoValueLabel" text="120 BPM" styleClass="section-label"/>
+    </HBox>
+    
+    <!-- Main Content Area -->
+    <SplitPane dividerPositions="0.2" VBox.vgrow="ALWAYS">
+        <!-- Note Palette -->
+        <VBox spacing="10" styleClass="note-palette">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Label text="Note Palette" styleClass="section-label"/>
+            
+            <!-- Note Types -->
+            <TitledPane text="Note Types" expanded="true">
+                <VBox spacing="5">
+                    <HBox spacing="5" alignment="CENTER_LEFT">
+                        <ImageView fx:id="wholeNoteImg" styleClass="draggable-note" onDragDetected="#handleDragStart"  fitWidth="30" fitHeight="30" preserveRatio="true">
+                           <image>
+                              <Image url="@images/wholeNoteImg.png"/>
+                           </image>
+                        </ImageView>
+                        <Label text="Whole Note" styleClass="note-label"/>
+                    </HBox>
+                    <HBox spacing="5" alignment="CENTER_LEFT">
+                        <ImageView fx:id="halfNoteImg" styleClass="draggable-note" onDragDetected="#handleDragStart" fitWidth="30" fitHeight="30" preserveRatio="true">
+                           <image>
+                              <Image url="@images/halfNoteImg.png"/>
+                           </image>
+                        </ImageView>
+                        <Label text="Half Note" styleClass="note-label"/>
+                    </HBox>
+                    <HBox spacing="5" alignment="CENTER_LEFT">
+                        <ImageView fx:id="quarterNoteImg" styleClass="draggable-note" onDragDetected="#handleDragStart" fitWidth="30" fitHeight="30" preserveRatio="true">
+                           <image>
+                              <Image url="@images/quarterNoteImg.png"/>
+                           </image>
+                        </ImageView>
+                        <Label text="Quarter Note" styleClass="note-label"/>
+                    </HBox>
+                    <HBox spacing="5" alignment="CENTER_LEFT">
+                        <ImageView fx:id="eighthNoteImg" styleClass="draggable-note" onDragDetected="#handleDragStart" fitWidth="30" fitHeight="30" preserveRatio="true">
+                           <image>
+                              <Image url="@images/eighthNoteImg.png"/>
+                           </image>
+                        </ImageView>
+                        <Label text="Eigth Note" styleClass="note-label"/>
+                    </HBox>
+                    <HBox spacing="5" alignment="CENTER_LEFT">
+                        <ImageView fx:id="sixteenthNoteImg" styleClass="draggable-note" onDragDetected="#handleDragStart" fitWidth="30" fitHeight="30" preserveRatio="true">
+                           <image>
+                              <Image url="@images/sixteenthNoteImg.png"/>
+                           </image>
+                        </ImageView>
+                        <Label text="Sixteenth Note" styleClass="note-label"/>
+                    </HBox>
+                </VBox>
+            </TitledPane>
+            
+            <!-- Rest Types -->
+            <TitledPane text="Rest Types" expanded="true">
+                <VBox spacing="5">
+                    <HBox spacing="5" alignment="CENTER_LEFT">
+                        <ImageView fx:id="wholeRestImg" styleClass="draggable-rest" onDragDetected="#handleDragStart" fitWidth="30" fitHeight="30" preserveRatio="true">
+                           <image>
+                              <Image url="@images/wholeRestImg.png"/>
+                           </image>
+                        </ImageView>
+                        <Label text="Whole Rest" styleClass="note-label"/>
+                    </HBox>
+                    <HBox spacing="5" alignment="CENTER_LEFT">
+                        <ImageView fx:id="halfRestImg" styleClass="draggable-rest" onDragDetected="#handleDragStart" fitWidth="30" fitHeight="30" preserveRatio="true">
+                           <image>
+                              <Image url="@images/halfRestImg.png"/>
+                           </image>
+                        </ImageView>
+                        <Label text="Half Rest" styleClass="note-label"/>
+                    </HBox>
+                    <HBox spacing="5" alignment="CENTER_LEFT">
+                        <ImageView fx:id="quarterRestImg" styleClass="draggable-rest" onDragDetected="#handleDragStart" fitWidth="30" fitHeight="30" preserveRatio="true">
+                           <image>
+                              <Image url="@images/quarterRestImg.png"/>
+                           </image>
+                        </ImageView>
+                        <Label text="Quarter Rest" styleClass="note-label"/>
+                    </HBox>
+                </VBox>
+            </TitledPane>
+            
+            <!-- Accidentals -->
+            <TitledPane text="Accidentals" expanded="true">
+                <VBox spacing="5">
+                    <HBox spacing="5" alignment="CENTER_LEFT">
+                        <ImageView fx:id="sharpImg" styleClass="draggable-accidental" onDragDetected="#handleDragStart" fitWidth="30" fitHeight="30" preserveRatio="true">
+                           <image>
+                              <Image url="@images/sharp.png"/>
+                           </image>
+                        </ImageView>
+                        <Label text="Sharp (#)" styleClass="note-label"/>
+                    </HBox>
+                    <HBox spacing="5" alignment="CENTER_LEFT">
+                        <ImageView fx:id="flatImg" styleClass="draggable-accidental" onDragDetected="#handleDragStart" fitWidth="30" fitHeight="30" preserveRatio="true">
+                           <image>
+                              <Image url="@images/flat.png"/>
+                           </image>
+                        </ImageView>
+                        <Label text="Flat (b)" styleClass="note-label"/>
+                    </HBox>
+                </VBox>
+            </TitledPane>
+            
+            <!-- Tools -->
+            <TitledPane text="Tools" expanded="true">
+                <VBox spacing="5">
+                    <Button fx:id="addMeasureButton" text="Add Measure" onAction="#addMeasure" maxWidth="Infinity"/>
+                    <Button fx:id="clearButton" text="Clear Selected" onAction="#clearSelected" maxWidth="Infinity"/>
+                    <Button fx:id="eraseButton" text="Erase Mode" onAction="#toggleEraseMode" maxWidth="Infinity"/>
+                </VBox>
+            </TitledPane>
+        </VBox>
+        
+        <!-- Staff Area -->
+        <ScrollPane fitToWidth="true" styleClass="staff-scroll-pane">
+            <VBox fx:id="staffContainer" spacing="20" styleClass="staff-container">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+                
+                <!-- Initial staff will be added programmatically -->
+                <Canvas fx:id="staffCanvas" width="800" height="200" 
+                        onDragOver="#handleDragOver" 
+                        onDragDropped="#handleDragDropped"
+                        onMouseClicked="#handleStaffClick"/>
+                
+                <!-- Measures will be added here programmatically -->
+            </VBox>
+        </ScrollPane>
+    </SplitPane>
+    
+    <!-- Status Bar -->
+    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="status-bar">
+        <padding>
+            <Insets top="5" right="10" bottom="5" left="10"/>
+        </padding>
+        <Label fx:id="statusLabel" text="Ready" styleClass="status-label"/>
+        <Region HBox.hgrow="ALWAYS" />
+        <Label fx:id="measureCountLabel" text="Measures: 1" styleClass="status-label"/>
+    </HBox>
+    
+    <stylesheets>
+        <URL value="@styles.css"/>
+    </stylesheets>
+</VBox>

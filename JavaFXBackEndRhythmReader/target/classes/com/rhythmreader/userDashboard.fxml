@@ -57,8 +57,8 @@
             <!-- Progress section -->
             <VBox alignment="CENTER" spacing="8">
                 <Label fx:id="progressLabel" styleClass="progress-title" text="Your Progress" />
-                <ProgressBar fx:id="progress" prefWidth="140" progress="0.4" styleClass="progress-bar" />
-                <Label fx:id="progressPercentLabel" styleClass="progress-percent" text="40% Complete" />
+                <ProgressBar fx:id="progress" prefWidth="140" progress="0.0" styleClass="progress-bar" />
+                <Label fx:id="progressPercentLabel" styleClass="progress-percent" text="0% Complete" />
             </VBox>
         </VBox>
         
@@ -69,9 +69,9 @@
     <AnchorPane styleClass="content-area" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="275.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         
         <!-- Welcome header -->
-        <VBox alignment="CENTER_LEFT" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">
+        <VBox alignment="CENTER" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">
             <Label fx:id="welcomeLabel" styleClass="welcome-label" text="Welcome back!" />
-            <Label styleClass="welcome-subtitle" text="What would you like to learn today?" />
+            <Label styleClass="welcome-subtitle" text="What would you like to do today?" />
         </VBox>
         
         <!-- Feature tiles in a flowing grid -->
@@ -118,15 +118,6 @@
                 <Button fx:id="libraryButton" onAction="#onLibraryClicked" styleClass="invisible-button" />
             </StackPane>
             
-            <!-- Homework tile with icon -->
-            <StackPane styleClass="feature-tile, homework-color">
-                <VBox alignment="CENTER" spacing="10">
-                    <Label styleClass="feature-icon" text="📝" />
-                    <Label styleClass="feature-title" text="Homework" />
-                    <Label styleClass="feature-description" text="View course grades and work" wrapText="true" />
-                </VBox>
-                <Button fx:id="homeworkButton" onAction="#onHomeworkClicked" styleClass="invisible-button" />
-            </StackPane>
             
             <!-- Friends tile with icon -->
             <StackPane styleClass="feature-tile, friends-color">

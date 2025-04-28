@@ -112,25 +112,28 @@ public class RRFacade {
         return newSong;
     }
 
-    public void playCurrentSong() {
+    public boolean playCurrentSong() {
         if (currSong == null) {
             System.out.println("No song selected to play.");
-            return;
+            return false;
         }
         currSong.playSong();
+        return true;
+    }
+    public void setCurrentSong(Song song) {
+        this.currSong = song;
     }
 
-    public void saveCurrentSong() {
-        if (currUser == null) {
-            System.out.println("You must be logged in to save a song.");
-            return;
+    public boolean saveCurrentSong() {
+        if (currSong != null && currUser != null) {
+            ArrayList<Song> songs = DataLoader.loadSongs();
+            songs.add(currSong);
+            DataWriter.saveSongs();
+            return true;
         }
-        if (currSong == null) {
-            System.out.println("No song created to save.");
-            return;
-        }
-        currSong.saveToJson(DataLoader.SONG_FILE_NAME, currUser);
+        return false;
     }
+    
 
 
     public String writeSheetMusic() {
