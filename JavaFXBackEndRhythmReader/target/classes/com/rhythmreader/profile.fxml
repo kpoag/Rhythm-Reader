@@ -12,7 +12,6 @@
 <?import java.net.URL?>
 
 <AnchorPane fx:id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.profileController">
-
    <children>
    <Label fx:id="titleLabel" layoutX="200.0" layoutY="-110.0" text="User Profile" textAlignment="CENTER"/>
       <Circle fx:id="profileCircle" fill="#ffd9c2" layoutX="134.0" layoutY="88.0" radius="73.0" stroke="BLACK" strokeType="INSIDE" />
