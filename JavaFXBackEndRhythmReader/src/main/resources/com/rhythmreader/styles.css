@@ -12,7 +12,7 @@
     -fx-background-color: #ad987f;
 
 }
-
+#mainBorderPane > .header-container .label { -fx-text-fill:black; }
 
 #dashboard_pane {
     -fx-background-color: #ad987f;
@@ -590,3 +590,86 @@
 .metronome-toggle:selected .mark {
     -fx-background-color: black;
 }
+
+.search-section, .friends-section, .requests-section {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-background-radius: 10;
+    -fx-padding: 15;
+    -fx-text-fill: black;
+
+    
+}
+#requestList {
+    -fx-text-fill: black;
+}
+.requestList {
+    -fx-text-fill: black;
+}
+/* ListView Styles */
+.list-view {
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+    -fx-border-color: #dddddd;
+    -fx-border-radius: 5;
+    -fx-padding: 5;
+    -fx-text-fill: black;
+}
+
+.list-cell {
+    -fx-padding: 8 10;
+    -fx-background-color: transparent;
+    -fx-font-family: "Coiny";
+    -fx-font-size: 14px;
+    -fx-text-fill: black;
+}
+.list-cell .label {
+    -fx-text-fill: black; 
+}
+
+.list-cell:filled:selected {
+    -fx-background-color: #8ab480;
+    -fx-text-fill: black;
+}
+.list-cell:filled:selected .label {
+    -fx-text-fill: black;
+}
+.list-cell:filled:hover {
+    -fx-background-color: #f0f0f0;
+    -fx-text-fill: black;
+}
+
+.list-cell .button {
+    -fx-font-family: "Coiny";
+    -fx-font-size: 12px;
+    -fx-background-color: #8ab480;
+    -fx-text-fill: white;
+    -fx-padding: 5 10;
+    -fx-background-radius: 3;
+    -fx-cursor: hand;
+    -fx-min-width: 60;
+    -fx-max-width: 60;
+    -fx-min-height: 25;
+    -fx-max-height: 25;
+}
+
+.list-cell .button:hover {
+    -fx-background-color: #7aa470;
+}
+
+.list-cell .button:nth-child(2) {
+    -fx-background-color: #8ab480;
+    -fx-text-fill: black;
+}
+
+.list-cell .button:nth-child(3) {
+    -fx-background-color: #d9534f;
+    -fx-text-fill: black;
+}
+
+.list-cell .button:nth-child(3):hover {
+    -fx-background-color: #c9433f;
+    -fx-text-fill: black;
+}
+#searchResultsList .list-cell .text { -fx-fill:black; }
+
+#searchResultsList .list-cell { -fx-text-fill: black; }

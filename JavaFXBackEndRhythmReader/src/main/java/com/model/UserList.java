@@ -60,6 +60,19 @@ public class UserList {
 		}
 		return null;
 	}
+     private User findUserByUsername(String username) {
+          if (username == null || username.isEmpty()) {
+              return null;
+          }
+          
+          ArrayList<User> allUsers = UserList.getInstance().getUsers();
+          for (User user : allUsers) {
+              if (user.getUserName().equals(username)) {
+                  return user;
+              }
+          }
+          return null;
+      }
 	
 	/**
      * Returns the list of all users.

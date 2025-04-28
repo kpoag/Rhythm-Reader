@@ -24,6 +24,8 @@ public class User {
     protected int points;
     protected ArrayList<String> badges;
     protected ArrayList<String> friends;
+     protected ArrayList<String> friendRequests = new ArrayList<>();
+
 
 	/**
      * Constructs a new User with a randomly generated UUID and the specified parameters.
@@ -309,24 +311,36 @@ public class User {
         return true;  
 	}
 
-	/**
-     * Returns a list of friend usernames based on the provided user map.
-     *
-     * @param userMap a Map of user IDs to User objects.
-     * @return an  ArrayList of friend usernames.
-     */
-    public ArrayList<String> getFriendNames(Map<String, User> userMap) {
-		ArrayList<String> friendNames = new ArrayList<>();
-		for (String friendId : friends) {
-			User friend = userMap.get(friendId);
-		if (friend != null) {
-            friendNames.add(friend.getUserName()); 
-        } else {
-            friendNames.add("Unknown (" + friendId + ")");
-        }
+public ArrayList<String> getFriends() {
+    return new ArrayList<>(friends);
+}
+
+public ArrayList<String> getFriendRequests() {
+    return new ArrayList<>(friendRequests);
+}
+
+public boolean addFriend(String username) {
+    if (!friends.contains(username)) {
+        return friends.add(username);
     }
-    return friendNames;
-	}
+    return false;
+}
+
+public boolean removeFriend(String username) {
+    return friends.remove(username);
+}
+
+public boolean addFriendRequest(String username) {
+    if (!friendRequests.contains(username)) {
+        return friendRequests.add(username);
+    }
+    return false;
+}
+
+public boolean removeFriendRequest(String username) {
+    return friendRequests.remove(username);
+}
+
 
 	 /**
      * Checks if the provided email is already taken by any user.
