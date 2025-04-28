@@ -552,9 +552,8 @@
 }
 
 .note-label {
-    -fx-text-fill: black;
-    -fx-font-weight: bold;
-    -fx-font-color: black;
+    -fx-text-fill: black !important;  
+    -fx-font-weight: bold !important;
 }
 
 .time-signature-text {
@@ -624,7 +623,7 @@
     -fx-border-color: #dddddd;
     -fx-border-radius: 5;
     -fx-padding: 5;
-    -fx-text-fill: black;
+    -fx-text-fill: black !important;
 }
 
 .list-cell {
@@ -635,7 +634,7 @@
     -fx-text-fill: black;
 }
 .list-cell .label {
-    -fx-text-fill: black; 
+    -fx-text-fill: black !important; 
 }
 
 

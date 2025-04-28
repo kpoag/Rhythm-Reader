@@ -21,7 +21,7 @@ public class userDashboardController implements Initializable {
 
 
     @FXML
-    private void onFlashcardsClicked(MouseEvent event) throws IOException {
+    private void onFlashcardsClicked(ActionEvent event) throws IOException {
         App.navigateTo("flashcards");
     }
 
@@ -38,11 +38,6 @@ public class userDashboardController implements Initializable {
     @FXML
     private void onLibraryClicked(ActionEvent event) throws IOException {
         App.navigateTo("library");
-    }
-
-    @FXML
-    private void onHomeworkClicked(ActionEvent event) throws IOException {
-        App.navigateTo("homework");
     }
 
     @FXML
