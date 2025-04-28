@@ -3,22 +3,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.geometry.Pos?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import java.net.URL?>
-<?import java.net.*?>
-
-
 
 <AnchorPane id="AnchorPane" maxHeight="800" maxWidth="600" fx:id="launch_pane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.flashcardsController">
     <children>
-        <VBox spacing="10" alignment="CENTER" AnchorPane.topAnchor="0.0" 
-              AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0" 
+        <VBox spacing="20" alignment="TOP_CENTER" AnchorPane.topAnchor="0.0"
+              AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0"
               AnchorPane.leftAnchor="0.0">
             <padding>
                 <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
@@ -26,6 +17,84 @@
             
             <Label fx:id="flashcardLabel" text="Welcome to Flashcards!" styleClass="flashcard-label" />
             
+            <!-- Centered GridPane for flashcards -->
+            <GridPane fx:id="flashcardGrid" hgap="10" vgap="10" alignment="CENTER">
+                <columnConstraints>
+                    <ColumnConstraints halignment="CENTER" percentWidth="33.33"/>
+                    <ColumnConstraints halignment="CENTER" percentWidth="33.33"/>
+                    <ColumnConstraints halignment="CENTER" percentWidth="33.33"/>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints valignment="CENTER" percentHeight="33.33"/>
+                    <RowConstraints valignment="CENTER" percentHeight="33.33"/>
+                    <RowConstraints valignment="CENTER" percentHeight="33.33"/>
+                </rowConstraints>
+                
+                <!-- Flashcard 1 -->
+                <StackPane GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="flashcard-box">
+                    <CheckBox fx:id="card1Check" style="-fx-opacity: 0; -fx-pref-width: 150px; -fx-pref-height: 150px;"/>
+                    <Label text="Question 1" visible="${!card1Check.selected}"/>
+                    <Label text="Answer 1" visible="${card1Check.selected}"/>
+                </StackPane>
+
+                <!-- Flashcard 2 -->
+                <StackPane GridPane.rowIndex="0" GridPane.columnIndex="1" styleClass="flashcard-box">
+                    <CheckBox fx:id="card2Check" style="-fx-opacity: 0; -fx-pref-width: 150px; -fx-pref-height: 150px;"/>
+                    <Label text="Question 2" visible="${!card2Check.selected}"/>
+                    <Label text="Answer 2" visible="${card2Check.selected}"/>
+                </StackPane>
+
+                <!-- Flashcard 3 -->
+                <StackPane GridPane.rowIndex="0" GridPane.columnIndex="2" styleClass="flashcard-box">
+                    <CheckBox fx:id="card3Check" style="-fx-opacity: 0; -fx-pref-width: 150px; -fx-pref-height: 150px;"/>
+                    <Label text="Question 3" visible="${!card3Check.selected}"/>
+                    <Label text="Answer 3" visible="${card3Check.selected}"/>
+                </StackPane>
+
+                <!-- Flashcard 4 -->
+                <StackPane GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="flashcard-box">
+                    <CheckBox fx:id="card4Check" style="-fx-opacity: 0; -fx-pref-width: 150px; -fx-pref-height: 150px;"/>
+                    <Label text="Question 4" visible="${!card4Check.selected}"/>
+                    <Label text="Answer 4" visible="${card4Check.selected}"/>
+                </StackPane>
+
+                <!-- Flashcard 5 -->
+                <StackPane GridPane.rowIndex="1" GridPane.columnIndex="1" styleClass="flashcard-box">
+                    <CheckBox fx:id="card5Check" style="-fx-opacity: 0; -fx-pref-width: 150px; -fx-pref-height: 150px;"/>
+                    <Label text="Question 5" visible="${!card5Check.selected}"/>
+                    <Label text="Answer 5" visible="${card5Check.selected}"/>
+                </StackPane>
+
+                <!-- Flashcard 6 -->
+                <StackPane GridPane.rowIndex="1" GridPane.columnIndex="2" styleClass="flashcard-box">
+                    <CheckBox fx:id="card6Check" style="-fx-opacity: 0; -fx-pref-width: 150px; -fx-pref-height: 150px;"/>
+                    <Label text="Question 6" visible="${!card6Check.selected}"/>
+                    <Label text="Answer 6" visible="${card6Check.selected}"/>
+                </StackPane>
+
+                <!-- Flashcard 7 -->
+                <StackPane GridPane.rowIndex="2" GridPane.columnIndex="0" styleClass="flashcard-box">
+                    <CheckBox fx:id="card7Check" style="-fx-opacity: 0; -fx-pref-width: 150px; -fx-pref-height: 150px;"/>
+                    <Label text="Question 7" visible="${!card7Check.selected}"/>
+                    <Label text="Answer 7" visible="${card7Check.selected}"/>
+                </StackPane>
+
+                <!-- Flashcard 8 -->
+                <StackPane GridPane.rowIndex="2" GridPane.columnIndex="1" styleClass="flashcard-box">
+                    <CheckBox fx:id="card8Check" style="-fx-opacity: 0; -fx-pref-width: 150px; -fx-pref-height: 150px;"/>
+                    <Label text="Question 8" visible="${!card8Check.selected}"/>
+                    <Label text="Answer 8" visible="${card8Check.selected}"/>
+                </StackPane>
+
+                <!-- Flashcard 9 -->
+                <StackPane GridPane.rowIndex="2" GridPane.columnIndex="2" styleClass="flashcard-box">
+                    <CheckBox fx:id="card9Check" style="-fx-opacity: 0; -fx-pref-width: 150px; -fx-pref-height: 150px;"/>
+                    <Label text="Question 9" visible="${!card9Check.selected}"/>
+                    <Label text="Answer 9" visible="${card9Check.selected}"/>
+                </StackPane>
+                
+            </GridPane>
+
             <HBox spacing="10" alignment="CENTER">
                 <Button fx:id="nextButton" text="Next Card" onAction="#nextFlashcard" styleClass="action-button" />
                 <Button fx:id="showAnswerButton" text="Show Answer" onAction="#showAnswer" styleClass="action-button" />
