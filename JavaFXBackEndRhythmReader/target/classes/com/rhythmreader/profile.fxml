@@ -4,23 +4,27 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
-<?import java.net.URL?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import java.net.URL?>
 
 <AnchorPane fx:id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.profileController">
+
    <children>
-      <Circle fx:id="profile" fill="#ffd9c2" layoutX="134.0" layoutY="88.0" radius="73.0" stroke="BLACK" strokeType="INSIDE" />
+   <Label fx:id="titleLabel" layoutX="200.0" layoutY="-110.0" text="User Profile" textAlignment="CENTER"/>
+      <Circle fx:id="profileCircle" fill="#ffd9c2" layoutX="134.0" layoutY="88.0" radius="73.0" stroke="BLACK" strokeType="INSIDE" />
       <ImageView fx:id="profileImage" fitHeight="84.0" fitWidth="82.0" layoutX="93.0" layoutY="47.0" opacity="0.56" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../../../../../Downloads/user%20(1).png" />
          </image>
       </ImageView>
-      <Text fx:id="username" layoutX="108.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username" />
-      <Text fx:id="firstName" layoutX="251.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="firstName" underline="true" />
-      <Text fx:id="lastName" layoutX="252.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="lastName" underline="true" />
-      <Text fx:id="emailAddress" layoutX="251.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="emailAddress" underline="true" />
+      <Text fx:id="username" layoutX="108.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username"  styleClass="profileInfo"/>
+      <Text fx:id="firstName" layoutX="251.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="firstName" styleClass="profileInfo" />
+      <Text fx:id="lastName" layoutX="252.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="lastName" styleClass="profileInfo" />
+      <Text fx:id="emailAddress" layoutX="251.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="emailAddress" styleClass="profileInfo" />
       <Text fx:id="favorites" layoutX="61.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Favorites" wrappingWidth="216.5366668701172">
          <font>
             <Font size="24.0" />
@@ -32,12 +36,12 @@
          </font>
       </Text>
       <ButtonBar prefHeight="40.0" prefWidth="200.0" />
-      <ImageView fx:id="settingsButton" fitHeight="40.0" fitWidth="35.0" layoutX="463.0" layoutY="290.0" onMouseClicked="#settingsButtonClicked" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="settingsButton" fitHeight="40.0" fitWidth="35.0" layoutX="463.0" layoutY="290.0" onMouseClicked="#settingsButtonClicked" pickOnBounds="true" preserveRatio="true" styleClass="profileButton">
          <image>
             <Image preserveRatio="true" url="@images/settings.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="favoritesButton" fitHeight="40.0" fitWidth="35.0" layoutX="463.0" layoutY="232.0" onMouseClicked="#favoritesButtonClicked" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="favoritesButton" fitHeight="40.0" fitWidth="35.0" layoutX="463.0" layoutY="232.0" onMouseClicked="#favoritesButtonClicked" pickOnBounds="true" preserveRatio="true" styleClass="profileButton">
          <image>
             <Image preserveRatio="true" url="@images/heart.png" />
          </image>

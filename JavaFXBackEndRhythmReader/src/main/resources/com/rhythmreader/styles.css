@@ -477,7 +477,18 @@
     -fx-text-fill: black;
     -fx-alignment: center;
 }
-
+.avatar-circle:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 12, 0, 0, 4);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-transition: all 0.2s ease-in-out;
+}
+.profileButton:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 12, 0, 0, 4);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-transition: all 0.2s ease-in-out;
+}
 .measure-text {
     -fx-font-family: "Coiny";
     -fx-font-size: 14px;
@@ -670,6 +681,9 @@
     -fx-background-color: #c9433f;
     -fx-text-fill: black;
 }
-#searchResultsList .list-cell .text { -fx-fill:black; }
-
-#searchResultsList .list-cell { -fx-text-fill: black; }
+.profileInfo {
+    -fx-font-family: "Coiny";
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+}

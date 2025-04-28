@@ -1,57 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
-<?import java.net.*?>
-<?import javafx.scene.text.*?>
 
-<BorderPane fx:id="mainBorderPane" styleClass="main-container" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.friendsController">
-    <top>
-        <VBox styleClass="header-container">
-            <HBox alignment="CENTER" spacing="10" styleClass="app-header">
-                <padding>
-                    <Insets top="10" right="20" bottom="10" left="20"/>
-                </padding>
-                <Button fx:id="homeButton" text="🏠" onAction="#navigateToHome" styleClass="nav-button"/>
-                <Region HBox.hgrow="ALWAYS"/>
-                <Label text="Friends" styleClass="title-label"/>
-                <Region HBox.hgrow="ALWAYS"/>
-            </HBox>
-        </VBox>
-    </top>
 
-    <center>
-        <VBox spacing="20" styleClass="content-area">
-            <padding>
-                <Insets top="20" right="20" bottom="20" left="20"/>
-            </padding>
 
-            <!-- Search Friends Section -->
-            <VBox spacing="10" styleClass="search-section">
-                <Label text="Add Friends" styleClass="section-label"/>
-                <HBox spacing="10" alignment="CENTER_LEFT">
-                    <TextField fx:id="searchField" promptText="Search by username or email" HBox.hgrow="ALWAYS"/>
-                    <Button fx:id="searchButton" text="Search" onAction="#searchFriends" styleClass="action-button"/>
-                </HBox>
-                <ListView fx:id="searchResultsList" VBox.vgrow="ALWAYS"/>
-            </VBox>
 
-            <!-- Friends List Section -->
-            <VBox spacing="10" VBox.vgrow="ALWAYS" styleClass="friends-section">
-                <Label text="My Friends" styleClass="section-label"/>
-                <ListView fx:id="friendsList" VBox.vgrow="ALWAYS"/>
-            </VBox>
 
-            <!-- Friend Requests Section -->
-            <VBox spacing="10" styleClass="requests-section">
-                <Label text="Friend Requests" styleClass="section-label"/>
-                <ListView fx:id="requestsList" prefHeight="100"/>
-            </VBox>
-        </VBox>
-    </center>
 
-    <stylesheets>
-        <URL value="@styles.css"/>
-    </stylesheets>
-</BorderPane>
+<AnchorPane id="AnchorPane" prefHeight="430" prefWidth="932" fx:id="launch_pane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.friendsController">
+    
+   <stylesheets>
+      <URL value="@styles.css" />
+   </stylesheets>
+</AnchorPane>

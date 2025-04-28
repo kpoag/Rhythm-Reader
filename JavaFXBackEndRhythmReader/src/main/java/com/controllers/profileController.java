@@ -58,6 +58,7 @@ public class profileController {
         username.setText(currUser.getUserName());
         firstName.setText(currUser.getFirstName());
         lastName.setText(currUser.getLastName());
+        emailAddress.setText(currUser.getEmail());
     }
 
 }
