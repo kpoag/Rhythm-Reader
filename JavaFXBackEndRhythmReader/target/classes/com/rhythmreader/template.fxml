@@ -5,7 +5,7 @@
 <?import javafx.geometry.Insets?>
 <?import java.net.*?>
 
-<BorderPane fx:id="mainBorderPane" styleClass="main-container" prefHeight="1000" prefWidth="800" xmlns="http://javafx.com/javafx/13" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.templateController">
+<BorderPane fx:id="mainBorderPane" styleClass="main-container" prefHeight="1000" prefWidth="800" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.templateController">
     <top>
         <VBox styleClass="header-container"> 
             <HBox alignment="CENTER" spacing="10" styleClass="app-header">

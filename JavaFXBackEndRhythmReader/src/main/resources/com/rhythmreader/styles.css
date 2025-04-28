@@ -551,9 +551,10 @@
     -fx-padding: 10 0;
 }
 
-.note-text {
+.note-label {
     -fx-text-fill: black;
     -fx-font-weight: bold;
+    -fx-font-color: black;
 }
 
 .time-signature-text {
@@ -636,6 +637,7 @@
 .list-cell .label {
     -fx-text-fill: black; 
 }
+
 
 .list-cell:filled:selected {
     -fx-background-color: #8ab480;

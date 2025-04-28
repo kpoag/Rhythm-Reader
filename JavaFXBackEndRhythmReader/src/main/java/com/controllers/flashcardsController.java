@@ -3,7 +3,9 @@ package com.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.event.EventHandler;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -41,7 +43,7 @@ public class flashcardsController {
     }
 
     @FXML
-    void nextFlashcard() {
+    void nextFlashcard(ActionEvent event) {
         if (flashcards.isEmpty()) {
             flashcardLabel.setText("No flashcards available.");
             return;
@@ -54,7 +56,7 @@ public class flashcardsController {
     }
 
     @FXML
-    void showAnswer() {
+    void showAnswer(ActionEvent event) {
         if (flashcards.isEmpty()) {
             flashcardLabel.setText("No flashcards available.");
             return;
