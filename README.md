@@ -4,3 +4,4 @@
 
 - Live Prototype  https://kpoag.github.io/csce247-prototype/
 
+- Rhythm Reader Demo https://youtu.be/soA3ZGh42G8
