@@ -9,28 +9,32 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.geometry.Insets?>
-<?import java.net.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="800" maxWidth="600"  xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.libraryController">
-    <VBox spacing="10" alignment="TOP_CENTER" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.topAnchor="10" >
-        
+<AnchorPane id="AnchorPane" maxHeight="800" maxWidth="600" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.libraryController">
+    <VBox spacing="10" alignment="TOP_CENTER" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.topAnchor="10">
+
+        <!-- Search Section -->
         <HBox spacing="10">
             <TextField fx:id="searchField" promptText="Search music..." />
             <Button fx:id="searchButton" text="Search" onAction="#searchMusic" />
         </HBox>
 
-        <Button fx:id="addMusicButton" text="Add New Music" onAction="#addMusic" />
+        <!-- Add New Music Section -->
+        <HBox spacing="10">
+            <TextField fx:id="titleField" promptText="Song Title" />
+            <TextField fx:id="artistField" promptText="Artist Name" />
+            <Button fx:id="addMusicButton" text="Add" onAction="#addMusic" />
+        </HBox>
 
+        <!-- Music List -->
         <ListView fx:id="musicListView" prefHeight="200.0" onMouseClicked="#showMusicDetails" />
 
-            <Label text="Select a song to see details." />
+        <Label text="Select a song to see details." />
 
     </VBox> 
     <stylesheets>
-      <URL value="@styles.css" />
-   </stylesheets>
+        <URL value="@styles.css" />
+    </stylesheets>
 
 </AnchorPane>
-
-

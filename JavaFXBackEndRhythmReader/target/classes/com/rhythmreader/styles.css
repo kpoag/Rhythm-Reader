@@ -732,3 +732,22 @@
     -fx-border-color: #ccc;
     -fx-border-radius: 5;
 }
+.flashcard-box {
+    -fx-pref-width: 150px;
+    -fx-pref-height: 150px;
+    -fx-alignment: center;
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-background-color: transparent;
+}
+
+.flashcard-box Label {
+    -fx-font-size: 14px;
+    -fx-text-fill: black;
+    -fx-wrap-text: true;
+    -fx-max-width: 150px;
+    -fx-max-height: 150px;
+    -fx-alignment: center;
+    -fx-background-color: white; 
+}
+

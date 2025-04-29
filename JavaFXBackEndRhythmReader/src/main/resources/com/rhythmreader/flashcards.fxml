@@ -15,7 +15,7 @@
                 <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
             </padding>
             
-            <Label fx:id="flashcardLabel" text="Welcome to Flashcards!" styleClass="flashcard-label" />
+            <Label fx:id="flashcardLabel" text="Welcome to Flashcards!" styleClass="flashcard-label" style="-fx-text-fill: black;"/>
             
             <!-- Centered GridPane for flashcards -->
             <GridPane fx:id="flashcardGrid" hgap="10" vgap="10" alignment="CENTER">
@@ -33,64 +33,64 @@
                 <!-- Flashcard 1 -->
                 <StackPane GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="flashcard-box">
                     <CheckBox fx:id="card1Check" style="-fx-opacity: 0; -fx-pref-width: 150px; -fx-pref-height: 150px;"/>
-                    <Label text="Question 1" visible="${!card1Check.selected}"/>
-                    <Label text="Answer 1" visible="${card1Check.selected}"/>
+                    <Label text="Who is known as the &quot;King of Pop&quot;?" visible="${!card1Check.selected}" style="-fx-text-fill: black;"/>
+                    <Label text="Michael Jackson" visible="${card1Check.selected}" style="-fx-text-fill: black;"/>
                 </StackPane>
 
                 <!-- Flashcard 2 -->
                 <StackPane GridPane.rowIndex="0" GridPane.columnIndex="1" styleClass="flashcard-box">
                     <CheckBox fx:id="card2Check" style="-fx-opacity: 0; -fx-pref-width: 150px; -fx-pref-height: 150px;"/>
-                    <Label text="Question 2" visible="${!card2Check.selected}"/>
-                    <Label text="Answer 2" visible="${card2Check.selected}"/>
+                    <Label text="What was The Beatles&apos; first album?" visible="${!card2Check.selected}" style="-fx-text-fill: black;"/>
+                    <Label text="Please Please Me" visible="${card2Check.selected}" style="-fx-text-fill: black;"/>
                 </StackPane>
 
                 <!-- Flashcard 3 -->
                 <StackPane GridPane.rowIndex="0" GridPane.columnIndex="2" styleClass="flashcard-box">
                     <CheckBox fx:id="card3Check" style="-fx-opacity: 0; -fx-pref-width: 150px; -fx-pref-height: 150px;"/>
-                    <Label text="Question 3" visible="${!card3Check.selected}"/>
-                    <Label text="Answer 3" visible="${card3Check.selected}"/>
+                    <Label text="Who is the lead singer of Queen?" visible="${!card3Check.selected}" style="-fx-text-fill: black;"/>
+                    <Label text="Freddie Mercury" visible="${card3Check.selected}" style="-fx-text-fill: black;"/>
                 </StackPane>
 
                 <!-- Flashcard 4 -->
                 <StackPane GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="flashcard-box">
                     <CheckBox fx:id="card4Check" style="-fx-opacity: 0; -fx-pref-width: 150px; -fx-pref-height: 150px;"/>
-                    <Label text="Question 4" visible="${!card4Check.selected}"/>
-                    <Label text="Answer 4" visible="${card4Check.selected}"/>
+                    <Label text="Which artist is known for the hit song &quot;Shape of You&quot;?" visible="${!card4Check.selected}" style="-fx-text-fill: black;"/>
+                    <Label text="Ed Sheeran" visible="${card4Check.selected}" style="-fx-text-fill: black;"/>
                 </StackPane>
 
                 <!-- Flashcard 5 -->
                 <StackPane GridPane.rowIndex="1" GridPane.columnIndex="1" styleClass="flashcard-box">
                     <CheckBox fx:id="card5Check" style="-fx-opacity: 0; -fx-pref-width: 150px; -fx-pref-height: 150px;"/>
-                    <Label text="Question 5" visible="${!card5Check.selected}"/>
-                    <Label text="Answer 5" visible="${card5Check.selected}"/>
+                    <Label text="Which music genre is the band &quot;Green Day&quot; associated with?" visible="${!card5Check.selected}" style="-fx-text-fill: black;"/>
+                    <Label text="Punk Rock" visible="${card5Check.selected}" style="-fx-text-fill: black;"/>
                 </StackPane>
 
                 <!-- Flashcard 6 -->
                 <StackPane GridPane.rowIndex="1" GridPane.columnIndex="2" styleClass="flashcard-box">
                     <CheckBox fx:id="card6Check" style="-fx-opacity: 0; -fx-pref-width: 150px; -fx-pref-height: 150px;"/>
-                    <Label text="Question 6" visible="${!card6Check.selected}"/>
-                    <Label text="Answer 6" visible="${card6Check.selected}"/>
+                    <Label text="Which famous musician is known for the song &quot;Imagine&quot;?" visible="${!card6Check.selected}" style="-fx-text-fill: black;"/>
+                    <Label text="John Lennon" visible="${card6Check.selected}" style="-fx-text-fill: black;"/>
                 </StackPane>
 
                 <!-- Flashcard 7 -->
                 <StackPane GridPane.rowIndex="2" GridPane.columnIndex="0" styleClass="flashcard-box">
                     <CheckBox fx:id="card7Check" style="-fx-opacity: 0; -fx-pref-width: 150px; -fx-pref-height: 150px;"/>
-                    <Label text="Question 7" visible="${!card7Check.selected}"/>
-                    <Label text="Answer 7" visible="${card7Check.selected}"/>
+                    <Label text="What year did the &quot;Woodstock&quot; music festival take place?" visible="${!card7Check.selected}" style="-fx-text-fill: black;"/>
+                    <Label text="1969" visible="${card7Check.selected}" style="-fx-text-fill: black;"/>
                 </StackPane>
 
                 <!-- Flashcard 8 -->
                 <StackPane GridPane.rowIndex="2" GridPane.columnIndex="1" styleClass="flashcard-box">
                     <CheckBox fx:id="card8Check" style="-fx-opacity: 0; -fx-pref-width: 150px; -fx-pref-height: 150px;"/>
-                    <Label text="Question 8" visible="${!card8Check.selected}"/>
-                    <Label text="Answer 8" visible="${card8Check.selected}"/>
+                    <Label text="Which music genre is Beyoncé most associated with?" visible="${!card8Check.selected}" style="-fx-text-fill: black;"/>
+                    <Label text="R&amp;B / Pop" visible="${card8Check.selected}" style="-fx-text-fill: black;"/>
                 </StackPane>
 
                 <!-- Flashcard 9 -->
                 <StackPane GridPane.rowIndex="2" GridPane.columnIndex="2" styleClass="flashcard-box">
                     <CheckBox fx:id="card9Check" style="-fx-opacity: 0; -fx-pref-width: 150px; -fx-pref-height: 150px;"/>
-                    <Label text="Question 9" visible="${!card9Check.selected}"/>
-                    <Label text="Answer 9" visible="${card9Check.selected}"/>
+                    <Label text="Which famous music duo was known for the song &quot;Bridge Over Troubled Water&quot;?" visible="${!card9Check.selected}" style="-fx-text-fill: black;"/>
+                    <Label text="Simon &amp; Garfunkel" visible="${card9Check.selected}" style="-fx-text-fill: black;"/>
                 </StackPane>
                 
             </GridPane>
