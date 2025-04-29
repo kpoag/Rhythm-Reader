@@ -55,11 +55,7 @@
          </font>
       </Text>
       <ToggleButton fx:id="darkModeToggle" layoutX="527.0" layoutY="270.0" mnemonicParsing="false" onAction="#handleDarkModeToggle" text="OFF" />
-      <ImageView fx:id="resetAccountButton" fitHeight="32.0" fitWidth="27.0" layoutX="529.0" layoutY="310.0" onMouseClicked="#resetAccountClicked" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/refresh-arrow.png" preserveRatio="true" />
-         </image>
-      </ImageView>
+   
       <Text layoutX="24.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Delete Account">
          <font>
             <Font size="18.0" />

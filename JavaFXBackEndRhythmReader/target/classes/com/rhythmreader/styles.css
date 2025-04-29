@@ -702,19 +702,7 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);
     -fx-cursor: hand;
 }
-.root {
-    -fx-font-family: "Arial";
-}
 
-.button {
-    -fx-background-color: #4CAF50;
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-}
-
-.button:hover {
-    -fx-background-color: #45a049;
-}
 
 .text-field {
     -fx-prompt-text-fill: #999;
@@ -727,11 +715,7 @@
     -fx-padding: 5;
 }
 
-.scroll-pane {
-    -fx-background: white;
-    -fx-border-color: #ccc;
-    -fx-border-radius: 5;
-}
+
 .flashcard-box {
     -fx-pref-width: 150px;
     -fx-pref-height: 150px;
